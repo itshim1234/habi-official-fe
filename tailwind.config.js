@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        "larken-bold": ["larken"],
+      },
       screens: {
         xl: "1280px",
       },
