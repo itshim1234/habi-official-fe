@@ -11,7 +11,6 @@ function Hero() {
           className="object-cover w-full h-[514px] md:h-[1024px]"
           autoPlay
           loop
-          muted
           playsInline
         >
           <source src={herobackground} type="video/mp4" />
