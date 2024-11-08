@@ -1,5 +1,6 @@
 import React from "react";
 import herobackground from "../../assets/videos/heroBackground2.mp4";
+import hamburger from "../../assets/images/Hamburger.png";
 import "./hero.css";
 
 function Hero() {
@@ -63,11 +64,15 @@ function Hero() {
           </div>
         </div>
       </div>
-      <div className="absolute z-20 text-white justify-center text-center right-[36px] md:right-[32px] lg:right-[82px] top-[20px] md:top-[40px]">
-        <button className="flex items-center justify-between px-4 py-2 w-32 h-12 rounded-lg border-2 border-white/20 bg-transparent backdrop-blur-md text-white font-semibold">
-          <span>Login</span>
-          <span className="text-2xl">|</span>
-          <span className="text-2xl">&times;</span>
+      <div className="absolute z-20 text-white justify-center text-center right-[16px] md:right-[32px] lg:right-[82px] top-[20px] md:top-[40px]">
+        <button className="flex items-center justify-between px-4 w-[166px] md:w-[180px] h-[56px] md:h-[60px] rounded-lg border-2 border-white/20 bg-transparent backdrop-blur-md text-white font-semibold">
+          <span className="text-[18px] md:text-[24px] mb-1">Login</span>
+          <span className="text-lg mb-1 text-[#c0c0c0]">|</span>
+          <img
+            src={hamburger}
+            alt=""
+            className="w-[24px] h-[24px] object-cover"
+          />
         </button>
       </div>
       <div className="relative z-20 text-white justify-center text-center top-[47%] flex space-x-4 md:space-x-12 text-md md:text-[24px]">
