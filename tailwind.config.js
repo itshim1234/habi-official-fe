@@ -5,6 +5,9 @@ export default {
     extend: {
       fontFamily: {
         "larken-bold": ["larken"],
+        giloryB: ["gilroyB"],
+        giloryM: ["gilroyM"],
+        giloryS: ["gilroyS"],
       },
       screens: {
         xl: "1280px",

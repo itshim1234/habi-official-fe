@@ -1,15 +1,17 @@
 import React from "react";
 import herobackground from "../../assets/videos/heroBackground2.mp4";
 import hamburger from "../../assets/images/Hamburger.png";
+import scroll from "../../assets/images/scroll.png";
+
 import "./hero.css";
 
 function Hero() {
   return (
-    <div className="relative min-h-[300px] h-[515px] md:h-[950px] w-full bg-cover bg-center bg-no-repeat ">
+    <div className="relative min-h-[300px] h-[500px] md:h-[851px] lg:h-[950px] w-full bg-cover bg-center bg-no-repeat ">
       {/* Video background */}
       <div className="absolute inset-0 z-0 bg-cover">
         <video
-          className="object-cover w-full h-[514px] md:h-[950px]"
+          className="object-cover md:w-full h-[500px] md:h-[850px] lg:h-[950px]"
           autoPlay
           loop
           muted
@@ -65,8 +67,10 @@ function Hero() {
         </div>
       </div>
       <div className="absolute z-20 text-white justify-center text-center right-[16px] md:right-[32px] lg:right-[82px] top-[20px] md:top-[40px]">
-        <button className="flex items-center justify-between px-4 w-[166px] md:w-[180px] h-[56px] md:h-[60px] rounded-lg border-2 border-white/20 bg-transparent backdrop-blur-md text-white font-semibold">
-          <span className="text-[18px] md:text-[24px] mb-1">Login</span>
+        <button className="flex items-center justify-between px-4 w-[140px] md:w-[180px] h-[56px] md:h-[60px] rounded-lg border-2 border-white/20 bg-transparent backdrop-blur-md text-white font-semibold">
+          <span className="text-[18px] md:text-[24px] mb-1 font-giloryS">
+            Login
+          </span>
           <span className="text-lg mb-1 text-[#c0c0c0]">|</span>
           <img
             src={hamburger}
@@ -75,14 +79,17 @@ function Hero() {
           />
         </button>
       </div>
-      <div className="relative z-20 text-white justify-center text-center top-[47%] flex space-x-4 md:space-x-12 text-md md:text-[24px]">
-        <button className="px-5 py-2 w-[167] md:w-[275px] h-12 md:h-[75px] rounded-xl border-2 border-white/20 bg-black/30 backdrop-blur text-white flex items-center justify-center">
+      <div className="relative z-20 text-white justify-center text-center top-[48%] flex space-x-4 md:space-x-12 text-md md:text-[24px]">
+        <button className="px-5 w-[167] md:w-[275px] h-12 md:h-[75px] rounded-xl border-2 border-white/20 bg-black/30 backdrop-blur text-white flex items-center justify-center font-giloryS">
           Explore Projects
         </button>
 
-        <button className="px-5 py-2 w-[167] md:w-[275px] h-12 md:h-[75px] rounded-xl bg-primary text-white flex items-center justify-center">
+        <button className="px-5 py-2 w-[167] md:w-[275px] h-12 md:h-[75px] rounded-xl bg-primary text-white flex items-center justify-center font-giloryS">
           Free Consultation
         </button>
+      </div>
+      <div className="relative z-20 text-white justify-center text-center top-[55%] hidden lg:flex space-x-4 md:space-x-12 text-md md:text-[24px] ">
+        <img src={scroll} alt="" />
       </div>
     </div>
   );

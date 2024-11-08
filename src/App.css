@@ -8,3 +8,16 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "gilroyB";
+  src: url("assets/fonts/GilroyB.ttf") format("truetype");
+}
+@font-face {
+  font-family: "gilroyM";
+  src: url("assets/fonts/GilroyM.ttf") format("truetype");
+}
+@font-face {
+  font-family: "gilroyS";
+  src: url("assets/fonts/GilroyS.ttf") format("truetype");
+}
