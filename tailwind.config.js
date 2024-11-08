@@ -9,6 +9,9 @@ export default {
       screens: {
         xl: "1280px",
       },
+      colors: {
+        primary: "#0FB4C3",
+      },
     },
   },
   plugins: [require("daisyui")],
