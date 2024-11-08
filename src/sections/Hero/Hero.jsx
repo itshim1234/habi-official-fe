@@ -4,13 +4,14 @@ import "./hero.css";
 
 function Hero() {
   return (
-    <div className="relative min-h-[300px] h-[515px] md:h-[1024px] w-full bg-cover bg-center bg-no-repeat ">
+    <div className="relative min-h-[300px] h-[515px] md:h-[950px] w-full bg-cover bg-center bg-no-repeat ">
       {/* Video background */}
       <div className="absolute inset-0 z-0 bg-cover">
         <video
-          className="object-cover w-full h-[514px] md:h-[1024px]"
+          className="object-cover w-full h-[514px] md:h-[950px]"
           autoPlay
           loop
+          muted
           playsInline
         >
           <source src={herobackground} type="video/mp4" />
@@ -30,7 +31,7 @@ function Hero() {
       />
 
       {/* Overlay content */}
-      <div className="relative z-20 text-white justify-center text-center top-[52%]">
+      <div className="relative z-20 text-white justify-center text-center top-[45%]">
         {/* Background shadow layer */}
         <div
           className="absolute inset-0 -z-10"
@@ -69,7 +70,7 @@ function Hero() {
           <span className="text-2xl">&times;</span>
         </button>
       </div>
-      <div className="relative z-20 text-white justify-center text-center top-[57%] flex space-x-4 md:space-x-12 text-md md:text-[24px]">
+      <div className="relative z-20 text-white justify-center text-center top-[47%] flex space-x-4 md:space-x-12 text-md md:text-[24px]">
         <button className="px-5 py-2 w-[167] md:w-[275px] h-12 md:h-[75px] rounded-xl border-2 border-white/20 bg-black/30 backdrop-blur text-white flex items-center justify-center">
           Explore Projects
         </button>
