@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="bg-[#111111] text-gray-300 py-10 px-5 ml-3">
-      <div className="container mx-auto grid grid-cols-2 md:grid-cols-5 gap-8">
+      <div className="mx-auto grid grid-cols-2 md:grid-cols-5 gap-8">
         {/* Logo and Tagline */}
         <div className="col-span-2">
           <h2 className="text-white text-2xl">Logo</h2>
@@ -95,7 +95,7 @@ const Footer = () => {
 
       {/* Footer Bottom */}
       <div className="border-t border-gray-700 mt-8 pt-4">
-        <div className="container mx-auto flex flex-col lg:flex-row justify-between text-gray-500 text-sm">
+        <div className=" mx-auto flex flex-col lg:flex-row justify-between text-gray-500 text-sm">
           <p>&copy; 2020 - 24 Designasm Studio Pvt Ltd.</p>
           <div className="space-x-4 mt-2 lg:mt-0">
             <a href="#" className="hover:underline">

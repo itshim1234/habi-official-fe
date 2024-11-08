@@ -11,7 +11,7 @@ function Hero() {
       {/* Video background */}
       <div className="absolute inset-0 z-0 bg-cover">
         <video
-          className="object-cover md:w-full h-[500px] md:h-[850px] lg:h-[950px]"
+          className="object-cover w-full h-[500px] md:h-[850px] lg:h-[950px]"
           autoPlay
           loop
           muted
@@ -23,24 +23,26 @@ function Hero() {
 
       {/* Gradient overlay */}
       <div
-        className="absolute inset-0 z-10"
+        className="absolute inset-0 g z-10"
         style={{
           background: `
-            linear-gradient(to right, rgba(17, 17, 17, 1), rgba(0, 0, 0, 0) 20%),
-            linear-gradient(to left, rgba(17, 17, 17, 1), rgba(0, 0, 0, 0) 20%),
-            linear-gradient(to top, rgba(17, 17, 17, 1), rgba(0, 0, 0, 0) 4%)
+            linear-gradient(to right, rgba(17, 17, 17, 1), rgba(0, 0, 0, 0) 10%),
+            linear-gradient(to left, rgba(17, 17, 17, 1), rgba(0, 0, 0, 0) 10%),
+            linear-gradient(to top, rgba(17, 17, 17, 1), rgba(0, 0, 0, 0) 3%)
           `,
         }}
       />
 
       {/* Overlay content */}
-      <div className="relative z-20 text-white justify-center text-center top-[45%]">
+      <div className="relative z-20 text-white justify-center text-center top-[45%] w-fit mx-auto">
         {/* Background shadow layer */}
         <div
           className="absolute inset-0 -z-10"
           style={{
             backgroundColor: "rgba(0, 0, 0, 0.5)", // Adjust the opacity for shadow intensity
-            filter: "blur(16px)", // Blur effect for a softer shadow
+            filter: "blur(16px)",
+
+            // Blur effect for a softer shadow
             borderRadius: "50px", // Optional, adjust for rounded corners if needed
           }}
         ></div>
@@ -53,7 +55,6 @@ function Hero() {
             style={{
               backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent black
               filter: "blur(50px)", // Blur effect for shadow
-              width: "100%",
               height: "40%", // Adjust height as needed to cover the area above
               borderRadius: "5px", // Optional for rounded edges
             }}
@@ -67,19 +68,19 @@ function Hero() {
         </div>
       </div>
       <div className="absolute z-20 text-white justify-center text-center right-[16px] md:right-[32px] lg:right-[82px] top-[20px] md:top-[40px]">
-        <button className="flex items-center justify-between px-4 w-[140px] md:w-[180px] h-[56px] md:h-[60px] rounded-lg border-2 border-white/20 bg-transparent backdrop-blur-md text-white font-semibold">
+        <button className="flex items-center justify-between px-5 w-[140px] md:w-[180px] h-[56px] md:h-[60px] rounded-lg border-2 border-white/20 bg-transparent backdrop-blur-md text-white font-semibold">
           <span className="text-[18px] md:text-[24px] mb-1 font-giloryS">
             Login
           </span>
-          <span className="text-lg mb-1 text-[#c0c0c0]">|</span>
+          <span className="text-lg mb-2 text-[#c0c0c0]">|</span>
           <img
             src={hamburger}
             alt=""
-            className="w-[24px] h-[24px] object-cover"
+            className="w-[24px] h-[24px] object-cover mb-1"
           />
         </button>
       </div>
-      <div className="relative z-20 text-white justify-center text-center top-[48%] flex space-x-4 md:space-x-12 text-md md:text-[24px]">
+      <div className="relative z-20 text-white justify-center text-center top-[50%] flex space-x-4 md:space-x-12 text-md md:text-[24px]">
         <button className="px-5 w-[167] md:w-[275px] h-12 md:h-[75px] rounded-xl border-2 border-white/20 bg-black/30 backdrop-blur text-white flex items-center justify-center font-giloryS">
           Explore Projects
         </button>
