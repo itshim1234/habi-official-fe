@@ -25,7 +25,7 @@ function Hero() {
           background: `
             linear-gradient(to right, rgba(17, 17, 17, 1), rgba(0, 0, 0, 0) 20%),
             linear-gradient(to left, rgba(17, 17, 17, 1), rgba(0, 0, 0, 0) 20%),
-            linear-gradient(to top, rgba(17, 17, 17, 1), rgba(0, 0, 0, 0) 40%)
+            linear-gradient(to top, rgba(17, 17, 17, 1), rgba(0, 0, 0, 0) 4%)
           `,
         }}
       />
