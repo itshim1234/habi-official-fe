@@ -7,7 +7,7 @@ import "./hero.css";
 
 function Hero() {
   return (
-    <div className="relative min-h-[300px] h-[500px] md:h-[851px] lg:h-[950px] w-full bg-cover bg-center bg-no-repeat ">
+    <div className="relative min-h-[300px] h-[500px] md:h-[851px] lg:h-[950px] w-full">
       {/* Video background */}
       <div className="absolute inset-0 z-0 bg-cover">
         <video
@@ -23,11 +23,12 @@ function Hero() {
 
       {/* Gradient overlay */}
       <div
-        className="absolute inset-0 g z-10"
+        className="absolute inset-0"
         style={{
           background: `
-            linear-gradient(to right, rgba(17, 17, 17, 1), rgba(0, 0, 0, 0) 10%),
-            linear-gradient(to left, rgba(17, 17, 17, 1), rgba(0, 0, 0, 0) 10%),
+            linear-gradient(to right,#111111, rgba(0, 0, 0, 0) 100px),
+            linear-gradient(to left, #111111, rgba(0, 0, 0, 0) 100px),
+
             linear-gradient(to top, rgba(17, 17, 17, 1), rgba(0, 0, 0, 0) 3%)
           `,
         }}

@@ -1,54 +1,62 @@
 import React, { useEffect, useState } from "react";
 import "./info.css";
+import design from "../../assets/images/design.png";
+import time from "../../assets/images/time.png";
+import quality from "../../assets/images/quality.png";
+import manage from "../../assets/images/manage.png";
+
 function Info() {
-  const texts = ["Text 1", "Text 2", "Text 3", "Text 4"];
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const texts = ["Design", "Manage", "Quality", "Time"];
+  const desc = [
+    "We design homes for practical, modern living. We focus on creating fully functional spaces with plenty of storage and energy-efficient features, all thoughtfully planned to make life more comfortable and convenient.",
+    "Hassle-free construction with our expertise in Project Management Consultancy (PMC). From start to finish, we handle all details to keep projects smooth and stress-free for you.",
+    "We perform quality checks at every stage of construction to ensure top standards in our homes. With careful craftsmanship, we build durable, comfortable spaces you can rely on.",
+    "Our goal is to deliver efficient, timely results without compromising on quality. By streamlining processes and managing resources carefully, we ensure projects stay on schedule and meet client expectations.",
+  ];
+  const [currentIndex, setCurrentIndex] = useState(1);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
-    }, 5000); // Change interval as needed
+    }, 7000); // Change interval as needed
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-      <div className="flex justify-center items-center h-screen">
-      <div className="container mt-10">
+    <div className="flex justify-center bg-[#111111]">
+      <div className="container min-w-full">
         <div>
-          <h1 className="text-[48px] text-white font-larken-bold mb-20">
+          <h1 className="text-[48px] text-white font-larken-bold mt-10 md:mb-10">
             Why habi
           </h1>
         </div>
         <div className="hero-circle">
-          <div className="inner-text">{texts[currentIndex]}</div>
+          <div className="inner-text top-[30%] md:top-[21%] lg:top-[20%] xl:top-[17%]">
+            <div>
+              <p className="font-giloryM text-[24px] md:text-[32px]">
+                {texts[currentIndex]}
+              </p>
+              <p className="font-giloryM text-[16px] md:text-[18px]">
+                {desc[currentIndex]}
+              </p>
+            </div>
+          </div>
           <div
             className="hero-rotate"
             style={{ transform: `rotate(${-90 * currentIndex}deg)` }}
           >
             <div className="planet">
-              <img
-                src="https://images.unsplash.com/photo-1465414829459-d228b58caf6e?ixlib=rb-0.3.5&q=80&auto=format&crop=entropy&cs=tinysrgb&w=600&h=338&fit=crop&s=7ab1744fe016fb39feb2972244246359"
-                alt=""
-              />
+              <img src={design} alt="" />
             </div>
             <div className="planet">
-              <img
-                src="https://images.unsplash.com/uploads/1413142095961484763cf/d141726c?ixlib=rb-0.3.5&q=80&auto=format&crop=entropy&cs=tinysrgb&w=600&h=338&fit=crop&s=86dc2dcb74588b338dfbb15d959c5037"
-                alt=""
-              />
+              <img src={manage} alt="" />
             </div>
             <div className="planet">
-              <img
-                src="https://images.unsplash.com/photo-1484402628941-0bb40fc029e7?ixlib=rb-0.3.5&q=80&auto=format&crop=entropy&cs=tinysrgb&w=600&h=338&fit=crop&s=6237e62a10fa079d99b088b0db0144ac"
-                alt=""
-              />
+              <img src={quality} alt="" />
             </div>
             <div className="planet">
-              <img
-                src="https://images.unsplash.com/uploads/141310026617203b5980d/c86b8baa?ixlib=rb-0.3.5&q=80&auto=format&crop=entropy&cs=tinysrgb&w=600&h=338&fit=crop&s=882e851a008e83b7a80d05bdc96aa817"
-                alt=""
-              />
+              <img src={time} alt="" />
             </div>
           </div>
         </div>
