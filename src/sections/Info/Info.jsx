@@ -25,14 +25,14 @@ function Info() {
 
   return (
     <div className="flex justify-center bg-[#111111]">
-      <div className="container min-w-full h-[55vh] md:h-[80vh] lg:h-[90vh] xl:h-[80vh]">
+      <div className="container min-w-full h-[70vh] md:h-[75vh] lg:h-[80vh] xl:h-[80vh]">
         <div>
           <h1 className="text-[48px] text-white font-larken-bold mt-10 md:mb-10">
             Why habi
           </h1>
         </div>
         <div className="hero-circle">
-          <div className="inner-text top-[30%] md:top-[21%] lg:top-[20%] xl:top-[17%]">
+          <div className="inner-text top-[33%] md:top-[24%] lg:top-[20%] xl:top-[20%]">
             <div>
               <p className="font-giloryM text-[24px] md:text-[32px] mb-[8px]">
                 {texts[currentIndex]}
