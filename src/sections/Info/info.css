@@ -1,6 +1,4 @@
 .container {
-  height: 70vh;
-
   place-items: center;
   overflow: hidden;
   background-color: #111111;
@@ -55,7 +53,7 @@
   top: 100px;
   width: 100%;
   height: 100%;
-  border: 1px solid white;
+  border: 1px solid #f8f8ff;
   border-radius: 100%;
   animation: rotate 24s infinite; /* 4 steps for 4 90-degree turns */
 }
