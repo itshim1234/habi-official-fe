@@ -7,9 +7,9 @@ import Service from "./sections/habiService/Service";
 import Working from "./sections/HowItWorks/Working";
 import Model from "./sections/3DMobile/Model";
 function App() {
-  const [product, setProduct] = useState(false);
-  const handleProduct = () => {
-    setProduct(!product);
+  const [scroll, setScroll] = useState(false);
+  const handleScroll = () => {
+    setScroll(!scroll);
   };
   return (
     <div className="w-full xl:max-w-screen-xl xl:mx-auto">
