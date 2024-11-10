@@ -4,26 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Habi</title>
-  <script>
-    // Adjust viewport scaling based on screen width
-    window.addEventListener('resize', adjustViewportScale);
-
-    function adjustViewportScale() {
-      const viewport = document.getElementById('viewport');
-      const width = window.innerWidth;
-
-      if (width >= 1024) { // For larger screens (like desktop/tablets)
-        viewport.setAttribute('content', 'width=device-width, initial-scale=0.65, minimum-scale=0.65, maximum-scale=0.65');
-      } else { // For smaller and medium screens
-        viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0');
-      }
-    }
-
-    // Call the function initially
-    adjustViewportScale();
-  </script>
 </head>
 
 <body>

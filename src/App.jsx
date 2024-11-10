@@ -5,6 +5,7 @@ import Footer from "./sections/Footer/Footer";
 import Info from "./sections/Info/Info";
 import Service from "./sections/habiService/Service";
 import Working from "./sections/HowItWorks/Working";
+import Model from "./sections/3DMobile/Model";
 function App() {
   const [product, setProduct] = useState(false);
   const handleProduct = () => {
@@ -15,20 +16,9 @@ function App() {
       <Hero />
       <Info />
       <Service />
-      <Working/>
+      <Working />
+      <Model />
       <Footer />
-      <Footer />
-
-      <Footer />
-
-      <Footer />
-
-      <Footer />
-
-      <Footer />
-
-      <Footer />
-
     </div>
   );
 }

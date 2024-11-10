@@ -35,9 +35,9 @@ function Working() {
         src="https://my.spline.design/gitnesssplinetest-73744034a060a8a69a38b8355df2a261/"
         width="100%"
         height="100%"
-        className="absolute -left-0.5 top-0"
+        className="absolute"
       ></iframe>
-
+      
       {/* Content on top */}
       <div
         ref={thirdSectionRef}
@@ -48,9 +48,7 @@ function Working() {
         }}
       >
         <h1>Your Content Here</h1>
-        <p>
-          This content will stay above the animated background as you scroll.
-        </p>
+        <p>This content will stay above the animated background as you scroll.</p>
       </div>
     </div>
   );
