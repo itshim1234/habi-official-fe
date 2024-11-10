@@ -31,7 +31,7 @@ function Service() {
         className="object-cover w-full h-[500px] md:h-[850px] lg:h-[950px] bg-[#111111]"
         autoPlay
         loop
-        muted
+        muted 
         playsInline
       >
         <source src={model} type="video/mp4" />
