@@ -25,7 +25,7 @@ function Info() {
 
   return (
     <div className="flex justify-center bg-[#111111]">
-      <div className="container min-w-full h-[70vh] md:h-[75vh] lg:h-[80vh] xl:h-[80vh]">
+      <div className="container min-w-full h-[70vh] md:h-[75vh] lg:h-[75vh] xl:h-[650px]">
         <div>
           <h1 className="text-[48px] text-white font-larken-bold mt-10 md:mb-10">
             Why habi

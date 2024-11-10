@@ -36,6 +36,7 @@ function Service() {
       >
         <source src={model} type="video/mp4" />
       </video>
+      <hr className="bg-[#f8f8ff] p-0 m-0" />
     </div>
   );
 }

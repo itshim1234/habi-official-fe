@@ -9,9 +9,7 @@ export default {
         giloryM: ["gilroyM"],
         giloryS: ["gilroyS"],
       },
-      screens: {
-        xl: "1280px",
-      },
+
       colors: {
         primary: "#0FB4C3",
       },
