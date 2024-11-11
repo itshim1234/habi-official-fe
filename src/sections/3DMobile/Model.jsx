@@ -2,7 +2,7 @@ import React from "react";
 
 function Model() {
   return (
-    <div className="flex flex-col justify-center text-center bg-black text-white items-center">
+    <div className="flex flex-col justify-center text-center bg-black text-white items-center w-full ">
       <hr className="bg-[#f8f8ff] p-0 m-0" />
 
       <p className="text-[48px] mt-8">

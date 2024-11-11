@@ -7,7 +7,7 @@ import "./hero.css";
 
 function Hero() {
   return (
-    <div className="relative min-h-[300px] h-[500px] md:h-[851px] lg:h-[950px] w-full">
+    <div className="relative min-h-[300px] h-[500px] md:h-[851px] lg:h-[950px] w-full ">
       {/* Video background */}
       <div className="absolute inset-0 z-0 bg-cover">
         <video

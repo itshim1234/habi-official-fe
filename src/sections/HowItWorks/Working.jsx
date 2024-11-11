@@ -11,135 +11,86 @@ const defaultImage = meetUs;
 const stages = [
   {
     title: "Meet us",
-    description:
-      "Begin your home construction journey by scheduling a meeting through our website or app, giving us a call, or reaching out on WhatsApp.",
+    description: "Begin your journey...",
     image: meetUs,
     number: 1,
   },
   {
     title: "Design",
-    description:
-      "After the meeting, our architects will create a home design tailored to your requirements. We ensure that every detail matches your preferences for a perfect outcome.",
+    description: "Our architects will create...",
     image: designWork,
     number: 2,
   },
   {
     title: "Finalize",
-    description:
-      "With your confirmation, we'll work on a budget to bring your vision to life. We'll ensure everything is prepared for the next step smoothly.",
+    description: "We'll work on a budget...",
     image: finalize,
     number: 3,
   },
   {
     title: "Track",
-    description:
-      "As construction begins, our mobile app keeps you updated. Track daily progress from anywhere, ensuring your dream home is coming together just as you envisioned.",
+    description: "Track daily progress...",
     image: track,
     number: 4,
   },
   {
     title: "Handover",
-    description:
-      "We guarantee your home will be delivered on time and within budget. It's our pride and joy to hand over the keys to your new home.",
+    description: "Delivered on time...",
     image: handover,
     number: 5,
   },
 ];
 
-function Working() {
+function Working({ scrollLocked, onScrollLockChange }) {
   const [currentStage, setCurrentStage] = useState(0);
-  const [isInView, setIsInView] = useState(false);
-  const [isAtLastStage, setIsAtLastStage] = useState(false);
-  const myDivRef = useRef(null);
-  const scrollContainerRef = useRef(null);
+  const sectionRef = useRef(null);
 
+  // Use intersection observer to detect when Working section is in viewport
   useEffect(() => {
-    // Intersection Observer to check if `myDiv` is in the viewport
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsInView(entry.isIntersecting);
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          onScrollLockChange(true);
+        } else {
+          onScrollLockChange(false);
+        }
       },
-      { threshold: 0.1 } // Adjust threshold as needed
+      { threshold: 1.0 }
     );
 
-    if (myDivRef.current) {
-      observer.observe(myDivRef.current);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
 
     return () => {
-      if (myDivRef.current) {
-        observer.unobserve(myDivRef.current);
-      }
+      observer.disconnect();
+      onScrollLockChange(false); // Ensure scrolling is unlocked on cleanup
     };
-  }, []);
+  }, [onScrollLockChange]);
 
+  // Handle stage advancement on each scroll within the locked section
   useEffect(() => {
-    const handleScroll = () => {
-      if (isInView && scrollContainerRef.current) {
-        const scrollPosition = scrollContainerRef.current.scrollTop;
-        const scrollHeight = scrollContainerRef.current.scrollHeight;
-        const containerHeight = scrollContainerRef.current.clientHeight;
-        const progress = scrollPosition / (scrollHeight - containerHeight);
-
-        // Ensure the current stage is within the valid range
-        const safeCurrentStage = Math.min(
-          Math.max(Math.floor(progress * stages.length), 0),
-          stages.length - 1
-        );
-        setCurrentStage(safeCurrentStage);
-
-        // Check if the last stage is reached
-        if (safeCurrentStage === stages.length - 1) {
-          setIsAtLastStage(true);
+    const handleStageChange = () => {
+      if (scrollLocked) {
+        if (currentStage < stages.length - 1) {
+          setCurrentStage((prevStage) => prevStage + 1);
         } else {
-          setIsAtLastStage(false);
+          onScrollLockChange(false); // Unlock scroll after last stage
         }
       }
     };
 
-    // Use requestAnimationFrame for smooth scroll handling
-    const onScroll = () => requestAnimationFrame(handleScroll);
-
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.addEventListener("scroll", onScroll);
-    }
+    window.addEventListener("scroll", handleStageChange);
 
     return () => {
-      if (scrollContainerRef.current) {
-        scrollContainerRef.current.removeEventListener("scroll", onScroll);
-      }
+      window.removeEventListener("scroll", handleStageChange);
     };
-  }, [isInView]);
-
-  useEffect(() => {
-    // Lock or unlock scrolling based on whether the "Working" section is in view
-    if (isInView) {
-      scrollContainerRef.current.style.overflow = "hidden"; // Disable scroll for the container
-    } else {
-      scrollContainerRef.current.style.overflow = "auto"; // Re-enable scroll for the container
-    }
-
-    // Enable scroll when the last stage (Handover) is reached
-    if (isAtLastStage) {
-      scrollContainerRef.current.style.overflow = "auto"; // Allow scroll for the next section
-    }
-
-    // Cleanup on component unmount
-    return () => {
-      scrollContainerRef.current.style.overflow = "auto"; // Ensure scroll is always re-enabled
-    };
-  }, [isInView, isAtLastStage]);
-
-  // Ensure safe access to stages array with fallback values
-  const safeCurrentStage = Math.min(
-    Math.max(currentStage, 0),
-    stages.length - 1
-  );
+  }, [currentStage, scrollLocked, onScrollLockChange]);
 
   return (
     <div
-      ref={scrollContainerRef}
-      className="myDiv relative h-screen w-full text-white flex items-center justify-center overflow-auto"
+      ref={sectionRef}
+      className="relative h-screen w-full text-white flex items-center justify-center overflow-auto"
     >
       {/* Background iframe */}
       <iframe
@@ -149,7 +100,7 @@ function Working() {
         style={{ zIndex: -2 }}
       ></iframe>
 
-      {/* Dark overlay for readability */}
+      {/* Dark overlay */}
       <div
         className="absolute inset-0 bg-black opacity-60"
         style={{ zIndex: -1 }}
@@ -159,27 +110,24 @@ function Working() {
       <div className="relative z-10 text-center max-w-lg px-6 py-12 overflow-y-auto h-full">
         <h2 className="text-2xl md:text-3xl font-bold mb-6">How it Works?</h2>
 
-        {/* Stage card with dynamic image */}
+        {/* Stage card */}
         <div className="p-8 bg-gray-900 bg-opacity-75 rounded-xl shadow-lg">
           <img
-            src={stages[safeCurrentStage]?.image || defaultImage} // Safe check for image
-            alt={stages[safeCurrentStage]?.title || "Default Title"}
+            src={stages[currentStage]?.image || defaultImage}
+            alt={stages[currentStage]?.title || "Default Title"}
             className="w-full h-48 md:h-64 object-cover rounded-md mb-6"
           />
           <h3 className="text-xl md:text-2xl font-semibold text-yellow-500 mb-4">
-            {stages[safeCurrentStage]?.title || "Default Title"}
+            {stages[currentStage]?.title || "Default Title"}
           </h3>
           <p className="text-sm md:text-base text-gray-300">
-            {stages[safeCurrentStage]?.description || "Default Description"}
+            {stages[currentStage]?.description || "Default Description"}
           </p>
         </div>
 
         {/* Stage number */}
-        <div
-          ref={myDivRef}
-          className="text-yellow-500 text-4xl md:text-5xl font-bold mt-6"
-        >
-          {stages[safeCurrentStage]?.number || 0} {/* Default number */}
+        <div className="text-yellow-500 text-4xl md:text-5xl font-bold mt-6">
+          {stages[currentStage]?.number || 0}
         </div>
       </div>
     </div>
