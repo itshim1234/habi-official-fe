@@ -6,6 +6,7 @@ import Info from "./sections/Info/Info";
 import Service from "./sections/habiService/Service";
 import Working from "./sections/HowItWorks/Working";
 import Model from "./sections/3DMobile/Model";
+import ConstructionProgress from "./sections/TrackProgress/ConstructionProgress";
 
 function App() {
   const [scrollLocked, setScrollLocked] = useState(true);
@@ -24,6 +25,7 @@ function App() {
         scrollLocked={scrollLocked}
         onScrollLockChange={handleScrollLock}
       />
+      <ConstructionProgress />
       <Model />
       <Footer />
     </div>

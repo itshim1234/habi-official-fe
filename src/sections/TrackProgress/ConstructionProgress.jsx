@@ -1,23 +1,58 @@
-import React from "react";
-
+import React, { useState, useEffect, useRef } from "react";
+import background from "../../assets/images/background2.png";
+import mobileAnimation from "../../assets/videos/mobileAnimation.mp4";
 const ConstructionProgress = () => {
+  const [isVisible, setIsVisible] = useState(false); // Detect section visibility
+  const [videoPlayed, setVideoPlayed] = useState(false); // Track video completion
+  const sectionRef = useRef(null);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !isVisible) {
+          setIsVisible(true); // Section is visible
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [isVisible]);
+
+  const handleVideoEnd = () => {
+    setVideoPlayed(true); // Mark video as completed
+  };
+
   return (
     <div
-      className="relative min-h-screen bg-cover bg-center w-full xl:max-w-screen-xl xl:mx-auto"
-      style={{ backgroundImage: `url('/path-to-your-background-image.jpg')` }}
+      className="relative min-h-screen bg-cover bg-center w-full"
+      style={{ backgroundImage: `url(${background})` }}
     >
       {/* Centered Video */}
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div
+        ref={sectionRef}
+        className="absolute inset-0 flex items-center justify-center"
+      >
         <video
-          className="w-[280px] sm:w-[360px] md:w-[450px] lg:w-[500px] drop-shadow-lg"
-          src="/path-to-your-video.mp4"
-          autoPlay
-          loop
+          ref={videoRef}
+          className=" drop-shadow-lg"
+          src={mobileAnimation}
+          autoPlay={isVisible} // Play only when section is visible
+          onEnded={handleVideoEnd}
           muted
         ></video>
       </div>
       {/* Card Section */}
-      <div className="relative z-10 flex flex-col sm:flex-row justify-center gap-4 px-6 mt-10 sm:mt-16">
+      <div
+        className={`relative z-10 flex flex-col sm:flex-row justify-center gap-4 px-6 mt-10 sm:mt-16 transition-opacity duration-1000 ${
+          videoPlayed ? "opacity-100" : "opacity-0"
+        }`}
+      >
         {/* Card 1 */}
         <div className="bg-white p-4 shadow-lg rounded-lg max-w-[300px]">
           <h2 className="text-xl font-bold">Design & Documents</h2>
