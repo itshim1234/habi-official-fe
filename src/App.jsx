@@ -7,6 +7,7 @@ import Service from "./sections/habiService/Service";
 import Working from "./sections/HowItWorks/Working";
 import Model from "./sections/3DMobile/Model";
 import ConstructionProgress from "./sections/TrackProgress/ConstructionProgress";
+import Project from "./sections/Projects/Projects";
 
 function App() {
   const [scrollLocked, setScrollLocked] = useState(true);
@@ -28,6 +29,7 @@ function App() {
       <ConstructionProgress />
       <Model />
       <Footer />
+      <Project />
     </div>
   );
 }

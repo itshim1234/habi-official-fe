@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import background from "../../assets/images/background2.png";
 import mobileAnimation from "../../assets/videos/mobileAnimation.mp4";
+
 const ConstructionProgress = () => {
   const [isVisible, setIsVisible] = useState(false); // Detect section visibility
   const [videoPlayed, setVideoPlayed] = useState(false); // Track video completion
@@ -24,25 +25,29 @@ const ConstructionProgress = () => {
     return () => observer.disconnect();
   }, [isVisible]);
 
+  useEffect(() => {
+    if (isVisible && videoRef.current && !videoPlayed) {
+      videoRef.current.play(); // Play video when section is visible and video has not played
+    }
+  }, [isVisible, videoPlayed]);
+
   const handleVideoEnd = () => {
     setVideoPlayed(true); // Mark video as completed
   };
 
   return (
     <div
-      className="relative min-h-screen bg-cover bg-center w-full"
+      ref={sectionRef}
+      className="relative min-h-screen bg-cover bg-center w-full" 
       style={{ backgroundImage: `url(${background})` }}
     >
       {/* Centered Video */}
-      <div
-        ref={sectionRef}
-        className="absolute inset-0 flex items-center justify-center"
-      >
+      <div className="absolute inset-0 flex items-center justify-center">
         <video
           ref={videoRef}
-          className=" drop-shadow-lg"
+          className="drop-shadow-lg"
           src={mobileAnimation}
-          autoPlay={isVisible} // Play only when section is visible
+          autoPlay={false} // No autoPlay initially
           onEnded={handleVideoEnd}
           muted
         ></video>

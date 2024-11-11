@@ -2,14 +2,18 @@ import React from "react";
 import herobackground from "../../assets/videos/heroBackground2.mp4";
 import hamburger from "../../assets/images/Hamburger.png";
 import scroll from "../../assets/images/scroll.png";
+import sample from "../../assets/videos/sample.jpg";
 
 import "./hero.css";
 
 function Hero() {
   return (
-    <div className="relative min-h-[300px] h-[500px] md:h-[851px] lg:h-[950px] w-full ">
+    <div
+      className="relative min-h-[300px] h-[500px] md:h-[851px] lg:h-[950px] w-screen bg-cover bg-center"
+      style={{ backgroundImage: `url(${sample})` }}
+    >
       {/* Video background */}
-      <div className="absolute inset-0 z-0 bg-cover">
+      {/* <div className="absolute inset-0 z-0 bg-cover">
         <video
           className="object-cover w-full h-[500px] md:h-[850px] lg:h-[950px]"
           autoPlay
@@ -19,7 +23,7 @@ function Hero() {
         >
           <source src={herobackground} type="video/mp4" />
         </video>
-      </div>
+      </div> */}
 
       {/* Gradient overlay */}
       <div

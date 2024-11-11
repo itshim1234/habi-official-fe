@@ -4,6 +4,7 @@ import designWork from "../../assets/images/designWork.png";
 import finalize from "../../assets/images/finalize.png";
 import track from "../../assets/images/track.png";
 import handover from "../../assets/images/handover.png";
+import SplineCanvas from "./SplineCanvas";
 
 // Fallback image
 const defaultImage = meetUs;
@@ -93,12 +94,7 @@ function Working({ scrollLocked, onScrollLockChange }) {
       className="relative h-screen w-full text-white flex items-center justify-center overflow-auto"
     >
       {/* Background iframe */}
-      <iframe
-        src="https://my.spline.design/gitnesssplinetest-73744034a060a8a69a38b8355df2a261/"
-        loading="lazy"
-        className="absolute inset-0 w-full h-full"
-        style={{ zIndex: -2 }}
-      ></iframe>
+      <SplineCanvas />
 
       {/* Dark overlay */}
       <div
