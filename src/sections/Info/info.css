@@ -132,7 +132,20 @@
   align-items: center;
   justify-content: center;
 }
-
+@media (min-width: 1536px) {
+  /* Small screens */
+  .container {
+    --circleDiameter: 3000px;
+    --planets: 150px;
+  }
+}
+@media (max-width: 1536px) {
+  /* Small screens */
+  .container {
+    --circleDiameter: 2500px;
+    --planets: 150px;
+  }
+}
 @media (max-width: 1024px) {
   /* Medium screens */
   .container {

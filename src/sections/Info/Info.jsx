@@ -32,12 +32,12 @@ function Info() {
           </h1>
         </div>
         <div className="hero-circle">
-          <div className="inner-text top-[33%] md:top-[24%] lg:top-[20%] xl:top-[20%]">
+          <div className="inner-text top-[33%] md:top-[24%] lg:top-[13%] xl:top-[13%] 2xl:top-[11%]">
             <div>
               <p className="font-giloryM text-[24px] md:text-[32px] mb-[8px]">
                 {texts[currentIndex]}
               </p>
-              <p className="font-giloryM text-[16px] md:text-[18px] px-4">
+              <p className="font-giloryM text-[14px] md:text-[18px] px-8">
                 {desc[currentIndex]}
               </p>
             </div>
