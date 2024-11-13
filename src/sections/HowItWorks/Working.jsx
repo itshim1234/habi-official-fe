@@ -94,7 +94,6 @@ function Working({ scrollLocked, onScrollLockChange }) {
       className="relative h-screen w-full text-white flex items-center justify-center overflow-auto"
     >
       {/* Background iframe */}
-      <SplineCanvas />
 
       {/* Dark overlay */}
       <div
