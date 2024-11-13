@@ -8,11 +8,11 @@ import "./hero.css";
 
 function Hero() {
   return (
-    <div className="relative min-h-[300px] h-[500px] md:h-[851px] lg:h-[950px] w-screen bg-cover bg-center">
+    <div className="relative min-h-[300px] h-screen w-screen bg-cover bg-center">
       {/* Video background */}
       <div className="absolute inset-0 z-0 bg-cover">
         <video
-          className="object-cover w-screen h-[500px] md:h-[850px] lg:h-[950px]"
+          className="object-cover w-screen h-screen"
           autoPlay
           loop
           muted
