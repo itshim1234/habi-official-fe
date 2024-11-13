@@ -1,5 +1,5 @@
 import React from "react";
-import herobackground from "../../assets/videos/heroBackground2.mp4";
+import herobackground from "../../assets/videos/heroBackground.mp4";
 import hamburger from "../../assets/images/Hamburger.png";
 import scroll from "../../assets/images/scroll.png";
 import sample from "../../assets/videos/sample.jpg";
@@ -8,14 +8,11 @@ import "./hero.css";
 
 function Hero() {
   return (
-    <div
-      className="relative min-h-[300px] h-[500px] md:h-[851px] lg:h-[950px] w-screen bg-cover bg-center"
-      style={{ backgroundImage: `url(${sample})` }}
-    >
+    <div className="relative min-h-[300px] h-[500px] md:h-[851px] lg:h-[950px] w-screen bg-cover bg-center">
       {/* Video background */}
-      {/* <div className="absolute inset-0 z-0 bg-cover">
+      <div className="absolute inset-0 z-0 bg-cover">
         <video
-          className="object-cover w-full h-[500px] md:h-[850px] lg:h-[950px]"
+          className="object-cover w-screen h-[500px] md:h-[850px] lg:h-[950px]"
           autoPlay
           loop
           muted
@@ -23,17 +20,17 @@ function Hero() {
         >
           <source src={herobackground} type="video/mp4" />
         </video>
-      </div> */}
+      </div>
 
       {/* Gradient overlay */}
       <div
         className="absolute inset-0"
         style={{
           background: `
-            linear-gradient(to right,#111111, rgba(0, 0, 0, 0) 100px),
-            linear-gradient(to left, #111111, rgba(0, 0, 0, 0) 100px),
+            linear-gradient(to right,#111111, rgba(0, 0, 0, 0) 200px),
+            linear-gradient(to left, #111111, rgba(0, 0, 0, 0) 200px),
 
-            linear-gradient(to top, rgba(17, 17, 17, 1), rgba(0, 0, 0, 0) 3%)
+            linear-gradient(to top, rgba(17, 17, 17, 1), rgba(0, 0, 0, 0) 25%)
           `,
         }}
       />

@@ -10,15 +10,14 @@ import ConstructionProgress from "./sections/TrackProgress/ConstructionProgress"
 import Project from "./sections/Projects/Projects";
 
 function App() {
-  const [scrollLocked, setScrollLocked] = useState(true);
+  const [scrollLocked, setScrollLocked] = useState();
 
   const handleScrollLock = (isLocked) => {
     setScrollLocked(isLocked);
-    document.body.style.overflow = isLocked ? "hidden" : "";
   };
 
   return (
-    <div className="">
+    <div className="overflow-x-hidden">
       <Hero />
       <Info />
       <Service />
