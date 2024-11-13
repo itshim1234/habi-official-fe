@@ -4,7 +4,7 @@ import arrow from "../../assets/images/ArrowRight.png";
 
 function Service() {
   return (
-    <div className="flex flex-col justify-center text-center bg-[#111111] text-white relative w-full">
+    <div className="flex flex-col justify-center text-center bg-black text-white relative w-full">
       <hr className="bg-[#f8f8ff] p-0 m-0" />
 
       <button className="flex w-fit mt-[57px] md:mt-0 md:absolute md:top-[100px] md:left backdrop-blur-[12.5px] bg-slate-50 bg-opacity-30 p-5 rounded-r-xl border border-gray-400 border-l-0">

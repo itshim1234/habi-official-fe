@@ -1,7 +1,7 @@
 .container {
   place-items: center;
   overflow: hidden;
-  background-color: #111111;
+  background-color: black;
   --circleDiameter: 1700px;
   --planets: 200px;
 }

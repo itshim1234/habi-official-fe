@@ -2,7 +2,6 @@ import React from "react";
 import herobackground from "../../assets/videos/heroBackground.mp4";
 import hamburger from "../../assets/images/Hamburger.png";
 import scroll from "../../assets/images/scroll.png";
-import sample from "../../assets/videos/sample.jpg";
 
 import "./hero.css";
 

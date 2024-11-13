@@ -1,0 +1,131 @@
+.testimonial-carousel {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #121212;
+  color: #fff;
+}
+
+.testimonial-content {
+  width: 45%;
+}
+
+.testimonial-content h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.testimonial-content p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.testimonial-details {
+  display: flex;
+  gap: 15px;
+  font-size: 14px;
+}
+
+.testimonial-carousel-container {
+  position: relative;
+  width: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.carousel-wrapper {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.carousel-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  text-align: center;
+}
+
+.carousel-item img {
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.carousel-item.active {
+  width: 250px; /* Width for the active (leftmost) item */
+  height: 300px;
+  transform: scale(1.05);
+  opacity: 1;
+  z-index: 2;
+}
+
+.carousel-item.small {
+  width: 200px; /* Smaller width for the center and right items */
+  height: 240px;
+  transform: scale(0.9);
+  opacity: 0.8;
+}
+
+.carousel-item .feedback {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.carousel-item .user-image {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+/* Add transition effects */
+.carousel-wrapper {
+  display: flex;
+  gap: 15px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.carousel-item.active {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.carousel-item.small {
+  animation: fadeOut 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(0.9);
+  }
+}

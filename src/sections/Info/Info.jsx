@@ -24,7 +24,7 @@ function Info() {
   }, []);
 
   return (
-    <div className="flex justify-center bg-[#111111] w-full ">
+    <div className="flex justify-center w-full">
       <div className="container min-w-full h-[500px] md:h-[600px] lg:h-[650px] xl:h-[650px]">
         <div>
           <h1 className="text-[48px] text-white font-larken-bold mt-10 md:mb-10">

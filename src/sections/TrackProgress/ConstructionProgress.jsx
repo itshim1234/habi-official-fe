@@ -38,7 +38,7 @@ const ConstructionProgress = () => {
   return (
     <div
       ref={sectionRef}
-      className="relative min-h-screen bg-cover bg-center w-full" 
+      className="relative min-h-screen bg-cover bg-center w-full mb-20"
       style={{ backgroundImage: `url(${background})` }}
     >
       {/* Centered Video */}

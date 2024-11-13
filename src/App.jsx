@@ -7,7 +7,8 @@ import Service from "./sections/habiService/Service";
 import Working from "./sections/HowItWorks/Working";
 import Model from "./sections/3DMobile/Model";
 import ConstructionProgress from "./sections/TrackProgress/ConstructionProgress";
-import Project from "./sections/Projects/Projects";
+import Projects from "./sections/Projects/Projects";
+import Testimonial from "./sections/Testimonials/Testimonials";
 
 function App() {
   const [scrollLocked, setScrollLocked] = useState();
@@ -17,7 +18,7 @@ function App() {
   };
 
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden bg-black">
       <Hero />
       <Info />
       <Service />
@@ -26,9 +27,11 @@ function App() {
         onScrollLockChange={handleScrollLock}
       />
       <ConstructionProgress />
+      <Projects />
+      <Testimonial />
+
       <Model />
       <Footer />
-      <Project />
     </div>
   );
 }
