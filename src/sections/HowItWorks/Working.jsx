@@ -12,38 +12,43 @@ const defaultImage = meetUs;
 const stages = [
   {
     title: "Meet us",
-    description: "Begin your journey...",
+    description:
+      "Begin your home construction journey by scheduling a meeting through our website or app, giving us a call, or reaching out on WhatsApp.",
     image: meetUs,
     number: 1,
   },
   {
     title: "Design",
-    description: "Our architects will create...",
+    description:
+      "After the meeting, our architects will create a home design tailored to your requirements. We ensure that every detail matches your preferences for a perfect outcome.",
     image: designWork,
     number: 2,
   },
   {
     title: "Finalize",
-    description: "We'll work on a budget...",
+    description:
+      "With your confirmation, we'll work on a budget to bring your vision to life. We'll ensure everything is prepared for the next step smoothly.",
     image: finalize,
     number: 3,
   },
   {
     title: "Track",
-    description: "Track daily progress...",
+    description:
+      "As construction begins, our mobile app keeps you updated. Track daily progress from anywhere, ensuring your dream home is coming together just as you envisioned.",
     image: track,
     number: 4,
   },
   {
     title: "Handover",
-    description: "Delivered on time...",
+    description:
+      "We guarantee your home will be delivered on time and within budget. It's our pride and joy to hand over the keys to your new home.",
     image: handover,
     number: 5,
   },
 ];
 
 function Working({ scrollLocked, onScrollLockChange }) {
-  const [currentStage, setCurrentStage] = useState(0);
+  const [currentStage, setCurrentStage] = useState(2);
   const sectionRef = useRef(null);
 
   // Use intersection observer to detect when Working section is in viewport
@@ -91,39 +96,49 @@ function Working({ scrollLocked, onScrollLockChange }) {
   return (
     <div
       ref={sectionRef}
-      className="relative h-fit w-full text-white flex items-center justify-center overflow-auto"
+      className="relative h-fit w-full text-white flex items-center justify-center"
     >
-      {/* Background iframe */}
-
-      {/* Dark overlay */}
       <div
-        className="absolute inset-0 bg-black opacity-60"
-        style={{ zIndex: -1 }}
-      ></div>
+        className="absolute inset-0 z-10 -bottom-10"
+        style={{
+          background: `
+            linear-gradient(to top, #000000, rgba(0, 0, 0, 0) 100px)
+          `,
+        }}
+      />
+      {/* Background iframe */}
+      <div
+        className="absolute inset-0 w-full h-[400px] md:h-[800px] top-28"
+        style={{ zIndex: 0 }}
+      >
+        <SplineCanvas />
+      </div>
 
       {/* Scrollable content container */}
-      <div className="relative z-10 text-center max-w-lg px-6 py-12 overflow-y-auto h-full">
-        <h2 className="text-2xl md:text-3xl font-bold mb-6">How it Works?</h2>
+      <div className="relative z-10 text-center h-full bg-transparent">
+        <h2 className="text-2xl md:text-3xl font-bold my-14 mb-16">
+          How it Works?
+        </h2>
 
         {/* Stage card */}
-        <div className="p-8 bg-gray-900 bg-opacity-75 rounded-xl shadow-lg">
+        <div className="bg-transparent backdrop-blur-md rounded-2xl border border-white/40 w-[300px] h-[240px] md:w-[714px] md:h-[487px] items-center justify-center mx-auto">
           <img
             src={stages[currentStage]?.image || defaultImage}
             alt={stages[currentStage]?.title || "Default Title"}
-            className="w-full h-48 md:h-64 object-cover rounded-md mb-6"
+            className="w-full h-full object-contain"
           />
-          <h3 className="text-xl md:text-2xl font-semibold text-yellow-500 mb-4">
-            {stages[currentStage]?.title || "Default Title"}
-          </h3>
-          <p className="text-sm md:text-base text-gray-300">
-            {stages[currentStage]?.description || "Default Description"}
-          </p>
         </div>
 
         {/* Stage number */}
-        <div className="text-yellow-500 text-4xl md:text-5xl font-bold mt-6">
-          {stages[currentStage]?.number || 0}
-        </div>
+        <h3 className="text-xl md:text-2xl font-semibold text-[#ffb969] mt-10 mb-4">
+          {stages[currentStage]?.title || "Default Title"}
+        </h3>
+        <p className="text-sm w-80 mx-auto">
+          {stages[currentStage]?.description || "Default Description"}
+        </p>
+      </div>
+      <div className="absolute left-[6%] lg:left-[18%] -bottom-24 text-[200px] text-stroke font-larken-bold z-0">
+        {stages[currentStage]?.number || 0}
       </div>
     </div>
   );

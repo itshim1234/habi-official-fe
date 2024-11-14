@@ -31,7 +31,7 @@ function Info() {
             Why habi
           </h1>
         </div>
-        <div className="hero-circle mx-0">
+        <div className="hero-circle">
           <div className="inner-text top-[33%] md:top-[24%] lg:top-[13%] xl:top-[13%] 2xl:top-[11%]">
             <div>
               <p className="font-giloryM text-[24px] md:text-[32px] mb-[8px]">

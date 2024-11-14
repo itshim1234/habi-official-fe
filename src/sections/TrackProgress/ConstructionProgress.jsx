@@ -38,10 +38,10 @@ const ConstructionProgress = () => {
   return (
     <div
       ref={sectionRef}
-      className="relative h-fit bg-cover bg-center w-full mb-20"
+      className="relative h-fit bg-cover bg-center w-full my-10"
     >
       {/* Centered Video */}
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="inset-0 flex items-center justify-center">
         <video
           ref={videoRef}
           className="drop-shadow-lg"
@@ -54,7 +54,7 @@ const ConstructionProgress = () => {
       {/* Card Section */}
       <div
         className={`relative z-10 flex flex-col sm:flex-row justify-center gap-4 px-6 mt-10 sm:mt-16 transition-opacity duration-1000 ${
-          videoPlayed ? "opacity-100" : "opacity-0"
+          videoPlayed ? "opacity-0" : "opacity-0"
         }`}
       >
         {/* Card 1 */}

@@ -2577,8 +2577,6 @@ const SplineCanvas = () => {
 const canvasStyles = {
   outline: "none",
   display: "block",
-  width: "100vw",
-  height: "100vh",
 };
 
 export default SplineCanvas;
