@@ -4,6 +4,8 @@ import designWork from "../../assets/images/designWork.png";
 import finalize from "../../assets/images/finalize.png";
 import track from "../../assets/images/track.png";
 import handover from "../../assets/images/handover.png";
+import star from "../../assets/images/star.png";
+
 import SplineCanvas from "./SplineCanvas";
 
 // Fallback image
@@ -108,7 +110,7 @@ function Working({ scrollLocked, onScrollLockChange }) {
       />
       {/* Background iframe */}
       <div
-        className="absolute inset-0 w-full h-[400px] md:h-[800px] top-28"
+        className="absolute inset-0 w-full h-[400px] md:h-[700px] top-16"
         style={{ zIndex: 0 }}
       >
         <SplineCanvas />
@@ -116,24 +118,34 @@ function Working({ scrollLocked, onScrollLockChange }) {
 
       {/* Scrollable content container */}
       <div className="relative z-10 text-center h-full bg-transparent">
-        <h2 className="text-2xl md:text-3xl font-bold my-14 mb-16">
+        <h2 className="text-[32px] md:text-[40px] lg:text-[48px] md:text-3xl font-bold my-14 mb-16">
           How it Works?
         </h2>
 
         {/* Stage card */}
-        <div className="bg-transparent backdrop-blur-md rounded-2xl border border-white/40 w-[300px] h-[240px] md:w-[714px] md:h-[487px] items-center justify-center mx-auto">
+        <div className="relative bg-transparent backdrop-blur-md rounded-2xl border border-white/40 w-[300px] h-[240px] md:w-[714px] md:h-[487px] items-center justify-center mx-auto">
           <img
             src={stages[currentStage]?.image || defaultImage}
             alt={stages[currentStage]?.title || "Default Title"}
             className="w-full h-full object-contain"
           />
+          <img
+            src={star}
+            alt=""
+            className="absolute right-0 -bottom-5 md:-bottom-8 w-10 md:w-16"
+          />
+          <img
+            src={star}
+            alt=""
+            className="absolute -right-2 md:-right-4 bottom-2 w-5 md:w-8"
+          />
         </div>
 
         {/* Stage number */}
-        <h3 className="text-xl md:text-2xl font-semibold text-[#ffb969] mt-10 mb-4">
+        <h3 className="text-[24px] md:text-[32px] lg:text-[40px] font-semibold text-[#ffb969] mt-10 mb-4">
           {stages[currentStage]?.title || "Default Title"}
         </h3>
-        <p className="text-sm w-80 mx-auto">
+        <p className="text-[16px] md:text-[18px] lg:text-[24px] w-[400px] lg:w-[500px] mx-auto">
           {stages[currentStage]?.description || "Default Description"}
         </p>
       </div>
