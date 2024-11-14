@@ -91,7 +91,7 @@ function Working({ scrollLocked, onScrollLockChange }) {
   return (
     <div
       ref={sectionRef}
-      className="relative h-screen w-full text-white flex items-center justify-center overflow-auto"
+      className="relative h-fit w-full text-white flex items-center justify-center overflow-auto"
     >
       {/* Background iframe */}
 

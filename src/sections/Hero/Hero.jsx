@@ -26,10 +26,10 @@ function Hero() {
         className="absolute inset-0"
         style={{
           background: `
-            linear-gradient(to right,#111111, rgba(0, 0, 0, 0) 200px),
-            linear-gradient(to left, #111111, rgba(0, 0, 0, 0) 200px),
+            linear-gradient(to right,#000000, rgba(0, 0, 0, 0) 200px),
+            linear-gradient(to left, #000000, rgba(0, 0, 0, 0) 200px),
 
-            linear-gradient(to top, rgba(17, 17, 17, 1), rgba(0, 0, 0, 0) 25%)
+            linear-gradient(to top, #000000, rgba(0, 0, 0, 0) 10%)
           `,
         }}
       />
