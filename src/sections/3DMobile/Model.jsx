@@ -2,27 +2,46 @@ import React, { useEffect, useState } from "react";
 
 function Model() {
   const [rotation, setRotation] = useState({ alpha: 0, beta: 0, gamma: 0 });
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const handleOrientation = (event) => {
-      // Capture rotation values from the device orientation
-      const { alpha, beta, gamma } = event;
+    // Detect if the device is mobile or tablet
+    const userAgent = navigator.userAgent.toLowerCase();
+    setIsMobile(userAgent.includes("iphone") || userAgent.includes("android"));
 
-      // Update rotation state
+    // Check if the device supports orientation events
+    const handleOrientation = (event) => {
+      const { alpha, beta, gamma } = event;
       setRotation({ alpha, beta, gamma });
     };
 
-    // Check if the device supports orientation events
-    if (window.DeviceOrientationEvent) {
-      // Attach the event listener
-      window.addEventListener("deviceorientation", handleOrientation, false);
+    // Handle mousemove event for larger screens
+    const handleMouseMove = (event) => {
+      const { clientX, clientY } = event;
+      const rotateX = (clientY / window.innerHeight) * 30 - 15; // Adjust rotation on Y-axis
+      const rotateY = (clientX / window.innerWidth) * 30 - 15;  // Adjust rotation on X-axis
+      setRotation({ alpha: 0, beta: rotateX, gamma: rotateY });
+    };
 
-      // Clean up the event listener when the component is unmounted
-      return () => {
-        window.removeEventListener("deviceorientation", handleOrientation);
-      };
+    if (isMobile) {
+      // For mobile devices, use device orientation
+      if (window.DeviceOrientationEvent) {
+        window.addEventListener("deviceorientation", handleOrientation, false);
+      }
+    } else {
+      // For larger screens, use mouse movement
+      window.addEventListener("mousemove", handleMouseMove);
     }
-  }, []);
+
+    // Cleanup event listeners on unmount
+    return () => {
+      if (isMobile && window.DeviceOrientationEvent) {
+        window.removeEventListener("deviceorientation", handleOrientation);
+      } else {
+        window.removeEventListener("mousemove", handleMouseMove);
+      }
+    };
+  }, [isMobile]);
 
   return (
     <div className="flex flex-col justify-center text-center bg-black text-white items-center w-screen">
