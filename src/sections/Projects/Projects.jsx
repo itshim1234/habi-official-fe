@@ -56,6 +56,7 @@ const initialImages = [
 const Projects = () => {
   const [images, setImages] = useState(initialImages);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -71,6 +72,13 @@ const Projects = () => {
   };
 
   const handleItemClick = (index) => {
+    const clickedProject = images[index];
+    // Toggle selection
+    setSelectedProject(
+      selectedProject && selectedProject.name === clickedProject.name
+        ? null
+        : clickedProject
+    );
     setCurrentIndex(index);
   };
 
@@ -80,40 +88,60 @@ const Projects = () => {
 
   return (
     <div className="flex flex-col items-center justify-center p-5">
-      <div className="flex items-end">
-        {Array(3)
-          .fill()
-          .map((_, index) => {
-            const imageItem =
-              images[
-                getCircularIndex(currentIndex + index - 1, images.length)
-              ];
-            return (
-              <div
-                key={index}
-                className={`mx-2 transition-transform duration-300 cursor-pointer ${
-                  index === 1
-                    ? "transform scale-130 opacity-100 my-8"
-                    : "opacity-70"
-                }`}
-                onClick={() =>
-                  handleItemClick(
-                    getCircularIndex(currentIndex + index - 1, images.length)
-                  )
-                }
-              >
-                <img
-                  src={imageItem.img}
-                  alt="item"
-                  className="max-w-[150px] max-h-[150px]"
-                />
-              </div>
-            );
-          })}
-      </div>
-      <div className="mt-4 text-center">
-        <p className="font-bold">{images[currentIndex].name}</p>
-        <p>{images[currentIndex].desc}</p>
+      <div className="flex flex-col items-center w-full">
+        <div className="flex items-end justify-center w-full">
+          {Array(3)
+            .fill()
+            .map((_, index) => {
+              const imageItem =
+                images[
+                  getCircularIndex(currentIndex + index - 1, images.length)
+                ];
+              return (
+                <div
+                  key={index}
+                  className={`mx-3 transition-transform duration-300 cursor-pointer min-w-[350px] md:w-[500px] min-h-[250px] md:h-[350px] ${
+                    index === 1
+                      ? "transform scale-130 opacity-100 my-8"
+                      : "opacity-70"
+                  }`}
+                  onClick={() =>
+                    handleItemClick(
+                      getCircularIndex(currentIndex + index - 1, images.length)
+                    )
+                  }
+                >
+                  <img
+                    src={imageItem.img}
+                    alt="item"
+                    className="w-[350px] md:w-[500px] h-[250px] md:h-[350px] object-cover object-center"
+                  />
+                </div>
+              );
+            })}
+        </div>
+
+        {/* Display selected project description and 4 images */}
+        {selectedProject && (
+          <div className="mt-8 w-fit text-center">
+            <h2 className="text-3xl font-bold">{selectedProject.name}</h2>
+            <p className="mt-2">{selectedProject.desc}</p>
+            <div className="grid grid-cols-2 lg:grid-cols-4 justify-center gap-4 mt-6">
+              {/* Display 4 images for the selected project */}
+              {images
+                .slice(currentIndex, currentIndex + 4)
+                .map((image, index) => (
+                  <div key={index} className="w-60 h-60 overflow-hidden">
+                    <img
+                      src={image.img}
+                      alt={image.name}
+                      className="object-cover w-full h-full"
+                    />
+                  </div>
+                ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

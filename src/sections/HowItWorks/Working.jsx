@@ -5,12 +5,6 @@ import finalize from "../../assets/images/finalize.png";
 import track from "../../assets/images/track.png";
 import handover from "../../assets/images/handover.png";
 import star from "../../assets/images/star.png";
-
-// import SplineCanvas from "./SplineCanvas";
-
-// Fallback image
-const defaultImage = meetUs;
-
 const stages = [
   {
     title: "Meet us",
@@ -49,21 +43,23 @@ const stages = [
   },
 ];
 
-function Working({ scrollLocked, onScrollLockChange }) {
+function Working() {
   const [currentStage, setCurrentStage] = useState(0);
+  const [scrollLocked, setScrollLocked] = useState(false);
   const sectionRef = useRef(null);
+  const nextSectionRef = useRef(null); // Ref for the next section
 
-  // Use intersection observer to detect when Working section is in viewport
+  // Intersection observer for the current section
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          onScrollLockChange(true);
+          setScrollLocked(true); // Lock scrolling when the section is in view
         } else {
-          onScrollLockChange(false);
+          setScrollLocked(false); // Unlock scrolling when the section is out of view
         }
       },
-      { threshold: 1.0 }
+      { threshold: 0.8 }
     );
 
     if (sectionRef.current) {
@@ -71,35 +67,49 @@ function Working({ scrollLocked, onScrollLockChange }) {
     }
 
     return () => {
-      observer.disconnect();
-      onScrollLockChange(false); // Ensure scrolling is unlocked on cleanup
+      if (sectionRef.current) observer.disconnect();
     };
-  }, [onScrollLockChange]);
+  }, []);
 
-  // Handle stage advancement on each scroll within the locked section
+  // Prevent page scrolling when `scrollLocked` is true
   useEffect(() => {
-    const handleStageChange = () => {
-      if (scrollLocked) {
-        if (currentStage < stages.length - 1) {
-          setCurrentStage((prevStage) => prevStage + 1);
-        } else {
-          onScrollLockChange(false); // Unlock scroll after last stage
-        }
+    if (scrollLocked) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [scrollLocked]);
+
+  // Handle stage advancement and scrolling
+  useEffect(() => {
+    const handleScroll = (e) => {
+      if (!scrollLocked) return;
+
+      if (e.deltaY > 0 && currentStage < stages.length - 1) {
+        setCurrentStage((prev) => prev + 1);
+      } else if (e.deltaY < 0 && currentStage > 0) {
+        setCurrentStage((prev) => prev - 1);
+      }
+
+      // Unlock scrolling when the last stage is reached and scroll to the next section
+      if (currentStage === stages.length - 1) {
+        setScrollLocked(false);
+        document.body.style.overflow = ""; // Re-enable scrolling
+        nextSectionRef.current?.scrollIntoView({
+          behavior: "smooth",
+        });
       }
     };
 
-    window.addEventListener("scroll", handleStageChange);
+    window.addEventListener("wheel", handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleStageChange);
+      window.removeEventListener("wheel", handleScroll);
     };
-  }, [currentStage, scrollLocked, onScrollLockChange]);
+  }, [currentStage, scrollLocked]);
 
   return (
-    <div
-      ref={sectionRef}
-      className="relative h-fit w-full text-white flex items-center justify-center z-20"
-    >
+    <div className="relative h-fit w-full text-white flex items-center justify-center z-20">
       <div
         className="absolute inset-0 z-10 -bottom-10"
         style={{
@@ -125,7 +135,7 @@ function Working({ scrollLocked, onScrollLockChange }) {
         {/* Stage card */}
         <div className="relative bg-transparent backdrop-blur-md rounded-2xl border border-white/40 w-[300px] h-[240px] md:w-[714px] md:h-[487px] items-center justify-center mx-auto">
           <img
-            src={stages[currentStage]?.image || defaultImage}
+            src={stages[currentStage]?.image}
             alt={stages[currentStage]?.title || "Default Title"}
             className="w-full h-full object-contain"
           />
@@ -145,7 +155,10 @@ function Working({ scrollLocked, onScrollLockChange }) {
         <h3 className="text-[24px] md:text-[32px] lg:text-[40px] font-semibold text-[#ffb969] mt-10 mb-4">
           {stages[currentStage]?.title || "Default Title"}
         </h3>
-        <p className="text-[16px] md:text-[18px] lg:text-[24px] w-[400px] lg:w-[500px] mx-auto">
+        <p
+          className="text-[16px] md:text-[18px] lg:text-[24px] w-[400px] lg:w-[500px] mx-auto"
+          ref={sectionRef}
+        >
           {stages[currentStage]?.description || "Default Description"}
         </p>
       </div>

@@ -11,21 +11,12 @@ import Projects from "./sections/Projects/Projects";
 import Testimonial from "./sections/Testimonials/Testimonials";
 
 function App() {
-  const [scrollLocked, setScrollLocked] = useState();
-
-  const handleScrollLock = (isLocked) => {
-    setScrollLocked(isLocked);
-  };
-
   return (
-    <div className="overflow-x-hidden bg-black">
+    <div className="overflow-x-hidden  bg-black">
       <Hero />
       <Info />
       <Service />
-      <Working
-        scrollLocked={scrollLocked}
-        onScrollLockChange={handleScrollLock}
-      />
+      <Working />
       <ConstructionProgress />
       <Projects />
       <Testimonial />
