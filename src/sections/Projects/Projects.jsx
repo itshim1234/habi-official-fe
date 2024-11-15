@@ -1,75 +1,122 @@
-import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const projects = [
+const initialImages = [
   {
-    id: 1,
-    title: "Project 1",
-    location: "Location 1",
-    imageUrl: "url_to_image_1",
+    img: "https://via.placeholder.com/600/92c952",
+    name: "Image 1",
+    desc: "Description for Image 1",
   },
   {
-    id: 2,
-    title: "Darshan Residency",
-    location: "Pattanagere, Bengaluru",
-    imageUrl: "url_to_image_2",
+    img: "https://via.placeholder.com/600/771796",
+    name: "Image 2",
+    desc: "Description for Image 2",
   },
   {
-    id: 3,
-    title: "Project 3",
-    location: "Location 3",
-    imageUrl: "url_to_image_3",
+    img: "https://via.placeholder.com/600/24f355",
+    name: "Image 3",
+    desc: "Description for Image 3",
+  },
+  {
+    img: "https://via.placeholder.com/600/ff69b4",
+    name: "Image 4",
+    desc: "Description for Image 4",
+  },
+  {
+    img: "https://via.placeholder.com/600/ffa500",
+    name: "Image 5",
+    desc: "Description for Image 5",
+  },
+  {
+    img: "https://via.placeholder.com/600/8db6cd",
+    name: "Image 6",
+    desc: "Description for Image 6",
+  },
+  {
+    img: "https://via.placeholder.com/600/5d47a7",
+    name: "Image 7",
+    desc: "Description for Image 7",
+  },
+  {
+    img: "https://via.placeholder.com/600/b0f7cc",
+    name: "Image 8",
+    desc: "Description for Image 8",
+  },
+  {
+    img: "https://via.placeholder.com/600/7f78e0",
+    name: "Image 9",
+    desc: "Description for Image 9",
+  },
+  {
+    img: "https://via.placeholder.com/600/77e0cc",
+    name: "Image 10",
+    desc: "Description for Image 10",
   },
 ];
 
-const Project = () => {
-  const [currentSlide, setCurrentSlide] = useState(1); // Initial middle slide index
+const Projects = () => {
+  const [images, setImages] = useState(initialImages);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    centerMode: true,
+  useEffect(() => {
+    const interval = setInterval(() => {
+      moveItems();
+    }, 3000);
 
-    centerPadding: "0px",
-    afterChange: (index) => setCurrentSlide(index % projects.length),
+    return () => clearInterval(interval);
+  }, [currentIndex]);
+
+  const moveItems = () => {
+    const nextIndex = (currentIndex + 1) % images.length;
+    setCurrentIndex(nextIndex);
+  };
+
+  const handleItemClick = (index) => {
+    setCurrentIndex(index);
+  };
+
+  const getCircularIndex = (index, length) => {
+    return (index + length) % length;
   };
 
   return (
-    <div className="bg-black text-white py-10">
-      <h2 className="text-center text-3xl font-bold mb-8">Projects</h2>
-      <Slider {...settings}>
-        {projects.map((project, index) => (
-          <div
-            key={project.id}
-            className={`px-4 transition-transform duration-500 ${
-              index === currentSlide ? "scale-110" : "scale-90 opacity-75"
-            }`}
-          >
-            <div className="bg-gray-900 rounded-lg overflow-hidden shadow-lg transform transition-all duration-300">
-              <img
-                src={project.imageUrl}
-                alt={project.title}
-                className="w-full h-64 object-cover"
-              />
-              <div className="p-4 bg-gray-900 text-center">
-                <h3 className="text-lg font-semibold">{project.title}</h3>
-                <p className="text-sm text-gray-400 flex items-center justify-center">
-                  <span className="material-icons text-base mr-1">place</span>
-                  {project.location}
-                </p>
+    <div className="flex flex-col items-center justify-center p-5">
+      <div className="flex items-end">
+        {Array(3)
+          .fill()
+          .map((_, index) => {
+            const imageItem =
+              images[
+                getCircularIndex(currentIndex + index - 1, images.length)
+              ];
+            return (
+              <div
+                key={index}
+                className={`mx-2 transition-transform duration-300 cursor-pointer ${
+                  index === 1
+                    ? "transform scale-130 opacity-100 my-8"
+                    : "opacity-70"
+                }`}
+                onClick={() =>
+                  handleItemClick(
+                    getCircularIndex(currentIndex + index - 1, images.length)
+                  )
+                }
+              >
+                <img
+                  src={imageItem.img}
+                  alt="item"
+                  className="max-w-[150px] max-h-[150px]"
+                />
               </div>
-            </div>
-          </div>
-        ))}
-      </Slider>
+            );
+          })}
+      </div>
+      <div className="mt-4 text-center">
+        <p className="font-bold">{images[currentIndex].name}</p>
+        <p>{images[currentIndex].desc}</p>
+      </div>
     </div>
   );
 };
 
-export default Project;
+export default Projects;
