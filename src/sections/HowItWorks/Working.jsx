@@ -6,7 +6,7 @@ import track from "../../assets/images/track.png";
 import handover from "../../assets/images/handover.png";
 import star from "../../assets/images/star.png";
 
-import SplineCanvas from "./SplineCanvas";
+// import SplineCanvas from "./SplineCanvas";
 
 // Fallback image
 const defaultImage = meetUs;
@@ -50,7 +50,7 @@ const stages = [
 ];
 
 function Working({ scrollLocked, onScrollLockChange }) {
-  const [currentStage, setCurrentStage] = useState(2);
+  const [currentStage, setCurrentStage] = useState(0);
   const sectionRef = useRef(null);
 
   // Use intersection observer to detect when Working section is in viewport
@@ -98,7 +98,7 @@ function Working({ scrollLocked, onScrollLockChange }) {
   return (
     <div
       ref={sectionRef}
-      className="relative h-fit w-full text-white flex items-center justify-center"
+      className="relative h-fit w-full text-white flex items-center justify-center z-20"
     >
       <div
         className="absolute inset-0 z-10 -bottom-10"
@@ -113,12 +113,12 @@ function Working({ scrollLocked, onScrollLockChange }) {
         className="absolute inset-0 w-full h-[400px] md:h-[700px] top-16"
         style={{ zIndex: 0 }}
       >
-        <SplineCanvas />
+        {/* <SplineCanvas /> */}
       </div>
 
       {/* Scrollable content container */}
       <div className="relative z-10 text-center h-full bg-transparent">
-        <h2 className="text-[32px] md:text-[40px] lg:text-[48px] md:text-3xl font-bold my-14 mb-16">
+        <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold my-14 mb-16">
           How it Works?
         </h2>
 
