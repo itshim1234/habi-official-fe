@@ -149,7 +149,6 @@ function Working() {
       // Unlock scrolling at the last stage
       if (currentStage === stages.length - 1 && scroll >= 4) {
         setScrollLocked(false);
-        setScrolled(true);
         document.body.style.overflow = ""; // Allow scrolling
         nextSectionRef.current?.scrollIntoView({ behavior: "smooth" });
       }
@@ -157,7 +156,6 @@ function Working() {
       // Unlock scrolling at the first stage (reverse scroll)
       if (currentStage === 0 && scroll <= -4) {
         setScrollLocked(false);
-        setScrolled(false);
         document.body.style.overflow = ""; // Allow scrolling
         topRef.current?.scrollIntoView({ behavior: "smooth" });
       }
