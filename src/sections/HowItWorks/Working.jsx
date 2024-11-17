@@ -5,7 +5,7 @@ import finalize from "../../assets/images/finalize.png";
 import track from "../../assets/images/track.png";
 import handover from "../../assets/images/handover.png";
 import star from "../../assets/images/star.png";
-import SplineCanvas from "./SplineCanvas";
+// import SplineCanvas from "./SplineCanvas";
 
 const stages = [
   {
@@ -48,24 +48,26 @@ const stages = [
 function Working() {
   const [currentStage, setCurrentStage] = useState(0);
   const [scrollLocked, setScrollLocked] = useState(false);
-  const [splineInView, setSplineInView] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const sectionRef = useRef(null);
+  const topRef = useRef(null);
+  const nextSectionRef = useRef(null);
 
-  const nextSectionRef = useRef(null); // Ref for the next section
-
-  // Intersection observer for the current section
+  // Intersection observer for the main section
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          setSplineInView(true);
-          setScrollLocked(true); // Lock scrolling when the section is in view
+          if (!scrolled) {
+            setScrollLocked(true); // Lock scrolling when the section is in view
+            setScrolled(true);
+          } // Reset to ensure proper logic for downward scrolling
         } else {
           setScrollLocked(false); // Unlock scrolling when the section is out of view
         }
       },
-      { threshold: 0.8 }
+      { threshold: 0.9 }
     );
 
     if (sectionRef.current) {
@@ -75,48 +77,102 @@ function Working() {
     return () => {
       if (sectionRef.current) observer.disconnect();
     };
-  }, []);
+  }, [scrolled]);
+
+  // Intersection observer for the top element (reverse scroll)
+  useEffect(() => {
+    const topObserver = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          if (scrolled) {
+            setScrollLocked(true); // Lock scroll when at the top and reverse scrolling
+          }
+        }
+      },
+      { threshold: 0.8 }
+    );
+
+    if (topRef.current) {
+      topObserver.observe(topRef.current);
+    }
+
+    return () => {
+      if (topRef.current) topObserver.disconnect();
+    };
+  }, [scrolled]);
 
   // Prevent page scrolling when `scrollLocked` is true
   useEffect(() => {
-    if (scrollLocked) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = scrollLocked ? "hidden" : "";
   }, [scrollLocked]);
 
-  // Handle stage advancement and scrolling
+  // Scroll event handler
   useEffect(() => {
-    let scrollCount = 0; // Counter to track the number of scrolls
+    let scrollCount = 0;
+    let touchStartY = 0;
 
-    const handleScroll = (e) => {
+    const handleWheel = (e) => {
       if (!scrollLocked) return;
 
-      scrollCount += Math.sign(e.deltaY); // Increment or decrement counter based on scroll direction
+      scrollCount += Math.sign(e.deltaY);
 
-      if (scrollCount >= 7 && currentStage < stages.length - 1) {
+      handleScrollLogic(scrollCount);
+    };
+
+    const handleTouchStart = (e) => {
+      touchStartY = e.touches[0].clientY;
+    };
+
+    const handleTouchMove = (e) => {
+      if (!scrollLocked) return;
+
+      const touchEndY = e.touches[0].clientY;
+      const deltaY = touchStartY - touchEndY;
+
+      scrollCount += Math.sign(deltaY);
+      handleScrollLogic(scrollCount);
+    };
+
+    const handleScrollLogic = (scroll) => {
+      // Forward scroll (downward)
+      if (scroll >= 4 && currentStage < stages.length - 1) {
         setCurrentStage((prev) => prev + 1);
-        scrollCount = 0; // Reset the counter after advancing
-      } else if (scrollCount <= -2 && currentStage > 0) {
-        setCurrentStage((prev) => prev - 1);
-        scrollCount = 0; // Reset the counter after moving back
+        scrollCount = 0;
       }
 
-      // Unlock scrolling when the last stage is reached and scroll to the next section
-      if (currentStage === stages.length - 1) {
+      // Reverse scroll (upward)
+      if (scroll <= -4 && currentStage > 0) {
+        setCurrentStage((prev) => prev - 1);
+        scrollCount = 0;
+      }
+
+      // Unlock scrolling at the last stage
+      if (currentStage === stages.length - 1 && scroll >= 4) {
         setScrollLocked(false);
-        document.body.style.overflow = ""; // Re-enable scrolling
-        nextSectionRef.current?.scrollIntoView({
-          behavior: "smooth",
-        });
+        setScrolled(true);
+        document.body.style.overflow = ""; // Allow scrolling
+        nextSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+      }
+
+      // Unlock scrolling at the first stage (reverse scroll)
+      if (currentStage === 0 && scroll <= -4) {
+        setScrollLocked(false);
+        setScrolled(false);
+        document.body.style.overflow = ""; // Allow scrolling
+        topRef.current?.scrollIntoView({ behavior: "smooth" });
       }
     };
 
-    window.addEventListener("wheel", handleScroll);
+    // Add event listeners for wheel and touch
+    window.addEventListener("wheel", handleWheel);
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("touchmove", handleTouchMove);
 
+    // Cleanup listeners
     return () => {
-      window.removeEventListener("wheel", handleScroll);
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
     };
   }, [currentStage, scrollLocked]);
 
@@ -125,28 +181,20 @@ function Working() {
       <div
         className="absolute inset-0 z-10 -bottom-10"
         style={{
-          background: `
-            linear-gradient(to top, #000000, rgba(0, 0, 0, 0) 100px)
-          `,
+          background: `linear-gradient(to top, #000000, rgba(0, 0, 0, 0) 100px),`,
         }}
       />
       <div
         className="absolute inset-0 w-full h-[400px] md:h-[700px] top-16"
         style={{ zIndex: 0 }}
-      >
-        {splineInView && <SplineCanvas />}
-      </div>
-
-      {/* <iframe
-        src="https://my.spline.design/gitnesssplinetest-73744034a060a8a69a38b8355df2a261/"
-        width="100%"
-        height="100%"
-        className="absolute inset-0 w-full h-[400px] md:h-[700px] top-16"
-      ></iframe> */}
+      ></div>
 
       {/* Scrollable content container */}
       <div className="relative text-center h-full bg-transparent">
-        <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold my-14 mb-16">
+        <h2
+          className="text-[32px] md:text-[40px] lg:text-[48px] font-bold my-14 mb-16"
+          ref={topRef}
+        >
           How it Works?
         </h2>
 
@@ -175,7 +223,7 @@ function Working() {
         </h3>
         <p
           className="text-[16px] md:text-[18px] lg:text-[24px] w-[400px] lg:w-[500px] mx-auto"
-          ref={sectionRef}
+          ref={sectionRef} // Attach topRef to the element to trigger reverse scrolling
         >
           {stages[currentStage]?.description || "Default Description"}
         </p>
