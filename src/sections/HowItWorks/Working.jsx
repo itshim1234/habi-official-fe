@@ -104,7 +104,19 @@ function Working() {
 
   // Prevent page scrolling when `scrollLocked` is true
   useEffect(() => {
+    const preventScroll = (e) => e.preventDefault();
+
     document.body.style.overflow = scrollLocked ? "hidden" : "";
+
+    if (scrollLocked) {
+      document.addEventListener("touchmove", preventScroll, { passive: false });
+    } else {
+      document.removeEventListener("touchmove", preventScroll);
+    }
+
+    return () => {
+      document.removeEventListener("touchmove", preventScroll);
+    };
   }, [scrollLocked]);
 
   // Scroll event handler
