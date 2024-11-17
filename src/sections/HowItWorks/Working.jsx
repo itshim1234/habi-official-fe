@@ -5,6 +5,8 @@ import finalize from "../../assets/images/finalize.png";
 import track from "../../assets/images/track.png";
 import handover from "../../assets/images/handover.png";
 import star from "../../assets/images/star.png";
+import SplineCanvas from "./SplineCanvas";
+
 const stages = [
   {
     title: "Meet us",
@@ -46,7 +48,10 @@ const stages = [
 function Working() {
   const [currentStage, setCurrentStage] = useState(0);
   const [scrollLocked, setScrollLocked] = useState(false);
+  const [splineInView, setSplineInView] = useState(false);
+
   const sectionRef = useRef(null);
+
   const nextSectionRef = useRef(null); // Ref for the next section
 
   // Intersection observer for the current section
@@ -54,6 +59,7 @@ function Working() {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
+          setSplineInView(true);
           setScrollLocked(true); // Lock scrolling when the section is in view
         } else {
           setScrollLocked(false); // Unlock scrolling when the section is out of view
@@ -82,13 +88,19 @@ function Working() {
 
   // Handle stage advancement and scrolling
   useEffect(() => {
+    let scrollCount = 0; // Counter to track the number of scrolls
+
     const handleScroll = (e) => {
       if (!scrollLocked) return;
 
-      if (e.deltaY > 0 && currentStage < stages.length - 1) {
+      scrollCount += Math.sign(e.deltaY); // Increment or decrement counter based on scroll direction
+
+      if (scrollCount >= 7 && currentStage < stages.length - 1) {
         setCurrentStage((prev) => prev + 1);
-      } else if (e.deltaY < 0 && currentStage > 0) {
+        scrollCount = 0; // Reset the counter after advancing
+      } else if (scrollCount <= -2 && currentStage > 0) {
         setCurrentStage((prev) => prev - 1);
+        scrollCount = 0; // Reset the counter after moving back
       }
 
       // Unlock scrolling when the last stage is reached and scroll to the next section
@@ -109,7 +121,7 @@ function Working() {
   }, [currentStage, scrollLocked]);
 
   return (
-    <div className="relative h-fit w-full text-white flex items-center justify-center z-20">
+    <div className="relative h-fit w-full text-white flex items-center justify-center">
       <div
         className="absolute inset-0 z-10 -bottom-10"
         style={{
@@ -118,16 +130,22 @@ function Working() {
           `,
         }}
       />
-      {/* Background iframe */}
       <div
         className="absolute inset-0 w-full h-[400px] md:h-[700px] top-16"
         style={{ zIndex: 0 }}
       >
-        {/* <SplineCanvas /> */}
+        {splineInView && <SplineCanvas />}
       </div>
 
+      {/* <iframe
+        src="https://my.spline.design/gitnesssplinetest-73744034a060a8a69a38b8355df2a261/"
+        width="100%"
+        height="100%"
+        className="absolute inset-0 w-full h-[400px] md:h-[700px] top-16"
+      ></iframe> */}
+
       {/* Scrollable content container */}
-      <div className="relative z-10 text-center h-full bg-transparent">
+      <div className="relative text-center h-full bg-transparent">
         <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold my-14 mb-16">
           How it Works?
         </h2>
