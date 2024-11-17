@@ -61,13 +61,12 @@ function Working() {
         if (entries[0].isIntersecting) {
           if (!scrolled) {
             setScrollLocked(true); // Lock scrolling when the section is in view
-            setScrolled(true);
           } // Reset to ensure proper logic for downward scrolling
         } else {
           setScrollLocked(false); // Unlock scrolling when the section is out of view
         }
       },
-      { threshold: 0.9 }
+      { threshold: 1 }
     );
 
     if (sectionRef.current) {
@@ -86,6 +85,8 @@ function Working() {
         if (entries[0].isIntersecting) {
           if (scrolled) {
             setScrollLocked(true); // Lock scroll when at the top and reverse scrolling
+          } else {
+            setScrollLocked(false); // Unlock scrolling when the section is out of view
           }
         }
       },
@@ -149,6 +150,7 @@ function Working() {
       // Unlock scrolling at the last stage
       if (currentStage === stages.length - 1 && scroll >= 4) {
         setScrollLocked(false);
+        setScrolled(true);
         document.body.style.overflow = ""; // Allow scrolling
         nextSectionRef.current?.scrollIntoView({ behavior: "smooth" });
       }
@@ -156,6 +158,7 @@ function Working() {
       // Unlock scrolling at the first stage (reverse scroll)
       if (currentStage === 0 && scroll <= -4) {
         setScrollLocked(false);
+        setScrolled(false);
         document.body.style.overflow = ""; // Allow scrolling
         topRef.current?.scrollIntoView({ behavior: "smooth" });
       }
