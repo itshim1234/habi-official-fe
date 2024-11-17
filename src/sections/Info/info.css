@@ -1,13 +1,21 @@
 .container {
   place-items: center;
+  justify-content: center;
+  align-items: center;
+  position: relative;
   overflow: hidden;
+  margin: auto; /* Center horizontally */
   background-color: black;
-  --circleDiameter: 1700px;
+  --circleDiameter: 1300px;
   --planets: 200px;
 }
 
 .hero-circle {
   position: relative;
+  margin: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -30%);
   width: var(--circleDiameter);
   height: var(--circleDiameter);
 }
@@ -55,7 +63,8 @@
   height: 100%;
   border: 1px solid #f8f8ff;
   border-radius: 100%;
-  animation: rotate 24s infinite; /* 4 steps for 4 90-degree turns */
+  animation: rotate 24s infinite;
+  -webkit-animation: rotate 24s infinite; /* Safari */
   transform-origin: center center;
 }
 
@@ -74,7 +83,8 @@
     0.2
   ); /* Light, semi-transparent white background */
   box-shadow: 10px rgba(255, 255, 255, 0.5); /* Subtle shadow for depth */
-  backdrop-filter: blur(8px); /* Apply blur for glassy effect */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); /* Safari */
   border: 2px solid rgba(255, 255, 255, 0.5); /* Soft, light border */
 }
 
@@ -122,21 +132,21 @@
 @media (min-width: 1536px) {
   /* Small screens */
   .container {
-    --circleDiameter: 3000px;
+    --circleDiameter: 1000px;
     --planets: 150px;
   }
 }
 @media (max-width: 1536px) {
   /* Small screens */
   .container {
-    --circleDiameter: 2500px;
+    --circleDiameter: 1300px;
     --planets: 150px;
   }
 }
 @media (max-width: 1024px) {
   /* Medium screens */
   .container {
-    --circleDiameter: 1300px;
+    --circleDiameter: 1000px;
     --planets: 150px;
   }
 }

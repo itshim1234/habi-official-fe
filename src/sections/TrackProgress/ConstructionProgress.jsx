@@ -44,7 +44,7 @@ const ConstructionProgress = () => {
     <div
       ref={sectionRef}
       className={`relative h-[600px] md:h-[800px] bg-cover bg-center w-full  mt-40 text-white ${
-        videoPlayed ? "mb-28" : "mb-60"
+        videoPlayed ? "md:mb-28" : "md:mb-60"
       }`}
     >
       <p className="px-10 md:px-0 absolute flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] z-10">
