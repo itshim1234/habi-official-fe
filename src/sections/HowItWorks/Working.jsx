@@ -106,7 +106,7 @@ function Working() {
   useEffect(() => {
     const preventScroll = (e) => e.preventDefault();
 
-    document.body.style.overflow = scrollLocked ? "hidden" : "";
+    document.body.style.overflowY = scrollLocked ? "hidden" : "";
 
     if (scrollLocked) {
       document.addEventListener("touchmove", preventScroll, { passive: false });
