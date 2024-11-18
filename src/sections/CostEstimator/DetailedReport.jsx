@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PieChart1 from "./PieChart1";
-import PaymentSchedule from "./Paymentschedule";
+import PaymentSchedule from "./PaymentSchedule";
 
 function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
   const [newField, setNewField] = useState("");
@@ -374,7 +374,9 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
             onSubmit={editField ? handleUpdateField : handleAddField}
             className="mt-4"
           >
-            <p className="text-xs mb-2 text-left italic">(*add-ons like lift, garden etc...)</p>
+            <p className="text-xs mb-2 text-left italic">
+              (*add-ons like lift, garden etc...)
+            </p>
             <div className="flex flex-col-1 justify-between mb-2 md:px-0 relative">
               <input
                 type="text"

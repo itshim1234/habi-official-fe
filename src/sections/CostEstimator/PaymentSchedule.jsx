@@ -18,7 +18,7 @@ const PaymentSchedule = ({ scheduleData }) => {
             <div className="w-1/6 md:w-1/5 p-4 border-r border-[#7c7c7c] flex items-center justify-center">
               <span className="text-lg font-bold">{schedule.percentage}%</span>
             </div>
-            <div className="w-1/5 md:w-1/4 p-4 flex items-center justify-center">
+            <div className="w-1/5 md:w-1/4 p-4 flex items-center">
               <span className="text-lg font-bold">
                 ₹{schedule.price.toLocaleString()}
               </span>
