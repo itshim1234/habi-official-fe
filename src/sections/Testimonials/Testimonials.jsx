@@ -96,35 +96,38 @@ const Testimonial = () => {
   }, []);
 
   return (
-    <div className="testimonial-carousel">
-      {/* Left Section - Active Testimonial */}
-      <div className="testimonial-content">
-        <h2>{visibleTestimonials[0].name}</h2>
-        <p>{visibleTestimonials[0].content}</p>
-        <div className="testimonial-details">
-          <span>{visibleTestimonials[0].location}</span>
-          <span>{visibleTestimonials[0].size}</span>
-          <span>{visibleTestimonials[0].price}</span>
+    <div>
+      <hr className="bg-[#ffffff] p-0 m-0" />
+      <div className="testimonial-carousel">
+        {/* Left Section - Active Testimonial */}
+        <div className="testimonial-content">
+          <h2>{visibleTestimonials[0].name}</h2>
+          <p>{visibleTestimonials[0].content}</p>
+          <div className="testimonial-details">
+            <span>{visibleTestimonials[0].location}</span>
+            <span>{visibleTestimonials[0].size}</span>
+            <span>{visibleTestimonials[0].price}</span>
+          </div>
         </div>
-      </div>
 
-      {/* Right Section - Carousel with three testimonials */}
-      <div className="testimonial-carousel-container">
-        <div className="carousel-wrapper">
-          {visibleTestimonials.map((testimonial, index) => (
-            <div
-              key={testimonial.id}
-              className={`carousel-item ${index === 0 ? "active" : "small"}`}
-            >
-              <img src={testimonial.image} alt="Testimonial" />
-              <p className="feedback">"{testimonial.feedback}"</p>
-              <img
-                className="user-image"
-                src={testimonial.userImage}
-                alt="User"
-              />
-            </div>
-          ))}
+        {/* Right Section - Carousel with three testimonials */}
+        <div className="testimonial-carousel-container">
+          <div className="carousel-wrapper">
+            {visibleTestimonials.map((testimonial, index) => (
+              <div
+                key={testimonial.id}
+                className={`carousel-item ${index === 0 ? "active" : "small"}`}
+              >
+                <img src={testimonial.image} alt="Testimonial" />
+                <p className="feedback">"{testimonial.feedback}"</p>
+                <img
+                  className="user-image"
+                  src={testimonial.userImage}
+                  alt="User"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

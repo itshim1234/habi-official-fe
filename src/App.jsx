@@ -9,6 +9,8 @@ import Model from "./sections/3DMobile/Model";
 import ConstructionProgress from "./sections/TrackProgress/ConstructionProgress";
 import Projects from "./sections/Projects/Projects";
 import Testimonial from "./sections/Testimonials/Testimonials";
+import CostEstimator from "./sections/CostEstimator/CostEstimator";
+import Faq from "./sections/FAQ/Faq";
 
 function App() {
   return (
@@ -20,8 +22,9 @@ function App() {
       <ConstructionProgress />
       <Projects />
       <Testimonial />
-
+      <CostEstimator />
       <Model />
+      <Faq />
       <Footer />
     </div>
   );

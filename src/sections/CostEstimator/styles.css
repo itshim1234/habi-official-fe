@@ -1,0 +1,17 @@
+.gradient-border {
+  border-width: 1px;
+  border-style: solid;
+  border-image: linear-gradient(
+      to right,
+      rgb(0, 0, 0),
+      rgb(231, 229, 229),
+      rgb(0, 0, 0)
+    )
+    1;
+  border-image-slice: 1;
+  border-image-width: 1px;
+  border-image-outset: 0;
+  border-image-repeat: stretch;
+  text-align: center;
+  box-sizing: border-box;
+}
