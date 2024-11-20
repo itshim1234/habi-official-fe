@@ -1,14 +1,15 @@
 import React from "react";
 import model from "../../assets/videos/Model.mp4";
 import arrow from "../../assets/images/ArrowRight.png";
-
+import "./style.css";
 function Service() {
   return (
     <div className="flex flex-col justify-center text-center bg-black text-white relative w-full h-fit">
       <hr className="bg-[#f8f8ff] p-0 m-0" />
 
-      <button className="flex w-fit mt-[57px] md:mt-0 md:absolute md:top-[100px] md:left backdrop-blur-[12.5px] bg-slate-50 bg-opacity-30 p-5 rounded-r-xl border border-gray-400 border-l-0">
-        <span className="mr-3">BaaP</span> <img src={arrow} alt="" />
+      <button class="rotate-border flex items-center w-fit mt-[57px] md:mt-0 md:absolute md:top-[100px] md:left backdrop-blur-[12.5px] bg-slate-50 bg-opacity-30 p-5 rounded-r-xl border border-l-0 border-white">
+        <span class="mr-3">BaaP</span>
+        <img src={arrow} alt="" />
       </button>
 
       <h1 className="font-larken-bold text-[32px] md:text-[40px] lg:text-[48px] mt-[22px] md:mt-[56px]">

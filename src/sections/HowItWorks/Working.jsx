@@ -90,7 +90,7 @@ function Working() {
           }
         }
       },
-      { threshold: 0.8 }
+      { threshold: 1 }
     );
 
     if (topRef.current) {
@@ -190,20 +190,9 @@ function Working() {
   }, [currentStage, scrollLocked]);
 
   return (
-    <div className="relative h-fit w-full text-white flex items-center justify-center">
-      <div
-        className="absolute inset-0 z-10 -bottom-10"
-        style={{
-          background: `linear-gradient(to top, #000000, rgba(0, 0, 0, 0) 100px),`,
-        }}
-      />
-      <div
-        className="absolute inset-0 w-full h-[400px] md:h-[700px] top-16"
-        style={{ zIndex: 0 }}
-      ></div>
-
+    <div className="relative h-fit lg:h-screen w-full text-white flex items-center justify-center">
       {/* Scrollable content container */}
-      <div className="relative text-center h-full bg-transparent">
+      <div className="text-center h-full bg-transparent">
         <h2
           className="text-[32px] md:text-[40px] lg:text-[48px] font-bold my-14 mb-16"
           ref={topRef}
@@ -212,13 +201,14 @@ function Working() {
         </h2>
 
         {/* Stage card */}
-        <div className="relative bg-transparent backdrop-blur-md rounded-2xl border border-white/40 w-[300px] h-[240px] md:w-[714px] md:h-[487px] items-center justify-center mx-auto">
+        <div className="relative lg:absolute lg:right-20 bg-transparent backdrop-blur-md rounded-2xl border border-white/40 w-[300px] h-[240px] md:w-[714px] md:h-[487px] lg:w-[40vw] lg:h-[60vh] items-center justify-center mx-auto">
           <img
             src={stages[currentStage]?.image}
             alt={stages[currentStage]?.title || "Default Title"}
             className="w-full h-full object-contain"
           />
           <img
+            ref={sectionRef} // Attach topRef to the element to trigger reverse scrolling
             src={star}
             alt=""
             className="absolute right-0 -bottom-5 md:-bottom-8 w-10 md:w-16"
@@ -231,17 +221,14 @@ function Working() {
         </div>
 
         {/* Stage number */}
-        <h3 className="text-[24px] md:text-[32px] lg:text-[40px] font-semibold text-[#ffb969] mt-10 mb-4">
+        <h3 className="lg:absolute left-20 top-52 text-[24px] md:text-[32px] lg:text-[40px] 2xl:top-64 font-semibold text-[#ffb969] mt-10 mb-4">
           {stages[currentStage]?.title || "Default Title"}
         </h3>
-        <p
-          className="text-[16px] md:text-[18px] lg:text-[24px] w-[400px] lg:w-[500px] mx-auto"
-          ref={sectionRef} // Attach topRef to the element to trigger reverse scrolling
-        >
+        <p className="lg:absolute lg:text-left lg:left-20 lg:top-80 2xl:top-96 text-[16px] md:text-[18px] lg:text-[24px]  w-[400px] lg:w-[500px] mx-auto">
           {stages[currentStage]?.description || "Default Description"}
         </p>
       </div>
-      <div className="absolute left-[6%] lg:left-[18%] -bottom-24 text-[200px] text-stroke font-larken-bold z-0">
+      <div className="absolute left-[6%] lg:left-2 -bottom-24 2xl:bottom-20 text-[200px] text-stroke font-larken-bold z-0">
         {stages[currentStage]?.number || 0}
       </div>
     </div>

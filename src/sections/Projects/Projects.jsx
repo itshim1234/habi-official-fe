@@ -88,6 +88,7 @@ const Projects = () => {
 
   return (
     <div className="flex flex-col items-center justify-center p-5">
+      <p className="">Projects</p>
       <div className="flex flex-col items-center w-full">
         <div className="flex items-end justify-center w-full">
           {Array(3)

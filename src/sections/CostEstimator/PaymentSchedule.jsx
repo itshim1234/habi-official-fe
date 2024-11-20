@@ -8,7 +8,9 @@ const PaymentSchedule = ({ scheduleData }) => {
         {scheduleData.map((schedule, index) => (
           <div key={index} className="flex border-b border-[#7c7c7c]">
             <div className="w-2/4 md:w-3/5  p-4 border-r border-[#7c7c7c]">
-              <h2 className="font-bold text-white text-left">{schedule.title}</h2>
+              <h2 className="font-bold text-white text-left">
+                {schedule.title}
+              </h2>
               <ul className="list-disc list-inside text-left">
                 {schedule.items.map((item, idx) => (
                   <li key={idx}>{item}</li>

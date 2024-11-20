@@ -66,7 +66,22 @@ const NumberInput = ({ value, onChange, name, label }) => (
 function CostEstimator() {
   const [detailedCost, setDetailedCost] = useState(false);
   const [costEstimator, setCostEstimator] = useState(false);
+  const [contentHeight, setContentHeight] = useState(0);
+
+  const contentRef = useRef(null);
   const logosRef = useRef(null);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      const resizeObserver = new ResizeObserver(() => {
+        setContentHeight(contentRef.current.scrollHeight);
+      });
+
+      resizeObserver.observe(contentRef.current);
+
+      return () => resizeObserver.disconnect();
+    }
+  }, []);
 
   useEffect(() => {
     const ul = logosRef.current;
@@ -197,21 +212,25 @@ function CostEstimator() {
       <div
         className={`w-full bg-black p-2 px-4 h-auto mb-2 mb:mb-3 md:px-20 lg:px-60 xl:px-[25%]`}
       >
-        {costEstimator ? (
-          <div>
-            <div
-              className="my-10 cursor-pointer w-full"
-              onClick={() => {
-                setCostEstimator(!costEstimator);
-              }}
-            >
-              <h2 className="text-white text-[24px] lg:text-[32px]  mb-10 text-center inline mr-2">
-                Cost Estimator
-              </h2>
-              <img src={downArrow} alt="" className="inline mb-2 rotate-180" />
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-2 md:gap-4">
+        <div
+          className="my-10 cursor-pointer w-full"
+          onClick={() => {
+            setCostEstimator(!costEstimator);
+          }}
+        >
+          <h2 className="text-white text-[24px] lg:text-[32px]  mb-10 text-center inline mr-2">
+            Cost Estimator
+          </h2>
+          <img src={downArrow} alt="" className="inline mb-2 rotate-180" />
+        </div>
+        <div
+          className={`overflow-hidden transition-[max-height] duration-1000 ease-in-out`}
+          style={{
+            maxHeight: costEstimator ? `${contentHeight}px` : "0px",
+          }}
+        >
+          <div ref={contentRef}>
+            <div className="grid md:grid-cols-2 gap-2 md:gap-4 mt-2">
               <SelectInput
                 value={inputs.state}
                 onChange={handleInputChange}
@@ -492,19 +511,7 @@ function CostEstimator() {
               </div>
             </div>
           </div>
-        ) : (
-          <div
-            className="my-10 cursor-pointer"
-            onClick={() => {
-              setCostEstimator(!costEstimator);
-            }}
-          >
-            <h2 className="text-white text-[24px] lg:text-[32px]  mb-10 text-center inline mr-2">
-              Cost Estimator
-            </h2>
-            <img src={downArrow} alt="" className="inline mb-2" />
-          </div>
-        )}
+        </div>
       </div>
     </div>
   );

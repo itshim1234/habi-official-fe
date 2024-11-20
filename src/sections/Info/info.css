@@ -112,7 +112,7 @@
   width: 100%;
   height: 100%;
   padding: 25%;
-  border-radius: 50%;
+  border-radius: 20%;
   z-index: 1;
 }
 
@@ -132,21 +132,21 @@
 @media (min-width: 1536px) {
   /* Small screens */
   .container {
-    --circleDiameter: 1000px;
+    --circleDiameter: 2400px;
     --planets: 150px;
   }
 }
 @media (max-width: 1536px) {
   /* Small screens */
   .container {
-    --circleDiameter: 1300px;
+    --circleDiameter: 1800px;
     --planets: 150px;
   }
 }
 @media (max-width: 1024px) {
   /* Medium screens */
   .container {
-    --circleDiameter: 1000px;
+    --circleDiameter: 1200px;
     --planets: 150px;
   }
 }

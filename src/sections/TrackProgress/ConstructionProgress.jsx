@@ -43,7 +43,7 @@ const ConstructionProgress = () => {
   return (
     <div
       ref={sectionRef}
-      className={`relative h-[600px] md:h-[800px] bg-cover bg-center w-full  mt-40 text-white ${
+      className={`relative h-[450px] md:h-[800px] bg-cover bg-center w-full mt-40 text-white ${
         videoPlayed ? "md:mb-28" : "md:mb-60"
       }`}
     >
@@ -85,13 +85,13 @@ const ConstructionProgress = () => {
       <div
         className={`absolute flex md:hidden transition-all duration-1000 ${
           videoPlayed
-            ? "top-40 left-2 translate-x-0 translate-y-0 opacity-100 delay-[0ms]"
+            ? "top-48 left-4 translate-x-0 translate-y-0 opacity-100 delay-[0ms]"
             : "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0"
         }`}
       >
-        <div className="text-[12px] py-1 text-black px-1 bg-white rounded-xl">
+        <div className="text-[12px] py-1 px-2 bg-white/40 backdrop-blur-xl rounded-xl border border-white/40">
           Design & Documents
-          <img src={designIcon} alt="" className="inline ml-2 w-6" />
+          <img src={designIcon} alt="" className="inline ml-2 w-4" />
         </div>
       </div>
 
@@ -113,7 +113,7 @@ const ConstructionProgress = () => {
           <div className="absolute text-[12px] py-1 text-black px-3 bg-white rounded-xl -top-2.5 -right-5">
             Construction on site
           </div>
-          <div className="absolute text-[12px] py-1 text-white px-3 bg-black/40 backdrop-blur-lg rounded-full -bottom-2.5">
+          <div className="absolute text-[12px] py-1 text-white px-3 bg-black/40 backdrop-blur-xl rounded-full -bottom-2.5 -left-3 border border-[#7c7c7c]">
             live <img src={Live} alt="" className="inline w-4 ml-1" />
           </div>
         </div>
@@ -127,15 +127,12 @@ const ConstructionProgress = () => {
       <div
         className={`absolute flex md:hidden transition-all duration-1000 ${
           videoPlayed
-            ? "top-80 left-2 translate-x-0 translate-y-0 opacity-100 delay-[1000ms]"
+            ? "top-72 left-4 translate-x-0 translate-y-0 opacity-100 delay-[1000ms]"
             : "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0"
         }`}
       >
-        <div className="relative flex text-[12px] py-2 text-black px-3 bg-white rounded-xl">
-          Construction on site
-          <div className="absolute text-[12px] py-1 text-white px-3 bg-black/40 backdrop-blur-lg rounded-full right-0 -bottom-5">
-            live <img src={Live} alt="" className="inline w-4 ml-1" />
-          </div>
+        <div className="text-[12px] py-1 px-2 bg-white/40 backdrop-blur-xl rounded-xl border border-white/40">
+          live <img src={Live} alt="" className="inline w-4 ml-1" />
         </div>
       </div>
 
@@ -162,12 +159,12 @@ const ConstructionProgress = () => {
       <div
         className={`absolute flex md:hidden transition-all duration-1000 ${
           videoPlayed
-            ? "bottom-40 right-2 translate-x-0 translate-y-0 opacity-100 delay-[2000ms]"
+            ? "bottom-40 right-4 translate-x-0 translate-y-0 opacity-100 delay-[2000ms]"
             : "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0"
         }`}
       >
-        <div className="text-[12px] py-1 text-black px-3 bg-white rounded-xl -top-2.5 -right-5">
-          <img src={designIcon} alt="" className="inline mb-1 mr-2 w-6" />
+        <div className="text-[12px] py-1 px-2 bg-white/40 backdrop-blur-xl rounded-xl border border-white/40">
+          <img src={designIcon} alt="" className="inline mb-1 mr-2 w-4" />
           Integrated payment
         </div>
       </div>
@@ -178,7 +175,7 @@ const ConstructionProgress = () => {
             : "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0"
         }`}
       >
-        <div className="relative md:px-6 md:pt-4 md:pb-6 shadow-lg rounded-3xl rounded-tl-none rounded-bl-3xl w-72 md:w-[338px] bg-white backdrop-blur-md border border-r-0 md:border-r border-white/40">
+        <div className="relative md:px-4 md:pt-2 md:pb-2 shadow-lg rounded-3xl rounded-tl-none rounded-bl-3xl w-72 md:w-[338px] bg-white backdrop-blur-md border border-r-0 md:border-r border-white/40">
           <div className="flex justify-between items-center">
             <h3 className="font-bold text-gray-800 text-[14px]">Foundation</h3>
             <p className="text-black text-xs">Started</p>
@@ -196,7 +193,7 @@ const ConstructionProgress = () => {
             </div>
             <p className="inline text-black text-sm mt-2">70%</p>
           </div>
-          <div className="absolute text-[12px] p-1 text-white px-3 bg-black/60 rounded-full right-0 md:-right-5 -bottom-2.5 backdrop-blur-xl">
+          <div className="absolute text-[12px] p-1 text-white px-3 bg-black/60 rounded-full right-0 md:-right-5 -bottom-2.5 backdrop-blur-xl border border-[#7c7c7c]">
             <img src={trackStages} alt="" className="inline w-4 mr-1 mb-0.5" />
             Track Stages
           </div>
@@ -206,11 +203,11 @@ const ConstructionProgress = () => {
       <div
         className={`absolute flex md:hidden transition-all duration-1000 ${
           videoPlayed
-            ? "top-60 right-2 translate-x-0 translate-y-0 opacity-100 delay-[3000ms]"
+            ? "top-40 right-4 translate-x-0 translate-y-0 opacity-100 delay-[3000ms]"
             : "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0"
         }`}
       >
-        <div className="text-[12px] py-1 text-black px-2 bg-white rounded-xl -top-2.5 -right-5">
+        <div className="text-[12px] py-1 px-2 bg-white/40 backdrop-blur-xl rounded-xl border border-white/40">
           <img src={trackStages} alt="" className="inline w-4 mr-1 mb-0.5" />
           Track Construction
         </div>

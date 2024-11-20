@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./info.css";
-import design from "../../assets/images/design.png";
+import design from "../../assets/images/design.svg";
 import time from "../../assets/images/time.png";
 import quality from "../../assets/images/quality.png";
 import manage from "../../assets/images/manage.png";
@@ -25,14 +25,14 @@ function Info() {
 
   return (
     <div className="flex justify-center items-center w-full">
-      <div className="container min-w-full h-[500px] md:h-[600px] lg:h-[650px] xl:h-[650px]">
+      <div className="container min-w-full h-[500px] md:h-[700px] lg:h-[650px] xl:h-[650px]">
         <div>
-          <h1 className="text-[48px] text-white font-larken-bold mt-10 md:mb-10 text-center justify-center">
+          <h1 className="text-[48px] text-white font-larken-bold mt-10 md:mb-10 lg:mb-56 2xl:mb-[390px] text-center justify-center">
             Why habi
           </h1>
         </div>
         <div className="hero-circle">
-          <div className="inner-text top-[33%] md:top-[24%] lg:top-[13%] xl:top-[13%] 2xl:top-[11%]">
+          <div className="inner-text top-[33%] md:top-[28%] lg:top-[20%] xl:top-[18%] 2xl:top-[16%]">
             <div>
               <p className="font-giloryM text-[24px] md:text-[32px] mb-[8px]">
                 {texts[currentIndex]}
