@@ -44,7 +44,7 @@ function Faq() {
       className={`h-fit flex flex-col bg-black w-full gradient-border text-white`}
     >
       <div
-        className={`w-full bg-black p-2 px-4 h-auto mb-2  md:px-20 lg:px-60 xl:px-[25%]  ${
+        className={`w-full bg-black p-2 px-4 h-auto mb-2  md:px-20 lg:px-40 2xl:px-[15%]  ${
           faqSection ? "pb-20" : ""
         }`}
       >

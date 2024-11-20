@@ -57,14 +57,17 @@ const Projects = () => {
   const [images, setImages] = useState(initialImages);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
+    if (paused) return;
+
     const interval = setInterval(() => {
       moveItems();
-    }, 3000);
+    }, 5000);
 
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, [currentIndex, paused]);
 
   const moveItems = () => {
     const nextIndex = (currentIndex + 1) % images.length;
@@ -73,7 +76,14 @@ const Projects = () => {
 
   const handleItemClick = (index) => {
     const clickedProject = images[index];
-    // Toggle selection
+
+    // Toggle selection and pause/resume movement
+    if (selectedProject && selectedProject.name === clickedProject.name) {
+      setPaused(!paused); // Resume if already paused
+    } else {
+      setPaused(true); // Pause when selecting a new item
+    }
+
     setSelectedProject(
       selectedProject && selectedProject.name === clickedProject.name
         ? null
@@ -87,10 +97,12 @@ const Projects = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center p-5">
-      <p className="">Projects</p>
-      <div className="flex flex-col items-center w-full">
-        <div className="flex items-end justify-center w-full">
+    <div className="flex flex-col p-5 text-white justify-center items-center h-fit xl:mt-60">
+      <p className="flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] z-10 my-10">
+        Projects
+      </p>
+      <div className="flex flex-col w-full">
+        <div className="flex justify-center items-baseline w-full">
           {Array(3)
             .fill()
             .map((_, index) => {
@@ -101,10 +113,10 @@ const Projects = () => {
               return (
                 <div
                   key={index}
-                  className={`mx-3 transition-transform duration-300 cursor-pointer min-w-[350px] md:w-[500px] min-h-[250px] md:h-[350px] ${
+                  className={`mx-3 transition-transform duration-300 cursor-pointer ${
                     index === 1
-                      ? "transform scale-130 opacity-100 my-8"
-                      : "opacity-70"
+                      ? "opacity-100 min-w-[350px] min-h-[250px] md:min-w-[500px] md:min-h-[350px] lg:min-w-[575px] lg:min-h-[375px] xl:min-w-[625px] xl:min-h-[375px]"
+                      : "opacity-40  min-w-[315px] min-h-[210px] md:min-w-[460px] md:min-h-[310px] lg:min-w-[535px] lg:min-h-[335px] xl:min-w-[585px] xl:min-h-[335px]"
                   }`}
                   onClick={() =>
                     handleItemClick(
@@ -115,16 +127,24 @@ const Projects = () => {
                   <img
                     src={imageItem.img}
                     alt="item"
-                    className="w-[350px] md:w-[500px] h-[250px] md:h-[350px] object-cover object-center"
+                    className={`object-cover object-center ${
+                      index === 1
+                        ? "opacity-100 min-w-[350px] min-h-[250px] md:min-w-[500px] md:min-h-[350px] lg:min-w-[575px] lg:min-h-[375px] xl:min-w-[625px] xl:min-h-[375px]"
+                        : "opacity-40 min-w-[315px] min-h-[210px] md:min-w-[460px] md:min-h-[310px] lg:min-w-[535px] lg:min-h-[335px] xl:min-w-[585px] xl:min-h-[335px]"
+                    }`}
                   />
                 </div>
               );
             })}
         </div>
+        <div className="mx-auto my-10 text-center">
+          <p className="text-[32px]">{images[currentIndex].name}</p>
+          <p>{images[currentIndex].desc}</p>
+        </div>
 
         {/* Display selected project description and 4 images */}
         {selectedProject && (
-          <div className="mt-8 w-fit text-center">
+          <div className="mt-8 w-fit text-center mx-auto">
             <h2 className="text-3xl font-bold">{selectedProject.name}</h2>
             <p className="mt-2">{selectedProject.desc}</p>
             <div className="grid grid-cols-2 lg:grid-cols-4 justify-center gap-4 mt-6">

@@ -201,7 +201,7 @@ function Working() {
         </h2>
 
         {/* Stage card */}
-        <div className="relative lg:absolute lg:right-20 bg-transparent backdrop-blur-md rounded-2xl border border-white/40 w-[300px] h-[240px] md:w-[714px] md:h-[487px] lg:w-[40vw] lg:h-[60vh] items-center justify-center mx-auto">
+        <div className="relative lg:absolute lg:right-20 2xl:right-64 bg-transparent backdrop-blur-md rounded-2xl border border-white/40 w-[300px] h-[240px] md:w-[714px] md:h-[487px] lg:w-[40vw] lg:h-[60vh] items-center justify-center mx-auto">
           <img
             src={stages[currentStage]?.image}
             alt={stages[currentStage]?.title || "Default Title"}
@@ -221,14 +221,14 @@ function Working() {
         </div>
 
         {/* Stage number */}
-        <h3 className="lg:absolute left-20 top-52 text-[24px] md:text-[32px] lg:text-[40px] 2xl:top-64 font-semibold text-[#ffb969] mt-10 mb-4">
+        <h3 className="lg:absolute left-20 2xl:left-64 top-52 text-[24px] md:text-[32px] lg:text-[40px] 2xl:top-64 font-semibold text-[#ffb969] mt-10 mb-4">
           {stages[currentStage]?.title || "Default Title"}
         </h3>
-        <p className="lg:absolute lg:text-left lg:left-20 lg:top-80 2xl:top-96 text-[16px] md:text-[18px] lg:text-[24px]  w-[400px] lg:w-[500px] mx-auto">
+        <p className="lg:absolute lg:text-left lg:left-20 2xl:left-64 lg:top-80 2xl:top-96 text-[16px] md:text-[18px] lg:text-[24px]  w-[400px] lg:w-[500px] mx-auto">
           {stages[currentStage]?.description || "Default Description"}
         </p>
       </div>
-      <div className="absolute left-[6%] lg:left-2 -bottom-24 2xl:bottom-20 text-[200px] text-stroke font-larken-bold z-0">
+      <div className="absolute left-[6%] lg:left-2 2xl:left-64 -bottom-24 2xl:bottom-20 text-[200px] text-stroke font-larken-bold z-0">
         {stages[currentStage]?.number || 0}
       </div>
     </div>

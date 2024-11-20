@@ -1,13 +1,11 @@
 .testimonial-carousel {
   display: flex;
   justify-content: space-between;
-  padding: 20px;
-  background-color: #121212;
   color: #fff;
 }
 
 .testimonial-content {
-  width: 45%;
+  width: 40%;
 }
 
 .testimonial-content h2 {
@@ -28,7 +26,7 @@
 
 .testimonial-carousel-container {
   position: relative;
-  width: 50%;
+  width: 70%;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -59,6 +57,12 @@
   transform: scale(1.05);
   opacity: 1;
   z-index: 2;
+}
+.carousel-item.middle {
+  width: 230px; /* Smaller width for the center and right items */
+  height: 270px;
+  transform: scale(0.9);
+  opacity: 0.8;
 }
 
 .carousel-item.small {
@@ -101,11 +105,7 @@
 }
 
 .carousel-item.active {
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-.carousel-item.small {
-  animation: fadeOut 0.5s ease-in-out;
+  animation: fadeIn 0.4s ease-in-out;
 }
 
 @keyframes fadeIn {
