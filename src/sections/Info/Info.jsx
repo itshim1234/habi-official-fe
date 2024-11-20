@@ -18,7 +18,7 @@ function Info() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
-    }, 7000); // Change interval as needed
+    }, 6000); // Change interval as needed
 
     return () => clearInterval(interval);
   }, []);
