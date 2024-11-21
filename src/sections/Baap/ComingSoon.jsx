@@ -3,7 +3,7 @@ import next from "../../assets/videos/comingSoon.mp4";
 
 function ComingSoon() {
   return (
-    <div className="relative w-full h-[20vw] md:h-[60vw] lg:h-[50vh] overflow-hidden text-white">
+    <div className="relative w-full h-[20vw] md:h-[60vw] lg:h-[50vh] overflow-hidden text-white mt-20">
       <video
         className="absolute w-full lg:h-[50vh]"
         autoPlay
