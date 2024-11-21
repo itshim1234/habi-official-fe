@@ -1,32 +1,28 @@
-import { useState } from "react";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import "./App.css";
-import Hero from "./sections/Hero/Hero";
 import Footer from "./sections/Footer/Footer";
-import Info from "./sections/Info/Info";
-import Service from "./sections/habiService/Service";
-import Working from "./sections/HowItWorks/Working";
-import Model from "./sections/3DMobile/Model";
-import ConstructionProgress from "./sections/TrackProgress/ConstructionProgress";
-import Projects from "./sections/Projects/Projects";
-import Testimonial from "./sections/Testimonials/Testimonials";
-import CostEstimator from "./sections/CostEstimator/CostEstimator";
 import Faq from "./sections/FAQ/Faq";
+
+import HabiService from "./pages/HabiService/HabiService";
+import HabiProduct from "./pages/HabiProduct/HabiProduct";
 
 function App() {
   return (
-    <div className="overflow-x-hidden  bg-black">
-      <Hero />
-      <Info />
-      <Service />
-      <Working />
-      <ConstructionProgress />
-      <Projects />
-      <Testimonial />
-      <CostEstimator />
-      <Model />
-      <Faq />
-      <Footer />
-    </div>
+    <Router>
+      <div className="overflow-x-hidden bg-black">
+        {/* Routing for different pages */}
+        <Routes>
+          <Route path="/" element={<HabiService />} /> {/* Service Page */}
+          <Route path="/baap" element={<HabiProduct />} /> {/* Product Page */}
+          <Route path="/faq" element={<Faq />} /> {/* FAQs Page */}
+        </Routes>
+
+        {/* Footer is common */}
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
