@@ -1,11 +1,11 @@
 import React from "react";
-import BaapHero from "../../sections/Baap/BaapHero";
+import Hero from "../../sections/Baap/Hero";
 import BaapWorking from "../../sections/Baap/BaapWorking";
 import ComingSoon from "../../sections/Baap/ComingSoon";
 function HabiProduct() {
   return (
     <div>
-      <BaapHero />
+      <Hero />
       <BaapWorking />
       <ComingSoon />
     </div>
