@@ -1,10 +1,13 @@
 import React from "react";
-import baapHero from "../../sections/Baap/baapHero";
-
+import BaapHero from "../../sections/Baap/BaapHero";
+import BaapWorking from "../../sections/Baap/BaapWorking";
+import ComingSoon from "../../sections/Baap/ComingSoon";
 function HabiProduct() {
   return (
     <div>
-      <baapHero />
+      <BaapHero />
+      <BaapWorking />
+      <ComingSoon />
     </div>
   );
 }
