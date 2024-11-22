@@ -1,6 +1,7 @@
 import React from "react";
 import house from "../../assets/images/house.png";
 import arrow from "../../assets/images/ArrowRight.png";
+import "../CostEstimator/styles.css";
 
 const AboutHabi = () => {
   return (
@@ -8,8 +9,8 @@ const AboutHabi = () => {
       {/* Header */}
       <header className="flex justify-between items-center p-4">
         <div className="text-xl font-bold">logo</div>
-        <div>
-          <img src={arrow} alt="arrow inline" />
+        <div className="flex items-center">
+          <img src={arrow} alt="arrow" className="rotate-180 mr-2" />
           <a href="/" className="text-sm border-b">
             Go back to website
           </a>
@@ -17,14 +18,14 @@ const AboutHabi = () => {
       </header>
 
       {/* Main Content */}
-      <main className="px-4 lg:px-20 py-8">
+      <main className="px-0 md:px-4 lg:px-20 py-8">
         {/* Introduction Section */}
-        <h1 className="text-3xl lg:text-5xl font-bold text-center">
+        <h1 className="text-3xl lg:text-5xl font-bold text-center mb-6 md:mb-10">
           About habi
         </h1>
 
-        <section className="md:flex md:items-center lg:justify-between lg:space-x-8 text-center md:text-left">
-          <div className="lg:w-3/4 lg:text-left">
+        <section className="md:flex md:items-center md:justify-between md:space-x-8 text-center md:text-left gradient-border">
+          <div className="md:w-[60%] md:text-left px-3 my-4">
             <h2 className="text-lg lg:text-2xl">
               habi has a better way
               <span className="block text-orange-400">
@@ -44,19 +45,19 @@ const AboutHabi = () => {
           </div>
 
           {/* Image Section */}
-          <div className="mt-8 lg:mt-0 lg:w-1/4">
+          <div className="mt-8 md:mt-0 md:w-[35%]">
             <img
               src={house}
               alt="Modern House"
-              className="rounded-lg shadow-lg mx-auto lg:mx-0"
+              className=""
             />
           </div>
         </section>
 
         {/* Vision Section */}
-        <section className="space-y-4 text-center mt-12">
+        <section className="space-y-4 text-center mt-12 px-2">
           <h2 className="text-2xl lg:text-3xl font-semibold">Vision</h2>
-          <p className="text-md lg:text-lg max-w-4xl mx-auto">
+          <p className="text-md lg:text-lg mx-auto">
             We envision forging a realm where affordability, accessibility,
             sustainability, and cutting-edge design seamlessly unite to elevate
             the quality of life and foster environmental well-being,
@@ -82,13 +83,13 @@ const AboutHabi = () => {
             <h3 className="font-bold text-xl">Trust</h3>
           </div>
           <div className="p-4 bg-gray-800 rounded-lg shadow-lg">
-            <h3 className="font-bold text-xl">Indian Design</h3>
+            <h3 className="font-bold text-xl">Design</h3>
           </div>
           <div className="p-4 bg-gray-800 rounded-lg shadow-lg">
-            <h3 className="font-bold text-xl">no. One</h3>
+            <h3 className="font-bold text-xl">One</h3>
           </div>
           <div className="p-4 bg-gray-800 rounded-lg shadow-lg">
-            <h3 className="font-bold text-xl">Product Value</h3>
+            <h3 className="font-bold text-xl">Value</h3>
           </div>
         </section>
       </main>
