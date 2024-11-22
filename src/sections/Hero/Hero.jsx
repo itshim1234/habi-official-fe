@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import herobackground from "../../assets/videos/heroBackground.mp4";
 import hamburger from "../../assets/images/Hamburger.png";
 import scroll from "../../assets/images/scroll.png";
+import ConsultationPopup from "./ConsultationPopup";
 
 import "./hero.css";
 
 function Hero() {
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+  // Toggle popup visibility
+  const togglePopup = () => {
+    setIsPopupVisible(!isPopupVisible);
+  };
   return (
     <div className="relative min-h-[300px] h-[460px] md:h-[750px] lg:h-screen w-screen bg-cover bg-center">
       {/* Video background */}
@@ -86,13 +93,21 @@ function Hero() {
           Explore Projects
         </button>
 
-        <button className="px-5 w-[160] md:w-[230px] 2xl:w-[275px] h-12 md:h-[60px] lg:h-[60px] 2xl:h-[80px] rounded-xl bg-primary text-white flex items-center justify-center font-giloryS">
+        <button
+          className="px-5 w-[160] md:w-[230px] 2xl:w-[275px] h-12 md:h-[60px] lg:h-[60px] 2xl:h-[80px] rounded-xl bg-primary text-white flex items-center justify-center font-giloryS"
+          onClick={togglePopup} // Show the popup on click
+        >
           Free Consultation
         </button>
       </div>
       <div className="relative z-20 text-white justify-center text-center top-[55%] hidden 2xl:flex space-x-4 md:space-x-12 text-md md:text-[24px] ">
         <img src={scroll} alt="" />
       </div>
+      {isPopupVisible && (
+        <div className="lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:top-1/2 lg:-translate-y-1/2 z-50 ">
+          <ConsultationPopup onClose={togglePopup} />
+        </div>
+      )}
     </div>
   );
 }
