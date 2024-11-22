@@ -22,6 +22,9 @@ const Footer = () => {
         <div>
           <h3 className="text-white text-xl">Company</h3>
           <p className="mt-2">About habi</p>
+          <a href="/faq">
+            <p className="mt-2">Faq's</p>
+          </a>
         </div>
 
         {/* Follow Us Section */}
@@ -88,7 +91,7 @@ const Footer = () => {
               Privacy Policy
             </a>
             <span>|</span>
-            <a href="#" className="hover:underline">
+            <a href="/about" className="hover:underline">
               Terms and conditions
             </a>
           </div>

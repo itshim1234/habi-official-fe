@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        "larken-bold": ["larken"],
+        poppins: ["Poppins", "sans-serif"],
         giloryB: ["gilroyB"],
         giloryM: ["gilroyM"],
         giloryS: ["gilroyS"],

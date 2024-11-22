@@ -2,7 +2,7 @@ import React from "react";
 
 const PaymentSchedule = ({ scheduleData }) => {
   return (
-    <div className="mx-auto text-white px-2 md:px-0">
+    <div className="mx-auto text-white px-2 md:px-0 ">
       <h1 className="text-center text-2xl font-bold">Payment Schedules</h1>
       <div className="border border-[#7c7c7c] mt-4 rounded-xl">
         {scheduleData.map((schedule, index) => (

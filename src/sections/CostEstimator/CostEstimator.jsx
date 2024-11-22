@@ -208,7 +208,7 @@ function CostEstimator() {
   };
 
   return (
-    <div className={`h-fit flex flex-col bg-background w-full gradient-border`}>
+    <div className={`h-fit flex flex-col bg-background w-full gradient-border font-giloryM`}>
       <div
         className={`w-full bg-black p-2 px-4 h-auto mb-2 mb:mb-3 md:px-20 lg:px-60 xl:px-[25%]`}
       >

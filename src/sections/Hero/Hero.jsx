@@ -3,6 +3,7 @@ import herobackground from "../../assets/videos/heroBackground.mp4";
 import hamburger from "../../assets/images/Hamburger.png";
 import scroll from "../../assets/images/scroll.png";
 import ConsultationPopup from "./ConsultationPopup";
+import logo from "../../assets/images/Logo.png";
 
 import "./hero.css";
 
@@ -56,7 +57,7 @@ function Hero() {
         ></div>
 
         {/* Main text */}
-        <div className="relative text-[48px] md:text-[85px] lg:text-[80px] 2xl:text-[114px] font-larken-bold leading-[50px] md:leading-[80px] lg:leading-[100px] 2xl:leading-[120px]">
+        <div className="relative text-[48px] md:text-[85px] lg:text-[80px] 2xl:text-[114px] font-giloryB font-semibold leading-[50px] md:leading-[80px] lg:leading-[100px] 2xl:leading-[120px]">
           {/* Blurred background above the text */}
           <div
             className="absolute -top-3 left-0 right-0 mx-auto z-40"
@@ -88,6 +89,11 @@ function Hero() {
           />
         </button>
       </div>
+
+      <div className="absolute z-20 text-white justify-center text-center left-10 lg:left-24 top-[20px] md:top-[40px]">
+        <img src={logo} alt="" className="w-20" />
+      </div>
+
       <div className="relative z-20 text-white justify-center text-center top-[50%] flex space-x-4 md:space-x-12 text-md md:text-[20px] 2xl:text-[24px]">
         <button className="px-5 w-[160] md:w-[230px] 2xl:w-[275px] h-12 md:h-[60px] lg:h-[60px] 2xl:h-[80px] rounded-xl border-2 border-white/20 bg-black/30 backdrop-blur text-white flex items-center justify-center font-giloryS">
           Explore Projects
