@@ -3,7 +3,7 @@ import callus from "../../assets/images/callus.png";
 import employeeLogin from "../../assets/images/Employeelogin.png";
 import facebook from "../../assets/images/Facebook.png";
 import insta from "../../assets/images/insta.png";
-import linkedin from "../../assets/images/linkedin.png";
+import linkedin from "../../assets/images/Linkedin.png";
 import mail from "../../assets/images/mail.png";
 import twitter from "../../assets/images/twitter.png";
 import youtube from "../../assets/images/youtube.png";
