@@ -6,10 +6,11 @@ import Working from "../../sections/HowItWorks/Working";
 import Model from "../../sections/3DMobile/Model";
 import ConstructionProgress from "../../sections/TrackProgress/ConstructionProgress";
 import Projects from "../../sections/Projects/Projects";
-import Testimonial from "../../sections/Testimonials/Testimonials";
+import Testimonials from "../../sections/Testimonials/Testimonials";
 import CostEstimator from "../../sections/CostEstimator/CostEstimator";
 import Faq from "../../sections/FAQ/Faq";
 import Baap from "../../sections/Baap/Baap";
+import Testimonial from "../../sections/Testimonials/Testimonial";
 import "./style.css";
 
 function HabiService() {
