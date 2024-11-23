@@ -44,18 +44,18 @@ function Faq() {
       className={`h-fit flex flex-col bg-black w-full gradient-border text-white`}
     >
       <div
-        className={`w-full bg-black p-2 px-4 h-auto mb-2  md:px-20 lg:px-40 2xl:px-[15%]  ${
+        className={`w-full bg-black p-2 px-4 h-auto mb-2 md:px-20 lg:px-40 2xl:px-[15%]  ${
           faqSection ? "pb-20" : ""
         }`}
       >
         <div>
           <div
-            className="my-10 cursor-pointer"
+            className="my-4 md:my-10 cursor-pointer"
             onClick={() => {
               handleFaq(!faqSection);
             }}
           >
-            <h2 className="text-[24px] lg:text-[32px]  mb-10 text-center inline mr-2">
+            <h2 className="text-[24px] lg:text-[32px] mb-10 text-center inline mr-2 font-giloryS">
               FAQ's
             </h2>
             <img
@@ -72,7 +72,7 @@ function Faq() {
               maxHeight: faqSection ? `${contentHeight}px` : "0px",
             }}
           >
-            <div ref={contentRef} className="bg-black text-white space-y-4">
+            <div ref={contentRef} className="text-white space-y-4">
               {faqs.map((faq, index) => (
                 <div
                   key={index}
@@ -82,10 +82,10 @@ function Faq() {
                       : "border-b border-[#7c7c7c] pb-5"
                   }`}
                 >
-                  <h3 className="text-xl font-semibold">
+                  <h3 className="text-lg lg:text-2xl font-giloryS">
                     {index + 1}. {faq.question}
                   </h3>
-                  <p className="mt-2">{faq.answer}</p>
+                  <p className="lg:text-lg mt-2 font-giloryM">{faq.answer}</p>
                 </div>
               ))}
             </div>

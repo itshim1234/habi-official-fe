@@ -4,7 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        poppins: ["Poppins", "sans-serif"],
+        Samarkan: ["Samarkan Normal V2"],
+        larken: ["larken", "sans-serif"],
         giloryB: ["gilroyB"],
         giloryM: ["gilroyM"],
         giloryS: ["gilroyS"],
@@ -12,6 +13,7 @@ export default {
 
       colors: {
         primary: "#0FB4C3",
+        secondary: "#ffb969",
       },
     },
     animation: {

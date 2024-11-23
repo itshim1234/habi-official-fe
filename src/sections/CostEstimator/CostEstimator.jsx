@@ -13,9 +13,9 @@ import downArrow from "../../assets/images/downArrow.png";
 import "./styles.css";
 
 const SelectInput = ({ value, onChange, options, label, name }) => (
-  <div className="relative mb-4 md:mb-6">
+  <div className="relative mb-8 md:mb-10">
     {label && (
-      <label className="absolute -top-2.5 left-3 bg-black px-1 py-0 text-sm text-[#C0C0C0] capitalize">
+      <label className="absolute -top-6 left-0 px-1 py-0 text-[#C0C0C0] capitalize font-giloryM">
         {label}*
       </label>
     )}
@@ -23,7 +23,7 @@ const SelectInput = ({ value, onChange, options, label, name }) => (
       value={value}
       onChange={onChange}
       name={name}
-      className="text-white block w-full pl-4 py-2 md:py-2.5 border border-[#7C7C7C] rounded-lg bg-black focus:outline-none appearance-none pr-10"
+      className="text-white block w-full pl-4 py-2 md:py-2.5  rounded-lg bg-[#1a1a1a] focus:outline-none appearance-none pr-10"
     >
       {options.map((option) => (
         <option key={option} value={option}>
@@ -47,9 +47,9 @@ const SelectInput = ({ value, onChange, options, label, name }) => (
 );
 
 const NumberInput = ({ value, onChange, name, label }) => (
-  <div className="relative mb-3 md:mb-6">
+  <div className="relative mb-8 md:mb-10">
     {label && (
-      <label className="absolute -top-2.5 left-3 bg-black px-1 py-0 text-sm text-[#C0C0C0] capitalize">
+      <label className="absolute -top-6 left-0 px-1 py-0 text-[#C0C0C0] capitalize font-giloryM">
         {label}*
       </label>
     )}
@@ -58,7 +58,7 @@ const NumberInput = ({ value, onChange, name, label }) => (
       value={value}
       onChange={onChange}
       name={name}
-      className="text-white block w-full px-3 py-2 md:py-2.5 border border-[#7C7C7C] rounded-lg bg-black focus:outline-none"
+      className="text-white block w-full pl-4 py-2 md:py-2.5  rounded-lg bg-[#1a1a1a] focus:outline-none appearance-none pr-10"
     />
   </div>
 );
@@ -208,20 +208,26 @@ function CostEstimator() {
   };
 
   return (
-    <div className={`h-fit flex flex-col bg-background w-full gradient-border font-giloryM`}>
+    <div className={`h-fit flex flex-col bg-background w-full gradient-border`}>
       <div
         className={`w-full bg-black p-2 px-4 h-auto mb-2 mb:mb-3 md:px-20 lg:px-60 xl:px-[25%]`}
       >
         <div
-          className="my-10 cursor-pointer w-full"
+          className="my-4 md:my-10 cursor-pointer w-full"
           onClick={() => {
             setCostEstimator(!costEstimator);
           }}
         >
-          <h2 className="text-white text-[24px] lg:text-[32px]  mb-10 text-center inline mr-2">
+          <h2 className="text-white text-[24px] lg:text-[32px] font-giloryS mb-10 text-center inline mr-2 ">
             Cost Estimator
           </h2>
-          <img src={downArrow} alt="" className="inline mb-2 rotate-180" />
+          <img
+            src={downArrow}
+            alt=""
+            className={`inline mb-2 transition-transform duration-500 ${
+              costEstimator ? "rotate-180" : ""
+            }`}
+          />{" "}
         </div>
         <div
           className={`overflow-hidden transition-[max-height] duration-1000 ease-in-out`}
@@ -230,7 +236,7 @@ function CostEstimator() {
           }}
         >
           <div ref={contentRef}>
-            <div className="grid md:grid-cols-2 gap-2 md:gap-4 mt-2">
+            <div className="grid md:grid-cols-2 gap-2 md:gap-4 mt-6">
               <SelectInput
                 value={inputs.state}
                 onChange={handleInputChange}
@@ -246,7 +252,7 @@ function CostEstimator() {
                 label="City"
               />
             </div>
-            <div className="grid md:grid-cols-2 gap-4">
+            <div className="grid md:grid-cols-2 gap-4 mt-3 md:mt-0">
               <SelectInput
                 value={inputs.locality}
                 onChange={handleInputChange}
@@ -264,7 +270,7 @@ function CostEstimator() {
             </div>
 
             {inputs.landType === "Regular" && (
-              <div className="grid grid-cols-2 gap-4 mb-2">
+              <div className="grid grid-cols-2 gap-x-4 mb-2 mt-3 md:mt-0">
                 <SelectInput
                   value={inputs.length}
                   onChange={handleInputChange}
@@ -371,7 +377,7 @@ function CostEstimator() {
                 label="Floor Height"
               />
             </div>
-            <div className="md:w-1/2 justify-center mx-auto">
+            <div className="md:w-1/2 justify-center mx-auto mt-3 md:mt-0">
               <SelectInput
                 value={inputs.packageType}
                 onChange={handleInputChange}
@@ -384,36 +390,28 @@ function CostEstimator() {
             <div
               className={`items-center w-full bg-layoutColor p-2 flex-grow flex flex-col`}
             >
-              <div className="bg-layoutColor text-black p-4 px-6 rounded-lg mt-4 w-full">
-                <div className="flex justify-between">
-                  <span className="font-semibold text-white">Site Area</span>
-                  <span className="text-white">{results.siteArea} sq ft</span>
+              <div className="bg-layoutColor text-white p-4 px-6 rounded-lg mt-4 w-full">
+                <div className="flex justify-between font-giloryM">
+                  <span>Site Area</span>
+                  <span>{results.siteArea} sq ft</span>
                 </div>
-                <div className="flex justify-between mt-2">
-                  <span className="font-semibold text-white">
-                    Built-Up Area
-                  </span>
-                  <span className="text-white">
-                    {results.builtUpArea} sq ft
-                  </span>
+                <div className="flex justify-between mt-2 font-giloryM">
+                  <span>Built-Up Area</span>
+                  <span>{results.builtUpArea} sq ft</span>
                 </div>
-                <div className="flex justify-between mt-2">
-                  <span className="font-semibold text-white">
-                    Sump Capacity
-                  </span>
-                  <span className="text-white">{results.sump} liters</span>
+                <div className="flex justify-between mt-2 font-giloryM">
+                  <span>Sump Capacity</span>
+                  <span>{results.sump} liters</span>
                 </div>
                 <hr className="border-1 border-[#7c7c7c] mx-auto my-2" />
-                <div className="flex justify-between mt-2">
-                  <span className="font-semibold text-white">
-                    Estimated Cost
-                  </span>
-                  <span className="text-white">₹{results.estimatedCost}</span>
+                <div className="flex justify-between mt-2 font-giloryS">
+                  <span>Estimated Cost</span>
+                  <span>₹{results.estimatedCost}</span>
                 </div>
               </div>
 
               <button
-                className={`w-2/3 md:w-[50%]  py-2 mt-6 rounded-lg inline text-lg ${
+                className={`w-2/3 md:w-[50%] py-2 mt-6 rounded-lg inline lg:text-lg font-giloryM ${
                   detailedCost
                     ? "bg-white/30 backdrop-blur-md text-white border border-[#7c7c7c]"
                     : "bg-primary text-white"

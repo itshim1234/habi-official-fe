@@ -19,7 +19,7 @@ function Baap({ toggleView }) {
         </button>
       </div>
 
-      <h1 className="font-larken-bold text-[32px] md:text-[40px] lg:text-[48px] mt-[28px] md:mt-[56px]">
+      <h1 className="text-[32px] md:text-[40px] lg:text-[48px] text-white font-giloryB mt-[22px] md:mt-[56px]">
         BaaP
       </h1>
       <p className="text-[24px] md:text-[32px] lg:text-[40px] font-giloryB mt-[80px]">
@@ -58,7 +58,7 @@ function Baap({ toggleView }) {
           }}
         />
         <button
-          className="absolute top-10 left-1/2 transform -translate-x-1/2 text-[24px]  py-3 pb-4 border border-[#7c7c7c] rounded-lg px-5 bg-black/20"
+          className="absolute top-10 left-1/2 transform -translate-x-1/2 text-[18px] md:text-[24px]  py-3 pb-4 border border-[#7c7c7c] rounded-lg px-5 bg-black/20 font-giloryS"
           onClick={() => navigate("/baap")} // Corrected navigation
         >
           Learn more

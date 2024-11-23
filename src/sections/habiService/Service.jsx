@@ -15,7 +15,7 @@ function Service({ toggleView }) {
         <img src={arrow} alt="" />
       </button>
 
-      <h1 className="font-larken-bold text-[32px] md:text-[40px] lg:text-[48px] mt-[22px] md:mt-[56px]">
+      <h1 className="text-[32px] md:text-[40px] lg:text-[48px] text-white font-giloryB mt-[22px] md:mt-[56px]">
         habi homes
       </h1>
       <p className="text-[24px] md:text-[32px] lg:text-[40px] font-giloryB mt-[80px]">

@@ -187,7 +187,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
         <div className="bg-layoutColor rounded-lg mt-4 md:pr-4 px-2">
           <div className="flex justify-between relative mb-1">
             <span className=" text-white">Design Fees</span>
-            <span className="text-white absolute right-44 md:right-40 ">
+            <span className="text-white absolute right-40 md:right-40 ">
               1%
             </span>
             <span className="text-white absolute right-[0%] md:right-0">
@@ -196,7 +196,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
           </div>
           <div className="flex justify-between relative mb-1">
             <span className=" text-white">Excavation</span>
-            <span className="text-white absolute right-44 md:right-40 ">
+            <span className="text-white absolute right-40 md:right-40 ">
               3%
             </span>
             <span className="text-white absolute right-[0%] md:right-0">
@@ -205,7 +205,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
           </div>
           <div className="flex justify-between relative mb-1">
             <span className=" text-white">Sand</span>
-            <span className="text-white absolute right-44 md:right-40 ">
+            <span className="text-white absolute right-40 md:right-40 ">
               4%
             </span>
             <span className="text-white absolute right-[0%] md:right-0">
@@ -214,7 +214,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
           </div>
           <div className="flex justify-between relative mb-1">
             <span className=" text-white">Steel Reinforcement</span>
-            <span className="text-white absolute right-44 md:right-40 ">
+            <span className="text-white absolute right-40 md:right-40">
               14%
             </span>
             <span className="text-white absolute right-[0%] md:right-0">
@@ -223,7 +223,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
           </div>
           <div className="flex justify-between relative mb-1">
             <span className=" text-white">Cement</span>
-            <span className="text-white absolute right-44 md:right-40 ">
+            <span className="text-white absolute right-40 md:right-40 ">
               8%
             </span>
             <span className="text-white absolute right-[0%] md:right-0">
@@ -232,7 +232,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
           </div>
           <div className="flex justify-between relative mb-1">
             <span className=" text-white">Solid Blocks</span>
-            <span className="text-white absolute right-44 md:right-40 ">
+            <span className="text-white absolute right-40 md:right-40 ">
               9%
             </span>
             <span className="text-white absolute right-[0%] md:right-0">
@@ -241,7 +241,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
           </div>
           <div className="flex justify-between relative mb-1">
             <span className=" text-white">Stones</span>
-            <span className="text-white absolute right-44 md:right-40 ">
+            <span className="text-white absolute right-40 md:right-40 ">
               5%
             </span>
             <span className="text-white absolute right-[0%] md:right-0">
@@ -250,7 +250,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
           </div>
           <div className="flex justify-between relative mb-1">
             <span className=" text-white">RMC</span>
-            <span className="text-white absolute right-44 md:right-40 ">
+            <span className="text-white absolute right-40 md:right-40 ">
               9%
             </span>
             <span className="text-white absolute right-[0%] md:right-0">
@@ -259,7 +259,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
           </div>
           <div className="flex justify-between relative mb-1">
             <span className=" text-white">Formwork</span>
-            <span className="text-white absolute right-44 md:right-40 ">
+            <span className="text-white absolute right-40 md:right-40 ">
               3%
             </span>
             <span className="text-white absolute right-[0%] md:right-0">
@@ -268,7 +268,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
           </div>
           <div className="flex justify-between relative mb-1">
             <span className=" text-white">Painting</span>
-            <span className="text-white absolute right-44 md:right-40 ">
+            <span className="text-white absolute right-40 md:right-40 ">
               6%
             </span>
             <span className="text-white absolute right-[0%] md:right-0">
@@ -277,7 +277,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
           </div>
           <div className="flex justify-between relative mb-1">
             <span className=" text-white">Plumbing</span>
-            <span className="text-white absolute right-44 md:right-40 ">
+            <span className="text-white absolute right-40 md:right-40 ">
               7%
             </span>
             <span className="text-white absolute right-[0%] md:right-0">
@@ -286,7 +286,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
           </div>
           <div className="flex justify-between relative mb-1">
             <span className=" text-white">Electrical Work</span>
-            <span className="text-white absolute right-44 md:right-40 ">
+            <span className="text-white absolute right-40 md:right-40 ">
               5%
             </span>
             <span className="text-white absolute right-[0%] md:right-0">
@@ -295,7 +295,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
           </div>
           <div className="flex justify-between relative mb-1">
             <span className=" text-white">Exterior Flooring</span>
-            <span className="text-white absolute right-44 md:right-40 ">
+            <span className="text-white absolute right-40 md:right-40 ">
               5%
             </span>
             <span className="text-white absolute right-[0%] md:right-0">
@@ -304,7 +304,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
           </div>
           <div className="flex justify-between relative mb-1">
             <span className=" text-white">Compound Wall</span>
-            <span className="text-white absolute right-44 md:right-40 ">
+            <span className="text-white absolute right-40 md:right-40 ">
               4%
             </span>
             <span className="text-white absolute right-[0%] md:right-0">
@@ -313,7 +313,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
           </div>
           <div className="flex justify-between relative mb-1">
             <span className=" text-white">Doors & Windows</span>
-            <span className="text-white absolute right-44 md:right-40 ">
+            <span className="text-white absolute right-40 md:right-40 ">
               3%
             </span>
             <span className="text-white absolute right-[0%] md:right-0">
@@ -322,7 +322,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
           </div>
           <div className="flex justify-between relative mb-1">
             <span className=" text-white">Miscellaneous</span>
-            <span className="text-white absolute right-44 md:right-40 ">
+            <span className="text-white absolute right-40 md:right-40 ">
               7%
             </span>
             <span className="text-white absolute right-[0%] md:right-0">
@@ -331,7 +331,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
           </div>
           <div className="flex justify-between relative mb-1">
             <span className=" text-white">Internal Flooring</span>
-            <span className="text-white absolute right-44 md:right-40 ">
+            <span className="text-white absolute right-40 md:right-40 ">
               7%
             </span>
             <span className="text-white absolute right-[0%] md:right-0">
@@ -406,18 +406,16 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
               />
               <button
                 type="submit"
-                className="px-8 bg-primary text-white rounded-lg w-auto h-10"
+                className="px-4 md:px-8 bg-primary text-white rounded-lg w-auto h-10"
               >
                 {editField ? "Update" : "Add"}
               </button>
             </div>
           </form>
           <hr className="border-1 border-[#7c7c7c] mt-6" />
-          <div className="flex justify-between relative mb-1 m-1 py-4">
-            <span className="font-bold text-lg text-white">
-              Total Estimated Cost
-            </span>
-            <span className="text-white text-lg font-bold absolute right-[0%] md:right-0">
+          <div className="flex justify-between relative mb-1 m-1 py-4 font-giloryB">
+            <span className="text-lg text-white">Total Estimated Cost</span>
+            <span className="text-white text-lg absolute right-[0%] md:right-0">
               ₹{totalEstimatedCost.toFixed(2)}
             </span>
           </div>

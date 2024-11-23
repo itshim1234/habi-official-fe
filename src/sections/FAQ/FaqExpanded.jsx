@@ -18,27 +18,27 @@ function FaqExpanded() {
     {
       question: "How long does it take to complete a G+1 or G+2 construction?",
       answer:
-        "A G+1 or G+2 building typically takes about 5-6 months to complete the structural work and an additional 2 months for finishing touches. In total, the construction process is completed within 8-9 months.",
+        "A G+1 or G+2 building can be completed in just 8-9 months, with 5-6 months for structural  & Civil work and 2 months for finishing touches, ensuring efficient delivery.",
     },
     {
       question: "Does habi offer loans?",
       answer:
-        "habi facilitates the loan approval process by assisting clients with the necessary documentation. Additionally, we’ve partnered with select banks and NBFCs to provide competitive interest rates, ensuring a smooth financing experience.",
+        "habi makes the loan approval process seamless by helping with documentation and partnering with top banks and NBFCs to offer competitive interest rates. This ensures a smooth and easy financing experience for our clients.",
     },
     {
       question: "What are super built-up area, built-up area, and carpet area?",
       answer:
-        "Carpet Area is the total usable area inside the house, essentially the space you can cover with a carpet. It excludes balconies and utility areas but includes the space occupied by internal walls. Built-up Area includes the carpet area plus the area covered by balconies, terraces, and other utility spaces. Super Built-up Area is the total of the built-up area plus the proportionate share of common spaces like the lobby, staircase, elevator, shafts, and clubhouse.",
+        "Carpet Area represents the total usable space inside the house, while Built-up Area includes additional spaces like balconies and terraces. Super Built-up Area adds common areas such as lobbies, staircases, and elevators, offering a complete view of the property.",
     },
     {
       question: "Does habi require an advance payment?",
       answer:
-        "Yes, habi collects a booking amount of approximately 1% of the total home construction cost. This advance covers initial steps such as conducting digital surveys, performing soil tests, and creating a detailed floor plan.",
+        "habi collects a booking amount of just 1% of the total construction cost, which covers essential services like digital surveys, soil tests, and creating a personalized floor plan to get your project started smoothly.",
     },
     {
       question: "Why aren’t steel and concrete lofts included?",
       answer:
-        "Steel and concrete lofts are considered outdated in modern aesthetics, which is why they are not included by default. However, if a client prefers them, we are happy to accommodate their request.",
+        "We focus on modern aesthetics by not including steel and concrete lofts by default. However, if clients prefer them, we’re happy to incorporate them as part of their design.",
     },
     {
       question: "How many design iterations are allowed?",
@@ -75,7 +75,7 @@ function FaqExpanded() {
     {
       question: "What is the warranty provided by habi?",
       answer:
-        "Construction Warranty: 1 year. Structural Warranty: 25 years. AMC: 1 year from the date of handover.",
+        "Construction Warranty: 1 year.<br/> Structural Warranty: 25 years.<br/> AMC: 1 year from the date of handover.",
     },
     {
       question: "Who takes care of the quality on-site?",
@@ -134,7 +134,10 @@ function FaqExpanded() {
               <h3 className="text-xl font-semibold">
                 {index + 1}. {faq.question}
               </h3>
-              <p className="mt-2">{faq.answer}</p>
+              <p
+                className="mt-2"
+                dangerouslySetInnerHTML={{ __html: faq.answer }}
+              ></p>
             </div>
           ))}
         </div>

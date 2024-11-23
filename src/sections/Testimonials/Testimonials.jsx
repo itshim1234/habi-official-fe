@@ -86,7 +86,7 @@ const Testimonial = () => {
   return (
     <div className="text-white h-fit">
       <hr className="bg-[#ffffff] p-0 m-0" />
-      <p className="flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] z-10 mt-20">
+      <p className="flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] z-10 mt-20 font-giloryB">
         Testimonials
       </p>
       <div className="testimonial-carousel md:px-20 lg:px-40 2xl:px-[15%] pt-10 pb-20">

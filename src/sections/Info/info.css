@@ -1,3 +1,6 @@
+.highlight {
+  color: #ffb969; /* Example color */
+}
 .container {
   place-items: center;
   justify-content: center;

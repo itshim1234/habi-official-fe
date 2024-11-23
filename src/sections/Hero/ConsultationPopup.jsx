@@ -1,5 +1,7 @@
 import React from "react";
 import consultation from "../../assets/images/consultation.png";
+import call from "../../assets/images/Call.png";
+import close from "../../assets/images/close.png";
 
 const ConsultationPopup = ({ onClose }) => {
   // Define input fields dynamically
@@ -15,26 +17,26 @@ const ConsultationPopup = ({ onClose }) => {
       {/* Close Button */}
       <button
         onClick={onClose}
-        className="absolute right-0 top-0 text-white rounded-xl hover:bg-gray-800 focus:outline-none p-2 z-50"
+        className="absolute top-1 right-1 md:right-8 md:top-8 text-white rounded-xl md:bg-gray-800 focus:outline-none p-2 z-50"
       >
-        X
+        <img src={close} alt="" className="w-4" />
       </button>
 
       {/* Popup Content */}
-      <div className="bg-black/20 backdrop-blur-lg text-white rounded-2xl p-6 flex flex-col md:flex-row w-full">
+      <div className="bg-black/50 backdrop-blur-lg text-white rounded-2xl p-6 flex flex-col md:flex-row w-full">
         {/* Form Section */}
         <div className="w-full md:w-1/2">
-          <h2 className="text-xl font-semibold mb-10 text-center md:text-left">
+          <h2 className="text-2xl lg:text-3xl font-giloryS mb-10 text-center md:text-left">
             Connect with Our Experts
           </h2>
           <form>
             {/* Dynamically Render Input Fields */}
             {inputFields.map((field, index) => (
-              <div key={index} className="relative mb-8">
+              <div key={index} className="mb-8">
                 <input
                   type={field.type}
                   placeholder={field.placeholder}
-                  className="text-white block px-3 py-2 border border-[#c0c0c0] rounded-lg bg-transparent focus:outline-none w-[94%]"
+                  className="text-[#c0c0c0] font-giloryM block px-3 py-2 border border-[#7c7c7c] rounded-lg bg-transparent focus:outline-none w-[94%]"
                 />
               </div>
             ))}
@@ -42,19 +44,19 @@ const ConsultationPopup = ({ onClose }) => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-[94%] py-2 bg-white text-black rounded-lg hover:bg-yellow-600 focus:outline-none"
+              className="block w-[94%] lg:text-lg py-2 bg-white text-black rounded-lg hover:bg-secondary focus:outline-none font-giloryM"
             >
               Submit
             </button>
           </form>
 
           {/* Additional Info */}
-          <p className="mt-4 text-center text-sm px-2">
+          <p className="mt-4 text-center text-xs lg:text-[14px] px-2 font-giloryM">
             If you'd prefer not to fill out the form, feel free to give us a
             call.
           </p>
-          <p className="text-center mt-2 text-yellow-500 font-semibold pr-3">
-            📞 9606210818
+          <p className="text-center flex justify-center mt-2 text-secondary text-2xl font-giloryS pr-3">
+            <img src={call} alt="" className="mr-2 w-8" /> 9606210818
           </p>
         </div>
 

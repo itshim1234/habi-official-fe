@@ -3,7 +3,6 @@ import herobackground from "../../assets/videos/heroBackground.mp4";
 import hamburger from "../../assets/images/Hamburger.png";
 import scroll from "../../assets/images/scroll.png";
 import ConsultationPopup from "./ConsultationPopup";
-import logo from "../../assets/images/Logo.png";
 
 import "./hero.css";
 
@@ -91,7 +90,9 @@ function Hero() {
       </div>
 
       <div className="absolute z-20 text-white justify-center text-center left-10 lg:left-24 top-[20px] md:top-[40px]">
-        <img src={logo} alt="" className="w-20" />
+        <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-Samarkan text-secondary">
+          habi
+        </h2>
       </div>
 
       <div className="relative z-20 text-white justify-center text-center top-[50%] flex space-x-4 md:space-x-12 text-md md:text-[20px] 2xl:text-[24px]">
@@ -110,7 +111,7 @@ function Hero() {
         <img src={scroll} alt="" />
       </div>
       {isPopupVisible && (
-        <div className="lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:top-1/2 lg:-translate-y-1/2 z-50 ">
+        <div className="lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:top-1/2 lg:-translate-y-1/2 xl:top-[58%] z-50 ">
           <ConsultationPopup onClose={togglePopup} />
         </div>
       )}

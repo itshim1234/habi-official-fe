@@ -47,7 +47,7 @@ const ConstructionProgress = () => {
         videoPlayed ? "md:mb-28" : "md:mb-60"
       }`}
     >
-      <p className="px-10 md:px-0 absolute flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] z-10">
+      <p className="px-10 md:px-0 absolute flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] font-giloryB z-10">
         Track all your construction progress
       </p>
       {/* Centered Video */}
@@ -70,11 +70,11 @@ const ConstructionProgress = () => {
         }`}
       >
         <div className="md:px-6 md:pt-4 md:pb-6 rounded-r-3xl md:rounded-3xl w-64 md:w-[338px] bg-white/20 backdrop-blur-md border border-l-0 md:border-l border-white/40 text-right">
-          <p className="md:text-[24px] font-bold mr-2 inline">
+          <p className="md:text-[24px] font-bold mr-2 inline font-giloryS">
             Design & Documents
           </p>
           <img src={designIcon} alt="" className="inline mb-1 w-6" />
-          <p className="md:mt-2 leading-4 md:leading-5 text-[10px] md:text-[16px]">
+          <p className="md:mt-2 leading-4 md:leading-5 md:text-[16px] font-giloryM">
             The app makes it easy to organize and manage your designs and
             documents in one place. It simplifies the process, so you can
             quickly access your files.
@@ -89,7 +89,7 @@ const ConstructionProgress = () => {
             : "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0"
         }`}
       >
-        <div className="text-[12px] py-1 px-2 bg-white/40 backdrop-blur-xl rounded-xl border border-white/40">
+        <div className="text-[12px] py-1 px-2 bg-white/40 backdrop-blur-xl rounded-xl border border-white/40 font-giloryM">
           Design & Documents
           <img src={designIcon} alt="" className="inline ml-2 w-4" />
         </div>
@@ -110,17 +110,17 @@ const ConstructionProgress = () => {
               className="w-full h-full object-cover rounded-r-2xl md:rounded-2xl"
             />
           </div>
-          <div className="absolute text-[12px] py-1 text-black px-3 bg-white rounded-xl -top-2.5 -right-5">
+          <div className="absolute text-[18px] py-1 text-black px-3 bg-white rounded-xl -top-5 -right-5 font-giloryM">
             Construction on site
           </div>
-          <div className="absolute text-[12px] py-1 text-white px-3 bg-black/40 backdrop-blur-xl rounded-full -bottom-2.5 -left-3 border border-[#7c7c7c]">
-            live <img src={Live} alt="" className="inline w-4 ml-1" />
+          <div className="absolute text-[18px] py-1 text-white px-3 bg-black/40 backdrop-blur-xl rounded-full -bottom-5 -left-3 border border-[#7c7c7c] font-giloryM">
+            live <img src={Live} alt="" className="inline w-4 ml-2 mb-1" />
           </div>
         </div>
         <img
           src={play}
           alt="play"
-          className="m-auto absolute left-16 md:left-36 top-1/3"
+          className="m-auto absolute transform top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
         />
       </div>
 
@@ -131,8 +131,8 @@ const ConstructionProgress = () => {
             : "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0"
         }`}
       >
-        <div className="text-[12px] py-1 px-2 bg-white/40 backdrop-blur-xl rounded-xl border border-white/40">
-          live <img src={Live} alt="" className="inline w-4 ml-1" />
+        <div className="text-[12px] py-1 px-2 bg-white/40 backdrop-blur-xl rounded-xl border border-white/40 font-giloryM">
+          live <img src={Live} alt="" className="inline w-4 ml-1 mb-0.5" />
         </div>
       </div>
 
@@ -145,10 +145,10 @@ const ConstructionProgress = () => {
       >
         <div className="md:px-6 md:pt-4 md:pb-6 shadow-lg rounded-l-3xl md:rounded-3xl w-72 md:w-[338px] bg-white/20 backdrop-blur-md border border-r-0 md:border-r border-white/40">
           <img src={designIcon} alt="" className="inline mb-1 mr-2 w-6" />
-          <h2 className="text-[12px] md:text-[24px] font-bold inline">
+          <h2 className="text-[12px] md:text-[24px] font-giloryS inline">
             Integrated Payment
           </h2>
-          <p className="md:mt-2 leading-4 md:leading-5 text-[10px] md:text-[16px]">
+          <p className="md:mt-2 leading-4 md:leading-5 md:text-[16px] font-giloryM">
             You can manage all your construction payments easily in the app,
             keeping everything in one place. This makes tracking payments simple
             and improves your financial organization.
@@ -163,8 +163,8 @@ const ConstructionProgress = () => {
             : "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0"
         }`}
       >
-        <div className="text-[12px] py-1 px-2 bg-white/40 backdrop-blur-xl rounded-xl border border-white/40">
-          <img src={designIcon} alt="" className="inline mb-1 mr-2 w-4" />
+        <div className="text-[12px] py-1 px-2 bg-white/40 backdrop-blur-xl rounded-xl border border-white/40 font-giloryM">
+          <img src={designIcon} alt="" className="inline mr-2 w-4" />
           Integrated payment
         </div>
       </div>
@@ -177,11 +177,13 @@ const ConstructionProgress = () => {
       >
         <div className="relative md:px-4 md:pt-2 md:pb-2 shadow-lg rounded-3xl rounded-tl-none rounded-bl-3xl w-72 md:w-[338px] bg-white backdrop-blur-md border border-r-0 md:border-r border-white/40">
           <div className="flex justify-between items-center">
-            <h3 className="font-bold text-gray-800 text-[14px]">Foundation</h3>
-            <p className="text-black text-xs">Started</p>
+            <h3 className="text-gray-800 text-[16px] font-giloryS">
+              Foundation
+            </h3>
+            <p className="text-[#7c7c7c] text-xs font-giloryM">Started</p>
           </div>
-          <p className="text-sm md:text-sm text-black">initial stage</p>
-          <p className="text-xs text-gray-500 inline mr-2">
+          <p className="md:text-sm text-black font-giloryM">initial stage</p>
+          <p className="text-xs text-[#7c7c7c] inline mr-2 font-giloryM">
             25 May 2024 - 26 May 2024
           </p>
           <div className="flex justify-between items-center">
@@ -191,10 +193,10 @@ const ConstructionProgress = () => {
                 style={{ width: "100%" }}
               ></div>
             </div>
-            <p className="inline text-black text-sm mt-2">70%</p>
+            <p className="inline text-black text-sm mt-2 font-giloryM">70%</p>
           </div>
-          <div className="absolute text-[12px] p-1 text-white px-3 bg-black/60 rounded-full right-0 md:-right-5 -bottom-2.5 backdrop-blur-xl border border-[#7c7c7c]">
-            <img src={trackStages} alt="" className="inline w-4 mr-1 mb-0.5" />
+          <div className="absolute text-[18px] p-1 text-white px-3 bg-black/60 rounded-full right-0 md:-right-5 -bottom-5 backdrop-blur-xl border border-[#7c7c7c] font-giloryM">
+            <img src={trackStages} alt="" className="inline w-4 mr-2 mb-1" />
             Track Stages
           </div>
         </div>
@@ -207,8 +209,8 @@ const ConstructionProgress = () => {
             : "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0"
         }`}
       >
-        <div className="text-[12px] py-1 px-2 bg-white/40 backdrop-blur-xl rounded-xl border border-white/40">
-          <img src={trackStages} alt="" className="inline w-4 mr-1 mb-0.5" />
+        <div className="text-[12px] py-1 px-2 bg-white/40 backdrop-blur-xl rounded-xl border border-white/40 font-giloryM">
+          <img src={trackStages} alt="" className="inline w-4 mr-2 mb-0.5" />
           Track Construction
         </div>
       </div>

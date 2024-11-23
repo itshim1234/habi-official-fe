@@ -194,7 +194,7 @@ function Working() {
       {/* Scrollable content container */}
       <div className="text-center h-full bg-transparent">
         <h2
-          className="text-[32px] md:text-[40px] lg:text-[48px] font-bold my-14 mb-16"
+          className="text-[32px] md:text-[40px] lg:text-[48px] font-giloryB my-14 mb-16"
           ref={topRef}
         >
           How it Works?
@@ -221,14 +221,14 @@ function Working() {
         </div>
 
         {/* Stage number */}
-        <h3 className="lg:absolute left-20 2xl:left-64 top-52 text-[24px] md:text-[32px] lg:text-[40px] 2xl:top-64 font-semibold text-[#ffb969] mt-10 mb-4">
+        <h3 className="lg:absolute left-20 2xl:left-64 top-52 text-[24px] md:text-[32px] lg:text-[40px] 2xl:top-64 font-giloryS text-[#ffb969] mt-10 mb-4">
           {stages[currentStage]?.title || "Default Title"}
         </h3>
-        <p className="lg:absolute lg:text-left lg:left-20 2xl:left-64 lg:top-80 2xl:top-96 text-[16px] md:text-[18px] lg:text-[24px]  w-[400px] lg:w-[500px] mx-auto">
+        <p className="lg:absolute lg:text-left lg:left-20 2xl:left-64 lg:top-80 2xl:top-96 text-[16px] md:text-[18px] lg:text-[24px] font-giloryM  w-[400px] lg:w-[500px] mx-auto">
           {stages[currentStage]?.description || "Default Description"}
         </p>
       </div>
-      <div className="absolute left-[6%] lg:left-2 2xl:left-64 -bottom-24 2xl:bottom-20 text-[200px] text-stroke font-larken-bold z-0">
+      <div className="absolute left-[6%] lg:left-2 2xl:left-64 -bottom-24 2xl:bottom-20 text-[200px] text-stroke font-larken z-0">
         {stages[currentStage]?.number || 0}
       </div>
     </div>
