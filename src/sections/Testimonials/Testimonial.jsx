@@ -60,13 +60,28 @@ const testimonials = [
 
 function Testimonial() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if the screen is mobile
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize(); // Check on mount
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Calculate visible testimonials
-  const visibleTestimonials = [
-    testimonials[activeIndex],
-    testimonials[(activeIndex + 1) % testimonials.length],
-    testimonials[(activeIndex + 2) % testimonials.length],
-  ];
+  const visibleTestimonials = isMobile
+    ? [testimonials[activeIndex]]
+    : [
+        testimonials[activeIndex],
+        testimonials[(activeIndex + 1) % testimonials.length],
+        testimonials[(activeIndex + 2) % testimonials.length],
+      ];
 
   // Auto-slide testimonials every 10 seconds
   useEffect(() => {
