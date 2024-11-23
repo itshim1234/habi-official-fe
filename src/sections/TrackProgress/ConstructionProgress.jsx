@@ -43,7 +43,7 @@ const ConstructionProgress = () => {
   return (
     <div
       ref={sectionRef}
-      className={`relative h-[450px] md:h-[800px] bg-cover bg-center w-full mt-40 text-white ${
+      className={`relative h-[450px] md:h-[800px] bg-cover bg-center w-full mt-40 text-white mb-10 ${
         videoPlayed ? "md:mb-0" : "md:mb-0"
       }`}
     >
