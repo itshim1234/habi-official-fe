@@ -9,7 +9,7 @@ function Model() {
     setIsPopupVisible(!isPopupVisible1);
   };
   return (
-    <div className="relative flex flex-col justify-center text-center bg-black text-white items-center w-screen">
+    <div className="relative flex flex-col justify-center text-center bg-black text-white items-center w-screen h-screen">
       <hr className="bg-[#f8f8ff] p-0 m-0" />
 
       <p className="text-[32px] md:text-[40px] lg:text-[48px] mt-8 font-giloryB">
@@ -18,8 +18,7 @@ function Model() {
       <iframe
         src="https://my.spline.design/dynamiciphonemockup-45622d0e18cc93aee1ba379284bb9d10/"
         loading="lazy"
-        className="w-screen"
-        style={{ height: `calc(100vh - 150px)` }}
+        className="w-screen h-screen"
       ></iframe>
 
       <button

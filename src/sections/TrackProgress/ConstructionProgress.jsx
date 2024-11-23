@@ -44,10 +44,10 @@ const ConstructionProgress = () => {
     <div
       ref={sectionRef}
       className={`relative h-[450px] md:h-[800px] bg-cover bg-center w-full mt-40 text-white ${
-        videoPlayed ? "md:mb-28" : "md:mb-60"
+        videoPlayed ? "md:mb-0" : "md:mb-0"
       }`}
     >
-      <p className="px-10 md:px-0 absolute flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] font-giloryB z-10">
+      <p className="px-2 md:px-0 absolute flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] font-giloryB z-10">
         Track all your construction progress
       </p>
       {/* Centered Video */}
