@@ -11,30 +11,30 @@ const ConstructionProgress = () => {
   const [isVisible, setIsVisible] = useState(false); // Detect section visibility
   const [videoPlayed, setVideoPlayed] = useState(false); // Track video completion
   const sectionRef = useRef(null);
-  const videoRef = useRef(null);
+  // const videoRef = useRef(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
-          setIsVisible(true); // Section is visible
-        }
-      },
-      { threshold: 0.5 }
-    );
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver(
+  //     ([entry]) => {
+  //       if (entry.isIntersecting && !isVisible) {
+  //         setIsVisible(true); // Section is visible
+  //       }
+  //     },
+  //     { threshold: 0.5 }
+  //   );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+  //   if (sectionRef.current) {
+  //     observer.observe(sectionRef.current);
+  //   }
 
-    return () => observer.disconnect();
-  }, [isVisible]);
+  //   return () => observer.disconnect();
+  // }, [isVisible]);
 
-  useEffect(() => {
-    if (isVisible && videoRef.current && !videoPlayed) {
-      videoRef.current.play(); // Play video when section is visible and video has not played
-    }
-  }, [isVisible, videoPlayed]);
+  // useEffect(() => {
+  //   if (isVisible && videoRef.current && !videoPlayed) {
+  //     videoRef.current.play(); // Play video when section is visible and video has not played
+  //   }
+  // }, [isVisible, videoPlayed]);
 
   const handleVideoEnd = () => {
     setVideoPlayed(true); // Mark video as completed
@@ -54,10 +54,12 @@ const ConstructionProgress = () => {
       <div className="absolute inset-0 flex items-center justify-center xl:w-[80%] mx-auto xl:top-16">
         <video
           className="w-full h-full"
-          ref={videoRef}
+          // ref={videoRef}
           src={mobileAnimation}
-          autoPlay={false} // No autoPlay initially
+          // autoPlay={false} // No autoPlay initially
           onEnded={handleVideoEnd}
+          playsInline
+          autoPlay
           muted
         ></video>
       </div>
