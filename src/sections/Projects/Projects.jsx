@@ -99,7 +99,7 @@ const Projects = () => {
   };
 
   return (
-    <div className="flex flex-col p-5 text-white justify-center items-center h-fit 2xl:mt-44 mt-20">
+    <div className="flex flex-col p-5 text-white justify-center items-center h-fit">
       <p className="flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] z-10 my-10 font-giloryB">
         Projects
       </p>

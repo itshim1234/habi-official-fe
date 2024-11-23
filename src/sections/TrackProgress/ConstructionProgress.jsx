@@ -43,17 +43,17 @@ const ConstructionProgress = () => {
   return (
     <div
       ref={sectionRef}
-      className={`relative h-[450px] md:h-[800px] bg-cover bg-center w-full mt-40 text-white ${
+      className={`relative h-[450px] md:h-[800px] bg-cover bg-center w-full mt-20 text-white ${
         videoPlayed ? "md:mb-0" : "md:mb-0"
       }`}
     >
-      <p className="px-2 md:px-0 absolute flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] font-giloryB z-10">
+      <p className="px-2 md:px-0 flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] font-giloryB z-20">
         Track all your construction progress
       </p>
       {/* Centered Video */}
-      <div className="absolute inset-0 flex items-center justify-center xl:w-[80%] mx-auto xl:top-40">
+      <div className="absolute inset-0 flex items-center justify-center xl:w-[80%] mx-auto xl:top-16">
         <video
-          className=""
+          className="w-full h-full"
           ref={videoRef}
           src={mobileAnimation}
           autoPlay={false} // No autoPlay initially
