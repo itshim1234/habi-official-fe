@@ -17,6 +17,11 @@ import userspeak from "../../assets/images/userSpeak.png";
 
 const AboutHabi = () => {
   const navigate = useNavigate();
+
+   useEffect(() => {
+    window.scrollTo(0, 0); // Ensure the page is at the top on load
+  }, []);
+  
   const handleGoBack = () => {
     navigate(-1); // Navigate back to the previous page
   };
