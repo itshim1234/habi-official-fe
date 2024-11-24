@@ -1,6 +1,9 @@
 import React from "react";
 
 const TermsAndCondition = () => {
+   useEffect(() => {
+    window.scrollTo(0, 0); // Ensure the page is at the top on load
+  }, []);
   return (
     <div className="text-white p-6 md:p-12 font-giloryM">
       <div className="max-w-4xl mx-auto shadow-md rounded-lg p-6 md:p-10">
