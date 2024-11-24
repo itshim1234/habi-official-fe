@@ -55,9 +55,11 @@ const ConsultationPopup = ({ onClose }) => {
             If you'd prefer not to fill out the form, feel free to give us a
             call.
           </p>
-          <p className="text-center flex justify-center mt-2 text-secondary text-2xl font-giloryS pr-3">
-            <img src={call} alt="" className="mr-2 w-8" /> 9606210818
-          </p>
+          <a href="tel:9606210818">
+            <p className="text-center flex justify-center mt-2 text-secondary text-2xl font-giloryS pr-3">
+              <img src={call} alt="" className="mr-2 w-8" /> 9606210818
+            </p>
+          </a>
         </div>
 
         {/* Image Section - Hidden on Mobile */}
