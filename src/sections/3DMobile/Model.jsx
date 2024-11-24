@@ -28,7 +28,7 @@ function Model() {
         Let's Discuss
       </button>
       {isPopupVisible1 && (
-        <div className="absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:top-1/2 lg:-translate-y-1/2 z-50">
+        <div className="absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 top-1/3 md:top-2/3 md:-translate-y-2/3 z-50">
           <ConsultationPopup onClose={togglePopup} />
         </div>
       )}

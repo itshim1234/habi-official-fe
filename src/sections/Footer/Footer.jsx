@@ -10,7 +10,7 @@ import youtube from "../../assets/images/youtube.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#000000]  py-10 px-5 ml-3 text-white font-giloryM md:text-lg">
+    <footer className="bg-[#000000] py-10 px-5 ml-3 text-white font-giloryM md:text-lg">
       <div className="mx-auto grid grid-cols-2 md:grid-cols-5 gap-8">
         {/* Logo and Tagline */}
         <div className="col-span-2">
@@ -34,24 +34,59 @@ const Footer = () => {
           <h3 className="text-lg md:text-2xl font-giloryS">Follow us</h3>
           <ul className="mt-2 space-y-2">
             <li className="flex items-center">
-              <img src={linkedin} alt="LinkedIn" className="w-5 h-5 mr-2" />
-              LinkedIn
+              <a
+                href="https://www.linkedin.com/company/habiwayofliving"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center"
+              >
+                <img src={linkedin} alt="LinkedIn" className="w-5 h-5 mr-2" />
+                LinkedIn
+              </a>
             </li>
             <li className="flex items-center">
-              <img src={insta} alt="Instagram" className="w-5 h-5 mr-2" />
-              Instagram
+              <a
+                href="https://www.instagram.com/habi.wayofliving"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center"
+              >
+                <img src={insta} alt="Instagram" className="w-5 h-5 mr-2" />
+                Instagram
+              </a>
             </li>
             <li className="flex items-center">
-              <img src={youtube} alt="YouTube" className="w-5 h-5 mr-2" />
-              YouTube
+              <a
+                href="https://www.youtube.com/@habi.wayofliving"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center"
+              >
+                <img src={youtube} alt="YouTube" className="w-5 h-5 mr-2" />
+                YouTube
+              </a>
             </li>
             <li className="flex items-center">
-              <img src={twitter} alt="Twitter" className="w-5 h-5 mr-2" />
-              Twitter
+              <a
+                href="https://twitter.com/habiwayofliving"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center"
+              >
+                <img src={twitter} alt="Twitter" className="w-5 h-5 mr-2" />
+                Twitter
+              </a>
             </li>
             <li className="flex items-center">
-              <img src={facebook} alt="Facebook" className="w-5 h-5 mr-2" />
-              Facebook
+              <a
+                href="https://www.facebook.com/habi.wayofliving"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center"
+              >
+                <img src={facebook} alt="Facebook" className="w-5 h-5 mr-2" />
+                Facebook
+              </a>
             </li>
           </ul>
         </div>
@@ -60,13 +95,22 @@ const Footer = () => {
         <div>
           <h3 className="text-lg md:text-2xl font-giloryS">Contact us</h3>
           <p className="flex items-center mt-2">
-            <img src={callus} alt="Phone" className="w-5 h-5 mr-2" />
-            9606210818
+            <a href="tel:9606210818" className="flex items-center">
+              <img src={callus} alt="Phone" className="w-5 h-5 mr-2" />
+              9606210818
+            </a>
           </p>
-          <p className="flex items-center mt-2">
-            <img src={mail} alt="Email" className="w-5 h-5 mr-2" />
-            hello@habi.one
-          </p>
+          <a
+            href="mailto:hello@habi.one"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <p className="flex items-center mt-2">
+              <img src={mail} alt="Email" className="w-5 h-5 mr-2" />
+              hello@habi.one
+            </p>
+          </a>
+
           <div className="hidden md:inline">
             <h3 className="text-lg md:text-2xl font-giloryS mt-4">Work</h3>
             <p className="mt-2 flex items-center">

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import a from "../../assets/images/a.png";
+import b from "../../assets/images/b.png";
+
 import cost from "../../assets/images/Cost.png";
 import left from "../../assets/images/left.png";
 import right from "../../assets/images/right.png";
@@ -29,7 +31,7 @@ const testimonials = [
     size: "1200 Sq. ft",
     price: "1.3 Cr",
     feedback: "Highly recommended for top-tier design on a budget.",
-    image: a,
+    image: b,
     userImage: naveen,
   },
   {
@@ -53,7 +55,7 @@ const testimonials = [
     size: "1200 Sq. ft",
     price: "1.3 Cr",
     feedback: "Highly recommendeddget.",
-    image: a,
+    image: b,
     userImage: naveen,
   },
 ];
@@ -87,7 +89,7 @@ function Testimonial() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 10000);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, []);
@@ -104,10 +106,13 @@ function Testimonial() {
   };
 
   return (
-    <div className="w-full text-white">
+    <div className="w-full text-white mb-10 md:mb-0">
+      <p className="flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] z-10 mt-10 mb-10 md:mb-0 font-giloryB">
+        Testimonials
+      </p>
       <div className="flex flex-col md:flex-row-reverse">
-        <div className="bg-red-300 w-full md:w-[60%] h-[500px] pl-4 items-center flex ">
-          <div className="relative flex space-x-5 justify-center items-center">
+        <div className="w-full md:w-[65%] lg:w-[63%] xl:w-[57%] h-[380px] md:h-[500px] pl-4 items-center md:flex">
+          <div className="relative flex md:space-x-5 justify-center items-center">
             {visibleTestimonials.map((testimonial, index) => {
               let className = "carousel-item";
               if (index === 0) {
@@ -141,7 +146,7 @@ function Testimonial() {
             })}
           </div>
         </div>
-        <div className="bg-blue-300 w-full md:w-[40%] flex flex-col justify-center px-6 items-center md:items-start text-center md:text-left">
+        <div className="w-full md:w-[35%] lg:w-[40%] flex flex-col justify-center px-6 items-center md:items-start text-center md:text-left">
           <p className="font-giloryS text-2xl lg:text-3xl">
             {visibleTestimonials[0].name}
           </p>
@@ -161,6 +166,20 @@ function Testimonial() {
             {visibleTestimonials[0].price}
           </p>
         </div>
+      </div>
+      <div className="flex gap-6 mx-auto justify-center items-center mt-10 md:mt-0">
+        <button
+          onClick={handlePrev}
+          className="left-0 top-1/2 transform -translate-y-1/2 text-white p-2"
+        >
+          <img src={left} alt="◀" />
+        </button>
+        <button
+          onClick={handleNext}
+          className="right-0 top-1/2 transform -translate-y-1/2  text-white p-2 "
+        >
+          <img src={right} alt="◀" />
+        </button>
       </div>
     </div>
   );
