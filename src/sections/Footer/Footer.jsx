@@ -23,7 +23,9 @@ const Footer = () => {
         {/* Company Section */}
         <div>
           <h3 className="text-lg md:text-2xl font-giloryS">Company</h3>
-          <p className="mt-2">About habi</p>
+          <a href="/about">
+            <p className="mt-2">About habi</p>
+          </a>
           <a href="/faq">
             <p className="mt-2">Faq's</p>
           </a>

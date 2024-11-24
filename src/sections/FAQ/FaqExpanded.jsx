@@ -1,132 +1,46 @@
 import React from "react";
-
-import downArrow from "../../assets/images/downArrow.png";
+import arrow from "../../assets/images/ArrowRight.png";
 import "../../sections/CostEstimator/styles.css";
+import faq from "../../assets/Faqs/faq";
+import { useNavigate } from "react-router-dom";
 
 function FaqExpanded() {
-  const faqs = [
-    {
-      question: "Are approvals included in habi packages?",
-      answer:
-        "habi collaborates with third-party trusted partners who handle the approval process, ensuring clients enjoy a smooth and hassle-free experience from start to finish.",
-    },
-    {
-      question: "Is a compound wall included in the package?",
-      answer:
-        "Not all homes require a compound wall, so we’ve made it optional. This ensures clients pay only for what they need, keeping costs fair and transparent.",
-    },
-    {
-      question: "How long does it take to complete a G+1 or G+2 construction?",
-      answer:
-        "A G+1 or G+2 building can be completed in just 8-9 months, with 5-6 months for structural  & Civil work and 2 months for finishing touches, ensuring efficient delivery.",
-    },
-    {
-      question: "Does habi offer loans?",
-      answer:
-        "habi makes the loan approval process seamless by helping with documentation and partnering with top banks and NBFCs to offer competitive interest rates. This ensures a smooth and easy financing experience for our clients.",
-    },
-    {
-      question: "What are super built-up area, built-up area, and carpet area?",
-      answer:
-        "Carpet Area represents the total usable space inside the house, while Built-up Area includes additional spaces like balconies and terraces. Super Built-up Area adds common areas such as lobbies, staircases, and elevators, offering a complete view of the property.",
-    },
-    {
-      question: "Does habi require an advance payment?",
-      answer:
-        "habi collects a booking amount of just 1% of the total construction cost, which covers essential services like digital surveys, soil tests, and creating a personalized floor plan to get your project started smoothly.",
-    },
-    {
-      question: "Why aren’t steel and concrete lofts included?",
-      answer:
-        "We focus on modern aesthetics by not including steel and concrete lofts by default. However, if clients prefer them, we’re happy to incorporate them as part of their design.",
-    },
-    {
-      question: "How many design iterations are allowed?",
-      answer:
-        "The package includes 3 design iterations, allowing for flexible customization to ensure the perfect fit for your vision.",
-    },
-    {
-      question: "How do I get updates about the site?",
-      answer:
-        "We assign a dedicated site civil engineer to oversee your project, and our app provides real-time updates with live footage, keeping you informed every step of the way.",
-    },
-    {
-      question: "Can I make design changes while construction?",
-      answer:
-        "Yes, we’re open to changes; however, we recommend keeping them to a minimum to ensure timely completion and avoid unnecessary cost escalations.",
-    },
-    {
-      question: "Are the designs pre-planned or freshly made?",
-      answer:
-        "Every design from habi is thoughtfully crafted to suit both the site conditions and the client's unique preferences. Our designs are fresh, innovative, and tailored to create the perfect space.",
-    },
-    {
-      question:
-        "Can I change materials as per my choice even while the construction is in progress?",
-      answer:
-        "Yes, changes can be accommodated, though they may lead to an increase in project costs. We’ll ensure the process remains smooth while meeting your requirements.",
-    },
-    {
-      question:
-        "Can I change materials as per my choice apart from the selected package?",
-      answer:
-        "Yes, you can choose materials outside the package, and we’ll provide a detailed BOQ to ensure complete transparency in the quotation.",
-    },
-    {
-      question: "What is the warranty provided by habi?",
-      answer:
-        "Construction Warranty: 1 year.<br/> Structural Warranty: 25 years.<br/> AMC: 1 year from the date of handover.",
-    },
-    {
-      question: "Who takes care of the quality on-site?",
-      answer:
-        "A dedicated Site Civil Engineer oversees all quality parameters throughout construction, ensuring top-notch standards with over 100+ quality checks in place.",
-    },
-    {
-      question: "What makes habi different from other construction companies?",
-      answer:
-        "habi stands out with its tech-driven approach, direct management (no subcontracting), and rigorous quality checks. Clients enjoy app-based daily updates and real-time live footage for full transparency throughout the project.",
-    },
-    {
-      question: "Are lifts included in the package?",
-      answer:
-        "Lifts are not included by default, but we can easily add them to the BOQ upon request, ensuring a customized solution for your needs.",
-    },
-    {
-      question: "What are the quality checks that you perform on the site?",
-      answer: "100+ Quality checks.",
-    },
-    {
-      question:
-        "Does habi include the interior with the construction and provide the complete package?",
-      answer:
-        "Some packages include interiors, while others don’t, but we can always add them based on the customer’s request for a fully personalized experience.",
-    },
-    {
-      question:
-        "What if the prices of the materials increase when the project is ongoing? Would there be a price escalation?",
-      answer:
-        "Our pricing is securely locked in on stamp paper, ensuring stability in most cases. Any price adjustments due to unforeseen circumstances will be transparently communicated and are only applicable in exceptional situations.",
-    },
-  ];
-
+  const navigate = useNavigate();
+  const handleGoBack = () => {
+    navigate(-1); // Navigate back to the previous page
+  };
   return (
     <div
-      className={`h-fit flex flex-col bg-black w-full text-white justify-center items-center`}
+      className={`h-fit flex flex-col bg-black w-full text-white justify-center items-center font-giloryS`}
     >
+      <div
+        className="absolute top-5 md:top-10 right-5 md:right-10 z-10 cursor-pointer"
+        onClick={handleGoBack}
+      >
+        <img
+          src={arrow}
+          alt="Logo"
+          className="inline rotate-180 pt-0.5 mr-1 "
+        />
+        <p className="inline border-b pb-1 md:text-2xl font-giloryS">
+          Go back to Website
+        </p>
+      </div>
       <div
         className={`w-full bg-black p-2 px-4 h-auto mb-2 md:px-20 lg:px-40 2xl:px-[15%]  `}
       >
-        <div className="my-10 cursor-pointer flex">
-          <h2 className="text-[24px] lg:text-[32px] mx-auto mb-10">FAQ's</h2>
+        <div className="mb-10 mt-20 md:mt-20 cursor-pointer flex">
+          <h2 className="text-[24px] lg:text-[32px] mx-auto mb-10">
+            Frequently Asked Questions
+          </h2>
         </div>
 
         <div className="bg-black text-white space-y-4">
-          {faqs.map((faq, index) => (
+          {faq.map((faq, index) => (
             <div
               key={index}
               className={` text-left ${
-                index === faqs.length - 1
+                index === faq.length - 1
                   ? "border-b-0"
                   : "border-b border-[#7c7c7c] pb-5"
               }`}

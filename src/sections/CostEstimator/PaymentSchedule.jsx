@@ -28,10 +28,10 @@ const PaymentSchedule = ({ scheduleData }) => {
           </div>
         ))}
         <div className="flex font-giloryB text-2xl">
-          <div className="w-3/4 p-4 border-t border-[#7c7c7c] text-left">
+          <div className="w-2/4 p-4 border-t border-[#7c7c7c] text-left">
             TOTAL
           </div>
-          <div className="w-1/4 p-4 border-t border-[#7c7c7c] ">
+          <div className="w-2/4 p-4 border-t border-[#7c7c7c] text-right">
             ₹
             {scheduleData
               .reduce((acc, schedule) => acc + schedule.price, 0)

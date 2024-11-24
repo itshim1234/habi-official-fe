@@ -1,63 +1,97 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import house from "../../assets/images/house.png";
 import arrow from "../../assets/images/ArrowRight.png";
 import "../CostEstimator/styles.css";
+import value1 from "../../assets/images/value1.png";
+import value2 from "../../assets/images/value2.png";
+import value3 from "../../assets/images/value3.png";
+import value4 from "../../assets/images/value4.png";
+
+import buildings from "../../assets/images/buildings.png";
+import buildings1 from "../../assets/images/buildings1.png";
+import leaf from "../../assets/images/Leaf.png";
+import palette from "../../assets/images/palette.png";
+import userspeak from "../../assets/images/userSpeak.png";
 
 const AboutHabi = () => {
+  const navigate = useNavigate();
+  const handleGoBack = () => {
+    navigate(-1); // Navigate back to the previous page
+  };
   return (
-    <div className="bg-black text-white min-h-screen">
+    <div className="bg-black text-white min-h-screen border-b border-[#7c7c7c]">
       {/* Header */}
       <header className="flex justify-between items-center p-4">
         <div className="text-xl font-bold">logo</div>
-        <div className="flex items-center">
-          <img src={arrow} alt="arrow" className="rotate-180 mr-2" />
-          <a href="/" className="text-sm border-b">
-            Go back to website
-          </a>
+        <div
+          className="absolute top-5 md:top-10 right-5 md:right-10 z-10 cursor-pointer"
+          onClick={handleGoBack}
+        >
+          <img
+            src={arrow}
+            alt="Logo"
+            className="inline rotate-180 pt-0.5 mr-1 "
+          />
+          <p className="inline border-b pb-1 md:text-2xl font-giloryS">
+            Go back to Website
+          </p>
         </div>
       </header>
 
       {/* Main Content */}
       <main className="px-0 md:px-4 lg:px-20 py-8">
         {/* Introduction Section */}
-        <h1 className="text-3xl lg:text-5xl font-bold text-center mb-6 md:mb-10">
+        <h1 className="text-[32px] md:text-[40px] lg:text-[48px] text-white font-giloryB text-center mb-6 md:mb-10">
           About habi
         </h1>
 
-        <section className="md:flex md:items-center md:justify-between md:space-x-8 text-center md:text-left gradient-border">
+        <section className="md:flex items-center md:justify-between md:space-x-8 text-center md:text-left gradient-border">
           <div className="md:w-[60%] md:text-left px-3 my-4">
-            <h2 className="text-lg lg:text-2xl">
+            <h2 className="text-2xl md:text-[40px] font-giloryS">
               habi has a better way
-              <span className="block text-orange-400">
+              <span className="block text-lg md:text-2xl text-secondary mt-4">
                 l which is modular construction and envisioning building as a
                 product
               </span>
             </h2>
-            <p className="text-md lg:text-lg max-w-2xl">
-              We are a One Stop Design Centric 'BaaP' Company. <br />
+            <p className="text-2xl md:text-[32px] font-giloryS mt-10">
+              We are a One Stop Design Centric 'BaaP' Company.
+            </p>
+            <p className="md:text-lg font-giloryM mt-4">
               We provide design-centric approached services that are tailored to
               meet your unique ideas, needs, desires & requirements to enhance
               your overall experience of home design & construction.
             </p>
-            <p className="italic text-gray-400">
+            <p className="italic text-gray-400 mt-10 font-giloryM">
               *BaaP = Building as a Product
             </p>
           </div>
 
           {/* Image Section */}
-          <div className="mt-8 md:mt-0 md:w-[35%]">
+          <div className="relative w-[402px] h-[324px] md:w-[324px] md:h-[484px] lg:w-[500px] lg:h-[404px]">
             <img
               src={house}
               alt="Modern House"
-              className=""
+              className="w-[402px] h-[324px] md:w-[324px] md:h-[484px] lg:w-[500px] lg:h-[404px] "
+            />
+            <div
+              className="absolute inset-0"
+              style={{
+                background: `
+      linear-gradient(to right, #000000, rgba(0, 0, 0, 0) 100px),
+      linear-gradient(to left, #000000, rgba(0, 0, 0, 0) 100px)
+    `,
+              }}
             />
           </div>
         </section>
 
         {/* Vision Section */}
-        <section className="space-y-4 text-center mt-12 px-2">
-          <h2 className="text-2xl lg:text-3xl font-semibold">Vision</h2>
-          <p className="text-md lg:text-lg mx-auto">
+        <section className="space-y-6 text-center mt-20 px-2 lg:px-20">
+          <h2 className="text-2xl md:text-[32px] font-giloryS">Vision</h2>
+          <p className="md:text-lg font-giloryM">
             We envision forging a realm where affordability, accessibility,
             sustainability, and cutting-edge design seamlessly unite to elevate
             the quality of life and foster environmental well-being,
@@ -66,31 +100,38 @@ const AboutHabi = () => {
         </section>
 
         {/* Mission Section */}
-        <section className="space-y-4 text-center mt-8">
-          <h2 className="text-2xl lg:text-3xl font-semibold">Mission</h2>
-          <ul className="space-y-2 text-md lg:text-lg">
-            <li>🌿 Sustainable Living Solutions</li>
-            <li>🧑‍🦽 Accessible Design for All</li>
-            <li>🏡 Smart & Adaptive Spaces</li>
-            <li>📦 Modular Centric Construction</li>
-            <li>🏭 Industry Leader in Dynamic Manufacturing</li>
+        <section className="space-y-6 text-center justify-center mt-10">
+          <h2 className="text-2xl md:text-[32px] font-giloryS">Mission</h2>
+          <ul className="flex flex-col items-center space-y-6 md:text-lg font-giloryM">
+            <li className="flex gap-4">
+              <img src={leaf} alt="" className="w-8" /> Sustainable Living
+              Solutions
+            </li>
+            <li className="flex gap-4">
+              <img src={palette} alt="" className="w-8" /> Accessible Design for
+              All
+            </li>
+            <li className="flex gap-4">
+              <img src={buildings1} alt="" className="w-8" /> Smart & Adaptive
+              Spaces
+            </li>
+            <li className="flex gap-4">
+              <img src={buildings} alt="" className="w-8" /> Modular Centric
+              Construction
+            </li>
+            <li className="flex gap-4">
+              <img src={userspeak} alt="" className="w-8" /> Industry Leader in
+              Dynamic Manufacturing
+            </li>
           </ul>
         </section>
 
         {/* Footer Cards */}
-        <section className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-4 text-center">
-          <div className="p-4 bg-gray-800 rounded-lg shadow-lg">
-            <h3 className="font-bold text-xl">Trust</h3>
-          </div>
-          <div className="p-4 bg-gray-800 rounded-lg shadow-lg">
-            <h3 className="font-bold text-xl">Design</h3>
-          </div>
-          <div className="p-4 bg-gray-800 rounded-lg shadow-lg">
-            <h3 className="font-bold text-xl">One</h3>
-          </div>
-          <div className="p-4 bg-gray-800 rounded-lg shadow-lg">
-            <h3 className="font-bold text-xl">Value</h3>
-          </div>
+        <section className="my-20 grid grid-cols-2 md:grid-cols-4 place-items-center gap-y-10">
+          <img src={value1} alt="" className="mx-auto" />
+          <img src={value2} alt="" className="mx-auto" />
+          <img src={value3} alt="" className="mx-auto" />
+          <img src={value4} alt="" className="mx-auto" />
         </section>
       </main>
     </div>

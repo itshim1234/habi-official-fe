@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 import downArrow from "../../assets/images/downArrow.png";
 import "../../sections/CostEstimator/styles.css";
+import faq from "../../assets/Faqs/faq";
 
 function Faq() {
   const [faqSection, setFaqSection] = useState(false);
@@ -15,29 +16,6 @@ function Faq() {
       setContentHeight(contentRef.current.scrollHeight);
     }
   }, [faqSection]); // Update height if content changes dynamically
-
-  const faqs = [
-    {
-      question: "Does habi charges an advance payment?",
-      answer:
-        "Yes. habi collects a booking amount of about 1% of the total home construction cost. Alongside this, we conduct digital surveys, perform soil tests, and create a floor plan.",
-    },
-    {
-      question: "Does habi charges an advance payment?",
-      answer:
-        "Yes. habi collects a booking amount of about 1% of the total home construction cost. Alongside this, we conduct digital surveys, perform soil tests, and create a floor plan.",
-    },
-    {
-      question: "Does habi charges an advance payment?",
-      answer:
-        "Yes. habi collects a booking amount of about 1% of the total home construction cost. Alongside this, we conduct digital surveys, perform soil tests, and create a floor plan.",
-    },
-    {
-      question: "Does habi charges an advance payment?",
-      answer:
-        "Yes. habi collects a booking amount of about 1% of the total home construction cost. Alongside this, we conduct digital surveys, perform soil tests, and create a floor plan.",
-    },
-  ];
 
   return (
     <div
@@ -73,11 +51,11 @@ function Faq() {
             }}
           >
             <div ref={contentRef} className="text-white space-y-4">
-              {faqs.map((faq, index) => (
+              {faq.slice(0, 4).map((faq, index) => (
                 <div
                   key={index}
                   className={` text-left ${
-                    index === faqs.length - 1
+                    index === 3
                       ? "border-b-0"
                       : "border-b border-[#7c7c7c] pb-5"
                   }`}

@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import baapWorking from "../../assets/videos/workingAnimation.mp4";
+import workingAnimationMobile from "../../assets/videos/workingAnimationMobile.mp4";
 
 function BaapWorking() {
+  const [videoSource, setVideoSource] = useState(
+    window.innerWidth <= 768 ? workingAnimationMobile : baapWorking
+  );
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setVideoSource(workingAnimationMobile);
+      } else {
+        setVideoSource(baapWorking);
+      }
+    };
+
+    handleResize(); // Check on mount
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
-    <div className="relative w-full h-[70vw] md:h-[60vw] lg:h-screen ">
-      <video className="w-full h-full" autoPlay muted playsInline>
-        <source src={baapWorking} type="video/mp4" />
+    <div className="relative w-full h-screen md:h-[60vh] lg:h-screen">
+      <video className="w-full h-full" autoPlay muted playsInline loop>
+        <source src={videoSource} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>

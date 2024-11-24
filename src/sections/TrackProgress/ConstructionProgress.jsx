@@ -129,7 +129,7 @@ const ConstructionProgress = () => {
       <div
         className={`absolute flex md:hidden transition-all duration-1000 ${
           videoPlayed
-            ? "top-72 left-4 translate-x-0 translate-y-0 opacity-100 delay-[1000ms]"
+            ? "top-72 left-28 translate-x-0 translate-y-0 opacity-100 delay-[1000ms]"
             : "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0"
         }`}
       >
