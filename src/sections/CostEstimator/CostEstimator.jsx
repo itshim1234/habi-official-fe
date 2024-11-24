@@ -210,7 +210,7 @@ function CostEstimator() {
   return (
     <div className={`h-fit flex flex-col bg-background w-full gradient-border`}>
       <div
-        className={`w-full bg-black p-2 px-4 h-auto mb-2 mb:mb-3 md:px-20 lg:px-60 xl:px-[25%]`}
+        className={`w-full bg-black p-2 h-auto mb-2 mb:mb-3 md:px-20 lg:px-60 xl:px-[25%]`}
       >
         <div
           className="my-4 md:my-10 cursor-pointer w-full"
@@ -230,7 +230,7 @@ function CostEstimator() {
           />{" "}
         </div>
         <div
-          className={`overflow-hidden transition-[max-height] duration-1000 ease-in-out`}
+          className={`overflow-hidden transition-[max-height] duration-1000 ease-in-out px-4`}
           style={{
             maxHeight: costEstimator ? `${contentHeight}px` : "0px",
           }}
@@ -388,7 +388,7 @@ function CostEstimator() {
             </div>
 
             <div
-              className={`items-center w-full bg-layoutColor p-2 flex-grow flex flex-col`}
+              className={`items-center w-full bg-layoutColor py-2 flex-grow flex flex-col`}
             >
               <div className="bg-layoutColor text-white p-4 px-6 rounded-lg mt-4 w-full">
                 <div className="flex justify-between font-giloryM">

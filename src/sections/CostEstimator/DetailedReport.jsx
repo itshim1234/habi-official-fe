@@ -179,12 +179,12 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-background  w-full h-full font-giloryM">
+    <div className="min-h-screen flex flex-col bg-background w-full h-full font-giloryM">
       <div className={`items-center w-full bg-layoutColor md:p-2 h-auto my-10`}>
         <h2 className="text-white font-bold text-2xl mb-6 text-center">
           Cost Breakdown Details
         </h2>
-        <div className="bg-layoutColor rounded-lg mt-4 md:pr-4 px-2">
+        <div className="bg-layoutColor rounded-lg mt-4 md:pr-4">
           <div className="flex justify-between relative mb-1">
             <span className=" text-white">Design Fees</span>
             <span className="text-white absolute right-32 md:right-40 ">
