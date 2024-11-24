@@ -12,7 +12,7 @@ import value4 from "../../assets/images/value4.png";
 import buildings from "../../assets/images/buildings.png";
 import buildings1 from "../../assets/images/buildings1.png";
 import leaf from "../../assets/images/Leaf.png";
-import palette from "../../assets/images/palette.png";
+import palette from "../../assets/images/Palette.png";
 import userspeak from "../../assets/images/userSpeak.png";
 
 const AboutHabi = () => {
