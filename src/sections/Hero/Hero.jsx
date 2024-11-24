@@ -3,16 +3,23 @@ import herobackground from "../../assets/videos/heroBackground.mp4";
 import hamburger from "../../assets/images/Hamburger.png";
 import scroll from "../../assets/images/scroll.png";
 import ConsultationPopup from "./ConsultationPopup";
+import close from "../../assets/images/close.png";
 
 import "./hero.css";
 
 function Hero() {
   const [isPopupVisible, setIsPopupVisible] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // Menu visibility state
 
   // Toggle popup visibility
   const togglePopup = () => {
     setIsPopupVisible(!isPopupVisible);
   };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div className="relative min-h-[300px] h-[460px] md:h-[750px] lg:h-screen w-screen bg-cover bg-center">
       {/* Video background */}
@@ -29,17 +36,7 @@ function Hero() {
       </div>
 
       {/* Gradient overlay */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: `
-            linear-gradient(to right,#000000, rgba(0, 0, 0, 0) 200px),
-            linear-gradient(to left, #000000, rgba(0, 0, 0, 0) 200px),
-
-            linear-gradient(to top, #000000, rgba(0, 0, 0, 0) 10%)
-          `,
-        }}
-      />
+      <div className="absolute inset-0 gradient-overlay" />
 
       {/* Overlay content */}
       <div className="relative z-20 text-white justify-center text-center top-[45%] w-fit mx-auto">
@@ -80,14 +77,27 @@ function Hero() {
           <span className="text-[18px] md:text-[24px] mb-1 font-giloryS">
             Login
           </span>
-          <span className="text-lg mb-2 text-[#c0c0c0]">|</span>
+          <span className="text-lg mb-1 text-[#c0c0c0]">|</span>
           <img
-            src={hamburger}
-            alt=""
-            className="w-[24px] h-[24px] object-cover mb-1"
+            onClick={toggleMenu}
+            src={isMenuOpen ? close : hamburger}
+            alt="menu-toggle"
+            className={`${isMenuOpen ? "w-4 h-4" : "w-6 h-6"}`}
           />
         </button>
       </div>
+
+      {isMenuOpen && (
+        <div className="absolute top-24 md:top-32 right-5 md:right-10 lg:right-20 z-30 flex flex-col bg-black/50 backdrop-blur-md px-6 py-5 border border-[#7c7c7c] rounded-lg font-giloryS">
+          <button className="text-white text-[18px] md:text-[24px]">
+            Product
+          </button>
+          <hr className="my-4 w-[70%] mx-auto" />
+          <button className="text-white text-[18px] md:text-[24px]">
+            Blog
+          </button>
+        </div>
+      )}
 
       <div className="absolute z-20 text-white justify-center text-center left-10 lg:left-24 top-[20px] md:top-[40px]">
         <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-Samarkan text-secondary">
