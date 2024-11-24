@@ -7,8 +7,10 @@ import linkedin from "../../assets/images/Linkedin.png";
 import mail from "../../assets/images/mail.png";
 import twitter from "../../assets/images/twitter.png";
 import youtube from "../../assets/images/youtube.png";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
   return (
     <footer className="bg-[#000000] py-10 px-5 ml-3 text-white font-giloryM md:text-lg">
       <div className="mx-auto grid grid-cols-2 md:grid-cols-5 gap-8">
@@ -23,12 +25,18 @@ const Footer = () => {
         {/* Company Section */}
         <div>
           <h3 className="text-lg md:text-2xl font-giloryS">Company</h3>
-          <a href="/about">
-            <p className="mt-2">About habi</p>
-          </a>
-          <a href="/faq">
-            <p className="mt-2">Faq's</p>
-          </a>
+          <p
+            className="mt-2 cursor-pointer"
+            onClick={() => navigate("/about-habi")} // Corrected navigation
+          >
+            About habi
+          </p>
+          <p
+            className="mt-2 cursor-pointer"
+            onClick={() => navigate("/faq")} // Corrected navigation
+          >
+            Faq's
+          </p>
         </div>
 
         {/* Follow Us Section */}
@@ -134,14 +142,20 @@ const Footer = () => {
       <div className="border-t border-gray-700 mt-8 pt-4 text-center xl:pr-[6%]">
         <div className=" mx-auto flex flex-col md:flex-row justify-between text-[#c0c0c0] text-sm">
           <p>&copy; 2020 - 24 Designasm Technologies Pvt Ltd.</p>
-          <div className="space-x-4 mt-2 md:mt-0">
-            <a href="#" className="hover:underline">
+          <div className="space-x-4 mt-2 md:mt-0 flex mx-auto">
+            <p
+              className="cursor-pointer"
+              onClick={() => navigate("/privacy-policy")} // Corrected navigation
+            >
               Privacy Policy
-            </a>
+            </p>
             <span>|</span>
-            <a href="/about" className="hover:underline">
+            <p
+              className="cursor-pointer"
+              onClick={() => navigate("/terms-and-condition")} // Corrected navigation
+            >
               Terms and conditions
-            </a>
+            </p>
           </div>
         </div>
       </div>
