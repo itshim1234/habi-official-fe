@@ -5,6 +5,7 @@ import finalize from "../../assets/images/finalize.png";
 import track from "../../assets/images/track.png";
 import handover from "../../assets/images/handover.png";
 import star from "../../assets/images/star.png";
+import loopVideo from "../../assets/videos/loopVideo.mp4";
 // import SplineCanvas from "./SplineCanvas";
 
 const stages = [
@@ -190,9 +191,16 @@ function Working() {
   }, [currentStage, scrollLocked]);
 
   return (
-    <div className="relative h-fit lg:h-screen w-full text-white flex items-center justify-center">
-      {/* Scrollable content container */}
-      <div className="text-center h-full bg-transparent">
+    <div className="relative h-fit lg:h-screen w-full text-white flex items-center justify-center bg-transparent">
+      <video
+        className={`absolute top-0 left-0 w-full object-cover h-full`}
+        autoPlay
+        muted
+        playsInline
+      >
+        <source src={loopVideo} type="video/mp4" />
+      </video>
+      <div className="text-center h-full bg-transparent z-10">
         <h2
           className="text-[32px] md:text-[40px] lg:text-[48px] font-giloryB my-14 mb-16"
           ref={topRef}
@@ -221,7 +229,7 @@ function Working() {
         </div>
 
         {/* Stage number */}
-        <h3 className="lg:absolute left-20 2xl:left-64 top-52 text-[24px] md:text-[32px] lg:text-[40px] 2xl:top-64 font-giloryS text-[#ffb969] mt-10 mb-4">
+        <h3 className="lg:absolute left-20 2xl:left-64 top-52 text-[24px] md:text-[32px] lg:text-[40px] 2xl:top-64 font-giloryS text-[#ffb969] mt-10 mb-4 ">
           {stages[currentStage]?.title || "Default Title"}
         </h3>
         <p className="lg:absolute lg:text-left lg:left-20 2xl:left-64 lg:top-80 2xl:top-96 text-[16px] md:text-[18px] lg:text-[24px] font-giloryM  w-[400px] lg:w-[500px] mx-auto">
