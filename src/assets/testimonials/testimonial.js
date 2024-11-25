@@ -1,6 +1,6 @@
 import raghuProfile from "./images/raghu/raghuProfile.png";
 import raghuplot from "./images/raghu/raghuPlot.png";
-import charanProfile from "./images/charan/charanProfile.png";
+import charanProfile from "./images/charan/CharanProfile.png";
 import charanplot from "./images/charan/charanPlot.png";
 import vikaskumarProfile from "./images/kumar/Vikaskumar.png";
 import vikaskumarplot from "./images/kumar/vikaskumarplot.jpg";
