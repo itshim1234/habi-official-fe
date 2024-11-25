@@ -40,7 +40,7 @@ function Testimonial() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 10000);
+    }, 30000);
 
     return () => clearInterval(interval);
   }, []);

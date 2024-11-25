@@ -3,6 +3,7 @@ import location from "../../assets/images/Location.png";
 import initialImages from "../../assets/projects/project";
 import left from "../../assets/images/left.png";
 import right from "../../assets/images/right.png";
+
 const Projects = () => {
   const [images, setImages] = useState(initialImages);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -14,7 +15,7 @@ const Projects = () => {
 
     const interval = setInterval(() => {
       moveItems();
-    }, 5000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, [currentIndex, paused]);
@@ -22,6 +23,7 @@ const Projects = () => {
   const moveItems = () => {
     const nextIndex = (currentIndex + 1) % images.length;
     setCurrentIndex(nextIndex);
+    setSelectedProject(images[nextIndex]); // Update selectedProject when auto-rotating
   };
 
   const handleItemClick = (index) => {
@@ -46,6 +48,12 @@ const Projects = () => {
     return (index + length) % length;
   };
 
+  const handleNavigation = (direction) => {
+    const nextIndex = getCircularIndex(currentIndex + direction, images.length);
+    setCurrentIndex(nextIndex);
+    setSelectedProject(images[nextIndex]); // Update selectedProject
+  };
+
   return (
     <div className="flex flex-col p-5 text-white justify-center items-center h-fit">
       <p className="flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] z-10 my-10 font-giloryB">
@@ -54,18 +62,14 @@ const Projects = () => {
       <div className="flex flex-col w-full">
         <div className="relative flex justify-center items-baseline w-full">
           <button
-            onClick={() =>
-              setCurrentIndex(getCircularIndex(currentIndex - 1, images.length))
-            }
+            onClick={() => handleNavigation(-1)} // Navigate to the previous project
             className="absolute left-0 top-1/2 z-20 p-2 rounded-full text-white bg-white/40"
             aria-label="Previous"
           >
             <img src={left} alt="left" />
           </button>
           <button
-            onClick={() =>
-              setCurrentIndex(getCircularIndex(currentIndex + 1, images.length))
-            }
+            onClick={() => handleNavigation(1)} // Navigate to the next project
             className="absolute right-0 top-1/2 z-20 p-2 rounded-full text-white bg-white/40"
             aria-label="Next"
           >
