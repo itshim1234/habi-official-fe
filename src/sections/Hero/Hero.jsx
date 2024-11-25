@@ -4,7 +4,7 @@ import hamburger from "../../assets/images/Hamburger.png";
 import scroll from "../../assets/images/scroll.png";
 import ConsultationPopup from "./ConsultationPopup";
 import close from "../../assets/images/close.png";
-import logo from "../../../public/assets/Logo.png";
+import logo from "../../assets/images/Logo1.png";
 import { useNavigate } from "react-router-dom";
 
 import "./hero.css";
