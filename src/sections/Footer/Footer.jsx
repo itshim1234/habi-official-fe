@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 const Footer = () => {
   const navigate = useNavigate();
   const handleLogoClick = () => {
+    navigate("/");
     window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to the top
   };
 

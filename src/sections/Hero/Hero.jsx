@@ -92,11 +92,21 @@ function Hero({ scrollToProjects }) {
 
       {isMenuOpen && (
         <div className="absolute top-24 md:top-32 right-5 md:right-10 lg:right-20 z-30 flex flex-col bg-black/50 backdrop-blur-md px-6 py-5 border border-[#7c7c7c] rounded-lg font-giloryS">
-          <button className="text-white text-[18px] md:text-[24px]">
+          <button
+            className="text-white text-[18px] md:text-[24px]"
+            onClick={() => {
+              navigate("/baap");
+            }}
+          >
             Product
           </button>
           <hr className="my-4 w-[70%] mx-auto" />
-          <button className="text-white text-[18px] md:text-[24px]">
+          <button
+            className="text-white text-[18px] md:text-[24px]"
+            onClick={() => {
+              navigate("/");
+            }}
+          >
             Blog
           </button>
         </div>
@@ -104,12 +114,15 @@ function Hero({ scrollToProjects }) {
 
       <div
         className="absolute z-20 justify-center text-center left-4 md:left-10 lg:left-14 top-[16px] md:top-[40px]"
-        onClick={() => navigate("/")}
+        onClick={() => {
+          navigate("/"); // Navigate to the home page
+          window.location.reload(); // Refresh the page
+        }}
       >
         <img
           src={logo}
           alt="habi"
-          className="w-16 md:w-20 lg:w-24 xl:w-28 animation cursor-pointer rounded-full"
+          className="w-16 md:w-20 lg:w-24 2xl:w-28 animation cursor-pointer rounded-full"
         />
       </div>
 

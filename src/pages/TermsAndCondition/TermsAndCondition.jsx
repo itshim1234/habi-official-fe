@@ -1,11 +1,32 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import arrow from "../../assets/images/ArrowRight.png";
 
 const TermsAndCondition = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     window.scrollTo(0, 0); // Ensure the page is at the top on load
   }, []);
+
+  const handleGoBack = () => {
+    navigate(-1); // Navigate back to the previous page
+  };
   return (
     <div className="text-white p-6 md:p-12 font-giloryM">
+      <div
+        className="absolute top-5 md:top-10 right-5 md:right-10 z-10 cursor-pointer"
+        onClick={handleGoBack}
+      >
+        <img
+          src={arrow}
+          alt="left"
+          className="inline rotate-180 pt-0.5 mr-1 "
+        />
+        <p className="inline border-b pb-1 md:text-2xl font-giloryS">
+          Go back to Website
+        </p>
+      </div>
       <div className="max-w-4xl mx-auto shadow-md rounded-lg p-6 md:p-10">
         <h1 className="text-3xl font-bold mb-4">Terms and Conditions</h1>
         <section className="mb-6">

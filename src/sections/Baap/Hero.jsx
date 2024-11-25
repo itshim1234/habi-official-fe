@@ -41,12 +41,14 @@ function Hero() {
         <source src={videoSource} type="video/mp4" />
       </video>
       {/* Logo */}
-      <div className="absolute top-5 left-5 transform -translate-x-1/2 -translate-y-1/2 z-10">
+      <div className="absolute top-5 md:top-10 left-5 md:left-10 transform z-10">
         {/* <img src="logo" alt="Logo" className="w-40 md:w-56" /> */}
-        <p>logo</p>
+        <p className="text-[32px] md:text-[40px] lg:text-[48px] font-Samarkan text-primary cursor-pointer w-fit">
+          habi
+        </p>
       </div>
       <div
-        className="absolute top-10 right-0 md:right-10 z-10 cursor-pointer"
+        className="absolute top-5 md:top-10 right-5 md:right-10 z-10 cursor-pointer"
         onClick={handleGoBack}
       >
         <img

@@ -18,10 +18,10 @@ import userspeak from "../../assets/images/userSpeak.png";
 const AboutHabi = () => {
   const navigate = useNavigate();
 
-   useEffect(() => {
+  useEffect(() => {
     window.scrollTo(0, 0); // Ensure the page is at the top on load
   }, []);
-  
+
   const handleGoBack = () => {
     navigate(-1); // Navigate back to the previous page
   };
@@ -29,14 +29,16 @@ const AboutHabi = () => {
     <div className="bg-black text-white min-h-screen border-b border-[#7c7c7c]">
       {/* Header */}
       <header className="flex justify-between items-center p-4">
-        <div className="text-xl font-bold">logo</div>
+        <div className="absolute top-5 md:top-10 left-5 md:left-10 z-10 text-[32px] md:text-[40px] lg:text-[48px] font-Samarkan text-primary cursor-pointer w-fit">
+          habi
+        </div>
         <div
           className="absolute top-5 md:top-10 right-5 md:right-10 z-10 cursor-pointer"
           onClick={handleGoBack}
         >
           <img
             src={arrow}
-            alt="Logo"
+            alt="left"
             className="inline rotate-180 pt-0.5 mr-1 "
           />
           <p className="inline border-b pb-1 md:text-2xl font-giloryS">
