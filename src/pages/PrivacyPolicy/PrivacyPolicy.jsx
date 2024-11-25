@@ -131,8 +131,8 @@ const PrivacyPolicy = () => {
           <ul className="list-none ml-6">
             <li>Name: Naveen</li>
             <li>
-              Email:
-              <a href="mailto:hello@habi.one" className="text-blue-500">
+              Email :
+              <a href="mailto:hello@habi.one" className="text-blue-500 ml-1">
                 hello@habi.one
               </a>
             </li>
