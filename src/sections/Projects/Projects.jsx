@@ -1,59 +1,6 @@
 import React, { useEffect, useState } from "react";
 import location from "../../assets/images/Location.png";
-import sample from "../../assets/images/sample.png";
-
-const initialImages = [
-  {
-    img: sample,
-    name: "Image 1",
-    desc: "Description for Image 1",
-  },
-  {
-    img: sample,
-    name: "Image 2",
-    desc: "Description for Image 2",
-  },
-  {
-    img: sample,
-    name: "Image 3",
-    desc: "Description for Image 3",
-  },
-  {
-    img: sample,
-    name: "Image 4",
-    desc: "Description for Image 4",
-  },
-  {
-    img: sample,
-    name: "Image 5",
-    desc: "Description for Image 5",
-  },
-  {
-    img: sample,
-    name: "Image 6",
-    desc: "Description for Image 6",
-  },
-  {
-    img: sample,
-    name: "Image 7",
-    desc: "Description for Image 7",
-  },
-  {
-    img: sample,
-    name: "Image 8",
-    desc: "Description for Image 8",
-  },
-  {
-    img: sample,
-    name: "Image 9",
-    desc: "Description for Image 9",
-  },
-  {
-    img: sample,
-    name: "Image 10",
-    desc: "Description for Image 10",
-  },
-];
+import initialImages from "../../assets/projects/project";
 
 const Projects = () => {
   const [images, setImages] = useState(initialImages);
@@ -127,7 +74,7 @@ const Projects = () => {
                   }
                 >
                   <img
-                    src={imageItem.img}
+                    src={imageItem.mainImage}
                     alt="item"
                     className={` rounded-2xl ${
                       index === 1
@@ -145,30 +92,32 @@ const Projects = () => {
           </p>
           <p className="font-giloryM text-[16px] md:-[18px] flex">
             <img src={location} alt="" className="w-6 h-6 mr-2" />
-            {images[currentIndex].desc}
+            {images[currentIndex].location}
           </p>
         </div>
 
         {/* Display selected project description and 4 images */}
         {selectedProject && (
-          <div className="mt-10 w-fit text-center mx-auto">
-            <p className="font-giloryM text-[16px] lg:text-[18px]">kfgsdfkgm</p>
-            <div className="grid grid-cols-2 xl:grid-cols-4 justify-center gap-4 mt-6">
-              {/* Display 4 images for the selected project */}
-              {images
-                .slice(currentIndex, currentIndex + 4)
-                .map((image, index) => (
+          <div className="mt-10 w-full text-center mx-auto">
+            <p className="font-giloryM text-[16px] lg:text-[18px] px-2 md:px-4 lg:px-24">
+              {selectedProject.description}
+            </p>
+            <div className="flex justify-center mt-6">
+              <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
+                {/* Display 4 images for the selected project */}
+                {selectedProject.images.map((image, index) => (
                   <div
                     key={index}
                     className="w-[172px] h-[121px] md:w-[304px] md:h-[200px] overflow-hidden rounded-2xl"
                   >
                     <img
-                      src={image.img}
-                      alt={image.name}
+                      src={image}
+                      alt="related images"
                       className="object-cover w-full h-full"
                     />
                   </div>
                 ))}
+              </div>
             </div>
           </div>
         )}
