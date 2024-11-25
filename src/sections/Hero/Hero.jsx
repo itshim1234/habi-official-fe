@@ -4,6 +4,7 @@ import hamburger from "../../assets/images/Hamburger.png";
 import scroll from "../../assets/images/scroll.png";
 import ConsultationPopup from "./ConsultationPopup";
 import close from "../../assets/images/close.png";
+import logo from "../../../public/assets/logo.png";
 
 import "./hero.css";
 
@@ -99,9 +100,13 @@ function Hero() {
         </div>
       )}
 
-      <div className="absolute z-20 text-white justify-center text-center left-10 lg:left-24 top-[20px] md:top-[40px]">
+      <div className="absolute z-20 justify-center text-center left-10 lg:left-14 top-[20px] md:top-[40px]">
         <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-Samarkan text-secondary">
-          habi
+          <img
+            src={logo}
+            alt="habi"
+            className="w-16 md:w-20 lg:w-24 xl:w-28 animation"
+          />
         </h2>
       </div>
 

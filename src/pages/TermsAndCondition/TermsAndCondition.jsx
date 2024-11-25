@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 const TermsAndCondition = () => {
-   useEffect(() => {
+  useEffect(() => {
     window.scrollTo(0, 0); // Ensure the page is at the top on load
   }, []);
   return (

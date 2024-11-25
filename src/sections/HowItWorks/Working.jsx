@@ -196,6 +196,7 @@ function Working() {
         className={`absolute top-0 left-0 w-full object-cover h-full`}
         autoPlay
         muted
+        loop
         playsInline
       >
         <source src={loopVideo} type="video/mp4" />

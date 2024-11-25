@@ -51,7 +51,7 @@ const ConstructionProgress = () => {
         Track all your construction progress
       </p>
       {/* Centered Video */}
-      <div className="absolute inset-0 flex items-center justify-center xl:w-[80%] mx-auto xl:top-16">
+      <div className="absolute inset-0 flex items-center justify-center xl:w-[80%] mx-auto top-10 xl:top-16">
         <video
           className="w-full h-full"
           // ref={videoRef}

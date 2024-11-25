@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import arrow from "../../assets/images/ArrowRight.png";
 import "../../sections/CostEstimator/styles.css";
 import faq from "../../assets/Faqs/faq";
@@ -6,6 +6,10 @@ import { useNavigate } from "react-router-dom";
 
 function FaqExpanded() {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Ensure the page is at the top on load
+  }, []);
   const handleGoBack = () => {
     navigate(-1); // Navigate back to the previous page
   };

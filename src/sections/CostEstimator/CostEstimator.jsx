@@ -198,7 +198,7 @@ function CostEstimator() {
   const options = {
     state: ["Karnataka"],
     city: ["Bengaluru"],
-    locality: ["KR Puram", "Marathahalli", "Jayanagar"],
+    locality: ["KR Puram", "Marathahalli", "Jayanagar",""],
     landType: ["Regular", "Triangular", "Irregular"],
     length: ["20", "30", "40", "50", "Custom"],
     breadth: ["20", "30", "40", "50", "Custom"],

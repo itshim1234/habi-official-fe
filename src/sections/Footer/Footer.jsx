@@ -140,9 +140,9 @@ const Footer = () => {
 
       {/* Footer Bottom */}
       <div className="border-t border-gray-700 mt-8 pt-4 text-center xl:pr-[6%]">
-        <div className=" mx-auto flex flex-col md:flex-row justify-between text-[#c0c0c0] text-sm">
+        <div className="mx-auto flex flex-col md:flex-row justify-between text-[#c0c0c0] text-sm">
           <p>&copy; 2020 - 24 Designasm Technologies Pvt Ltd.</p>
-          <div className="space-x-4 mt-2 md:mt-0 flex mx-auto">
+          <div className="space-x-4 mt-2 md:mt-0 flex mx-auto md:mx-0">
             <p
               className="cursor-pointer"
               onClick={() => navigate("/privacy-policy")} // Corrected navigation
