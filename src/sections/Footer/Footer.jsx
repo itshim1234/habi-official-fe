@@ -11,12 +11,19 @@ import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
   const navigate = useNavigate();
+  const handleLogoClick = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to the top
+  };
+
   return (
     <footer className="bg-[#000000] py-10 px-5 ml-3 text-white font-giloryM md:text-lg">
       <div className="mx-auto grid grid-cols-2 md:grid-cols-5 gap-8">
         {/* Logo and Tagline */}
         <div className="col-span-2">
-          <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-Samarkan text-secondary">
+          <h2
+            className="text-[32px] md:text-[40px] lg:text-[48px] font-Samarkan text-secondary cursor-pointer w-fit"
+            onClick={handleLogoClick}
+          >
             habi
           </h2>
           <p className="md:mt-4 text-sm">The way of living</p>

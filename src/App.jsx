@@ -17,7 +17,8 @@ function App() {
       <div className="overflow-x-hidden bg-black">
         {/* Routing for different pages */}
         <Routes>
-          <Route path="/" element={<HabiService />} /> {/* Service Page */}
+          <Route path="/" element={<HabiService />} />
+          {/* Service Page */}
           <Route path="/baap" element={<HabiProduct />} /> {/* Product Page */}
           <Route path="/faq" element={<FaqExpanded />} /> {/* FAQs Page */}
           <Route path="/about-habi" element={<AboutHabi />} /> {/* FAQs Page */}

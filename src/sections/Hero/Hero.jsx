@@ -5,10 +5,12 @@ import scroll from "../../assets/images/scroll.png";
 import ConsultationPopup from "./ConsultationPopup";
 import close from "../../assets/images/close.png";
 import logo from "../../../public/assets/Logo.png";
+import { useNavigate } from "react-router-dom";
 
 import "./hero.css";
 
-function Hero() {
+function Hero({ scrollToProjects }) {
+  const navigate = useNavigate();
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Menu visibility state
 
@@ -100,18 +102,22 @@ function Hero() {
         </div>
       )}
 
-      <div className="absolute z-20 justify-center text-center left-10 lg:left-14 top-[20px] md:top-[40px]">
-        <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-Samarkan text-secondary">
-          <img
-            src={logo}
-            alt="habi"
-            className="w-16 md:w-20 lg:w-24 xl:w-28 animation"
-          />
-        </h2>
+      <div
+        className="absolute z-20 justify-center text-center left-4 md:left-10 lg:left-14 top-[16px] md:top-[40px]"
+        onClick={() => navigate("/")}
+      >
+        <img
+          src={logo}
+          alt="habi"
+          className="w-16 md:w-20 lg:w-24 xl:w-28 animation cursor-pointer rounded-full"
+        />
       </div>
 
       <div className="relative z-20 text-white justify-center text-center top-[50%] flex space-x-4 md:space-x-12 text-md md:text-[20px] 2xl:text-[24px]">
-        <button className="px-5 w-[160] md:w-[230px] 2xl:w-[275px] h-12 md:h-[60px] lg:h-[60px] 2xl:h-[80px] rounded-xl border-2 border-white/20 bg-black/30 backdrop-blur text-white flex items-center justify-center font-giloryS">
+        <button
+          className="px-5 w-[160] md:w-[230px] 2xl:w-[275px] h-12 md:h-[60px] lg:h-[60px] 2xl:h-[80px] rounded-xl border-2 border-white/20 bg-black/30 backdrop-blur text-white flex items-center justify-center font-giloryS"
+          onClick={scrollToProjects}
+        >
           Explore Projects
         </button>
 

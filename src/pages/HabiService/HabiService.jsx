@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Hero from "../../sections/Hero/Hero";
 import Info from "../../sections/Info/Info";
 import Service from "../../sections/habiService/Service";
@@ -16,6 +16,8 @@ function HabiService() {
   const [isServiceView, setIsServiceView] = useState(true);
   const [animation, setAnimation] = useState("");
 
+  const projectsRef = useRef(null); // Create a ref for the Projects component
+
   const toggleView = () => {
     // Set the animation based on the current view
     setAnimation(isServiceView ? "slide-out" : "slide-in");
@@ -26,9 +28,15 @@ function HabiService() {
     }, 300); // Match this duration with CSS
   };
 
+  const scrollToProjects = () => {
+    if (projectsRef.current) {
+      projectsRef.current.scrollIntoView({ behavior: "smooth" }); // Smooth scrolling
+    }
+  };
+
   return (
     <div>
-      <Hero />
+      <Hero scrollToProjects={scrollToProjects} />
       <Info />
       <div className={`content-container ${animation}`}>
         {isServiceView ? (
@@ -36,7 +44,9 @@ function HabiService() {
             <Service toggleView={toggleView} />
             <Working />
             <ConstructionProgress />
-            <Projects />
+            <div ref={projectsRef}>
+              <Projects />
+            </div>
             <Testimonial />
             <CostEstimator />
             <Model />
