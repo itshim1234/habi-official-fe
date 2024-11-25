@@ -21,14 +21,14 @@ const PrivacyPolicy = () => {
         <img
           src={arrow}
           alt="left"
-          className="inline rotate-180 pt-0.5 mr-1 "
+          className="inline rotate-180 pt-0.5 mr-1 mb-1"
         />
         <p className="inline border-b pb-1 md:text-2xl font-giloryS">
           Go back to Website
         </p>
       </div>
       <div className="max-w-4xl mx-auto shadow-md rounded-lg p-6 md:p-10">
-        <h1 className="text-3xl font-bold mb-4">Privacy Policy</h1>
+        <h1 className="text-3xl font-bold mb-20 text-center">Privacy Policy</h1>
         <p className="text-sm text-gray-500 mb-4">
           Last Updated: November 25, 2024
         </p>
