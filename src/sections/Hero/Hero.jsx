@@ -4,7 +4,7 @@ import hamburger from "../../assets/images/Hamburger.png";
 import scroll from "../../assets/images/scroll.png";
 import ConsultationPopup from "./ConsultationPopup";
 import close from "../../assets/images/close.png";
-import logo from "../../../public/assets/logo.png";
+import logo from "../../../public/assets/Logo.png";
 
 import "./hero.css";
 
