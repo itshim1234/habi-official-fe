@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import location from "../../assets/images/Location.png";
 import initialImages from "../../assets/projects/project";
-
+import left from "../../assets/images/left.png";
+import right from "../../assets/images/right.png";
 const Projects = () => {
   const [images, setImages] = useState(initialImages);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -51,7 +52,25 @@ const Projects = () => {
         Projects
       </p>
       <div className="flex flex-col w-full">
-        <div className="flex justify-center items-baseline w-full">
+        <div className="relative flex justify-center items-baseline w-full">
+          <button
+            onClick={() =>
+              setCurrentIndex(getCircularIndex(currentIndex - 1, images.length))
+            }
+            className="absolute left-0 top-1/2 z-20 p-2 rounded-full text-white bg-white/40"
+            aria-label="Previous"
+          >
+            <img src={left} alt="left" />
+          </button>
+          <button
+            onClick={() =>
+              setCurrentIndex(getCircularIndex(currentIndex + 1, images.length))
+            }
+            className="absolute right-0 top-1/2 z-20 p-2 rounded-full text-white bg-white/40"
+            aria-label="Next"
+          >
+            <img src={right} alt="" />
+          </button>
           {Array(3)
             .fill()
             .map((_, index) => {
@@ -86,6 +105,7 @@ const Projects = () => {
               );
             })}
         </div>
+
         <div className="mx-auto mt-6 text-center">
           <p className="text-[24px] md:text-[32px] font-giloryS">
             {images[currentIndex].name}
