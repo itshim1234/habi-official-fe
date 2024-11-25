@@ -1,5 +1,5 @@
 import raghuProfile from "./images/raghu/raghuProfile.png";
-import raghuplot from "./images/raghu/raghuplot.png";
+import raghuplot from "./images/raghu/raghuPlot.png";
 import charanProfile from "./images/charan/charanProfile.png";
 import charanplot from "./images/charan/charanPlot.png";
 import vikaskumarProfile from "./images/kumar/Vikaskumar.png";
@@ -15,7 +15,7 @@ const testimonials = [
     size: "2400 Sq. ft",
     price: "65 Lakhs",
     feedback:
-      " The design process was smooth, with thoughtful solutions like minimizing visible columns.",
+      "The design was smooth, with smart touches like hidden columns and a vertical garden.",
     image: raghuplot,
     userImage: raghuProfile,
     videoUrl: "https://www.youtube.com/embed/tVH_rxUKsvM?si=EAN5NZxECYb92O9H",
@@ -30,7 +30,7 @@ const testimonials = [
     size: "1200 Sq. ft",
     price: "83 Lakhs",
     feedback:
-      "The design process was smooth, with thoughtful solutions like minimizing visible columns.",
+      "I chose this team for their clear pricing, good communication, and quality work.",
     image: charanplot,
     userImage: charanProfile,
     videoUrl: "https://www.youtube.com/embed/Tb7z3SfVMfE?si=oBvaqwlKwU5nRs2f",
@@ -44,7 +44,7 @@ const testimonials = [
     size: "1200 Sq. ft",
     price: "45 Lakhs",
     feedback:
-      " The design process was smooth, with thoughtful solutions like minimizing visible columns.",
+      "Their designs were excellent, meeting all our needs, including Vastu and space efficiency.",
     image: vikaskumarplot,
     userImage: vikaskumarProfile,
     videoUrl: "https://www.youtube.com/embed/F0d2xzABQcQ?si=Gsr_GZTiCwoMWC6O",
