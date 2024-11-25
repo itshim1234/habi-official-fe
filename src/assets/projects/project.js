@@ -17,6 +17,14 @@ import prasana02 from "./images/harmony/02.png";
 import prasana03 from "./images/harmony/03.png";
 import prasana04 from "./images/harmony/04.png";
 import prasana05 from "./images/harmony/05.png";
+import alka01 from "./images/solace/01.png";
+import alka02 from "./images/solace/02.png";
+import alka03 from "./images/solace/03.png";
+import alka04 from "./images/solace/04.png";
+import saadhvi01 from "./images/saadhvi/01.jpg";
+import saadhvi02 from "./images/saadhvi/02.jpg";
+import saadhvi03 from "./images/saadhvi/03.jpg";
+import saadhvi04 from "./images/saadhvi/04.jpg";
 
 const initialImages = [
   {
@@ -52,7 +60,25 @@ const initialImages = [
     description:
       "A striking modern structure characterised by clean lines and a blend of white and wooden textures, creating a minimalist yet warm aesthetic. The design features prominent balconies, vertical elements, and green landscaping that enhance the connection with nature. Its flat roof and large glass openings offer a contemporary appeal while maximising natural light and ventilation",
 
-    images: [prasana01, prasana03, prasana04, prasana05],
+    images: [prasana02, prasana03, prasana04, prasana05],
+  },
+  {
+    mainImage: alka01,
+    name: "Solace",
+    location: "Bengaluru",
+    description:
+      "Design of this 4BHK villa is modern and sophisticated, featuring a modular layout with an extended chajja and creative use of wood. Generous balcony areas adorned with lush greenery enhance the living experience, while large openings allow ample natural light and ventilation. The design seamlessly blends aesthetics and functionality, creating a stylish and practical home",
+
+    images: [alka02, alka03, alka04],
+  },
+  {
+    mainImage: saadhvi01,
+    name: "Saadhvi",
+    location: "Dehradun",
+    description:
+      "The Villa seamlessly blends contemporary design with Nepali influences, marrying elegance and cultural richness. Balcony grills, resembling beaded necklaces, add authenticity, while triangular chazza and sliding window grills with wooden accents enhance the aesthetic. Floating steps on water create a serene connection with nature, and a 5-foot cantilevered roof offers both intrigue and rain protection. The green entrance porch, with an inverted angular ceiling, welcomes residents and guests into a space where modernity meets Nepali heritage.",
+
+    images: [saadhvi02, saadhvi03, saadhvi04],
   },
 ];
 
