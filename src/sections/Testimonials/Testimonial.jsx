@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import a from "../../assets/images/a.png";
-import b from "../../assets/images/b.png";
 
 import cost from "../../assets/images/Cost.png";
 import left from "../../assets/images/left.png";
@@ -8,61 +6,14 @@ import right from "../../assets/images/right.png";
 import plot from "../../assets/images/Plot.png";
 import location from "../../assets/images/projectLocation.png";
 import "./styles.css";
-import naveen from "../../assets/images/navven.png";
-const testimonials = [
-  {
-    id: 1,
-    name: "Sandeep Kumar",
-    content:
-      "Habi not only brought our dream home to life but exceeded expectations...",
-    location: "Jayanagar, Bengaluru",
-    size: "1200 Sq. ft",
-    price: "1.3 Cr",
-    feedback: "Highly recommended for top-tier design on a budget.",
-    image: a,
-    userImage: naveen,
-  },
-  {
-    id: 2,
-    name: "Sandeep",
-    content:
-      "Habi not only brought our dream home to life but exceeded expectations...",
-    location: "Jayanagar, Bengaluru",
-    size: "1200 Sq. ft",
-    price: "1.3 Cr",
-    feedback: "Highly recommended for top-tier design on a budget.",
-    image: b,
-    userImage: naveen,
-  },
-  {
-    id: 3,
-    name: "Sumar",
-    content:
-      "Habi not only brought our dream home to life but exceeded expectations...",
-    location: "Jayanagar, Bengaluru",
-    size: "1200 Sq. ft",
-    price: "1.3 Cr",
-    feedback: "Highly recommended on a budget.",
-    image: a,
-    userImage: naveen,
-  },
-  {
-    id: 4,
-    name: "Sandumar",
-    content:
-      "Habi not only brought our dream home to life but exceeded expectations...",
-    location: "Jayanagar, Bengaluru",
-    size: "1200 Sq. ft",
-    price: "1.3 Cr",
-    feedback: "Highly recommendeddget.",
-    image: b,
-    userImage: naveen,
-  },
-];
+
+import testimonials from "../../assets/testimonials/testimonial";
 
 function Testimonial() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [videoUrl, setVideoUrl] = useState(null); // For storing video URL
+  const [isModalOpen, setIsModalOpen] = useState(false); // For opening/closing modal
 
   // Check if the screen is mobile
   useEffect(() => {
@@ -89,7 +40,7 @@ function Testimonial() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 1000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, []);
@@ -105,8 +56,22 @@ function Testimonial() {
     setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
   };
 
+  // Handle click on active testimonial to open video
+  const handleClick = (testimonial) => {
+    if (testimonial.videoUrl) {
+      setVideoUrl(testimonial.videoUrl); // Set video URL from the testimonial
+      setIsModalOpen(true); // Open modal
+    }
+  };
+
+  // Close the modal
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setVideoUrl(null); // Clear video URL when closing
+  };
+
   return (
-    <div className="w-full text-white mb-10 md:mb-0">
+    <div className="w-full text-white mb-10 md:mb-0 relative">
       <p className="flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] z-10 mt-10 mb-10 md:mb-0 font-giloryB">
         Testimonials
       </p>
@@ -124,22 +89,24 @@ function Testimonial() {
               }
 
               return (
-                <div key={testimonial.id} className={className}>
+                <div
+                  key={testimonial.id}
+                  className={className}
+                  onClick={() => handleClick(testimonial)} // Handle click on carousel item
+                >
                   <img
-                    className="absolute"
+                    className="absolute w-full h-full object-cover rounded-2xl"
                     src={testimonial.image}
                     alt="Testimonial"
                   />
-                  <div className="content z-10 absolute -bottom-[9%] bg-black/40 backdrop-blur-lg rounded-b-3xl px-3 flex items-end pb-5 justify-center border border-[#7c7c7c]">
-                    <p className="text-left">{testimonial.content}</p>
+                  <div className="content z-10 absolute bottom-0 bg-black/40 backdrop-blur-lg rounded-b-xl px-3 flex items-end pb-5 justify-center border border-[#7c7c7c]">
+                    <p className="text-left">{testimonial.feedback}</p>
                   </div>
-                  <div className="blur absolute right-3 border-t rounded-full p-2 bg-black/40 backdrop-blur-lg z-0">
-                    <img src={naveen} alt="" />
-                  </div>
+
                   <img
-                    src={naveen}
+                    src={testimonial.userImage}
                     alt=""
-                    className="image absolute right-3 border-t rounded-full p-2 z-20"
+                    className="image absolute right-3 border-2 rounded-full z-20"
                   />
                 </div>
               );
@@ -181,6 +148,30 @@ function Testimonial() {
           <img src={right} alt="◀" />
         </button>
       </div>
+
+      {/* Modal for YouTube video */}
+      {isModalOpen && (
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[90%] md:w-[80%] h-[30%] md:h-full bg-black/50 flex justify-center items-center z-20">
+          <button
+            className="absolute -top-2 -right-2 p-2 text-black"
+            onClick={closeModal}
+          >
+            ✖
+          </button>
+          <div className="modal-container bg-white p-4 rounded-lg w-full h-full">
+            <iframe
+              width="100%"
+              height="100%"
+              src={videoUrl}
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

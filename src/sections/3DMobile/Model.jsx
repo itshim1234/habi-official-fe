@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ConsultationPopup from "../Hero/ConsultationPopup";
+import whatsapp from "../../assets/images/whatsapp.png";
 
 function Model() {
   const [isPopupVisible1, setIsPopupVisible] = useState(false);
@@ -18,7 +19,7 @@ function Model() {
       <iframe
         src="https://my.spline.design/dynamiciphonemockup-45622d0e18cc93aee1ba379284bb9d10/"
         loading="lazy"
-        className="w-screen h-screen"
+        className="w-screen h-screen "
       ></iframe>
 
       <button
@@ -32,6 +33,14 @@ function Model() {
           <ConsultationPopup onClose={togglePopup} />
         </div>
       )}
+
+      <div
+        className="absolute w-40 h-9 bottom-5 right-0 md:right-8 pr-10 bg-[#191919] rounded-lg flex font-giloryM justify-center items-center text-3xl cursor-pointer"
+        onClick={() => (window.location.href = "https://wa.me/9606210818")}
+      >
+        <img src={whatsapp} alt="WhatsApp" className="w-8 md:w-10 mr-3" />
+        <p>9606210818</p>
+      </div>
     </div>
   );
 }
