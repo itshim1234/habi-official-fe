@@ -53,6 +53,9 @@ const ConsultationPopup = ({ onClose }) => {
         redirect: "follow",
         method: "POST",
         body: form,
+         headers: {
+                        "Content-Type": "text/plain;charset=utf-8",
+                    },
       });
 
       if (response.ok) {
