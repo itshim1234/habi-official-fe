@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import consultation from "../../assets/images/consultation.png";
 import call from "../../assets/images/Call.png";
 import close from "../../assets/images/close.png";
-import emailjs from "emailjs-com";
 
 const ConsultationPopup = ({ onClose }) => {
   // Define input fields dynamically
