@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import consultation from "../../assets/images/consultation.png";
 import call from "../../assets/images/Call.png";
 import close from "../../assets/images/close.png";
-import emailjs from "emailjs-com";
 
 const ConsultationPopup = ({ onClose }) => {
   const inputFields = [
@@ -36,14 +35,24 @@ const ConsultationPopup = ({ onClose }) => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const validateForm = () => {
+    if (!formData.name || !formData.phone || !formData.location) {
+      setMessage("Please fill in all required fields.");
+      return false;
+    }
+    return true;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateForm()) return;
 
     setMessage("Submitting...");
     setIsSubmitting(true);
 
     const scriptURL =
-      "https://script.google.com/macros/s/AKfycbxsJvkv4_bHUzvlGUodt0rho2YJzp1-uLJ6Fr6IzCaW_OlmU3umcINhgju2JIWOgfT4/exec";
+      "https://script.google.com/macros/s/AKfycbzSEWAT0YVIeFaZVlJbu1CJOn10dx3nNr8I_zQI6hhjOrKxU5kjSb5w2tVHX0C5WvTX/exec";
 
     // Create FormData and populate it with form data
     const form = new FormData();
@@ -51,12 +60,8 @@ const ConsultationPopup = ({ onClose }) => {
 
     try {
       const response = await fetch(scriptURL, {
-        redirect: "follow",
         method: "POST",
         body: form,
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8",
-        },
       });
 
       if (response.ok) {
@@ -105,6 +110,7 @@ const ConsultationPopup = ({ onClose }) => {
                   value={formData[field.key]}
                   onChange={handleInputChange}
                   className="text-[#c0c0c0] font-giloryM block px-3 py-2 border border-[#7c7c7c] rounded-lg bg-transparent focus:outline-none w-[94%]"
+                  required={field.label.includes("*")}
                 />
               </div>
             ))}
