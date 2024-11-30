@@ -48,7 +48,6 @@ const ConsultationPopup = ({ onClose }) => {
 
     if (!validateForm()) return;
 
-    setMessage("Submitting...");
     setIsSubmitting(true);
 
     const scriptURL =
@@ -65,13 +64,16 @@ const ConsultationPopup = ({ onClose }) => {
       });
 
       if (response.ok) {
-        setMessage("Data submitted successfully!");
+        setMessage("Submitted successfully!");
         setFormData({
           name: "",
           phone: "",
           email: "",
           location: "",
         });
+        setTimeout(() => {
+          onClose();
+        }, 4000);
       } else {
         throw new Error("Failed to submit the form.");
       }
@@ -127,7 +129,7 @@ const ConsultationPopup = ({ onClose }) => {
           </form>
 
           {message && (
-            <p className="mt-4 text-center text-xs lg:text-[14px] text-green-500">
+            <p className="mt-4 text-center text-xs lg:text-[18px] text-green-500">
               {message}
             </p>
           )}
