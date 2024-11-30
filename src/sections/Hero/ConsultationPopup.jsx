@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import consultation from "../../assets/images/consultation.png";
 import call from "../../assets/images/Call.png";
 import close from "../../assets/images/close.png";
+import emailjs from "emailjs-com";
 
 const ConsultationPopup = ({ onClose }) => {
   // Define input fields dynamically
@@ -40,28 +41,33 @@ const ConsultationPopup = ({ onClose }) => {
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Access the form directly using 'contact-form' and use FormData
-    const form = e.target;
+    const serviceID = "service_vhzjlar"; // Replace with your EmailJS Service ID
+    const templateID = "template_np814qi"; // Replace with your EmailJS Template ID
+    const publicKey = "ayLYGqiv5ATcCXFnd"; // Replace with your EmailJS Public Key
 
-    const scriptURL =
-      "https://script.google.com/a/macros/habi.one/s/AKfycbwx-zAm0hO_K0jtFBG7P-afOQVDxk0NKG6dzlO-NopYO_LzpYfh2qm9VmNH8EfkqwH-mA/exec";
+    try {
+      const result = await emailjs.send(
+        serviceID,
+        templateID,
+        {
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          location: formData.location,
+        },
+        publicKey
+      );
 
-    // Use FormData to send form data
-    fetch(scriptURL, {
-      method: "POST",
-      body: new FormData(form),
-    })
-      .then((response) => {
-        setMessage("Thank you! Your form is submitted successfully.");
-        form.reset(); // Optionally reset the form after successful submission
-      })
-      .catch((error) => {
-        console.error("Error!", error.message);
-        setMessage("Something went wrong, please try again later.");
-      });
+      setMessage("Email sent successfully!");
+      setFormData({ name: "", phone: "", email: "", location: "" });
+      console.log("EmailJS Result:", result);
+    } catch (error) {
+      console.error("Error sending email:", error);
+      setMessage("Failed to send email. Please try again later.");
+    }
   };
 
   return (
@@ -107,7 +113,7 @@ const ConsultationPopup = ({ onClose }) => {
 
           {/* Display Success/Error Message */}
           {message && (
-            <p className="mt-4 text-center text-xs lg:text-[14px] text-red-500">
+            <p className="mt-4 text-center text-xs lg:text-[14px] text-green-500">
               {message}
             </p>
           )}
