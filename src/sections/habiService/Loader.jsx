@@ -47,21 +47,21 @@ const StyledWrapper = styled.div`
       left: 0; /* Starts at the left */
       width: 0; /* Initial width */
     }
-    6.66% {
+    25% {
       left: 0; /* Starts at the left */
       width: 25%; /* Initial width */
     }
-    19.98% {
-      left: 0;
-      width: 25%;
+    50% {
+      left: 0; /* Starts at the left */
+      width: 50%; /* Initial width */
     }
-    26.64% {
-      left: 0;
-      width: 50%;
+    75% {
+      left: 0; /* Starts at the left */
+      width: 75%; /* Initial width */
     }
-    39.96% {
-      left: 0;
-      width: 50%;
+    100% {
+      left: 0; /* Remains aligned to the left */
+      width: 100%; /* Expands to fill the container */
     }
   }
 

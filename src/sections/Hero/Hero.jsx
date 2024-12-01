@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import herobackground from "../../assets/videos/heroBackground.mp4";
-import hamburger from "../../assets/images/Hamburger.png";
 import scroll from "../../assets/images/scroll.png";
 import ConsultationPopup from "./ConsultationPopup";
-import close from "../../assets/images/close.png";
 import logo from "../../assets/images/Logo1.png";
 import { useNavigate } from "react-router-dom";
+import Hamburger from "../../components/Hamburger";
 
 import "./hero.css";
 
@@ -81,12 +80,10 @@ function Hero({ scrollToProjects }) {
             Login
           </span>
           <span className="text-lg mb-1 text-[#c0c0c0]">|</span>
-          <img
-            onClick={toggleMenu}
-            src={isMenuOpen ? close : hamburger}
-            alt="menu-toggle"
-            className={`${isMenuOpen ? "w-4 h-4" : "w-6 h-6"}`}
-          />
+         
+          <div onChange={toggleMenu}>
+            <Hamburger />
+          </div>
         </button>
       </div>
 
