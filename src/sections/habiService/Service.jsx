@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import model from "../../assets/videos/Model.mp4";
 import arrow from "../../assets/images/ArrowRight.png";
 import Loader from "./Loader";
+import SparkleButton from "../../components/SparkleButton";
 import "./style.css";
 
 function Service({ toggleView }) {
@@ -24,13 +25,19 @@ function Service({ toggleView }) {
     <div className="flex flex-col justify-center text-center bg-black text-white relative w-full h-fit">
       <hr className="bg-[#f8f8ff] p-0 m-0" />
 
-      <button
+      {/* <button
         className="rotate-border flex items-center w-fit mt-[57px] md:mt-0 md:absolute md:top-[100px] md:left-0 backdrop-blur-[12.5px] bg-slate-50 bg-opacity-30 p-5 rounded-r-xl border-2 border-l-0 border-white"
         onClick={toggleView}
       >
         <span className="mr-3">BaaP</span>
         <img src={arrow} alt="" />
-      </button>
+      </button> */}
+      <div
+        className="flex items-center w-fit mt-[57px] md:mt-0 md:absolute md:top-[100px] md:left-0"
+        onClick={toggleView}
+      >
+        <SparkleButton text="BaaP" />
+      </div>
 
       <h1 className="text-[32px] md:text-[40px] lg:text-[48px] text-white font-giloryB mt-[22px] md:mt-[56px]">
         habi homes

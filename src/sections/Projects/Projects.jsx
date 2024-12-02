@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import location from "../../assets/images/Location.png";
 import initialImages from "../../assets/projects/project";
 import left from "../../assets/images/left.png";
@@ -9,6 +10,7 @@ const Projects = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedProject, setSelectedProject] = useState(null);
   const [paused, setPaused] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (paused) return;
@@ -23,25 +25,14 @@ const Projects = () => {
   const moveItems = () => {
     const nextIndex = (currentIndex + 1) % images.length;
     setCurrentIndex(nextIndex);
-    setSelectedProject(images[nextIndex]); // Update selectedProject when auto-rotating
   };
 
   const handleItemClick = (index) => {
     const clickedProject = images[index];
-
-    // Toggle selection and pause/resume movement
-    if (selectedProject && selectedProject.name === clickedProject.name) {
-      setPaused(!paused); // Resume if already paused
-    } else {
-      setPaused(true); // Pause when selecting a new item
-    }
-
-    setSelectedProject(
-      selectedProject && selectedProject.name === clickedProject.name
-        ? null
-        : clickedProject
-    );
-    setCurrentIndex(index);
+    setPaused(true); // Pause auto-rotation
+    navigate(`/project`, {
+      state: { project: clickedProject },
+    });
   };
 
   const getCircularIndex = (index, length) => {
@@ -51,7 +42,6 @@ const Projects = () => {
   const handleNavigation = (direction) => {
     const nextIndex = getCircularIndex(currentIndex + direction, images.length);
     setCurrentIndex(nextIndex);
-    setSelectedProject(images[nextIndex]); // Update selectedProject
   };
 
   return (
@@ -110,41 +100,15 @@ const Projects = () => {
             })}
         </div>
 
-        <div className="mx-auto mt-6 text-center">
-          <p className="text-[24px] md:text-[32px] font-giloryS">
+        <div className="mx-auto mt-6 text-center justify-center items-center">
+          <p className="text-[24px] md:text-[32px] font-giloryS mx-auto text-center justify-center">
             {images[currentIndex].name}
           </p>
-          <p className="font-giloryM text-[16px] md:-[18px] flex">
+          <p className="font-giloryM text-[16px] md:-[18px] flex mx-auto text-center justify-center">
             <img src={location} alt="" className="w-6 h-6 mr-2" />
             {images[currentIndex].location}
           </p>
         </div>
-
-        {/* Display selected project description and 4 images */}
-        {selectedProject && (
-          <div className="mt-10 w-full text-center mx-auto">
-            <p className="font-giloryM text-[16px] lg:text-[18px] px-2 md:px-4 lg:px-24">
-              {selectedProject.description}
-            </p>
-            <div className="flex justify-center mt-6">
-              <div className="grid grid-cols-2 xl:grid-cols-4 gap-4">
-                {/* Display 4 images for the selected project */}
-                {selectedProject.images.map((image, index) => (
-                  <div
-                    key={index}
-                    className="w-[172px] h-[121px] md:w-[304px] md:h-[200px] overflow-hidden rounded-2xl"
-                  >
-                    <img
-                      src={image}
-                      alt="related images"
-                      className="object-cover w-full h-full"
-                    />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );
