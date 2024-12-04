@@ -158,7 +158,7 @@ function Testimonial() {
           >
             ✖
           </button>
-          <div className="modal-container bg-white p-4 rounded-lg w-full h-full">
+          <div className="modal-container rounded-lg w-full h-full">
             <iframe
               width="100%"
               height="100%"
