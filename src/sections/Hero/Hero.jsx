@@ -76,11 +76,9 @@ function Hero({ scrollToProjects }) {
       </div>
       <div className="absolute z-20 text-white justify-center text-center right-[16px] md:right-[32px] lg:right-[82px] top-[20px] md:top-[40px]">
         <button className="flex items-center justify-between px-5 w-[140px] md:w-[180px] h-[56px] md:h-[60px] rounded-lg border-2 border-white/20 bg-black/25 backdrop-blur-md text-white font-semibold">
-          <span className="text-[18px] md:text-[24px] font-giloryS">
-            Login
-          </span>
+          <span className="text-[18px] md:text-[24px] font-giloryS">Login</span>
           <span className="text-lg mb-1 text-[#c0c0c0]">|</span>
-         
+
           <div onChange={toggleMenu}>
             <Hamburger />
           </div>
@@ -95,7 +93,7 @@ function Hero({ scrollToProjects }) {
               navigate("/baap");
             }}
           >
-            Product                          
+            Product
           </button>
           <hr className="my-2 md:my-4 w-[70%] mx-auto" />
           <button
@@ -121,6 +119,9 @@ function Hero({ scrollToProjects }) {
           alt="habi"
           className="w-16 md:w-20 lg:w-24 2xl:w-28 animation cursor-pointer rounded-full"
         />
+        <p className="font-giloryM text-white mt-1 text-xs md:text-sm lg:text-lg">
+          The way of Living
+        </p>
       </div>
 
       <div className="relative z-20 text-white justify-center text-center top-[50%] flex space-x-4 md:space-x-12 text-md md:text-[20px] 2xl:text-[24px]">
