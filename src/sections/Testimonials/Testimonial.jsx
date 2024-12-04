@@ -40,7 +40,7 @@ function Testimonial() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 30000);
+    }, 10000);
 
     return () => clearInterval(interval);
   }, []);
@@ -114,7 +114,7 @@ function Testimonial() {
           </div>
         </div>
         <div className="w-full md:w-[55%] lg:w-[40%] flex flex-col justify-center px-6 items-center md:items-start text-center md:text-left">
-          <p className="font-giloryS text-2xl lg:text-[32px]">
+          <p className="font-giloryS text-2xl lg:text-[32px] mt-14 md:mt-0">
             {visibleTestimonials[0].name}
           </p>
           <p className="font-giloryM lg:text-lg 2xl:text-xl mt-6">
