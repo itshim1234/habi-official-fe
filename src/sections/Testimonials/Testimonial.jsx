@@ -4,6 +4,7 @@ import cost from "../../assets/images/Cost.png";
 import left from "../../assets/images/left.png";
 import right from "../../assets/images/right.png";
 import plot from "../../assets/images/Plot.png";
+import play from "../../assets/images/Playicon.png";
 import location from "../../assets/images/projectLocation.png";
 import "./styles.css";
 
@@ -79,7 +80,7 @@ function Testimonial() {
         <div className="w-full md:w-[45%] lg:w-[65%] xl:w-[64%] 2xl:w-[59%] h-[380px] md:h-[500px] md:pl-4 items-center md:flex">
           <div className="relative flex md:space-x-5 justify-center items-center">
             {visibleTestimonials.map((testimonial, index) => {
-              let className = "carousel-item";
+              let className = "relative carousel-item";
               if (index === 0) {
                 className += " active"; // Left large
               } else if (index === 1) {
@@ -107,6 +108,11 @@ function Testimonial() {
                     src={testimonial.userImage}
                     alt=""
                     className="image absolute right-3 border-2 rounded-full z-20"
+                  />
+                  <img
+                    src={play}
+                    alt=""
+                    className="absolute top-1/3 left-1/2 transform -translate-x-1/2 z-50 w-6 h-6"
                   />
                 </div>
               );
@@ -153,7 +159,7 @@ function Testimonial() {
       {isModalOpen && (
         <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[90%] md:w-[80%] h-[30%] md:h-full bg-black/50 flex justify-center items-center z-20">
           <button
-            className="absolute -top-2 -right-2 p-2 text-black"
+            className="absolute top-2 right-2 p-2 text-black bg-white"
             onClick={closeModal}
           >
             ✖
