@@ -4,7 +4,7 @@ import arrow from "../../assets/images/arrowA.png";
 import close from "../../assets/images/close.png";
 import home from "../../assets/images/home.png";
 
-import watch from "../../assets/images/stopwatch.png";
+import watch from "../../assets/images/Stopwatch.png";
 
 import plot from "../../assets/images/Plot1.png";
 
