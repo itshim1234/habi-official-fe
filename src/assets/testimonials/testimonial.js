@@ -33,7 +33,7 @@ const testimonials = [
       "I chose this team for their clear pricing, good communication, and quality work.",
     image: charanplot,
     userImage: charanProfile,
-    videoUrl: "https://www.youtube.com/embed/Tb7z3SfVMfE?si=oBvaqwlKwU5nRs2f",
+    videoUrl: "https://www.youtube.com/embed/BWbawFAjlb4?si=ZhUlxDGopgNp7ex_",
   },
   {
     id: 3,
