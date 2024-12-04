@@ -76,7 +76,7 @@ function Hero({ scrollToProjects }) {
       </div>
       <div className="absolute z-20 text-white justify-center text-center right-[16px] md:right-[32px] lg:right-[82px] top-[20px] md:top-[40px]">
         <button className="flex items-center justify-between px-5 w-[140px] md:w-[180px] h-[56px] md:h-[60px] rounded-lg border-2 border-white/20 bg-black/25 backdrop-blur-md text-white font-semibold">
-          <span className="text-[18px] md:text-[24px] mb-1 font-giloryS">
+          <span className="text-[18px] md:text-[24px] font-giloryS">
             Login
           </span>
           <span className="text-lg mb-1 text-[#c0c0c0]">|</span>

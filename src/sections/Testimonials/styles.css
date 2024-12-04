@@ -1,20 +1,20 @@
 .carousel-item.active {
-  width: 250px; /* Width for the active (leftmost) item */
-  height: 325px;
+  width: 320px; /* Width for the active (leftmost) item */
+  height: 410px;
   transform: scale(1);
   opacity: 1;
   z-index: 2;
 }
 .carousel-item.middle {
-  width: 230px; /* Smaller width for the center and right items */
-  height: 300px;
+  width: 280px; /* Smaller width for the center and right items */
+  height: 370px;
   transform: scale(1);
   opacity: 0.8;
 }
 
 .carousel-item.small {
-  width: 200px; /* Smaller width for the center and right items */
-  height: 260px;
+  width: 240px; /* Smaller width for the center and right items */
+  height: 330px;
   transform: scale(1);
   opacity: 0.8;
 }

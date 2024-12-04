@@ -7,8 +7,9 @@ import right from "../../assets/images/right.png";
 
 const Projects = () => {
   const [images, setImages] = useState(initialImages);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(
+    parseInt(localStorage.getItem("currentIndex")) || 0 // Load from localStorage
+  );
   const [paused, setPaused] = useState(false);
   const navigate = useNavigate();
 
@@ -21,6 +22,11 @@ const Projects = () => {
 
     return () => clearInterval(interval);
   }, [currentIndex, paused]);
+
+  useEffect(() => {
+    // Save the currentIndex to localStorage whenever it changes
+    localStorage.setItem("currentIndex", currentIndex);
+  }, [currentIndex]);
 
   const moveItems = () => {
     const nextIndex = (currentIndex + 1) % images.length;
@@ -45,8 +51,8 @@ const Projects = () => {
   };
 
   return (
-    <div className="flex flex-col p-5 text-white justify-center items-center h-fit">
-      <p className="flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] z-10 my-10 font-giloryB">
+    <div className="flex flex-col p-5 text-white justify-center items-center h-fit 2xl:h-screen">
+      <p className="flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] 2xl:text-[64px] z-10 my-10 font-giloryB">
         Projects
       </p>
       <div className="flex flex-col w-full">

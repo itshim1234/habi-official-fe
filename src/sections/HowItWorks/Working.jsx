@@ -192,7 +192,7 @@ function Working() {
       </video>
       <div className="text-center h-full bg-transparent z-10">
         <h2
-          className="text-[32px] md:text-[40px] lg:text-[48px] font-giloryB my-14 mb-16"
+          className="text-[32px] md:text-[40px] lg:text-[48px] 2xl:text-[64px] font-giloryB my-14 mb-16"
           ref={topRef}
         >
           How it Works?

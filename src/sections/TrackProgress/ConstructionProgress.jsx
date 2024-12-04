@@ -10,11 +10,37 @@ import line from "../../assets/images/Line.png";
 const ConstructionProgress = () => {
   const [videoPlayed, setVideoPlayed] = useState(false); // Track video completion
   const sectionRef = useRef(null);
+  const videoRef = useRef(null);
 
   const handleVideoEnd = () => {
     setVideoPlayed(true); // Mark video as completed
   };
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          const video = videoRef.current;
+          if (video) {
+            video.currentTime = 0; // Reset video to the start
+            video.play(); // Play video again
+          }
+        }
+      },
+      {
+        threshold: 0.5, // Trigger when 50% of the section is visible
+      }
+    );
 
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
   return (
     <div
       ref={sectionRef}
@@ -22,12 +48,13 @@ const ConstructionProgress = () => {
         videoPlayed ? "md:mb-0" : "md:mb-0"
       }`}
     >
-      <p className="px-2 md:px-0 flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] font-giloryB z-20">
+      <p className="px-2 md:px-0 flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] 2xl:text-[64px] font-giloryB z-20">
         Track all your construction progress
       </p>
       {/* Centered Video */}
-      <div className="absolute inset-0 flex items-center justify-center xl:w-[80%] mx-auto top-10 xl:top-16">
+      <div className="absolute inset-0 flex items-center justify-center xl:w-[80%] mx-auto top-10 xl:top-16 2xl:top-24">
         <video
+          ref={videoRef}
           className="w-full h-full"
           // ref={videoRef}
           src={mobileAnimation}

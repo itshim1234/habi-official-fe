@@ -71,12 +71,12 @@ function Testimonial() {
   };
 
   return (
-    <div className="w-full text-white mb-10 md:mb-0 relative">
-      <p className="flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] z-10 mt-10 mb-10 md:mb-0 font-giloryB">
+    <div className="w-full text-white mb-10 md:mb-0 relative 2xl:mb-20">
+      <p className="flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] 2xl:text-[64px] z-10 mt-10 mb-10 md:mb-0 font-giloryB">
         Testimonials
       </p>
       <div className="flex flex-col md:flex-row-reverse">
-        <div className="w-full md:w-[65%] lg:w-[63%] xl:w-[57%] h-[380px] md:h-[500px] pl-4 items-center md:flex">
+        <div className="w-full md:w-[45%] lg:w-[65%] xl:w-[64%] 2xl:w-[59%] h-[380px] md:h-[500px] md:pl-4 items-center md:flex">
           <div className="relative flex md:space-x-5 justify-center items-center">
             {visibleTestimonials.map((testimonial, index) => {
               let className = "carousel-item";
@@ -99,7 +99,7 @@ function Testimonial() {
                     src={testimonial.image}
                     alt="Testimonial"
                   />
-                  <div className="content z-10 absolute bottom-0 bg-black/40 backdrop-blur-lg rounded-b-xl px-3 flex items-end pb-5 justify-center border border-[#7c7c7c]">
+                  <div className="content z-10 absolute bottom-0 bg-black/40 backdrop-blur-lg rounded-b-xl px-3 flex items-end pb-8 justify-center border border-[#7c7c7c] gil">
                     <p className="text-left">{testimonial.feedback}</p>
                   </div>
 
@@ -113,11 +113,11 @@ function Testimonial() {
             })}
           </div>
         </div>
-        <div className="w-full md:w-[35%] lg:w-[40%] flex flex-col justify-center px-6 items-center md:items-start text-center md:text-left">
-          <p className="font-giloryS text-2xl lg:text-3xl">
+        <div className="w-full md:w-[55%] lg:w-[40%] flex flex-col justify-center px-6 items-center md:items-start text-center md:text-left">
+          <p className="font-giloryS text-2xl lg:text-[32px]">
             {visibleTestimonials[0].name}
           </p>
-          <p className="font-giloryM lg:text-lg mt-6">
+          <p className="font-giloryM lg:text-lg 2xl:text-xl mt-6">
             {visibleTestimonials[0].content}
           </p>
           <p className="flex mb-2 text-lg font-giloryS mt-6">

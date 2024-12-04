@@ -13,7 +13,7 @@ function Model() {
     <div className="relative flex flex-col justify-center text-center bg-black text-white items-center w-screen h-screen">
       <hr className="bg-[#f8f8ff] p-0 m-0" />
 
-      <p className="text-[32px] md:text-[40px] lg:text-[48px] mt-8 font-giloryB">
+      <p className="text-[32px] md:text-[40px] lg:text-[48px] 2xl:text-[64px] mt-8 font-giloryB">
         Your dream home awaits. Ready to begin?
       </p>
       <iframe
