@@ -62,8 +62,6 @@ function Working() {
           if (!scrolled) {
             setScrollLocked(true); // Lock scrolling when the section is in view
           } // Reset to ensure proper logic for downward scrolling
-        } else {
-          setScrollLocked(false); // Unlock scrolling when the section is out of view
         }
       },
       { threshold: 1 }
@@ -84,8 +82,6 @@ function Working() {
         if (entries[0].isIntersecting) {
           if (scrolled) {
             setScrollLocked(true); // Lock scroll when at the top and reverse scrolling
-          } else {
-            setScrollLocked(false); // Unlock scrolling when the section is out of view
           }
         }
       },
