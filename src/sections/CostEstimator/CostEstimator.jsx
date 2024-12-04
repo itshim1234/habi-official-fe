@@ -62,6 +62,37 @@ const NumberInput = ({ value, onChange, name, label }) => (
     />
   </div>
 );
+const RadioGroup = ({ value, onChange, options, name, label }) => (
+  <div className="relative mb-8 md:mb-10">
+    {label && (
+      <label className="absolute -top-6 left-0 px-1 py-0 text-[#C0C0C0] capitalize font-giloryM">
+        {label}*
+      </label>
+    )}
+    <div className="flex flex-wrap gap-4">
+      {options.map((option) => (
+        <div key={option} className="flex items-center">
+          <input
+            type="radio"
+            id={`floorHeight-${option}`}
+            name={name}
+            value={option}
+            checked={value === option}
+            onChange={onChange}
+            className="hidden"
+          />
+          <label
+            htmlFor={`floorHeight-${option}`}
+            className={`flex items-center justify-center w-10 h-10 text-white rounded-lg cursor-pointer transition-all duration-300 
+              ${value === option ? "bg-primary" : "bg-[#1a1a1a]"}`}
+          >
+            {option}
+          </label>
+        </div>
+      ))}
+    </div>
+  </div>
+);
 
 function CostEstimator() {
   const [detailedCost, setDetailedCost] = useState(false);
@@ -102,7 +133,6 @@ function CostEstimator() {
   const [inputs, setInputs] = useState({
     state: localStorage.getItem("state") || "State",
     city: localStorage.getItem("city") || "City",
-    locality: localStorage.getItem("locality") || "Locality",
     landType: localStorage.getItem("landType") || "Regular",
     side1: localStorage.getItem("side1") || "",
     side2: localStorage.getItem("side2") || "",
@@ -113,7 +143,7 @@ function CostEstimator() {
     customLength: localStorage.getItem("customLength") || "",
     customBreadth: localStorage.getItem("customBreadth") || "",
     floors: localStorage.getItem("floors") || "1",
-    floorHeight: localStorage.getItem("floorHeight") || "10",
+    floorHeight: localStorage.getItem("floorHeight") || "10", // Default to "10"
     packageType: localStorage.getItem("packageType") || "Package",
   });
 
@@ -198,7 +228,6 @@ function CostEstimator() {
   const options = {
     state: ["Karnataka"],
     city: ["Bengaluru"],
-    locality: ["KR Puram", "Marathahalli", "Jayanagar",""],
     landType: ["Regular", "Triangular", "Irregular"],
     length: ["20", "30", "40", "50", "Custom"],
     breadth: ["20", "30", "40", "50", "Custom"],
@@ -254,18 +283,18 @@ function CostEstimator() {
             </div>
             <div className="grid md:grid-cols-2 gap-4 mt-3 md:mt-0">
               <SelectInput
-                value={inputs.locality}
-                onChange={handleInputChange}
-                options={options.locality}
-                name="locality"
-                label="Locality"
-              />
-              <SelectInput
                 value={inputs.landType}
                 onChange={handleInputChange}
                 options={options.landType}
                 name="landType"
                 label="Land Type"
+              />
+              <SelectInput
+                value={inputs.packageType}
+                onChange={handleInputChange}
+                options={options.packageType}
+                name="packageType"
+                label="Package"
               />
             </div>
 
@@ -369,21 +398,12 @@ function CostEstimator() {
                 name="floors"
                 label="No of Floors"
               />
-              <SelectInput
+              <RadioGroup
                 value={inputs.floorHeight}
                 onChange={handleInputChange}
                 options={options.floorHeight}
                 name="floorHeight"
                 label="Floor Height"
-              />
-            </div>
-            <div className="md:w-1/2 justify-center mx-auto mt-3 md:mt-0">
-              <SelectInput
-                value={inputs.packageType}
-                onChange={handleInputChange}
-                options={options.packageType}
-                name="packageType"
-                label="Package"
               />
             </div>
 
@@ -502,7 +522,6 @@ function CostEstimator() {
                           </li>
                         </ul>
                       </div>
-                      {/* End: Logo Carousel Animation */}
                     </div>
                   </div>
                 </main>
