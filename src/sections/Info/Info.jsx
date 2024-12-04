@@ -24,21 +24,21 @@ function Info() {
   }, []);
 
   return (
-    <div className="flex justify-center items-center w-full">
-      <div className="container min-w-full h-[500px] md:h-[700px] lg:h-[650px] xl:h-[650px]">
+    <div className="flex justify-center items-center w-full 2xl:h-[700px]">
+      <div className="container min-w-full h-[500px] md:h-[700px] lg:h-[650px] xl:h-[650px] 2xl:h-[800px]">
         <div>
-          <h1 className="text-[32px] md:text-[40px] lg:text-[48px] text-white font-giloryB mt-10 md:mb-10 lg:mb-56 2xl:mb-[390px] text-center justify-center">
+          <h1 className="text-[32px] md:text-[40px] lg:text-[48px] 2xl:text-[64px] text-white font-giloryB mt-10 md:mb-10 lg:mb-56 2xl:mb-[390px] text-center justify-center">
             Why habi
           </h1>
         </div>
         <div className="hero-circle">
-          <div className="inner-text top-[33%] md:top-[28%] lg:top-[20%] xl:top-[18%] 2xl:top-[16%]">
+          <div className="inner-text top-[33%] md:top-[28%] lg:top-[20%] xl:top-[18%] 2xl:top-[13%]">
             <div>
-              <p className="font-giloryS text-[24px] md:text-[32px] mb-[8px]">
+              <p className="font-giloryS text-[24px] md:text-[32px] mb-[8px] 2xl:mb-6">
                 {texts[currentIndex]}
               </p>
               <p
-                className="font-giloryM text-[16px] md:text-[18px] px-8"
+                className="font-giloryM text-[16px] md:text-[18px] 2xl:text-2xl px-8 md:px-4 2xl:px-0"
                 dangerouslySetInnerHTML={{ __html: desc[currentIndex] }}
               ></p>
             </div>

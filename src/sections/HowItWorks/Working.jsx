@@ -6,6 +6,7 @@ import track from "../../assets/images/track.png";
 import handover from "../../assets/images/handover.png";
 import star from "../../assets/images/star.png";
 import loopVideo from "../../assets/videos/loopVideo.mp4";
+// import SplineCanvas from "./SplineCanvas";
 
 const stages = [
   {
@@ -47,20 +48,25 @@ const stages = [
 
 function Working() {
   const [currentStage, setCurrentStage] = useState(0);
-  const [isInViewport, setIsInViewport] = useState(false);
+  const [scrollLocked, setScrollLocked] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const sectionRef = useRef(null);
+  const topRef = useRef(null);
+  const nextSectionRef = useRef(null);
 
-  // Intersection Observer to detect when the section is in viewport
+  // Intersection observer for the main section
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          setIsInViewport(true);
+          if (!scrolled) {
+            setScrollLocked(true); // Lock scrolling when the section is in view
+          } // Reset to ensure proper logic for downward scrolling
         } else {
-          setIsInViewport(false);
+          setScrollLocked(false); // Unlock scrolling when the section is out of view
         }
       },
-      { threshold: 0.5 } // Trigger when 50% of the component is visible
+      { threshold: 1 }
     );
 
     if (sectionRef.current) {
@@ -70,24 +76,115 @@ function Working() {
     return () => {
       if (sectionRef.current) observer.disconnect();
     };
-  }, []);
-
-  // Automatically change stages when in viewport
+  }, [scrolled]);
+  // Intersection observer for the top element (reverse scroll)
   useEffect(() => {
-    if (!isInViewport) return;
+    const topObserver = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          if (scrolled) {
+            setScrollLocked(true); // Lock scroll when at the top and reverse scrolling
+          } else {
+            setScrollLocked(false); // Unlock scrolling when the section is out of view
+          }
+        }
+      },
+      { threshold: 1 }
+    );
+    if (topRef.current) {
+      topObserver.observe(topRef.current);
+    }
+    return () => {
+      if (topRef.current) topObserver.disconnect();
+    };
+  }, [scrolled]);
+  // Prevent page scrolling when `scrollLocked` is true
+  useEffect(() => {
+    const preventScroll = (e) => e.preventDefault();
+    document.body.style.overflowY = scrollLocked ? "hidden" : "";
+    if (scrollLocked) {
+      document.addEventListener("touchmove", preventScroll, { passive: false });
+    } else {
+      document.removeEventListener("touchmove", preventScroll);
+    }
+    return () => {
+      document.removeEventListener("touchmove", preventScroll);
+    };
+  }, [scrollLocked]);
 
-    const interval = setInterval(() => {
-      setCurrentStage((prevStage) => (prevStage + 1) % stages.length);
-    }, 2000);
+  // Scroll event handler
+  useEffect(() => {
+    let scrollCount = 0;
+    let touchStartY = 0;
+    const handleWheel = (e) => {
+      if (!scrollLocked) return;
+      scrollCount += Math.sign(e.deltaY);
+      handleScrollLogic(scrollCount);
+    };
+    const handleTouchStart = (e) => {
+      touchStartY = e.touches[0].clientY;
+    };
 
-    return () => clearInterval(interval);
-  }, [isInViewport]);
+    const handleTouchMove = (e) => {
+      if (!scrollLocked) return;
+
+      const touchEndY = e.touches[0].clientY;
+      const deltaY = touchStartY - touchEndY; // Calculate the vertical movement
+      touchStartY = touchEndY; // Update the starting point for the next move
+
+      scrollCount += deltaY; // Accumulate the total scroll amount
+
+      const touchThreshold = 100; // Threshold for triggering stage changes (higher = slower transitions)
+
+      if (scrollCount >= touchThreshold) {
+        handleScrollLogic(4); // Pass "1" for forward scroll
+        scrollCount = 0; // Reset scroll count after triggering
+      } else if (scrollCount <= -touchThreshold) {
+        handleScrollLogic(-4); // Pass "-1" for reverse scroll
+        scrollCount = 0; // Reset scroll count after triggering
+      }
+    };
+
+    const handleScrollLogic = (scroll) => {
+      // Forward scroll (downward)
+      if (scroll >= 4 && currentStage < stages.length - 1) {
+        setCurrentStage((prev) => prev + 1);
+        scrollCount = 0;
+      }
+      // Reverse scroll (upward)
+      if (scroll <= -4 && currentStage > 0) {
+        setCurrentStage((prev) => prev - 1);
+        scrollCount = 0;
+      }
+      // Unlock scrolling at the last stage
+      if (currentStage === stages.length - 1 && scroll >= 4) {
+        setScrollLocked(false);
+        setScrolled(true);
+        document.body.style.overflow = ""; // Allow scrolling
+        nextSectionRef.current?.scrollIntoView({ behavior: "smooth" });
+      }
+      // Unlock scrolling at the first stage (reverse scroll)
+      if (currentStage === 0 && scroll <= -4) {
+        setScrollLocked(false);
+        setScrolled(false);
+        document.body.style.overflow = ""; // Allow scrolling
+        topRef.current?.scrollIntoView({ behavior: "smooth" });
+      }
+    };
+    // Add event listeners for wheel and touch
+    window.addEventListener("wheel", handleWheel);
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("touchmove", handleTouchMove);
+    // Cleanup listeners
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+    };
+  }, [currentStage, scrollLocked]);
 
   return (
-    <div
-      ref={sectionRef}
-      className="relative h-fit lg:h-screen w-full text-white flex items-center justify-center bg-transparent"
-    >
+    <div className="relative h-fit lg:h-screen w-full text-white flex items-center justify-center bg-transparent">
       <video
         className={`absolute top-0 left-0 w-full object-cover h-full`}
         autoPlay
@@ -98,7 +195,10 @@ function Working() {
         <source src={loopVideo} type="video/mp4" />
       </video>
       <div className="text-center h-full bg-transparent z-10">
-        <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-giloryB my-14 mb-16">
+        <h2
+          className="text-[32px] md:text-[40px] lg:text-[48px] font-giloryB my-14 mb-16"
+          ref={topRef}
+        >
           How it Works?
         </h2>
 
@@ -110,13 +210,14 @@ function Working() {
             className="w-full h-full object-contain"
           />
           <img
+            ref={sectionRef} // Attach topRef to the element to trigger reverse scrolling
             src={star}
-            alt="star"
+            alt=""
             className="absolute right-0 -bottom-5 md:-bottom-8 w-10 md:w-16"
           />
           <img
             src={star}
-            alt="star"
+            alt=""
             className="absolute -right-2 md:-right-4 bottom-2 w-5 md:w-8"
           />
         </div>

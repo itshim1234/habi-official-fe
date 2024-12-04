@@ -55,7 +55,7 @@ function Hero({ scrollToProjects }) {
         ></div>
 
         {/* Main text */}
-        <div className="relative text-[48px] md:text-[85px] lg:text-[80px] 2xl:text-[114px] font-giloryB font-semibold leading-[50px] md:leading-[80px] lg:leading-[100px] 2xl:leading-[120px]">
+        <div className="relative text-[48px] md:text-[85px] lg:text-[80px] 2xl:text-[114px] font-giloryB font-semibold leading-[50px] md:leading-[80px] lg:leading-[90px] 2xl:leading-[120px]">
           {/* Blurred background above the text */}
           <div
             className="absolute -top-3 left-0 right-0 mx-auto z-40"
@@ -88,16 +88,16 @@ function Hero({ scrollToProjects }) {
       </div>
 
       {isMenuOpen && (
-        <div className="absolute top-24 md:top-32 right-5 md:right-10 lg:right-20 z-30 flex flex-col bg-black/50 backdrop-blur-md px-6 py-5 border border-[#7c7c7c] rounded-lg font-giloryS">
+        <div className="absolute top-24 md:top-32 right-5 md:right-10 lg:right-20 z-30 flex flex-col bg-black/50 backdrop-blur-md px-6 py-2 md:py-5 border border-[#7c7c7c] rounded-lg font-giloryS">
           <button
             className="text-white text-[18px] md:text-[24px]"
             onClick={() => {
               navigate("/baap");
             }}
           >
-            Product
+            Product                          
           </button>
-          <hr className="my-4 w-[70%] mx-auto" />
+          <hr className="my-2 md:my-4 w-[70%] mx-auto" />
           <button
             className="text-white text-[18px] md:text-[24px]"
             onClick={() => {

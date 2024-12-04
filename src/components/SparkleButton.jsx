@@ -4,17 +4,9 @@ import arrow from "../assets/images/ArrowRight.png";
 
 const SparkleButton = ({ text }) => {
   return (
-    <StyledWrapper>
-      <button
-        className={`button font-giloryS ${
-          text === "BaaP" ? "rounded-r-xl border-1 border-l-0" : ""
-        }`}
-      >
-        <div
-          className={`dots_border ${
-            text === "BaaP" ? "rounded-r-xl border-1 border-l-0" : ""
-          }`}
-        />
+    <StyledWrapper text={text}>
+      <button className="button font-giloryS">
+        <div className="dots_border" />
         {text === "BaaP" ? (
           <>
             <span className="text_button text-2xl 2xl:text-3xl">{text}</span>
@@ -33,14 +25,15 @@ const SparkleButton = ({ text }) => {
 
 const StyledWrapper = styled.div`
   .button {
-    --black-700: hsla(0 0% 12% / 1);
+    --black-700: hsla(0 0% 30% / 1);
     --border_radius: 18px;
     --transtion: 0.3s ease-in-out;
     --offset: 2px;
 
     cursor: pointer;
     position: relative;
-
+    border-radius: ${({ text }) =>
+      text == "BaaP" ? "0 24px 24px 0" : "24px 0 0 24px"};
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -56,6 +49,8 @@ const StyledWrapper = styled.div`
 
   .button::before {
     content: "";
+    border-radius: ${({ text }) =>
+      text == "BaaP" ? "0 24px 24px 0" : "24px 0 0 24px"};
     position: absolute;
     top: 50%;
     left: 50%;
@@ -75,13 +70,13 @@ const StyledWrapper = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-
+    border-radius: ${({ text }) =>
+      text === "BaaP" ? "0 24px 24px 0" : "24px 0 0 24px"};
     width: 100%;
     height: 100%;
-    background-color: #0fb4c3;
-    background-image: radial-gradient(at 51% 89%, #c8cfcf 0px, transparent 50%),
-      radial-gradient(at 100% 100%, #869597 0px, transparent 50%),
-      radial-gradient(at 22% 91%, #869597 0px, transparent 50%);
+    background-color: #046f7a;
+
+    background-image: linear-gradient(to top, #00eaff 0px, transparent 100%);
     background-position: top;
 
     opacity: var(--active, 0);
@@ -100,7 +95,8 @@ const StyledWrapper = styled.div`
     --size_border: calc(100% + 2px);
 
     overflow: hidden;
-
+    border-radius: ${({ text }) =>
+      text === "BaaP" ? "0 24px 24px 0" : "24px 0 0 24px"};
     position: absolute;
     top: 50%;
     left: 50%;

@@ -135,7 +135,7 @@
 @media (min-width: 1536px) {
   /* Small screens */
   .container {
-    --circleDiameter: 2400px;
+    --circleDiameter: 2600px;
     --planets: 150px;
   }
 }
