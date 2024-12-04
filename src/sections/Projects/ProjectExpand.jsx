@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import arrow from "../../assets/images/arrowA.png";
 import close from "../../assets/images/close.png";
+import home from "../../assets/images/home.png";
+
+import watch from "../../assets/images/stopwatch.png";
+
+import plot from "../../assets/images/Plot1.png";
 
 const ProjectExpand = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -19,7 +24,7 @@ const ProjectExpand = () => {
   };
 
   return (
-    <div className="relative inset-0 h-fit w-screen">
+    <div className="relative inset-0 h-screen w-screen">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -53,9 +58,17 @@ const ProjectExpand = () => {
             </p>
             {/* Show description */}
             <ul className="text-lg md:text-2xl space-y-2 lg:space-y-4 font-giloryS">
-              <li>📐 1200 Sq. ft</li>
-              <li>🏠 West Facing, 3BHK Duplex Villa</li>
-              <li>✅ Completed</li>
+              <li className="flex">
+                <img src={plot} alt="" className="mr-2 h-8" /> 1200 Sq. ft
+              </li>
+              <li className="flex">
+                <img src={home} alt="" className="mr-2 h-8" /> West Facing, 3BHK
+                Duplex Villa
+              </li>
+              <li className="flex">
+                <img src={watch} alt="" className="mr-2 h-8" />
+                Completed
+              </li>
             </ul>
           </div>
 
@@ -73,15 +86,17 @@ const ProjectExpand = () => {
                 />
               ))}
             </div>
-            <div className="mt-6">
-              <iframe
-                src="https://www.youtube.com/embed/BWbawFAjlb4?si=E_wbL4H1kIDR9Be4"
-                title="YouTube video player"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-40 lg:h-80 rounded-lg border"
-              ></iframe>
-            </div>
+            {project.youtube && (
+              <div className="mt-6">
+                <iframe
+                  src={project.youtube}
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-40 lg:h-80 rounded-lg border"
+                ></iframe>
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -56,6 +56,7 @@ const initialImages = [
     description:
       "The 3BHK villa is adorned with stone cladding and intricate metal works on its elevation, creating a visually appealing exterior. The double-height ceiling in the main living area adds a sense of spaciousness and grandeur. A unique feature is the double-height glass room, seamlessly blending the indoors with the lush green outdoors, creating an inside-out feel. The connection is enhanced by a wooden staircase from the living area, adding a touch of warmth and elegance to the over- all design.",
     images: [raghu02, raghu03, raghu04],
+    youtube: "https://www.youtube.com/embed/XVmEIqt4y20?si=IuWbseXMjkOtcku2",
   },
   {
     mainImage: charan01,
@@ -65,6 +66,7 @@ const initialImages = [
       "The 3BHK duplex villa in Bengaluru, set on a 30x40 feet north-facing site, epitomizes contemporary design. With tile cladding and metal grills, the exterior is strikingly modern. The porch doubles as an extended balcony, creating a charming outdoor space. Large openings ensure natural light floods the interiors, and the double-height living room adds a sense of openness. This stylish villa also includes three rental units, blending functionality with visual appeal for a comfortable living experience.",
 
     images: [charan02, charan03, charan04, charan05],
+    youtube: "https://www.youtube.com/embed/yQqP7bL3Pf4?si=yv958xFiN7woJnJx",
   },
   {
     mainImage: koushik03,
@@ -110,6 +112,7 @@ const initialImages = [
       "This 2BHK apartment is designed to embrace nature, featuring generous balcony areas adorned with lush greenery. The wooden planks on the elevation contribute to the building's aesthetic appeal, creating a warm and inviting atmosphere. Large openings in the design enhance the connection between indoor and outdoor spaces, allowing ample natural light and ventilation. The combination of greenery, wooden elements, and expansive openings creates a harmonious living environment that is both refreshing and visually pleasing.",
 
     images: [tranquil02, tranquil03, tranquil04],
+    youtube: "https://www.youtube.com/embed/xqhikqpzVhQ?si=JeccmOZ8tWJe2dXA",
   },
   {
     mainImage: ananda01,
@@ -119,6 +122,7 @@ const initialImages = [
       "The simple yet stylish 2BHK apartment is thoughtfully designed with a modular layout and features inviting balcony spaces. The exterior wall is adorned with brick cladding, adding a touch of aesthetic appeal to the overall design. Additionally, a stone jali serves a dual purpose, functioning both as a practical element and an aesthetically pleasing detail. This design ensures a harmonious blend of functionality and visual charm, making the apartment a comfortable and visually appealing living space.",
 
     images: [ananda02, ananda03, ananda04, ananda05],
+    youtube: "https://www.youtube.com/embed/uiPsaSCUePI?si=s4ZpDg9Sm0bZnyQD",
   },
   {
     mainImage: nirman01,
@@ -127,6 +131,7 @@ const initialImages = [
     description:
       "The 3BHK house seamlessly integrates with a commercial complex, featuring a safety grill adorned with tile cladding for both aesthetics and functionality. The sit-out area and car porch offer welcoming outdoor spaces. The interior is designed with simplicity and minimalism, while a jali work near the puja area adds a touch of tradition. This residence skillfully balances practicality and aesthetics, providing a harmonious living space.",
     images: [nirman02, nirman03, nirman04, nirman05],
+    youtube: "https://www.youtube.com/embed/b70zZ3qrCDM?si=ytprAvP9rmrzspFS",
   },
 
   {
@@ -145,6 +150,7 @@ const initialImages = [
     description:
       " The 4BHK villa boasts a distinctive exterior design, featuring a captivating vertical garden in the front. The trapezoidal inverted roof adds an aesthetic touch, enhancing the overall visual appeal of the house. The intricate design of a tree, incorporated with metal, further contributes to the unique and artistic look. A courtyard cleverly connects different spaces within the villa, creating a seamless flow and promoting a sense of openness. This residence beautifully combines innovative architectural elements with natural aesthetics, creating a harmonious and visually striking living environment.",
     images: [vrshkvilla02, vrshkvilla03, vrshkvilla04, vrshkvilla05],
+    youtube: "https://www.youtube.com/embed/7wQ_dTzE220?si=mtw9v-j29TZeGDiZ",
   },
 ];
 
