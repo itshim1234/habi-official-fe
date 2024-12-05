@@ -4,9 +4,15 @@ import styled from "styled-components";
 const Card = ({ data }) => {
   return (
     <StyledWrapper>
-      <div className="myCard w-[169px] h-[208px] md:w-[195px] md:h-[220px] lg:w-[237px] lg:h-[257px]">
+      <div className="myCard w-[169px] h-[208px] md:w-[195px] md:h-[220px] lg:w-[237px] lg:h-[257px] backdrop-blur-lg">
         <div className="innerCard">
-          <div className="frontSide text-black justify-between py-6">
+          <div
+            className={`frontSide text-white  py-6  ${
+              data.title == "Total"
+                ? "justify-center space-y-4"
+                : "justify-between"
+            }`}
+          >
             <p
               className={`title  ${
                 data.title == "Total"
@@ -22,15 +28,14 @@ const Card = ({ data }) => {
               </p>
             )}
             <p className="font-giloryB text-2xl lg:text-[32px]">
-              ₹ {data.price}
+              ₹ {Number(data.price).toLocaleString("en-IN")}
             </p>
           </div>
-          <div className="backSide text-left px-2 py-4 font-giloryM text-xs md:text-[14px] lg:text-[16px] space-y-1 lg:space-y-2">
+          <div className="backSide text-left px-2 py-4 font-giloryM text-xs md:text-[14px] lg:text-[16px] space-y-1 lg:space-y-2 leading-4">
             {data.items.map((item, index) => {
               return (
-                <p key={index}>
-                  {index + 1}
-                  <span>)</span> {item}
+                <p key={index} className="flex items-center">
+                  <span className="mr-2">&#8226;</span> {item}
                 </p>
               );
             })}
@@ -76,12 +81,12 @@ const StyledWrapper = styled.div`
 
   .frontSide,
   .frontSide::before {
-    background: linear-gradient(43deg, #ffb969 0%, #ffb969 50%);
+    background: rgba(255, 255, 255, 0.2);
   }
 
   .backSide,
   .backSide::before {
-    background-image: linear-gradient(160deg, #0fb4c3 0%, #0fb4c3 100%);
+    background: rgba(255, 255, 255, 0.2);
   }
 
   .backSide {

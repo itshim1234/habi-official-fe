@@ -453,7 +453,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
         </div>
         <br />
         <div className="flex flex-col justify-center items-center my-10">
-          <PieChart1 costs={costs} />
+          {/* <PieChart1 costs={costs} /> */}
         </div>
         {/* <PaymentSchedule scheduleData={scheduleData} /> */}
       </div>

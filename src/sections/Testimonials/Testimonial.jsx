@@ -157,26 +157,28 @@ function Testimonial() {
 
       {/* Modal for YouTube video */}
       {isModalOpen && (
-        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[90%] md:w-[80%] h-[30%] md:h-full bg-black/50 flex justify-center items-center z-20">
-          <button
-            className="absolute top-2 right-2 p-2 text-black bg-white"
-            onClick={closeModal}
-          >
-            ✖
-          </button>
-          <div className="modal-container rounded-lg w-full h-full">
-            <iframe
-              width="100%"
-              height="100%"
-              src={videoUrl}
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen
-            ></iframe>
-          </div>
-        </div>
+        <div
+          className="fixed inset-0 bg-gray-900 bg-opacity-50 z-40"
+          onClick={closeModal}
+        ></div>
       )}
+
+      {/* Sliding Drawer for Assign Task */}
+      <div
+        className={`absolute top-32 md:top-20 right-0 w-full md:w-2/4 lg:w-[40%] xl:w-[63%] 2xl:w-[60%] h-[40vh] md:h-[30vh] lg:h-[90vh] 2xl:h-[60vh] bg-layoutColor shadow-lg z-50 transform transition-transform duration-300 overflow-y-auto ${
+          isModalOpen ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <iframe
+          width="100%"
+          height="100%"
+          src={videoUrl}
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
     </div>
   );
 }

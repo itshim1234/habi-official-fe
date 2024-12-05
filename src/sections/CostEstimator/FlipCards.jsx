@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Card from "./Card";
 const FlipCards = ({ scheduleData }) => {
- 
   return (
-    <div
-      className=" text-white h-[20vh] md:h-[40vh] z-50"
-    >
+    <div className=" text-white h-[20vh] md:h-[40vh] z-50">
       <div className="relative max-w-full mx-auto ">
         {/* Center Line */}
-        <div className="absolute top-1/2 left-0 border-t border-gray-600 w-[450%] md:w-[230%] lg:w-[190%] 2xl:w-[140%]"></div>
+        <div className="absolute top-1/2 left-0 border-t border-[#7c7c7c] border-2 w-[450%] md:w-[230%] lg:w-[190%] 2xl:w-[140%]"></div>
 
         {/* Cards */}
-        <div className="relative flex justify-between items-center">
+        <div className="relative flex justify-between items-center z-50">
           {scheduleData.map((card, index) => (
             <div
               key={index}
