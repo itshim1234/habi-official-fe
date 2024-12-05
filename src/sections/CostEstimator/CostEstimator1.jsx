@@ -479,7 +479,7 @@ function CostEstimator1() {
                   {/* Buttons */}
                   <div className="flex justify-center space-x-4">
                     <button
-                      className={`rounded-lg py-2 px-3 md:px-10 2xl:px-20 inline text-sm md:text-lg font-giloryM ${
+                      className={`rounded-lg py-2 px-3 md:px-10 2xl:px-10 inline text-sm md:text-lg font-giloryM ${
                         detailedCost
                           ? "bg-white/30 backdrop-blur-md text-white border border-[#7c7c7c]"
                           : "bg-primary text-white"
@@ -496,7 +496,7 @@ function CostEstimator1() {
                       />
                     </button>
                     <button
-                      className="bg-gray-800 text-white py-2 px-3 md:px-10 2xl:px-20 border text-sm md:text-lg border-gray-600 rounded-lg"
+                      className="bg-gray-800 text-white py-2 px-3 md:px-10 2xl:px-10 border text-sm md:text-lg border-gray-600 rounded-lg"
                       onClick={togglePopup} // Show the popup on click
                     >
                       Get Personalized Offers
