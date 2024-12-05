@@ -3,6 +3,8 @@ import consultation from "../../assets/images/consultation.png";
 import call from "../../assets/images/Call.png";
 import close from "../../assets/images/close.png";
 
+const scriptURL = import.meta.env.VITE_SHEET_URL;
+
 const ConsultationPopup = ({ onClose }) => {
   const inputFields = [
     { label: "Name*", placeholder: "Name", type: "text", key: "name" },
@@ -49,9 +51,6 @@ const ConsultationPopup = ({ onClose }) => {
     if (!validateForm()) return;
 
     setIsSubmitting(true);
-
-    const scriptURL =
-      "https://script.google.com/macros/s/AKfycbzSEWAT0YVIeFaZVlJbu1CJOn10dx3nNr8I_zQI6hhjOrKxU5kjSb5w2tVHX0C5WvTX/exec";
 
     // Create FormData and populate it with form data
     const form = new FormData();
