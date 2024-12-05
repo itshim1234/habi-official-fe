@@ -272,8 +272,8 @@ function CostEstimator1() {
           }}
         >
           <div ref={contentRef}>
-            <div className="flex flex-col 2xl:grid 2xl:grid-cols-2 md:px-20 lg:px-40 xl:px-[15%]">
-              <div className="w-full 2xl:px-10">
+            <div className="flex flex-col 2xl:grid 2xl:grid-cols-2 md:px-20 lg:px-40 xl:px-[10%]">
+              <div className="w-full 2xl:px-1%">
                 <div className="grid md:grid-cols-2 gap-2 md:gap-4 mt-6">
                   <SelectInput
                     value={inputs.state}
@@ -418,7 +418,7 @@ function CostEstimator1() {
               </div>
 
               <div className={`w-full bg-layoutColor py-2`}>
-                <div className="w-full bg-black flex flex-col 2xl:px-10">
+                <div className="w-full bg-black flex flex-col 2xl:ml-10">
                   {/* Details Section */}
                   <div className="bg-black text-white md:p-6 rounded-lg shadow-md">
                     <div className="flex justify-between items-center mb-4 md:space-x-10 font-giloryM md:text-lg">
@@ -477,9 +477,9 @@ function CostEstimator1() {
                   </div>
 
                   {/* Buttons */}
-                  <div className="flex justify-center space-x-4">
+                  <div className="flex justify-center space-x-3">
                     <button
-                      className={`rounded-lg py-2 px-3 md:px-10 2xl:px-10 inline text-sm md:text-lg font-giloryM ${
+                      className={`rounded-lg py-2 px-3 md:px-8 2xl:px-8 inline text-sm md:text-lg font-giloryM ${
                         detailedCost
                           ? "bg-white/30 backdrop-blur-md text-white border border-[#7c7c7c]"
                           : "bg-primary text-white"
@@ -492,11 +492,11 @@ function CostEstimator1() {
                       <img
                         src={detailedCost ? "" : arrow}
                         alt=""
-                        className="inline mb-0.5 ml-2 "
+                        className="inline mb-0.5 ml-2"
                       />
                     </button>
                     <button
-                      className="bg-gray-800 text-white py-2 px-3 md:px-10 2xl:px-10 border text-sm md:text-lg border-gray-600 rounded-lg"
+                      className="bg-gray-800 text-white py-2 px-3 md:px-8 2xl:px-8 border text-sm md:text-lg border-gray-600 rounded-lg"
                       onClick={togglePopup} // Show the popup on click
                     >
                       Get Personalized Offers
