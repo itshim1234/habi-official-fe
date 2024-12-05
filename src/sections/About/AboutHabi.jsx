@@ -111,19 +111,19 @@ const AboutHabi = () => {
           <h2 className="text-2xl md:text-[32px] font-giloryS">Mission</h2>
           <ul className="flex flex-col items-center space-y-6 md:text-lg font-giloryM">
             <li className="flex gap-4">
-              <img src={leaf} alt="" className="w-8" /> Sustainable Living
+              <img src={leaf} alt=" leaf" className="w-8" /> Sustainable Living
               Solutions
             </li>
             <li className="flex gap-4">
-              <img src={palette} alt="" className="w-8" /> Accessible Design for
+              <img src={palette} alt="palette" className="w-8" /> Accessible Design for
               All
             </li>
             <li className="flex gap-4">
-              <img src={buildings1} alt="" className="w-8" /> Smart & Adaptive
+              <img src={buildings1} alt="buildings1" className="w-8" /> Smart & Adaptive
               Spaces
             </li>
             <li className="flex gap-4">
-              <img src={buildings} alt="" className="w-8" /> Modular Centric
+              <img src={buildings} alt="buildings" className="w-8" /> Modular Centric
               Construction
             </li>
             <li className="flex gap-4">

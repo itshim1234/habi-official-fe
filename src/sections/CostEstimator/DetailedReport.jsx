@@ -463,7 +463,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
       <div
         className={`items-center w-full bg-layoutColor md:p-2 h-auto my-10 overflow-x-auto scrollbar-none`}
       >
-        <h2 className="text-center text-2xl lg:text-[32px] font-giloryB mb-80 text-white"></h2>
+        <h2 className="text-center text-2xl lg:text-[32px] font-giloryB mb-60 text-white"></h2>
         <div className="flex flex-col justify-center my-10 w-full">
           <div className="min-w-max">
             <FlipCards
