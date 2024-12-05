@@ -36,7 +36,7 @@ function Model() {
 
       <div
         className="absolute w-40 h-9 bottom-5 right-0 md:right-8 pr-10 bg-[#191919] rounded-lg flex font-giloryM justify-center items-center text-3xl cursor-pointer"
-        onClick={() => (window.location.href = "https://wa.me/9606210818")}
+        onClick={() => window.open("https://wa.me/9606210818", "_blank")}
       >
         <img src={whatsapp} alt="WhatsApp" className="w-8 md:w-10 mr-3" />
         <p>9606210818</p>

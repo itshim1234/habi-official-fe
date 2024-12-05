@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import arrow from "../../assets/images/arrowA.png";
 import close from "../../assets/images/close.png";
@@ -23,8 +23,12 @@ const ProjectExpand = () => {
     setSelectedImage(image);
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0); // Ensure the page is at the top on load
+  }, []);
+
   return (
-    <div className="relative inset-0 h-screen w-screen">
+    <div className="relative inset-0 h-full w-screen">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -40,7 +44,7 @@ const ProjectExpand = () => {
             <img
               src={arrow}
               alt="back arrow"
-              className="absolute md:top-0 right-4 top-2 md:left-0"
+              className="absolute md:top-0 right-4 top-6 md:left-0"
               onClick={navigateBack}
             />
           </button>

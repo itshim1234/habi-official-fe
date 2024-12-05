@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PieChart1 from "./PieChart1";
 import PaymentSchedule from "./PaymentSchedule";
+import FlipCards from "./FlipCards";
 
 function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
   const [newField, setNewField] = useState("");
@@ -78,6 +79,28 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
     sumpCost: sumpCost,
     ...additionalCosts,
   };
+  const cards = [
+    { title: "Design & Development", percentage: "1%", amount: "₹ 27,688" },
+    {
+      title: "Civil Construction (upto Terrace Level)",
+      percentage: "30%",
+      amount: "₹ 8,30,648",
+    },
+    {
+      title: "Civil Construction (Upto plinth Level)",
+      percentage: "20%",
+      amount: "₹ 5,53,760",
+    },
+    {
+      title: "Civil Construction (upto Plastering)",
+      percentage: "20%",
+      amount: "₹ 5,57,688",
+    },
+    { title: "Finishing & Handover", percentage: "29%", amount: "₹ 8,00,000" },
+    { title: "Quality Check", percentage: "10%", amount: "₹ 2,00,000" },
+    { title: "Final Payment", percentage: "5%", amount: "₹ 1,50,000" },
+    { title: "Project Completion", percentage: "5%", amount: "₹ 1,50,000" },
+  ];
   const scheduleData = [
     {
       title: "Design & Development",
@@ -143,6 +166,11 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
       percentage: 4,
       price: 0.04 * totalEstimatedCost,
     },
+    {
+      title: "Total",
+      items: [],
+      price: totalEstimatedCost,
+    },
   ];
   const handleAddField = (e) => {
     e.preventDefault();
@@ -179,12 +207,14 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-background w-full h-full font-giloryM">
-      <div className={`items-center w-full bg-layoutColor md:p-2 h-auto my-10`}>
+    <div className="min-h-screen flex flex-col bg-background w-full h-full font-giloryM ">
+      <div
+        className={`items-center w-full bg-layoutColor md:p-2 h-auto my-10 `}
+      >
         <h2 className="text-white font-bold text-2xl mb-6 text-center">
           Cost Breakdown Details
         </h2>
-        <div className="bg-layoutColor rounded-lg mt-4 md:pr-4">
+        <div className="bg-layoutColor rounded-lg mt-4 md:pr-4 md:px-20 lg:px-40 xl:px-[15%] 2xl:px-[20%]">
           <div className="flex justify-between relative mb-1">
             <span className=" text-white">Design Fees</span>
             <span className="text-white absolute right-32 md:right-40 ">
@@ -425,7 +455,23 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
         <div className="flex flex-col justify-center items-center my-10">
           <PieChart1 costs={costs} />
         </div>
-        <PaymentSchedule scheduleData={scheduleData} />
+        {/* <PaymentSchedule scheduleData={scheduleData} /> */}
+      </div>
+      <h2 className="text-center text-2xl lg:text-[32px] font-giloryB text-white">
+        Payment Schedule
+      </h2>
+      <div
+        className={`items-center w-full bg-layoutColor md:p-2 h-auto my-10 overflow-x-auto scrollbar-none`}
+      >
+        <h2 className="text-center text-2xl lg:text-[32px] font-giloryB mb-80 text-white"></h2>
+        <div className="flex flex-col justify-center my-10 w-full">
+          <div className="min-w-max">
+            <FlipCards
+              className="overflow-x-auto"
+              scheduleData={scheduleData}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

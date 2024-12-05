@@ -10,6 +10,7 @@ import CostEstimator from "../../sections/CostEstimator/CostEstimator";
 import Faq from "../../sections/FAQ/Faq";
 import Baap from "../../sections/Baap/Baap";
 import Testimonial from "../../sections/Testimonials/Testimonial";
+import CostEstimator1 from "../../sections/CostEstimator/CostEstimator1";
 import "./style.css";
 
 function HabiService() {
@@ -48,7 +49,7 @@ function HabiService() {
               <Projects />
             </div>
             <Testimonial />
-            <CostEstimator />
+            <CostEstimator1 />
             <Model />
             <Faq />
           </>
