@@ -209,7 +209,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
   return (
     <div className="min-h-screen flex flex-col bg-background w-full h-full font-giloryM ">
       <div
-        className={`items-center w-full bg-layoutColor md:p-2 h-auto my-10 `}
+        className={`items-center w-full bg-layoutColor md:p-2 h-auto mt-10 `}
       >
         <h2 className="text-white font-bold text-2xl mb-6 text-center">
           Cost Breakdown Details
@@ -452,9 +452,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
           <hr className="border-1 border-[#7c7c7c]" />
         </div>
         <br />
-        <div className="flex flex-col justify-center items-center my-10">
-          {/* <PieChart1 costs={costs} /> */}
-        </div>
+
         {/* <PaymentSchedule scheduleData={scheduleData} /> */}
       </div>
       <h2 className="text-center text-2xl lg:text-[32px] font-giloryB text-white">

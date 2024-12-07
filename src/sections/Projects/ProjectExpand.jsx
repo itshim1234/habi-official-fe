@@ -85,7 +85,7 @@ const ProjectExpand = () => {
                   key={index}
                   src={image}
                   alt={`Image ${index + 1}`}
-                  className="w-[160px] h-[110px] md:w-[370px] md:h-[200px] lg:w-[300px] lg:h-[200px] rounded-lg border cursor-pointer"
+                  className="w-[160px] h-[110px] md:w-[370px] md:h-[200px] lg:w-[300px] lg:h-[200px] rounded-lg border cursor-pointer object-cover"
                   onClick={() => handleImageClick(image)}
                 />
               ))}
