@@ -1,43 +1,33 @@
 import React from "react";
+import divider from "../../assets/images/divider.png";
 
 const PaymentSchedule = ({ scheduleData }) => {
   return (
-    <div className="mx-auto text-white">
-      <h1 className="text-center text-2xl font-giloryB">Payment Schedules</h1>
-      <div className="border border-[#7c7c7c] mt-4 rounded-xl">
-        {scheduleData.map((schedule, index) => (
-          <div key={index} className="flex border-b border-[#7c7c7c]">
-            <div className="w-2/4 md:w-3/5  p-4 border-r border-[#7c7c7c]">
-              <h2 className="font-giloryB text-white text-[18px] text-left">
-                {schedule.title}
-              </h2>
-              <ul className="list-disc list-inside text-left font-giloryM">
-                {schedule.items.map((item, idx) => (
-                  <li key={idx}>{item}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="w-1/6 md:w-1/5 p-4 border-r border-[#7c7c7c] flex items-center justify-center">
-              <span className="text-lg font-bold">{schedule.percentage}%</span>
-            </div>
-            <div className="w-1/5 md:w-1/4 mx-auto md:justify-center flex items-center">
-              <span className="text-lg font-bold">
-                ₹{schedule.price.toLocaleString()}
-              </span>
+    <div className="bg-black text-white py-10  2xl:px-[10%]">
+      {/* Grid Layout */}
+      <div className="grid grid-cols-3 md:grid-cols-3 gap-y-4">
+        {scheduleData.map((item, index) => (
+          <div key={index}>
+            {/* Card */}
+            <div className="relative flex flex-col items-center justify-between bg-gray-900 text-center p-6 h-[426px]">
+              <h3 className="text-lg font-medium">{item.title}</h3>
+              <div className="my-4">
+                <span className="text-yellow-400 text-2xl">
+                  {item.percentage}
+                </span>
+              </div>
+              <div className="text-2xl font-bold">{item.price}</div>
+              <img src={divider} alt="" className="absolute top-0 -right-8 z-20"/>
             </div>
           </div>
         ))}
-        <div className="flex font-giloryB text-2xl">
-          <div className="w-2/4 p-4 border-t border-[#7c7c7c] text-left">
-            TOTAL
-          </div>
-          <div className="w-2/4 p-4 border-t border-[#7c7c7c] text-right">
-            ₹
-            {scheduleData
-              .reduce((acc, schedule) => acc + schedule.price, 0)
-              .toLocaleString()}
-          </div>
-        </div>
+      </div>
+
+      {/* Total Section */}
+      <div className="mt-10 flex flex-col items-center bg-gray-800 p-6 rounded-md shadow-md">
+        <h3 className="text-lg font-medium">Total</h3>
+        <div className="text-3xl font-bold my-4">₹ 12,345,678</div>
+        <p className="text-yellow-400">No hidden charges</p>
       </div>
     </div>
   );
