@@ -266,13 +266,13 @@ function CostEstimator1() {
           />
         </div>
         <div
-          className={`relative overflow-hidden transition-[max-height] duration-1000 ease-in-out px-4`}
+          className={`relative overflow-hidden transition-[max-height] duration-1000 ease-in-out`}
           style={{
             maxHeight: costEstimator ? `${contentHeight}px` : "0px",
           }}
         >
           <div ref={contentRef}>
-            <div className="flex flex-col 2xl:grid 2xl:grid-cols-2 md:px-20 lg:px-40 xl:px-[10%]">
+            <div className="flex flex-col 2xl:grid 2xl:grid-cols-2 md:px-20 lg:px-40 xl:px-[10%] px-4">
               <div className="w-full 2xl:px-1%">
                 <div className="grid md:grid-cols-2 gap-2 md:gap-4 mt-6">
                   <SelectInput
@@ -443,7 +443,7 @@ function CostEstimator1() {
                             src={b}
                             alt=""
                             className="w-6 h-6 hidden md:flex mr-2"
-                          />{" "}
+                          />
                           flex Built-up Area
                         </div>
                         <div className="text-lg md:text-2xl font-giloryS mt-2">
@@ -471,7 +471,7 @@ function CostEstimator1() {
                         Estimated Cost
                       </div>
                       <div className="text-2xl md:text-[40px]">
-                        ₹ {results.estimatedCost}
+                        ₹ {results.estimatedCost.toLocaleString("en-IN")}
                       </div>
                     </div>
                   </div>

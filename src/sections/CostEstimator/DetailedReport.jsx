@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import PieChart1 from "./PieChart1";
 import PaymentSchedule from "./PaymentSchedule";
-import FlipCards from "./FlipCards";
 
 function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
   const [newField, setNewField] = useState("");
@@ -79,28 +77,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
     sumpCost: sumpCost,
     ...additionalCosts,
   };
-  const cards = [
-    { title: "Design & Development", percentage: "1%", amount: "₹ 27,688" },
-    {
-      title: "Civil Construction (upto Terrace Level)",
-      percentage: "30%",
-      amount: "₹ 8,30,648",
-    },
-    {
-      title: "Civil Construction (Upto plinth Level)",
-      percentage: "20%",
-      amount: "₹ 5,53,760",
-    },
-    {
-      title: "Civil Construction (upto Plastering)",
-      percentage: "20%",
-      amount: "₹ 5,57,688",
-    },
-    { title: "Finishing & Handover", percentage: "29%", amount: "₹ 8,00,000" },
-    { title: "Quality Check", percentage: "10%", amount: "₹ 2,00,000" },
-    { title: "Final Payment", percentage: "5%", amount: "₹ 1,50,000" },
-    { title: "Project Completion", percentage: "5%", amount: "₹ 1,50,000" },
-  ];
+
   const scheduleData = [
     {
       title: "Design & Development",
@@ -209,7 +186,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
   return (
     <div className="min-h-screen flex flex-col bg-background w-full h-full font-giloryM ">
       <div
-        className={`items-center w-full bg-layoutColor md:p-2 h-auto mt-10 `}
+        className={`items-center w-full bg-layoutColor md:p-2 h-auto mt-10 px-4`}
       >
         <h2 className="text-white font-bold text-2xl mb-6 text-center">
           Cost Breakdown Details

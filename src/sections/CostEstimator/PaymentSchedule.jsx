@@ -1,34 +1,77 @@
 import React from "react";
 import divider from "../../assets/images/divider.png";
 
+export const Header = () => {
+  return (
+    <img src={divider} alt="" className="h-[186px] md:h-[269px] lg:h-[426px]" />
+  );
+};
+
 const PaymentSchedule = ({ scheduleData }) => {
   return (
-    <div className="bg-black text-white py-10  2xl:px-[10%]">
+    <div className="bg-black text-white py-10 2xl:px-[10%]">
       {/* Grid Layout */}
-      <div className="grid grid-cols-3 md:grid-cols-3 gap-y-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-y-10">
         {scheduleData.map((item, index) => (
-          <div key={index}>
+          <div
+            key={index}
+            className={`${
+              index === scheduleData.length - 1 ? "md:col-span-2" : ""
+            }`}
+          >
             {/* Card */}
-            <div className="relative flex flex-col items-center justify-between bg-gray-900 text-center p-6 h-[426px]">
-              <h3 className="text-lg font-medium">{item.title}</h3>
-              <div className="my-4">
-                <span className="text-yellow-400 text-2xl">
-                  {item.percentage}
+            <div
+              className={`relative bg-[#1a1a1a] text-left p-2 lg:pb-10 md:p-6 h-[186px] md:h-[269px] lg:h-[426px] flex flex-col ${
+                index === scheduleData.length - 1
+                  ? "justify-center pl-6 md:pl-20"
+                  : "justify-between pl-6 md:pl-10"
+              }`}
+            >
+              <p className="text-lg md:text-2xl lg:text-[40px] font-giloryM  leading-[1.1] md:leading-[1.3] lg:leading-[1.3]">
+                {item.title}
+              </p>
+
+              <div className="absolute top-1/2 md:left-10">
+                <span
+                  className={`text-2xl md:text-[32px] lg:text-[56px] text-stroke font-larken ${
+                    index === scheduleData.length - 1 ? "hidden" : "flex"
+                  }`}
+                >
+                  {item.percentage}%
                 </span>
               </div>
-              <div className="text-2xl font-bold">{item.price}</div>
-              <img src={divider} alt="" className="absolute top-0 -right-8 z-20"/>
+              <div className="text-2xl md:text-[32px] lg:text-[56px] font-giloryB">
+                ₹ {Number(item.price).toLocaleString("en-IN")}
+              </div>
+              {index === scheduleData.length - 1 && (
+                <p
+                  className={`text-right font-giloryM italic text-xs md:text-[14px] lg:text-2xl`}
+                >
+                  No hidden Charges
+                </p>
+              )}
+
+              {/* Dividers */}
+              {(index === 0 ||
+                index === 1 ||
+                index === 3 ||
+                index === 4 ||
+                index === 6) && (
+                <div className="hidden md:flex absolute top-0 -right-8 z-20">
+                  <Header />
+                </div>
+              )}
+              {(index === 0 || index === 2 || index === 4 || index === 6) && (
+                <div className="absolute md:hidden top-0 -right-4 z-20">
+                  <Header />
+                </div>
+              )}
             </div>
           </div>
         ))}
       </div>
 
       {/* Total Section */}
-      <div className="mt-10 flex flex-col items-center bg-gray-800 p-6 rounded-md shadow-md">
-        <h3 className="text-lg font-medium">Total</h3>
-        <div className="text-3xl font-bold my-4">₹ 12,345,678</div>
-        <p className="text-yellow-400">No hidden charges</p>
-      </div>
     </div>
   );
 };
