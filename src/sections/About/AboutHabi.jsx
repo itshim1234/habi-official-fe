@@ -59,7 +59,7 @@ const AboutHabi = () => {
             <h2 className="text-2xl md:text-[40px] font-giloryS">
               habi has a better way
               <span className="block text-lg md:text-2xl text-secondary mt-4">
-                l which is modular construction and envisioning building as a
+                which is modular construction and envisioning building as a
                 product
               </span>
             </h2>

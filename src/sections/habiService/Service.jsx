@@ -57,7 +57,7 @@ function Service({ toggleView }) {
       </p>
       <video
         className="object-cover w-full h-[450px] md:h-[650px] lg:h-[100vh] xl:w-[50vw] 2xl:w-[70vw] 2xl:h-[86vh] mx-auto"
-        autoPlay
+        autoPlay  
         loop
         muted
         playsInline
