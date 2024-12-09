@@ -479,7 +479,7 @@ function CostEstimator1() {
                 ))}
               </div>
             </div>
-            <div className="flex flex-col 2xl:grid 2xl:grid-cols-2 md:px-20 lg:px-40 xl:px-[10%] 2xl:px-[16%] px-4">
+            <div className="flex flex-col 2xl:grid 2xl:grid-cols-2 md:px-20 lg:px-40 xl:px-[10%] 2xl:px-[15%] px-4">
               <div className="w-full 2xl:px-1%">
                 <div className="grid md:grid-cols-1 lg:grid-cols-1 gap-4 mt-6">
                   <RadioGroup
@@ -652,7 +652,7 @@ function CostEstimator1() {
                     {/* Estimated Cost */}
                     <div className="text-center flex justify-center border border-[#7c7c7c] w-fit mx-auto px-6 md:px-10 py-4 md:py-6 font-giloryS my-10">
                       <div className="mr-4 text-lg md:text-[32px]">
-                        Estimated Cost
+                        * Estimated Cost
                       </div>
                       <div className="text-2xl md:text-[40px]">
                         ₹ {results.estimatedCost.toLocaleString("en-IN")}

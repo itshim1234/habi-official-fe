@@ -45,9 +45,9 @@ const PaymentSchedule = ({ scheduleData }) => {
               </div>
               {index === scheduleData.length - 1 && (
                 <p
-                  className={`absolute text-right font-giloryM italic text-xs md:text-[14px] lg:text-2xl top-[60%] right-[25%]`}
+                  className={`absolute text-right font-giloryM italic text-[10px] md:text-[12px] lg:text-lg bottom-[2%] right-[2%] text-[#7c7c7c]`}
                 >
-                  No hidden Charges
+                  * XYZ{" "}
                 </p>
               )}
 
