@@ -5,7 +5,7 @@ const BarGraph = ({ scheduleData, totalEstimatedCost }) => {
   return (
     <div>
       <h2 className="text-center text-2xl lg:text-[32px] font-giloryB text-white mt-10">
-        Payment Analytics{" "}
+        Payment Analytics
       </h2>
       <div className="bar-graph-wrapper">
         <div className="chart-container ">
