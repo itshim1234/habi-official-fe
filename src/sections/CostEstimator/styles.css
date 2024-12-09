@@ -41,6 +41,14 @@
   }
 }
 
+@media (max-width: 768px) {
+  .chart-container {
+    margin: 100px 80px; /* Add padding on smaller screens */
+    width: auto; /* Allow the width to adjust based on content */
+    min-width: 700px; /* Set a reasonable minimum width */
+  }
+}
+
 .chart-container > table {
   position: absolute;
   top: 0;
