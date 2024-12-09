@@ -57,6 +57,9 @@ const initialImages = [
       "The 3BHK villa is adorned with stone cladding and intricate metal works on its elevation, creating a visually appealing exterior. The double-height ceiling in the main living area adds a sense of spaciousness and grandeur. A unique feature is the double-height glass room, seamlessly blending the indoors with the lush green outdoors, creating an inside-out feel. The connection is enhanced by a wooden staircase from the living area, adding a touch of warmth and elegance to the over- all design.",
     images: [raghu02, raghu03, raghu04],
     youtube: "https://www.youtube.com/embed/XVmEIqt4y20?si=IuWbseXMjkOtcku2",
+    Status: "Completed",
+    Plot: "Site - 40 Feet X 60 Feet",
+    Orientation: "West Facing, 3BHK Duplex Villa",
   },
   {
     mainImage: charan01,
@@ -67,6 +70,9 @@ const initialImages = [
 
     images: [charan02, charan03, charan04, charan05],
     youtube: "https://www.youtube.com/embed/yQqP7bL3Pf4?si=yv958xFiN7woJnJx",
+    Status: "Ongoing",
+    Plot: " Site - 30 Feet X 40 Feet",
+    Orientation: " North Facing, 3 Rental units, 3BHK Duplex villa",
   },
   {
     mainImage: koushik03,
@@ -76,6 +82,9 @@ const initialImages = [
       "This striking 7BHK duplex villa, set on a 4000 sq ft west-facing site, epitomises contemporary architecture. The villa's façade is a harmonious blend of concrete and red-tiled elements, creating a visually captivating design. Large arched windows and balconies adorned with lush greenery enhance the aesthetic appeal and ensure ample natural light and ventilation throughout the residence. The extended chajja and meticulously designed balconies provide charming outdoor spaces that seamlessly integrate with the modern yet cosy interior. The thoughtful design and use of materials elevate both the visual and functional aspects of this stylish and practical home.",
 
     images: [koushik02, koushik01, koushik04, koushik05],
+    Status: "Ongoing",
+    Plot: "4000 Sqft",
+    Orientation: "West Facing, 7BHK Duplex villa",
   },
   {
     mainImage: prasana01,
@@ -85,6 +94,9 @@ const initialImages = [
       "A striking modern structure characterised by clean lines and a blend of white and wooden textures, creating a minimalist yet warm aesthetic. The design features prominent balconies, vertical elements, and green landscaping that enhance the connection with nature. Its flat roof and large glass openings offer a contemporary appeal while maximising natural light and ventilation",
 
     images: [prasana02, prasana03, prasana04, prasana05],
+    Status: "Proposed",
+    Plot: " 30ft x 50ft",
+    Orientation: "North Facing, triplex Villa",
   },
   {
     mainImage: alka01,
@@ -94,6 +106,9 @@ const initialImages = [
       "Design of this 4BHK villa is modern and sophisticated, featuring a modular layout with an extended chajja and creative use of wood. Generous balcony areas adorned with lush greenery enhance the living experience, while large openings allow ample natural light and ventilation. The design seamlessly blends aesthetics and functionality, creating a stylish and practical home",
 
     images: [alka02, alka03, alka04],
+    Status: "Proposed",
+    Plot: " 52ft x 86ft",
+    Orientation: "west Facing, G+1 Villa",
   },
   {
     mainImage: saadhvi01,
@@ -103,6 +118,9 @@ const initialImages = [
       "The Villa seamlessly blends contemporary design with Nepali influences, marrying elegance and cultural richness. Balcony grills, resembling beaded necklaces, add authenticity, while triangular chazza and sliding window grills with wooden accents enhance the aesthetic. Floating steps on water create a serene connection with nature, and a 5-foot cantilevered roof offers both intrigue and rain protection. The green entrance porch, with an inverted angular ceiling, welcomes residents and guests into a space where modernity meets Nepali heritage.",
 
     images: [saadhvi02, saadhvi03, saadhvi04],
+    Status: "Completed",
+    Plot: "Site - 50 Feet X 90 Feet ",
+    Orientation: "west Facing, 4BHK Duplex Villa",
   },
   {
     mainImage: tranquil01,
@@ -113,6 +131,9 @@ const initialImages = [
 
     images: [tranquil02, tranquil03, tranquil04],
     youtube: "https://www.youtube.com/embed/xqhikqpzVhQ?si=JeccmOZ8tWJe2dXA",
+    Status: "Completed",
+    Plot: "Site - 50 Feet X 80 Feet ",
+    Orientation: "west Facing, 2BHK Apartments",
   },
   {
     mainImage: ananda01,
@@ -123,6 +144,9 @@ const initialImages = [
 
     images: [ananda02, ananda03, ananda04, ananda05],
     youtube: "https://www.youtube.com/embed/uiPsaSCUePI?si=s4ZpDg9Sm0bZnyQD",
+    Status: "Completed",
+    Plot: "Site - 30 Feet X 40 Feet ",
+    Orientation: "west Facing, 2BHK Residential Apartments",
   },
   {
     mainImage: nirman01,
@@ -132,6 +156,9 @@ const initialImages = [
       "The 3BHK house seamlessly integrates with a commercial complex, featuring a safety grill adorned with tile cladding for both aesthetics and functionality. The sit-out area and car porch offer welcoming outdoor spaces. The interior is designed with simplicity and minimalism, while a jali work near the puja area adds a touch of tradition. This residence skillfully balances practicality and aesthetics, providing a harmonious living space.",
     images: [nirman02, nirman03, nirman04, nirman05],
     youtube: "https://www.youtube.com/embed/b70zZ3qrCDM?si=ytprAvP9rmrzspFS",
+    Status: "Completed",
+    Plot: "Site - 40 Feet X 60 Feet ",
+    Orientation: "East Facing, Commercial Complex & 3BHK Home",
   },
 
   {
@@ -141,6 +168,9 @@ const initialImages = [
     description:
       " This building is thoughtfully designed to meet the client’s requirements, focusing on generating passive income through rental opportunities after retirement. The layout is ideal for tenants, offering flexibility with options for 1BHK or 2BHK units to suit varying needs. The spaces are well-planned to cater to families, with careful attention to Vastu principles for a harmonious living environment.",
     images: [nivaas02, nivaas03],
+    Status: " On Going",
+    Plot: "Site - 30 Feet X 40 Feet ",
+    Orientation: "West Facing, 1 & 2BHK Residential Apartment",
   },
 
   {
@@ -151,6 +181,9 @@ const initialImages = [
       " The 4BHK villa boasts a distinctive exterior design, featuring a captivating vertical garden in the front. The trapezoidal inverted roof adds an aesthetic touch, enhancing the overall visual appeal of the house. The intricate design of a tree, incorporated with metal, further contributes to the unique and artistic look. A courtyard cleverly connects different spaces within the villa, creating a seamless flow and promoting a sense of openness. This residence beautifully combines innovative architectural elements with natural aesthetics, creating a harmonious and visually striking living environment.",
     images: [vrshkvilla02, vrshkvilla03, vrshkvilla04, vrshkvilla05],
     youtube: "https://www.youtube.com/embed/7wQ_dTzE220?si=mtw9v-j29TZeGDiZ",
+    Status: "Completed",
+    Plot: "Site - 50 Feet X 80 Feet ",
+    Orientation: "North Facing, 4BHK Duplex Villa",
   },
 ];
 

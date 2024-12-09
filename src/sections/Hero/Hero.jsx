@@ -108,7 +108,7 @@ function Hero({ scrollToProjects }) {
       )}
 
       <div
-        className="absolute z-20 justify-center text-center left-4 md:left-10 lg:left-14 top-[16px] md:top-[40px]"
+        className="absolute z-20 justify-center text-center left-4 md:left-10 lg:left-10 top-0 md:w-40"
         onClick={() => {
           navigate("/"); // Navigate to the home page
           window.location.reload(); // Refresh the page
@@ -117,9 +117,9 @@ function Hero({ scrollToProjects }) {
         <img
           src={logo}
           alt="habi"
-          className="w-16 md:w-20 lg:w-24 2xl:w-28 animation cursor-pointer rounded-full"
+          className="w-20 md:w-32 lg:w-32 2xl:w-40 animation cursor-pointer rounded-full"
         />
-        <p className="font-giloryM text-white mt-1 text-xs md:text-sm lg:text-lg">
+        <p className="absolute font-giloryM text-white mt-1 text-xs md:text-sm md:left-3 lg:left-0 -bottom-4 md:bottom-0 lg:text-lg 2xl:bottom-2 2xl:left-3">
           The way of Living
         </p>
       </div>

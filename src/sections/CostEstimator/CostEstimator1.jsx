@@ -10,6 +10,22 @@ import jsw from "../../assets/images/jsw.png";
 import kajaria from "../../assets/images/kajaria.png";
 import sintex from "../../assets/images/sintex.png";
 import downArrow from "../../assets/images/downArrow.png";
+import Regular from "../../assets/images/rectangle.png";
+import Triangular from "../../assets/images/triangle.png";
+import Irregular from "../../assets/images/polygon.png";
+
+import essential from "../../assets/images/essential.png";
+import premium from "../../assets/images/premium.png";
+import luxury from "../../assets/images/luxury.png";
+
+import a1 from "../../assets/images/a1.png";
+import a2 from "../../assets/images/a2.png";
+import a3 from "../../assets/images/a3.png";
+import a4 from "../../assets/images/a4.png";
+import a5 from "../../assets/images/a5.png";
+import a6 from "../../assets/images/a6.png";
+import a7 from "../../assets/images/a7.png";
+
 import a from "../../assets/images/site.png";
 import b from "../../assets/images/builtup.png";
 import c from "../../assets/images/Water.png";
@@ -51,10 +67,10 @@ const SelectInput = ({ value, onChange, options, label, name }) => (
   </div>
 );
 
-const NumberInput = ({ value, onChange, name, label }) => (
+const NumberInput = ({ value, onChange, name, label, placeholder }) => (
   <div className="relative mb-8 md:mb-10">
     {label && (
-      <label className="absolute -top-6 left-0 px-1 py-0 text-[#C0C0C0] capitalize font-giloryM">
+      <label className="absolute -top-7 left-0 px-1 py-0 text-[#C0C0C0] capitalize font-giloryM">
         {label}*
       </label>
     )}
@@ -62,6 +78,7 @@ const NumberInput = ({ value, onChange, name, label }) => (
       type="number"
       value={value}
       onChange={onChange}
+      placeholder={placeholder}
       name={name}
       className="text-white block w-full pl-4 py-2 md:py-2.5  rounded-lg bg-[#1a1a1a] focus:outline-none appearance-none pr-10"
     />
@@ -70,7 +87,7 @@ const NumberInput = ({ value, onChange, name, label }) => (
 const RadioGroup = ({ value, onChange, options, name, label }) => (
   <div className="relative mb-8 md:mb-10">
     {label && (
-      <label className="absolute -top-6 left-0 px-1 py-0 text-[#C0C0C0] capitalize font-giloryM">
+      <label className="absolute -top-7 left-0 px-1 py-0 text-[#C0C0C0] capitalize font-giloryM">
         {label}*
       </label>
     )}
@@ -88,10 +105,23 @@ const RadioGroup = ({ value, onChange, options, name, label }) => (
           />
           <label
             htmlFor={`floorHeight-${option}`}
-            className={`flex items-center justify-center w-10 h-10 text-white rounded-lg cursor-pointer transition-all duration-300 
+            className={`flex items-center justify-center w-fit px-4 h-10 text-white rounded-lg cursor-pointer transition-all duration-300 
               ${value === option ? "bg-primary" : "bg-[#1a1a1a]"}`}
           >
             {option}
+            {name === "landType" && (
+              <img
+                src={
+                  option === "Regular"
+                    ? Regular
+                    : option === "Triangular"
+                    ? Triangular
+                    : Irregular
+                }
+                alt="shapes"
+                className="ml-2"
+              />
+            )}
           </label>
         </div>
       ))}
@@ -99,11 +129,118 @@ const RadioGroup = ({ value, onChange, options, name, label }) => (
   </div>
 );
 
+const packages = [
+  {
+    name: "Essential",
+    features: [
+      {
+        text: "Column Size 6 inches",
+        img: a1,
+      },
+      {
+        text: "Exterior wall size 6 inches",
+        img: a2,
+      },
+      {
+        text: "2ft x 2ft Tiles",
+        img: a3,
+      },
+      {
+        text: "Cera Bath Fittings",
+        img: a4,
+      },
+      {
+        text: "Steel: Kamdhenu, Meenakshi, Prime Gold, One Steel",
+        img: a5,
+      },
+      {
+        text: "Cement: Dalmia & Penna",
+        img: a6,
+      },
+      {
+        text: "UPVC Windows (White)",
+        img: a7,
+      },
+    ],
+    img: essential,
+  },
+  {
+    name: "Premium",
+    features: [
+      {
+        text: "Column Size 8 inches",
+        img: a1,
+      },
+      {
+        text: "Exterior wall size 8 inches",
+        img: a2,
+      },
+      {
+        text: "4ft x 2ft Tiles",
+        img: a3,
+      },
+      {
+        text: "jaquar Bath Fittings",
+        img: a4,
+      },
+      {
+        text: "Steel: JSW",
+        img: a5,
+      },
+      {
+        text: "Cement: Ramco and JSW",
+        img: a6,
+      },
+      {
+        text: "UPVC Windows (White)",
+        img: a7,
+      },
+    ],
+    img: premium,
+  },
+  {
+    name: "Luxury",
+    features: [
+      {
+        text: "Column Size 8 inches",
+        img: a1,
+      },
+      {
+        text: "Exterior wall size 8 inches",
+        img: a2,
+      },
+      {
+        text: "4ft x 2ft Tiles & Marble Flooring in Living and Dining Area",
+        img: a3,
+      },
+      {
+        text: "Jaquar & Kohler Bath Fittings",
+        img: a4,
+      },
+      {
+        text: "Steel: JSW and TaTa",
+        img: a5,
+      },
+      {
+        text: "Cement: Ramco, JSW, UltraTech and ACC",
+        img: a6,
+      },
+      {
+        text: "UPVC Windows (Color)",
+        img: a7,
+      },
+    ],
+    img: luxury,
+  },
+];
+
 function CostEstimator1() {
   const [detailedCost, setDetailedCost] = useState(false);
   const [costEstimator, setCostEstimator] = useState(false);
   const [contentHeight, setContentHeight] = useState(0);
   const [isPopupVisible1, setIsPopupVisible] = useState(false);
+  const [package1, setPackage] = useState("");
+  const [expandedPackage, setExpandedPackage] = useState(null);
 
   const contentRef = useRef(null);
   const logosRef = useRef(null);
@@ -135,25 +272,30 @@ function CostEstimator1() {
     setDetailedCost(bool);
   };
 
+  const packageSet = (typeOfPackage) => {
+    setPackage(typeOfPackage);
+  };
+
+  const toggleExpand = (pkgName) => {
+    setExpandedPackage(expandedPackage === pkgName ? null : pkgName);
+  };
+
   const handleCostEstimator = (bool) => {
     setCostEstimator(bool);
   };
 
   const [inputs, setInputs] = useState({
-    state: localStorage.getItem("state") || "State",
-    city: localStorage.getItem("city") || "City",
-    landType: localStorage.getItem("landType") || "Regular",
-    side1: localStorage.getItem("side1") || "",
-    side2: localStorage.getItem("side2") || "",
-    side3: localStorage.getItem("side3") || "",
-    side4: localStorage.getItem("side4") || "",
-    length: localStorage.getItem("length") || "20",
-    breadth: localStorage.getItem("breadth") || "20",
-    customLength: localStorage.getItem("customLength") || "",
-    customBreadth: localStorage.getItem("customBreadth") || "",
-    floors: localStorage.getItem("floors") || "1",
-    floorHeight: localStorage.getItem("floorHeight") || "10", // Default to "10"
-    packageType: localStorage.getItem("packageType") || "Package",
+    landType: "Regular",
+    side1: "",
+    side2: "",
+    side3: "",
+    side4: "",
+    length: "",
+    breadth: "",
+    customLength: "",
+    customBreadth: "",
+    floors: "1",
+    floorHeight: "10", // Default to "10"
   });
 
   const [results, setResults] = useState({
@@ -204,16 +346,18 @@ function CostEstimator1() {
 
   const calculateCost = () => {
     const area = calculateArea();
-    const { floors, packageType } = inputs;
+    const { floors } = inputs;
     const groundCoverage = 0.9,
       sumpCost = 5000 * floors;
     const builtUp = Math.round(area * groundCoverage * floors);
     const costMultiplier =
-      packageType === "Essential"
+      package1 === "Essential"
         ? 1800
-        : packageType === "Premium"
+        : package1 === "Premium"
         ? 2075
-        : 2485;
+        : package1 === "Luxury"
+        ? 2485
+        : 0;
     const cost = builtUp * costMultiplier;
 
     setResults({
@@ -226,7 +370,7 @@ function CostEstimator1() {
 
   useEffect(() => {
     calculateCost();
-  }, [inputs]);
+  }, [inputs, package1]);
 
   useEffect(() => {
     Object.entries(inputs).forEach(([key, value]) => {
@@ -235,14 +379,9 @@ function CostEstimator1() {
   }, [inputs]);
 
   const options = {
-    state: ["Karnataka"],
-    city: ["Bengaluru"],
     landType: ["Regular", "Triangular", "Irregular"],
-    length: ["20", "30", "40", "50", "Custom"],
-    breadth: ["20", "30", "40", "50", "Custom"],
-    floors: ["1", "2", "3", "4", "5", "6", "7", "8"],
+    floors: ["1", "2", "3", "4", "5", "6"],
     floorHeight: ["10", "11", "12", "13"],
-    packageType: ["Essential", "Premium", "Luxury"],
   };
 
   return (
@@ -272,49 +411,101 @@ function CostEstimator1() {
           }}
         >
           <div ref={contentRef}>
-            <div className="flex flex-col 2xl:grid 2xl:grid-cols-2 md:px-20 lg:px-40 xl:px-[10%] px-4">
+            <div className="bg-black text-white flex flex-col justify-center items-center p-4 mb-10">
+              <div className="text-center mb-6">
+                <h1 className="text-2xl font-giloryM">Select Packages*</h1>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 2xl:gap-40">
+                {packages.map((pkg, index) => (
+                  <div
+                    key={index}
+                    className={`relative border  rounded-lg p-6 hover:shadow-lg hover:shadow-secondary transition-shadow w-[350px] md:w-[234px] md:h-[423px] lg:w-[333px] lg:h-[501px] ${
+                      package1 === pkg.name
+                        ? "border-primary"
+                        : "border-[#7c7c7c]"
+                    }
+                    
+                    ${expandedPackage === pkg.name ? "h-[423px]" : "h-fit"}`}
+                  >
+                    <h2
+                      className={`text-xl flex font-giloryB md:mb-14 gap-2 justify-center cursor-pointer md:cursor-none ${
+                        expandedPackage === pkg.name ? "mb-14" : "mb-0"
+                      }
+`}
+                      onClick={() => toggleExpand(pkg.name)}
+                    >
+                      <img src={pkg.img} alt="" />
+                      {pkg.name}
+                    </h2>
+                    <img
+                      src={downArrow}
+                      alt=""
+                      className={`absolute top-7 right-10 md:hidden cursor-pointer ${
+                        expandedPackage === pkg.name
+                          ? "rotate-180 transition-transform"
+                          : ""
+                      }`}
+                      onClick={() => toggleExpand(pkg.name)}
+                    />
+                    <div
+                      className={`${
+                        expandedPackage === pkg.name || window.innerWidth >= 768
+                          ? "block"
+                          : "hidden"
+                      } md:block`}
+                    >
+                      <ul className="mb-6 text-sm text-gray-300">
+                        {pkg.features.map((feature, idx) => (
+                          <li
+                            key={idx}
+                            className="mb-2 flex items-start gap-2 text-left font-giloryM"
+                          >
+                            <img src={feature.img} alt="" /> {feature.text}
+                          </li>
+                        ))}
+                      </ul>
+                      <button
+                        className={`absolute bottom-6 left-1/2 transform -translate-x-1/2 w-[80%] font-giloryS py-2 rounded transition ${
+                          package1 === pkg.name
+                            ? "bg-primary"
+                            : "bg-white text-black"
+                        }`}
+                        onClick={() => packageSet(pkg.name)}
+                      >
+                        {package1 === pkg.name ? "Selected" : "Select"}
+                      </button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="flex flex-col 2xl:grid 2xl:grid-cols-2 md:px-20 lg:px-40 xl:px-[10%] 2xl:px-[16%] px-4">
               <div className="w-full 2xl:px-1%">
-                <div className="grid md:grid-cols-2 gap-2 md:gap-4 mt-6">
-                  <SelectInput
-                    value={inputs.state}
-                    onChange={handleInputChange}
-                    options={options.state}
-                    name="state"
-                    label="State"
-                  />
-                  <SelectInput
-                    value={inputs.city}
-                    onChange={handleInputChange}
-                    options={options.city}
-                    name="city"
-                    label="City"
-                  />
-                </div>
-                <div className="grid md:grid-cols-2 gap-4 mt-3 md:mt-0">
-                  <SelectInput
+                <div className="grid md:grid-cols-1 lg:grid-cols-1 gap-4 mt-6">
+                  <RadioGroup
                     value={inputs.landType}
                     onChange={handleInputChange}
                     options={options.landType}
                     name="landType"
                     label="Land Type"
                   />
-                  <SelectInput
+                  {/* <SelectInput
                     value={inputs.packageType}
                     onChange={handleInputChange}
                     options={options.packageType}
                     name="packageType"
                     label="Package"
-                  />
+                  /> */}
                 </div>
 
                 {inputs.landType === "Regular" && (
                   <div className="grid grid-cols-2 gap-x-4 mb-2 mt-3 md:mt-0">
-                    <SelectInput
+                    <NumberInput
                       value={inputs.length}
                       onChange={handleInputChange}
-                      options={options.length}
                       name="length"
                       label="Land dimensions"
+                      placeholder="Length"
                     />
                     {inputs.length === "Custom" && (
                       <NumberInput
@@ -324,11 +515,11 @@ function CostEstimator1() {
                         label="Custom length"
                       />
                     )}
-                    <SelectInput
+                    <NumberInput
                       value={inputs.breadth}
                       onChange={handleInputChange}
-                      options={options.breadth}
                       name="breadth"
+                      placeholder="Breadth"
                     />
                     {inputs.breadth === "Custom" && (
                       <NumberInput
@@ -346,21 +537,18 @@ function CostEstimator1() {
                     <NumberInput
                       value={inputs.side1}
                       onChange={handleInputChange}
-                      placeholder="Side 1"
                       name="side1"
                       label="Side1"
                     />
                     <NumberInput
                       value={inputs.side2}
                       onChange={handleInputChange}
-                      placeholder="Side 2"
                       name="side2"
                       label="Side2"
                     />
                     <NumberInput
                       value={inputs.side3}
                       onChange={handleInputChange}
-                      placeholder="Side 3"
                       name="side3"
                       label="Side3"
                     />
@@ -372,35 +560,31 @@ function CostEstimator1() {
                     <NumberInput
                       value={inputs.side1}
                       onChange={handleInputChange}
-                      placeholder="Side 1"
                       name="side1"
                       label="Side1"
                     />
                     <NumberInput
                       value={inputs.side2}
                       onChange={handleInputChange}
-                      placeholder="Side 2"
                       name="side2"
                       label="Side2"
                     />
                     <NumberInput
                       value={inputs.side3}
                       onChange={handleInputChange}
-                      placeholder="Side 3"
                       name="side3"
                       label="Side3"
                     />
                     <NumberInput
                       value={inputs.side4}
                       onChange={handleInputChange}
-                      placeholder="Side 4"
                       name="side4"
                       label="Side4"
                     />
                   </div>
                 )}
                 <div className="grid md:grid-cols-2 gap-4">
-                  <SelectInput
+                  <RadioGroup
                     value={inputs.floors}
                     onChange={handleInputChange}
                     options={options.floors}
