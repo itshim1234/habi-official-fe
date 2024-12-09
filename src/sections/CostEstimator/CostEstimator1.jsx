@@ -454,7 +454,7 @@ function CostEstimator1() {
                           : "hidden"
                       } md:block`}
                     >
-                      <ul className="mb-6 text-sm text-gray-300">
+                      <ul className="mb-6 text-sm text-gray-300 lg:leading-6">
                         {pkg.features.map((feature, idx) => (
                           <li
                             key={idx}
