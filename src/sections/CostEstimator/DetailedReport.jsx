@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PaymentSchedule from "./PaymentSchedule";
+import BarGraph from "./BarGraph";
 
 function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
   const [newField, setNewField] = useState("");
@@ -81,71 +82,44 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
   const scheduleData = [
     {
       title: "Design & Development",
-      items: [
-        "2D & 3D - Floor Plans",
-        "Detailed presentation of the floor plan with holes in visualization.",
-        "3D Elevation Design",
-        "Standard 3D Walkthrough Video",
-        "Architectural Services",
-        "Soil Testing + Structure",
-        "MEP Design",
-      ],
+
       percentage: 1,
       price: 0.01 * totalEstimatedCost,
     },
     {
       title: "Civil Construction: (Upto Plinth Level)",
-      items: [
-        "Excavation",
-        "Foundation",
-        "Plinth Level",
-        "Termite Treatment",
-        "PCC",
-      ],
+
       percentage: 20,
       price: 0.2 * totalEstimatedCost,
     },
     {
       title: "Civil Construction: (Upto Terrace Level)",
-      items: ["Beams, Column & Slabs For All Floors"],
       percentage: 30,
       price: 0.3 * totalEstimatedCost,
     },
     {
       title: "Civil Construction: (Upto Plastering)",
-      items: [
-        "Walls",
-        "Electrical Wiring",
-        "Plumbing",
-        "Plastering",
-        "Tile Laying",
-        "Door & Windows Installation",
-        "Painting Work",
-      ],
+
       percentage: 20,
       price: 0.2 * totalEstimatedCost,
     },
     {
       title: "Civil Construction: (Fixtures Installation)",
-      items: ["Toilet Fixtures", "Electrical Fixtures"],
       percentage: 15,
       price: 0.15 * totalEstimatedCost,
     },
     {
       title: "Civil Construction: (Upto Metal Works)",
-      items: ["Window Grills", "Railings", "Snag List Rectification"],
       percentage: 10,
       price: 0.1 * totalEstimatedCost,
     },
     {
       title: "Handover",
-      items: ["Keys Handover", "Documents"],
       percentage: 4,
       price: 0.04 * totalEstimatedCost,
     },
     {
       title: "Total",
-      items: [],
       price: totalEstimatedCost,
     },
   ];
@@ -436,6 +410,10 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
         Payment Schedule
       </h2>
       <PaymentSchedule scheduleData={scheduleData} />
+      <BarGraph
+        scheduleData={scheduleData}
+        totalEstimatedCost={totalEstimatedCost}
+      />
     </div>
   );
 }

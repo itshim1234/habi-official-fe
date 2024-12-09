@@ -39,12 +39,14 @@ function Testimonial() {
 
   // Auto-slide testimonials every 10 seconds
   useEffect(() => {
+    if (isModalOpen) return; // Skip interval setup if modal is open
+
     const interval = setInterval(() => {
       setActiveIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
     }, 10000);
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => clearInterval(interval); // Cleanup interval
+  }, [isModalOpen, testimonials.length]);
 
   // Handle manual navigation
   const handlePrev = () => {
@@ -58,8 +60,10 @@ function Testimonial() {
   };
 
   // Handle click on active testimonial to open video
-  const handleClick = (testimonial) => {
+  // Handle click on a testimonial to open video and set active index
+  const handleClick = (testimonial, index) => {
     if (testimonial.videoUrl) {
+      setActiveIndex(index); // Update active index to match clicked testimonial
       setVideoUrl(testimonial.videoUrl); // Set video URL from the testimonial
       setIsModalOpen(true); // Open modal
     }
@@ -93,7 +97,12 @@ function Testimonial() {
                 <div
                   key={testimonial.id}
                   className={className}
-                  onClick={() => handleClick(testimonial)} // Handle click on carousel item
+                  onClick={() =>
+                    handleClick(
+                      testimonial,
+                      (activeIndex + index) % visibleTestimonials.length
+                    )
+                  } // Pass index relative to activeIndex
                 >
                   <img
                     className="absolute w-full h-full object-cover rounded-2xl"
