@@ -1,5 +1,5 @@
 import React from "react";
-import divider from "../../assets/images/line.png";
+import divider from "../../assets/images/Line.png";
 import "./styles.css";
 
 export const Header = () => {
