@@ -1,5 +1,5 @@
 import React from "react";
-import divider from "../../assets/images/divider.png";
+import divider from "../../assets/images/line.png";
 import "./styles.css";
 
 export const Header = () => {
@@ -57,12 +57,12 @@ const PaymentSchedule = ({ scheduleData }) => {
                 index === 3 ||
                 index === 4 ||
                 index === 6) && (
-                <div className="hidden md:flex absolute top-0 -right-8 z-20">
+                <div className="hidden md:flex absolute top-0 right-0 z-20">
                   <Header />
                 </div>
               )}
               {(index === 0 || index === 2 || index === 4 || index === 6) && (
-                <div className="absolute md:hidden top-0 -right-4 z-20">
+                <div className="absolute md:hidden top-0 right-0 z-20">
                   <Header />
                 </div>
               )}
