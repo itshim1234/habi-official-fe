@@ -15,3 +15,8 @@
   text-align: center;
   box-sizing: border-box;
 }
+
+.glowing-effect {
+  background: linear-gradient(to left, #ffb9694b 0%, #1a1a1a 100%);
+  z-index: 1;
+}

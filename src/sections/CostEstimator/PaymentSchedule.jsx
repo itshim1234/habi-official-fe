@@ -1,5 +1,6 @@
 import React from "react";
 import divider from "../../assets/images/divider.png";
+import "./styles.css";
 
 export const Header = () => {
   return (
@@ -19,15 +20,14 @@ const PaymentSchedule = ({ scheduleData }) => {
               index === scheduleData.length - 1 ? "md:col-span-2" : ""
             }`}
           >
-            {/* Card */}
             <div
-              className={`relative bg-[#1a1a1a] text-left p-2 lg:pb-10 md:p-6 h-[186px] md:h-[269px] lg:h-[426px] flex flex-col ${
+              className={`relative bg-[#1a1a1a] text-left p-2 lg:pb-10 md:p-6 h-[186px] md:h-[269px] lg:h-[426px] ${
                 index === scheduleData.length - 1
-                  ? "justify-center pl-6 md:pl-20"
-                  : "justify-between pl-6 md:pl-10"
+                  ? "justify-center pl-6 md:pl-20 items-center md:flex gap-x-10 pt-12 md:pt-0 glowing-effect"
+                  : "justify-between pl-6 md:pl-10 flex flex-col  bg-[#1a1a1a]"
               }`}
             >
-              <p className="text-lg md:text-2xl lg:text-[40px] font-giloryM  leading-[1.1] md:leading-[1.3] lg:leading-[1.3]">
+              <p className="text-lg md:text-2xl lg:text-[40px] font-giloryM  leading-[1.1] md:leading-[1.3] lg:leading-[1.3] md:inline">
                 {item.title}
               </p>
 
@@ -40,12 +40,12 @@ const PaymentSchedule = ({ scheduleData }) => {
                   {item.percentage}%
                 </span>
               </div>
-              <div className="text-2xl md:text-[32px] lg:text-[56px] font-giloryB">
+              <div className="text-2xl md:text-[32px] lg:text-[56px] font-giloryB md:inline">
                 ₹ {Number(item.price).toLocaleString("en-IN")}
               </div>
               {index === scheduleData.length - 1 && (
                 <p
-                  className={`text-right font-giloryM italic text-xs md:text-[14px] lg:text-2xl`}
+                  className={`absolute text-right font-giloryM italic text-xs md:text-[14px] lg:text-2xl top-[60%] right-[25%]`}
                 >
                   No hidden Charges
                 </p>
