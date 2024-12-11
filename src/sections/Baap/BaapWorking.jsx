@@ -23,8 +23,15 @@ function BaapWorking() {
   }, []);
   return (
     <div className="relative w-full h-screen md:h-[60vh] lg:h-screen">
-      <video className="w-full h-full" autoPlay muted playsInline loop>
-        <source src={videoSource} type="video/mp4" />
+      <video
+        className="w-full h-full"
+        autoPlay
+        muted
+        playsInline
+        loop
+        loading="lazy"
+      >
+        <source src={videoSource} type="video/mp4" loading="lazy" />
         Your browser does not support the video tag.
       </video>
     </div>

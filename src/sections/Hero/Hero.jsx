@@ -123,7 +123,7 @@ function Hero({ scrollToProjects, scrollToCostEstimator }) {
       >
         <img
           src={logo}
-          alt="habi"
+          alt="habi The Way Of Living"
           className="w-20 md:w-32 lg:w-32 2xl:w-40 animation cursor-pointer rounded-full"
         />
         <p className="absolute font-giloryM text-white mt-1 text-xs md:text-sm md:left-3 lg:left-0 -bottom-4 md:bottom-0 lg:text-lg 2xl:bottom-2 2xl:left-3">
@@ -147,7 +147,7 @@ function Hero({ scrollToProjects, scrollToCostEstimator }) {
         </button>
       </div>
       <div className="relative z-20 text-white justify-center text-center top-[55%] hidden 2xl:flex space-x-4 md:space-x-12 text-md md:text-[24px] ">
-        <img src={scroll} alt="" />
+        <img src={scroll} alt="scroll button" />
       </div>
       {isPopupVisible && (
         <div className="lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:top-1/2 lg:-translate-y-1/2 xl:top-[58%] z-50 ">

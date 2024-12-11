@@ -11,13 +11,6 @@ function Baap({ toggleView }) {
     <div className="flex flex-col justify-center text-center bg-black text-white relative w-full h-fit">
       <hr className="bg-[#f8f8ff] p-0 m-0" />
       <div className="relative h-[115px] md:h-0">
-        {/* <button
-          class="rotate-border flex w-fit mt-[57px] right-0 md:mt-0 absolute md:top-[100px] md:right-0 backdrop-blur-[12.5px] bg-slate-50 bg-opacity-30 p-5 rounded-l-xl border-2 border-r-0 border-white"
-          onClick={toggleView}
-        >
-          <img src={arrow} alt="" className="rotate-180" />
-          <span class="ml-3">Habi homes</span>
-        </button> */}
         <div
           className="flex items-center w-fit mt-[57px] right-0 md:mt-0 absolute md:top-[100px] md:right-0"
           onClick={toggleView}

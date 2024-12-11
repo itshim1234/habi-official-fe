@@ -108,6 +108,7 @@ function Testimonial() {
                     className="absolute w-full h-full object-cover rounded-2xl"
                     src={testimonial.image}
                     alt="Testimonial"
+                    loading="lazy"
                   />
                   <div className="content z-10 absolute bottom-0 bg-black/40 backdrop-blur-lg rounded-b-xl px-3 flex items-end pb-8 justify-center border border-[#7c7c7c] gil">
                     <p className="text-left">{testimonial.feedback}</p>
@@ -116,6 +117,7 @@ function Testimonial() {
                   <img
                     src={testimonial.userImage}
                     alt=""
+                    loading="lazy"
                     className="image absolute right-3 border-2 rounded-full z-20"
                   />
                   <img

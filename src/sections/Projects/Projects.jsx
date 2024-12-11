@@ -95,6 +95,7 @@ const Projects = () => {
                   <img
                     src={imageItem.mainImage}
                     alt="item"
+                    loading="lazy"
                     className={` rounded-2xl ${
                       index === 1
                         ? "opacity-100 min-w-[350px] min-h-[250px] md:min-w-[500px] md:min-h-[350px] lg:min-w-[575px] lg:min-h-[375px] xl:min-w-[625px] xl:min-h-[375px]"

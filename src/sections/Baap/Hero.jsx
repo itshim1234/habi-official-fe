@@ -33,12 +33,13 @@ function Hero() {
     <div className="relative w-full h-screen md:h-[40vh] lg:h-screen overflow-hidden text-white">
       {/* Background Video */}
       <video
-        className={`absolute top-0 left-0 w-full object-cover h-full`}
+        className={`absolute top-0 left-0 w-full object-cover h-full `}
         autoPlay
         muted
         playsInline
+        loading="lazy"
       >
-        <source src={videoSource} type="video/mp4" />
+        <source src={videoSource} type="video/mp4" loading="lazy" />
       </video>
       {/* Logo */}
       <div className="absolute top-5 md:top-10 left-5 md:left-10 transform z-10">

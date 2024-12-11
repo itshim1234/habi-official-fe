@@ -204,16 +204,19 @@ function WorkingLaptop() {
             src={stages[currentStage]?.image}
             alt={stages[currentStage]?.title || "Default Title"}
             className="w-full h-full object-contain"
+            loading="lazy"
           />
           <img
             ref={sectionRef} // Attach topRef to the element to trigger reverse scrolling
             src={star}
             alt=""
+            loading="lazy"
             className="absolute right-0 -bottom-5 md:-bottom-8 w-10 md:w-16"
           />
           <img
             src={star}
             alt=""
+            loading="lazy"
             className="absolute -right-2 md:-right-4 bottom-2 w-5 md:w-8"
           />
         </div>

@@ -48,16 +48,16 @@ function Info() {
             style={{ transform: `rotate(${-90 * currentIndex}deg)` }}
           >
             <div className="planet">
-              <img src={design} alt="" />
+              <img src={design} loading="lazy" alt="" />
             </div>
             <div className="planet">
-              <img src={manage} alt="" />
+              <img src={manage} loading="lazy" alt="" />
             </div>
             <div className="planet">
-              <img src={quality} alt="" />
+              <img src={quality} loading="lazy" alt="" />
             </div>
             <div className="planet">
-              <img src={time} alt="" />
+              <img src={time} loading="lazy" alt="" />
             </div>
           </div>
         </div>

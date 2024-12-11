@@ -62,6 +62,7 @@ const ConstructionProgress = () => {
           playsInline
           autoPlay
           muted
+          loading="lazy"
         ></video>
       </div>
       {/* Card Section */}
