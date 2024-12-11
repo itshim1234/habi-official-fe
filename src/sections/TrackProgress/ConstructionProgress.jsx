@@ -22,6 +22,7 @@ const ConstructionProgress = () => {
           const video = videoRef.current;
           if (video) {
             video.currentTime = 0; // Reset video to the start
+            setVideoPlayed(false);
             video.play(); // Play video again
           }
         }
@@ -44,9 +45,7 @@ const ConstructionProgress = () => {
   return (
     <div
       ref={sectionRef}
-      className={`relative h-[450px] md:h-[800px] bg-cover bg-center w-full mt-20 text-white ${
-        videoPlayed ? "md:mb-0" : "md:mb-0"
-      }`}
+      className={`relative h-[450px] md:h-[800px] bg-cover bg-center w-full mt-20 text-white`}
     >
       <p className="px-2 md:px-0 flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] 2xl:text-[64px] font-giloryB z-20">
         Track all your construction progress
