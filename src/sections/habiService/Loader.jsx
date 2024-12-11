@@ -18,7 +18,7 @@ const StyledWrapper = styled.div`
 
     background: #ffffff;
     box-sizing: border-box;
-    animation: animFw 15s linear infinite; /* 14s duration and infinite loop */
+    animation: animFw 14s linear infinite; /* 14s duration and infinite loop */
   }
 
   .loader::after,

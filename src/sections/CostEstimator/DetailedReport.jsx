@@ -397,7 +397,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
           <div className="flex justify-between relative mb-1 m-1 py-4 font-giloryB">
             <span className="text-lg text-white">Total Estimated Cost</span>
             <span className="text-white text-lg absolute right-[0%] md:right-0">
-              ₹{totalEstimatedCost.toFixed(2)}
+              ₹{totalEstimatedCost.toLocaleString("en-IN")}
             </span>
           </div>
           <hr className="border-1 border-[#7c7c7c]" />

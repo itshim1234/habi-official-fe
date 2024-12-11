@@ -14,7 +14,7 @@ function Service({ toggleView }) {
     if (isVideoReady) {
       interval = setInterval(() => {
         setActiveIndex((prevIndex) => (prevIndex + 1) % 5); // Cycle through 0 to 4
-      }, 3000); // 3 seconds
+      }, 2800); // 3 seconds
     }
     return () => clearInterval(interval); // Cleanup on component unmount
   }, [isVideoReady]);

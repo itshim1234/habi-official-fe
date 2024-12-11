@@ -14,7 +14,7 @@ const BarGraph = ({ scheduleData, totalEstimatedCost }) => {
             {[5000000, 4000000, 3000000, 2000000, 1000000].map(
               (amount, index) => (
                 <li key={index}>
-                  <div>{amount.toLocaleString("en-IN")}</div>
+                  <div>₹{amount.toLocaleString("en-IN")}</div>
                 </li>
               )
             )}

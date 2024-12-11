@@ -98,8 +98,7 @@
   float: left;
   position: absolute;
   bottom: 0;
-  z-index: 99;
-  height: 35%;
+  z-index: 10;
   width: 40px;
   margin: 0 60px;
   border: 1px solid #ffb969;
