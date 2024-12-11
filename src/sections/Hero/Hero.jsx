@@ -126,7 +126,7 @@ function Hero({ scrollToProjects, scrollToCostEstimator }) {
           alt="habi The Way Of Living"
           className="w-20 md:w-32 lg:w-32 2xl:w-40 animation cursor-pointer rounded-full"
         />
-        <p className="absolute font-giloryM text-white mt-1 text-xs md:text-sm md:left-3 lg:left-0 -bottom-4 md:bottom-0 lg:text-lg 2xl:bottom-2 2xl:left-3">
+        <p className="absolute font-giloryS text-white mt-1 text-xs md:text-sm md:left-3 lg:left-0 -bottom-4 md:bottom-0 lg:text-lg 2xl:bottom-2 2xl:left-3">
           The way of Living
         </p>
       </div>
