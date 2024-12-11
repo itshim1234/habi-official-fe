@@ -14,9 +14,11 @@ import "./style.css";
 
 function HabiService() {
   const [isServiceView, setIsServiceView] = useState(true);
+  const [costEstimatorOpen, setCostEstimatorOpen] = useState(false);
   const [animation, setAnimation] = useState("");
 
   const projectsRef = useRef(null); // Create a ref for the Projects component
+  const costEstimatorRef = useRef(null); // Create a ref for the CostEstimator component
 
   const toggleView = () => {
     // Set the animation based on the current view
@@ -34,9 +36,19 @@ function HabiService() {
     }
   };
 
+  const scrollToCostEstimator = () => {
+    if (costEstimatorRef.current) {
+      costEstimatorRef.current.scrollIntoView({ behavior: "smooth" }); // Smooth scrolling
+      setCostEstimatorOpen(true);
+    }
+  };
+
   return (
     <div>
-      <Hero scrollToProjects={scrollToProjects} />
+      <Hero
+        scrollToProjects={scrollToProjects}
+        scrollToCostEstimator={scrollToCostEstimator}
+      />
       <Info />
       <div className={`content-container ${animation}`}>
         {isServiceView ? (
@@ -48,7 +60,9 @@ function HabiService() {
               <Projects />
             </div>
             <Testimonial />
-            <CostEstimator1 />
+            <div ref={costEstimatorRef}>
+              <CostEstimator1 costEstimatorOpen={costEstimatorOpen} />
+            </div>
             <Model />
             <Faq />
           </>

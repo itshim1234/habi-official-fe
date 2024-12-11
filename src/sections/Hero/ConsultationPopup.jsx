@@ -148,7 +148,7 @@ const ConsultationPopup = ({ onClose }) => {
           <img
             src={consultation}
             alt="Consultation"
-            className="rounded-r-lg md:h-[480px] w-full"
+            className="rounded-r-lg md:h-[480px] w-full object-cover"
           />
         </div>
       </div>

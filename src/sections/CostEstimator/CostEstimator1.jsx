@@ -234,7 +234,7 @@ const packages = [
   },
 ];
 
-function CostEstimator1() {
+function CostEstimator1({costEstimatorOpen}) {
   const [detailedCost, setDetailedCost] = useState(false);
   const [costEstimator, setCostEstimator] = useState(false);
   const [contentHeight, setContentHeight] = useState(0);
@@ -248,6 +248,13 @@ function CostEstimator1() {
   const togglePopup = () => {
     setIsPopupVisible(!isPopupVisible1);
   };
+
+  useEffect(() => {
+    // Synchronize costEstimator state with costEstimatorOpen prop
+    if (costEstimatorOpen) {
+      setCostEstimator(true);
+    }
+  }, [costEstimatorOpen]);
   useEffect(() => {
     if (contentRef.current) {
       const resizeObserver = new ResizeObserver(() => {

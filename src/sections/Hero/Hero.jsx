@@ -8,7 +8,7 @@ import Hamburger from "../../components/Hamburger";
 
 import "./hero.css";
 
-function Hero({ scrollToProjects }) {
+function Hero({ scrollToProjects, scrollToCostEstimator }) {
   const navigate = useNavigate();
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Menu visibility state
@@ -86,7 +86,7 @@ function Hero({ scrollToProjects }) {
       </div>
 
       {isMenuOpen && (
-        <div className="absolute top-24 md:top-32 right-5 md:right-10 lg:right-20 z-30 flex flex-col bg-black/50 backdrop-blur-md px-6 py-2 md:py-5 border border-[#7c7c7c] rounded-lg font-giloryS">
+        <div className="absolute top-20 md:top-32 right-3 md:right-10 lg:right-20 z-30 flex flex-col bg-black/50 backdrop-blur-md px-5 py-2 md:py-3 border border-[#7c7c7c] rounded-lg font-giloryS">
           <button
             className="text-white text-[18px] md:text-[24px]"
             onClick={() => {
@@ -94,6 +94,13 @@ function Hero({ scrollToProjects }) {
             }}
           >
             Product
+          </button>
+          <hr className="my-2 md:my-4 w-[70%] mx-auto" />
+          <button
+            className="text-white text-[18px] md:text-[24px]"
+            onClick={scrollToCostEstimator}
+          >
+            Cost Estimator
           </button>
           <hr className="my-2 md:my-4 w-[70%] mx-auto" />
           <button
