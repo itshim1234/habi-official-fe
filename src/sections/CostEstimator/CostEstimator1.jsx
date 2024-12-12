@@ -92,7 +92,7 @@ const RadioGroup = ({ value, onChange, options, name, label }) => (
         {label}*
       </label>
     )}
-    <div className="flex flex-wrap gap-4">
+    <div className="flex flex-wrap gap-3 md:gap-4">
       {options.map((option) => (
         <div key={option} className="flex items-center">
           <input
@@ -106,8 +106,9 @@ const RadioGroup = ({ value, onChange, options, name, label }) => (
           />
           <label
             htmlFor={`floorHeight-${option}`}
-            className={`flex items-center justify-center w-fit px-4 h-10 text-white rounded-lg cursor-pointer transition-all duration-300 
-              ${value === option ? "bg-primary" : "bg-[#1a1a1a]"}`}
+            className={`flex items-center justify-center w-fit  h-10 text-white rounded-lg cursor-pointer transition-all duration-300 
+              ${value === option ? "bg-primary" : "bg-[#1a1a1a]"}
+              ${name === "landType" ? "px-3" : "px-4"}`}
           >
             {option}
             {name === "landType" && (
@@ -471,7 +472,7 @@ function CostEstimator1({ costEstimatorOpen }) {
                         : "border-[#7c7c7c]"
                     }
                     
-                    ${expandedPackage === pkg.name ? "h-[423px]" : "h-fit"}`}
+                    ${expandedPackage === pkg.name ? "h-[450px]" : "h-fit"}`}
                   >
                     <h2
                       className={`text-xl flex font-giloryB md:mb-14 gap-2 justify-center cursor-pointer md:cursor-none ${
@@ -536,13 +537,6 @@ function CostEstimator1({ costEstimatorOpen }) {
                     name="landType"
                     label="Land Type"
                   />
-                  {/* <SelectInput
-                    value={inputs.packageType}
-                    onChange={handleInputChange}
-                    options={options.packageType}
-                    name="packageType"
-                    label="Package"
-                  /> */}
                 </div>
 
                 {inputs.landType === "Regular" && (
