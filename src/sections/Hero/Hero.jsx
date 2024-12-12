@@ -115,7 +115,7 @@ function Hero({ scrollToProjects, scrollToCostEstimator }) {
       )}
 
       <div
-        className="absolute z-20 justify-center text-center left-4 md:left-10 lg:left-10 top-0 md:w-40"
+        className="absolute z-20 justify-center text-center left-4 md:left-2 lg:left-4 top-0 md:w-80"
         onClick={() => {
           navigate("/"); // Navigate to the home page
           window.location.reload(); // Refresh the page
@@ -126,7 +126,7 @@ function Hero({ scrollToProjects, scrollToCostEstimator }) {
           alt="habi The Way Of Living"
           className="w-20 md:w-32 lg:w-32 2xl:w-40 animation cursor-pointer rounded-full"
         />
-        <p className="absolute font-Dune text-white mt-1 text-[8px] md:text-xs md:-left-6 lg:text-[14px] lg:-left-6 -bottom-2 md:-bottom-0 2xl:bottom-0 2xl:left-0">
+        <p className="absolute font-Dune text-white text-[8px] md:text-[10px] md:left-0 lg:text-[12px] lg:-left-2 -bottom-2 md:-bottom-0 2xl:bottom-0 2xl:left-0 ">
           The way of Living
         </p>
       </div>

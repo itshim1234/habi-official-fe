@@ -7,6 +7,8 @@ import linkedin from "../../assets/images/Linkedin.png";
 import mail from "../../assets/images/mail.png";
 import twitter from "../../assets/images/twitter.png";
 import youtube from "../../assets/images/youtube.png";
+import logo from "../../assets/images/Logo2.png";
+
 import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
@@ -20,14 +22,16 @@ const Footer = () => {
     <footer className="bg-[#000000] py-10 px-5 ml-3 text-white font-giloryM md:text-lg">
       <div className="mx-auto grid grid-cols-2 md:grid-cols-5 gap-8">
         {/* Logo and Tagline */}
-        <div className="col-span-2">
-          <h2
-            className="text-[32px] md:text-[40px] lg:text-[48px] font-Samarkan text-secondary cursor-pointer w-fit"
+        <div className="col-span-2 justify-center md:w-44">
+          <img
+            src={logo}
+            alt=""
+            className="cursor-pointer w-24 ml-2 md:ml-5 lg:ml-8"
             onClick={handleLogoClick}
-          >
-            habi
-          </h2>
-          <p className="md:mt-4 text-xs font-Dune">The way of living</p>
+          />
+          <p className="font-Dune text-white text-[8px] md:text-[10px]  lg:text-[12px]">
+            The way of Living
+          </p>
         </div>
 
         {/* Company Section */}

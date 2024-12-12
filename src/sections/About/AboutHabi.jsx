@@ -8,6 +8,7 @@ import value1 from "../../assets/images/value1.png";
 import value2 from "../../assets/images/value2.png";
 import value3 from "../../assets/images/value3.png";
 import value4 from "../../assets/images/value4.png";
+import logo from "../../assets/images/Logo1.png";
 
 import buildings from "../../assets/images/buildings.png";
 import buildings1 from "../../assets/images/buildings1.png";
@@ -29,9 +30,11 @@ const AboutHabi = () => {
     <div className="bg-black text-white min-h-screen border-b border-[#7c7c7c]">
       {/* Header */}
       <header className="flex justify-between items-center p-4">
-        <div className="absolute top-5 md:top-10 left-5 md:left-10 z-10 text-[32px] md:text-[40px] lg:text-[48px] font-Samarkan text-primary cursor-pointer w-fit">
-          habi
-        </div>
+        <img
+          src={logo}
+          alt="habi The Way Of Living"
+          className="w-20 md:w-32 lg:w-32 2xl:w-40 animation cursor-pointer rounded-full"
+        />
         <div
           className="absolute top-5 md:top-10 right-5 md:right-10 z-10 cursor-pointer"
           onClick={handleGoBack}
@@ -42,7 +45,7 @@ const AboutHabi = () => {
             className="inline rotate-180 pt-0.5 mr-1 mb-1"
           />
           <p className="inline border-b pb-1 md:text-2xl font-giloryS">
-            Go back to Website
+            Go back to website
           </p>
         </div>
       </header>
@@ -115,16 +118,16 @@ const AboutHabi = () => {
               Solutions
             </li>
             <li className="flex gap-4">
-              <img src={palette} alt="palette" className="w-8" /> Accessible Design for
-              All
+              <img src={palette} alt="palette" className="w-8" /> Accessible
+              Design for All
             </li>
             <li className="flex gap-4">
-              <img src={buildings1} alt="buildings1" className="w-8" /> Smart & Adaptive
-              Spaces
+              <img src={buildings1} alt="buildings1" className="w-8" /> Smart &
+              Adaptive Spaces
             </li>
             <li className="flex gap-4">
-              <img src={buildings} alt="buildings" className="w-8" /> Modular Centric
-              Construction
+              <img src={buildings} alt="buildings" className="w-8" /> Modular
+              Centric Construction
             </li>
             <li className="flex gap-4">
               <img src={userspeak} alt="" className="w-8" /> Industry Leader in
