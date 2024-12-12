@@ -234,7 +234,7 @@ const packages = [
   },
 ];
 
-function CostEstimator1({costEstimatorOpen}) {
+function CostEstimator1({ costEstimatorOpen }) {
   const [detailedCost, setDetailedCost] = useState(false);
   const [costEstimator, setCostEstimator] = useState(false);
   const [contentHeight, setContentHeight] = useState(0);
@@ -310,6 +310,7 @@ function CostEstimator1({costEstimatorOpen}) {
     builtUpArea: 0,
     sump: 0,
     estimatedCost: 0,
+    calculatedSumpCapacity: 0,
   });
 
   //   const navigate = useNavigate();
@@ -354,8 +355,29 @@ function CostEstimator1({costEstimatorOpen}) {
   const calculateCost = () => {
     const area = calculateArea();
     const { floors } = inputs;
-    const groundCoverage = 0.9,
-      sumpCost = 5000 * floors;
+    const groundCoverage = 0.9;
+
+    // Determine the base sump cost by package
+    let baseSumpCost = 0;
+    if (package1 === "Essential") {
+      baseSumpCost = 10000;
+    } else if (package1 === "Premium") {
+      baseSumpCost = 12000;
+    } else if (package1 === "Luxury") {
+      baseSumpCost = 15000;
+    }
+
+    // Calculate the sump cost based on floors
+    const calculatedSumpCapacity = 5000 * floors;
+    var sumpCost = 0;
+
+    if (calculatedSumpCapacity > baseSumpCost) {
+      sumpCost = calculatedSumpCapacity - baseSumpCost;
+    }
+
+    // Final sump cost, ensuring it respects the package default
+
+    // Calculate the built-up area and cost multiplier
     const builtUp = Math.round(area * groundCoverage * floors);
     const costMultiplier =
       package1 === "Essential"
@@ -365,13 +387,17 @@ function CostEstimator1({costEstimatorOpen}) {
         : package1 === "Luxury"
         ? 2485
         : 0;
+
+    // Calculate the final cost
     const cost = builtUp * costMultiplier;
 
+    // Set the results
     setResults({
       siteArea: area,
       builtUpArea: builtUp,
       sump: sumpCost,
       estimatedCost: cost,
+      calculatedSumpCapacity: calculatedSumpCapacity,
     });
   };
 
@@ -652,7 +678,7 @@ function CostEstimator1({costEstimatorOpen}) {
                           Sump Capacity
                         </div>
                         <div className="text-lg md:text-2xl font-giloryS mt-2">
-                          {results.sump} liters
+                          {results.calculatedSumpCapacity} liters
                         </div>
                       </div>
                     </div>
