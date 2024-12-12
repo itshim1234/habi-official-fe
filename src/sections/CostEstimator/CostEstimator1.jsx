@@ -25,6 +25,7 @@ import a4 from "../../assets/images/a4.png";
 import a5 from "../../assets/images/a5.png";
 import a6 from "../../assets/images/a6.png";
 import a7 from "../../assets/images/a7.png";
+import a8 from "../../assets/images/a8.png";
 
 import a from "../../assets/images/site.png";
 import b from "../../assets/images/builtup.png";
@@ -161,6 +162,10 @@ const packages = [
         text: "UPVC Windows (White)",
         img: a7,
       },
+      {
+        text: "10000 Liters Sump Capacity",
+        img: a8,
+      },
     ],
     img: essential,
   },
@@ -195,6 +200,10 @@ const packages = [
         text: "UPVC Windows (White)",
         img: a7,
       },
+      {
+        text: "12000 Liters Sump Capacity",
+        img: a8,
+      },
     ],
     img: premium,
   },
@@ -228,6 +237,10 @@ const packages = [
       {
         text: "UPVC Windows (Color)",
         img: a7,
+      },
+      {
+        text: "15000 Liters Sump Capacity",
+        img: a8,
       },
     ],
     img: luxury,
@@ -493,7 +506,8 @@ function CostEstimator1({ costEstimatorOpen }) {
                             key={idx}
                             className="mb-2 flex items-start gap-2 text-left font-giloryM"
                           >
-                            <img src={feature.img} alt="" /> {feature.text}
+                            <img src={feature.img} alt="" className="pt-1.5" />{" "}
+                            {feature.text}
                           </li>
                         ))}
                       </ul>
