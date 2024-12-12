@@ -9,6 +9,7 @@ export default {
         giloryB: ["gilroyB"],
         giloryM: ["gilroyM"],
         giloryS: ["gilroyS"],
+        Dune: ["dune"],
       },
 
       colors: {

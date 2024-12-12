@@ -110,7 +110,7 @@ const Projects = () => {
           <p className="text-[24px] md:text-[32px] font-giloryS mx-auto text-center justify-center">
             {images[currentIndex].name}
           </p>
-          <p className="font-giloryM text-[16px] md:-[18px] flex mx-auto text-center justify-center">
+          <p className="font-giloryM text-[16px] md:-[18px] flex mx-auto text-center justify-center mr-3">
             <img src={location} alt="" className="w-6 h-6 mr-2" />
             {images[currentIndex].location}
           </p>

@@ -21,6 +21,10 @@
   font-family: "gilroyS";
   src: url("assets/fonts/GilroyS.ttf") format("truetype");
 }
+@font-face {
+  font-family: "dune";
+  src: url("assets/fonts/Dune_Rise.ttf") format("truetype");
+}
 
 .text-stroke {
   -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4); /* Adjust the thickness and color */
@@ -33,4 +37,3 @@ html {
 body::-webkit-scrollbar {
   display: none; /* Hide scrollbar in Chrome/Safari */
 }
-

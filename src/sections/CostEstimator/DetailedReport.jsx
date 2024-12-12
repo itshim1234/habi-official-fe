@@ -327,6 +327,9 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
           </div>
           <div className="flex justify-between relative mb-1">
             <span className=" text-white">Sump Cost</span>
+            <span className="text-white absolute right-32 md:right-40 ">
+              {sump} Ltr
+            </span>
             <span className="text-white absolute right-[0%] md:right-0">
               ₹{sumpCost.toFixed(2)}
             </span>

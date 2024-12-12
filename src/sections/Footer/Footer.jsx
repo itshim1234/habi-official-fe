@@ -27,7 +27,7 @@ const Footer = () => {
           >
             habi
           </h2>
-          <p className="md:mt-4 text-sm">The way of living</p>
+          <p className="md:mt-4 text-xs font-Dune">The way of living</p>
         </div>
 
         {/* Company Section */}

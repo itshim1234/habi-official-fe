@@ -149,16 +149,16 @@ function Testimonial() {
           </p>
         </div>
       </div>
-      <div className="flex gap-6 mx-auto justify-center items-center mt-10 md:mt-0">
+      <div className="flex gap-6 mx-auto justify-center items-center space-x-4 md:mt-0 mb-10">
         <button
           onClick={handlePrev}
-          className="left-0 top-1/2 transform -translate-y-1/2 text-white p-2"
+          className="absolute md:relative left-1 top-1/3 transform -translate-y-1/2 z-20 p-2 rounded-full text-white bg-white/40"
         >
           <img src={left} alt="◀" />
         </button>
         <button
           onClick={handleNext}
-          className="right-0 top-1/2 transform -translate-y-1/2  text-white p-2"
+          className="absolute md:relative right-1 top-1/3 transform -translate-y-1/2 z-20 p-2 rounded-full text-white bg-white/40"
         >
           <img src={right} alt="◀" />
         </button>
