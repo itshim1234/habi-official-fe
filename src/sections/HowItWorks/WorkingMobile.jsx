@@ -78,7 +78,7 @@ function WorkingMobile() {
 
     const interval = setInterval(() => {
       setCurrentStage((prevStage) => (prevStage + 1) % stages.length);
-    }, 3000);
+    }, 2000);
 
     return () => clearInterval(interval);
   }, [isInViewport]);
