@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import herobackground from "../../assets/videos/heroBackground.mp4";
 import scroll from "../../assets/images/scroll.png";
 import ConsultationPopup from "./ConsultationPopup";
-import logo from "../../assets/images/Logo1.png";
+import logo from "../../assets/images/Logo2.png";
 import { useNavigate } from "react-router-dom";
 import Hamburger from "../../components/Hamburger";
 
@@ -25,7 +25,7 @@ function Hero({ scrollToProjects, scrollToCostEstimator }) {
   return (
     <div className="relative min-h-[300px] h-[460px] md:h-[750px] lg:h-screen w-screen bg-cover bg-center">
       {/* Video background */}
-      <div className="absolute inset-0 z-0 bg-cover">
+      <div className="absolute inset-0 z-0 bg-cover top-6 md:top-0">
         <video
           className="object-cover w-screen h-[450px] md:h-[750px] lg:h-screen"
           autoPlay
@@ -115,7 +115,7 @@ function Hero({ scrollToProjects, scrollToCostEstimator }) {
       )}
 
       <div
-        className="absolute z-20 justify-center text-center left-4 md:left-2 lg:left-4 top-0 md:w-80"
+        className="absolute z-20 justify-center text-center left-0 md:left-2 lg:left-4 top-0 w-40 md:w-80 cursor-pointer"
         onClick={() => {
           navigate("/"); // Navigate to the home page
           window.location.reload(); // Refresh the page
@@ -124,11 +124,16 @@ function Hero({ scrollToProjects, scrollToCostEstimator }) {
         <img
           src={logo}
           alt="habi The Way Of Living"
-          className="w-20 md:w-32 lg:w-32 2xl:w-40 animation cursor-pointer rounded-full"
+          className="w-20 md:w-32 lg:w-32 2xl:w-[150px] animation cursor-pointer rounded-full"
         />
-        <p className="absolute font-Dune text-white text-[8px] md:text-[10px] md:left-0 lg:text-[12px] lg:-left-2 -bottom-2 md:-bottom-0 2xl:bottom-0 2xl:left-0 ">
-          The way of Living
-        </p>
+        <div className="absolute top-[30px] left-16 md:top-9 lg:top-12 2xl:top-[55px] text-left md:left-[105px] lg:left-[110px] 2xl:left-32 leading-[15px] md:leading-6 lg:leading-7 2xl:leading-8">
+          <p className="font-Samarkan text-white text-[20px] md:left-0 md:text-[30px] lg:text-[38px] 2xl:text-[44px] lg:-left-10 -bottom-2 md:-bottom-0 2xl:-bottom-2 2xl:left-14">
+            habi
+          </p>
+          <p className="font-Dune text-white text-[6px] md:text-[8px] md:left-0 lg:text-[9px] 2xl:text-[10px] lg:-left-2 -bottom-2 md:-bottom-0 2xl:-bottom-4 2xl:left-0">
+            The way of Living
+          </p>
+        </div>
       </div>
 
       <div className="relative z-20 text-white justify-center text-center top-[50%] flex space-x-4 md:space-x-12 text-md md:text-[20px] 2xl:text-[24px]">
