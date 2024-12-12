@@ -8,18 +8,24 @@ import "./style.css";
 function Service({ toggleView }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isVideoReady, setIsVideoReady] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   useEffect(() => {
     let interval;
-    if (isVideoReady) {
+    if (isVideoPlaying) {
       interval = setInterval(() => {
         setActiveIndex((prevIndex) => (prevIndex + 1) % 5); // Cycle through 0 to 4
-      }, 2800); // 3 seconds
+      }, 3000); // 3 seconds
     }
+
     return () => clearInterval(interval); // Cleanup on component unmount
-  }, [isVideoReady]);
+  }, [isVideoPlaying]);
 
   const items = ["Design", "Approvals", "Home Loan", "Build", "Interior"];
+
+  const handleVideoPlay = () => {
+    setIsVideoPlaying(true); // Start stages when video starts playing
+  };
 
   return (
     <div className="flex flex-col justify-center text-center bg-black text-white relative w-full h-fit">
@@ -48,6 +54,7 @@ function Service({ toggleView }) {
         space that embodies their personal style and becomes an extension of
         their identity.
       </p>
+
       <video
         className="object-cover w-full h-[450px] md:h-[650px] lg:h-[100vh] xl:w-[50vw] 2xl:w-[70vw] 2xl:h-[86vh] mx-auto"
         autoPlay
@@ -55,10 +62,12 @@ function Service({ toggleView }) {
         muted
         playsInline
         onLoadedData={() => setIsVideoReady(true)} // Set flag when video is ready
+        onPlay={handleVideoPlay} // Trigger when video starts playing
       >
         <source src={model} type="video/mp4" />
       </video>
-      {isVideoReady && (
+
+      {isVideoReady && isVideoPlaying && (
         <div className="relative w-[90vw] md:w-[70vw] lg:w-[40vw] mx-auto mb-10 mt-0">
           <Loader />
           <div className="mt-6 flex justify-between highlight-container text-[#7c7c7c]">
@@ -77,6 +86,7 @@ function Service({ toggleView }) {
           </div>
         </div>
       )}
+
       <hr className="bg-[#f8f8ff] p-0 m-0" />
     </div>
   );
