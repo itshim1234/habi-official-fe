@@ -84,6 +84,7 @@ const ProjectExpand = () => {
                 <img
                   key={index}
                   src={image}
+                  loading="lazy"
                   alt={`Image ${index + 1}`}
                   className="w-[160px] h-[110px] md:w-[370px] md:h-[200px] lg:w-[300px] lg:h-[200px] rounded-lg border cursor-pointer object-cover"
                   onClick={() => handleImageClick(image)}
@@ -97,6 +98,7 @@ const ProjectExpand = () => {
                   title="YouTube video player"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
+                  loading="lazy"
                   className="w-full h-40 lg:h-80 rounded-lg border"
                 ></iframe>
               </div>

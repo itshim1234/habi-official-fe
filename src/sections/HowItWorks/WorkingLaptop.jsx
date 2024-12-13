@@ -130,7 +130,7 @@ function WorkingLaptop() {
 
       scrollCount += deltaY; // Accumulate the total scroll amount
 
-      const touchThreshold = 100; // Threshold for triggering stage changes (higher = slower transitions)
+      const touchThreshold = 600; // Threshold for triggering stage changes (higher = slower transitions)
 
       if (scrollCount >= touchThreshold) {
         handleScrollLogic(4); // Pass "1" for forward scroll
