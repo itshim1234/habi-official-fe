@@ -28,7 +28,7 @@ const ProjectExpand = () => {
   }, []);
 
   return (
-    <div className="relative inset-0 h-screen w-screen">
+    <div className="relative inset-0 h-fit md:h-screen w-screen">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
