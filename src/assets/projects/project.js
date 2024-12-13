@@ -50,6 +50,29 @@ import vrshkvilla05 from "./images/Vrshkvilla/05.jpg";
 
 const initialImages = [
   {
+    mainImage: nivaas01,
+    name: "Nivaasa",
+    location: "Bengaluru",
+    description:
+      " This building is thoughtfully designed to meet the client’s requirements, focusing on generating passive income through rental opportunities after retirement. The layout is ideal for tenants, offering flexibility with options for 1BHK or 2BHK units to suit varying needs. The spaces are well-planned to cater to families, with careful attention to Vastu principles for a harmonious living environment.",
+    images: [nivaas02, nivaas03],
+    Status: " On Going",
+    Plot: "Site - 30 Feet X 40 Feet ",
+    Orientation: "West Facing, 1 & 2BHK Residential Apartment",
+  },
+  {
+    mainImage: vrshkvilla01,
+    name: "Vrshk Villa",
+    location: "Haldwani",
+    description:
+      " The 4BHK villa boasts a distinctive exterior design, featuring a captivating vertical garden in the front. The trapezoidal inverted roof adds an aesthetic touch, enhancing the overall visual appeal of the house. The intricate design of a tree, incorporated with metal, further contributes to the unique and artistic look. A courtyard cleverly connects different spaces within the villa, creating a seamless flow and promoting a sense of openness. This residence beautifully combines innovative architectural elements with natural aesthetics, creating a harmonious and visually striking living environment.",
+    images: [vrshkvilla02, vrshkvilla03, vrshkvilla04, vrshkvilla05],
+    youtube: "https://www.youtube.com/embed/7wQ_dTzE220?si=mtw9v-j29TZeGDiZ",
+    Status: "Completed",
+    Plot: "Site - 50 Feet X 80 Feet ",
+    Orientation: "North Facing, 4BHK Duplex Villa",
+  },
+  {
     mainImage: raghu01,
     name: "Yahvi",
     location: "Bengaluru",
@@ -159,31 +182,6 @@ const initialImages = [
     Status: "Completed",
     Plot: "Site - 40 Feet X 60 Feet ",
     Orientation: "East Facing, Commercial Complex & 3BHK Home",
-  },
-
-  {
-    mainImage: nivaas01,
-    name: "Nivaasa",
-    location: "Bengaluru",
-    description:
-      " This building is thoughtfully designed to meet the client’s requirements, focusing on generating passive income through rental opportunities after retirement. The layout is ideal for tenants, offering flexibility with options for 1BHK or 2BHK units to suit varying needs. The spaces are well-planned to cater to families, with careful attention to Vastu principles for a harmonious living environment.",
-    images: [nivaas02, nivaas03],
-    Status: " On Going",
-    Plot: "Site - 30 Feet X 40 Feet ",
-    Orientation: "West Facing, 1 & 2BHK Residential Apartment",
-  },
-
-  {
-    mainImage: vrshkvilla01,
-    name: "Vrshk Villa",
-    location: "Haldwani",
-    description:
-      " The 4BHK villa boasts a distinctive exterior design, featuring a captivating vertical garden in the front. The trapezoidal inverted roof adds an aesthetic touch, enhancing the overall visual appeal of the house. The intricate design of a tree, incorporated with metal, further contributes to the unique and artistic look. A courtyard cleverly connects different spaces within the villa, creating a seamless flow and promoting a sense of openness. This residence beautifully combines innovative architectural elements with natural aesthetics, creating a harmonious and visually striking living environment.",
-    images: [vrshkvilla02, vrshkvilla03, vrshkvilla04, vrshkvilla05],
-    youtube: "https://www.youtube.com/embed/7wQ_dTzE220?si=mtw9v-j29TZeGDiZ",
-    Status: "Completed",
-    Plot: "Site - 50 Feet X 80 Feet ",
-    Orientation: "North Facing, 4BHK Duplex Villa",
   },
 ];
 

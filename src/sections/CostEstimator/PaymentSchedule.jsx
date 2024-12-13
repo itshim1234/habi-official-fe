@@ -47,7 +47,8 @@ const PaymentSchedule = ({ scheduleData }) => {
                 <p
                   className={`absolute text-right font-giloryM italic text-[10px] md:text-[12px] lg:text-lg bottom-[2%] right-[2%] text-[#7c7c7c]`}
                 >
-                  * XYZ
+                  * Actual cost may vary based on design and selection of
+                  materials.
                 </p>
               )}
 
@@ -70,8 +71,6 @@ const PaymentSchedule = ({ scheduleData }) => {
           </div>
         ))}
       </div>
-
-      {/* Total Section */}
     </div>
   );
 };

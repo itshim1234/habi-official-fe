@@ -52,7 +52,7 @@ const Projects = () => {
 
   return (
     <div className="flex flex-col p-5 text-white justify-center items-center h-fit 2xl:h-screen">
-      <p className="flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] 2xl:text-[64px] z-10 my-10 font-giloryB">
+      <p className="flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] 2xl:text-[64px] z-10 mb-10 md:my-10 font-giloryB">
         Projects
       </p>
       <div className="flex flex-col w-full">

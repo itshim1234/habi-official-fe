@@ -3,7 +3,8 @@ import consultation from "../../assets/images/consultation.png";
 import call from "../../assets/images/Call.png";
 import close from "../../assets/images/close.png";
 
-const scriptURL = import.meta.env.VITE_SHEET_URL;
+const scriptURL =
+  "https://script.google.com/macros/s/AKfycbzSEWAT0YVIeFaZVlJbu1CJOn10dx3nNr8I_zQI6hhjOrKxU5kjSb5w2tVHX0C5WvTX/exec";
 
 const ConsultationPopup = ({ onClose }) => {
   const inputFields = [
