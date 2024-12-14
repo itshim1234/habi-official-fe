@@ -47,7 +47,7 @@ const testimonials = [
       "Their designs were excellent, meeting all our needs, including Vastu and space efficiency.",
     image: vikaskumarplot,
     userImage: vikaskumarProfile,
-    videoUrl: "https://www.youtube.com/embed/F0d2xzABQcQ?si=Gsr_GZTiCwoMWC6O",
+    videoUrl: "https://www.youtube.com/embed/q_AuoLQidnY?si=OvGGOJZMBNs8yxOj",
   },
 ];
 

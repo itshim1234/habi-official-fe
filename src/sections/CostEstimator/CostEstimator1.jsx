@@ -259,9 +259,7 @@ function CostEstimator1({ costEstimatorOpen }) {
   const contentRef = useRef(null);
   const logosRef = useRef(null);
 
-  const togglePopup = () => {
-    setIsPopupVisible(!isPopupVisible1);
-  };
+  const togglePopup = () => setIsPopupVisible((prev) => !prev);
 
   useEffect(() => {
     // Synchronize costEstimator state with costEstimatorOpen prop
@@ -433,7 +431,9 @@ function CostEstimator1({ costEstimatorOpen }) {
 
   return (
     <div className={`h-fit flex flex-col bg-background w-full gradient-border`}>
-      <div className={`w-full bg-black p-2 h-auto mb-2 mb:mb-3 2xl:px-0`}>
+      <div
+        className={`relative w-full bg-black p-2 h-auto mb-2 mb:mb-3 2xl:px-0`}
+      >
         <div
           className="my-4 md:my-10 cursor-pointer w-full"
           onClick={() => {
@@ -810,12 +810,18 @@ function CostEstimator1({ costEstimatorOpen }) {
               </main>
             </div>
           </div>
-          {isPopupVisible1 && (
-            <div className="absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 top-1/3 md:top-2/3 md:-translate-y-2/3 z-50">
-              <ConsultationPopup onClose={togglePopup} />
-            </div>
-          )}
         </div>
+        {isPopupVisible1 && (
+          <div
+            className={`absolute w-[340px] md:w-[770px] lg:w-[1060px] h-fit left-1/2 md:left-1/2 transform -translate-x-1/2 z-50 ${
+              !detailedCost
+                ? "top-1/2 md:top-[62%] md:-translate-y-1/2"
+                : "top-[15%] md:top-[16%] md:-translate-y-[14%]"
+            }`}
+          >
+            <ConsultationPopup onClose={togglePopup} />
+          </div>
+        )}
       </div>
     </div>
   );

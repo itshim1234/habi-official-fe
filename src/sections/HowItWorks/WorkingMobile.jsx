@@ -86,7 +86,7 @@ function WorkingMobile() {
   return (
     <div
       ref={sectionRef}
-      className="relative h-[75vh] lg:h-screen w-full text-white flex items-center justify-center bg-transparent"
+      className="relative h-fit lg:h-screen w-full text-white flex items-center justify-center bg-transparent"
     >
       <video
         className={`absolute top-0 left-0 w-full object-cover h-full`}
@@ -125,11 +125,11 @@ function WorkingMobile() {
         <h3 className="lg:absolute left-20  top-52 text-[24px] md:text-[32px] font-giloryS text-[#ffb969] mt-10 mb-4 ">
           {stages[currentStage]?.title || "Default Title"}
         </h3>
-        <p className="lg:absolute lg:text-left  text-[16px] md:text-[18px] lg:text-[24px] font-giloryM  w-[400px] lg:w-[500px] mx-auto px-2">
+        <p className="lg:absolute h-20 lg:text-left  text-[16px] md:text-[18px] lg:text-[24px] font-giloryM  w-[400px] lg:w-[500px] mx-auto px-2">
           {stages[currentStage]?.description || "Default Description"}
         </p>
       </div>
-      <div className="absolute left-[6%]  -bottom-16 text-[200px] text-stroke font-larken z-0">
+      <div className="absolute left-[6%] lg:left-2 2xl:left-64 -bottom-24 2xl:bottom-20 text-[200px] text-stroke font-larken z-0">
         {stages[currentStage]?.number || 0}
       </div>
     </div>

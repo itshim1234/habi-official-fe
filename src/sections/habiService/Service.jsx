@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import model from "../../assets/videos/Model.mp4";
-import arrow from "../../assets/images/ArrowRight.png";
 import Loader from "./Loader";
 import SparkleButton from "../../components/SparkleButton";
 import "./style.css";
@@ -15,7 +14,7 @@ function Service({ toggleView }) {
     if (isVideoPlaying) {
       interval = setInterval(() => {
         setActiveIndex((prevIndex) => (prevIndex + 1) % 5); // Cycle through 0 to 4
-      }, 3000); // 3 seconds
+      }, 2900); // 3 seconds
     }
 
     return () => clearInterval(interval); // Cleanup on component unmount

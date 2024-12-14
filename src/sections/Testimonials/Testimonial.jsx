@@ -181,9 +181,9 @@ function Testimonial() {
         <iframe
           width="100%"
           height="100%"
-          src={videoUrl}
+          src={`${videoUrl}?autoplay=1&mute=1&controls=0`}
           title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allow="accelerometer; autoplay; muted; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerpolicy="strict-origin-when-cross-origin"
           allowfullscreen
         ></iframe>
