@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import herobackground from "../../assets/videos/heroBackground.mp4";
 import scroll from "../../assets/images/scroll.png";
 import ConsultationPopup from "./ConsultationPopup";
-import logo from "../../assets/images/Logo2.png";
+import logo from "../../assets/images/mainLogo.png";
 import { useNavigate } from "react-router-dom";
 import Hamburger from "../../components/Hamburger";
 
@@ -75,7 +75,7 @@ function Hero({ scrollToProjects, scrollToCostEstimator }) {
         </div>
       </div>
       <div className="absolute z-20 text-white justify-center text-center right-[16px] md:right-[32px] lg:right-[82px] top-[20px] md:top-[40px]">
-        <button className="flex items-center justify-between px-5 w-[140px] md:w-[180px] h-[56px] md:h-[60px] rounded-lg border-2 border-white/20 bg-black/25 backdrop-blur-md text-white font-semibold">
+        <button className="flex items-center justify-between px-5 w-[140px] md:w-[180px] h-[48px] md:h-[60px] rounded-lg border-2 border-white/20 bg-black/25 backdrop-blur-md text-white font-semibold">
           <span className="text-[18px] md:text-[24px] font-giloryS">Login</span>
           <span className="text-lg mb-1 text-[#c0c0c0]">|</span>
 
@@ -86,36 +86,37 @@ function Hero({ scrollToProjects, scrollToCostEstimator }) {
       </div>
 
       {isMenuOpen && (
-        <div className="absolute top-20 md:top-32 right-3 md:right-10 lg:right-20 z-30 flex flex-col bg-black/50 backdrop-blur-md px-5 py-2 md:py-3 border border-[#7c7c7c] rounded-lg font-giloryS">
+        <div className="absolute top-20 md:top-32 right-3 md:right-10 lg:right-20 z-30 flex flex-col bg-black/50 backdrop-blur-md px-3 py-2 md:py-4 border border-[#7c7c7c] rounded-lg font-giloryS">
           <button
-            className="text-white text-[18px] md:text-[24px]"
-            onClick={() => {
-              navigate("/baap");
-            }}
-          >
-            Product
-          </button>
-          <hr className="my-2 md:my-4 w-[70%] mx-auto" />
-          <button
-            className="text-white text-[18px] md:text-[24px]"
-            onClick={scrollToCostEstimator}
-          >
-            Cost Estimator
-          </button>
-          <hr className="my-2 md:my-4 w-[70%] mx-auto" />
-          <button
-            className="text-white text-[18px] md:text-[24px]"
+            className="text-white text-[18px]"
             onClick={() => {
               navigate("/");
             }}
           >
             Blog
           </button>
+          <hr className="my-2 md:my-2 w-[70%] mx-auto" />
+          <button
+            className="text-white text-[18px]"
+            onClick={() => {
+              navigate("/baap");
+            }}
+          >
+            Product
+          </button>
+          <hr className="my-2 md:my-2 w-[70%] mx-auto" />
+
+          <button
+            className="text-white text-[18px]"
+            onClick={scrollToCostEstimator}
+          >
+            Cost Estimator
+          </button>
         </div>
       )}
 
       <div
-        className="absolute z-20 justify-center text-center left-0 md:left-2 lg:left-4 top-0 w-40 md:w-80 cursor-pointer"
+        className="absolute w-28 md:w-36 lg:w-40 2xl:w-44 z-40 justify-center left-[16px] md:left-[32px] lg:left-[82px] top-[20px] md:top-[40px] cursor-pointer"
         onClick={() => {
           navigate("/"); // Navigate to the home page
           window.location.reload(); // Refresh the page
@@ -124,16 +125,8 @@ function Hero({ scrollToProjects, scrollToCostEstimator }) {
         <img
           src={logo}
           alt="habi The Way Of Living"
-          className="w-20 md:w-32 lg:w-32 2xl:w-[150px] animation cursor-pointer rounded-full"
+          className="w-28 md:w-36 lg:w-40 2xl:w-44"
         />
-        <div className="absolute top-[30px] left-16 md:top-9 lg:top-12 2xl:top-[55px] text-left md:left-[105px] lg:left-[110px] 2xl:left-32 leading-[15px] md:leading-6 lg:leading-7 2xl:leading-8">
-          <p className="font-Samarkan text-white text-[20px] md:left-0 md:text-[30px] lg:text-[38px] 2xl:text-[44px] lg:-left-10 -bottom-2 md:-bottom-0 2xl:-bottom-2 2xl:left-14">
-            habi
-          </p>
-          <p className="font-Dune text-white text-[6px] md:text-[8px] md:left-0 lg:text-[9px] 2xl:text-[10px] lg:-left-2 -bottom-2 md:-bottom-0 2xl:-bottom-4 2xl:left-0">
-            The way of Living
-          </p>
-        </div>
       </div>
 
       <div className="relative z-20 text-white justify-center text-center top-[50%] flex space-x-4 md:space-x-12 text-md md:text-[20px] 2xl:text-[24px]">

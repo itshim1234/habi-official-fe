@@ -117,7 +117,7 @@ const ConstructionProgress = () => {
             Construction on site
           </div>
           <div className="absolute text-[18px] py-1 text-white px-3 bg-black/40 backdrop-blur-xl rounded-full -bottom-5 -left-3 border border-[#7c7c7c] font-giloryM">
-            live <img src={Live} alt="" className="inline w-4 ml-2 mb-1" />
+          Realtime site footage <img src={Live} alt="" className="inline w-4 ml-2 mb-1" />
           </div>
         </div>
         <img
@@ -130,12 +130,12 @@ const ConstructionProgress = () => {
       <div
         className={`absolute flex md:hidden transition-all duration-1000 ${
           videoPlayed
-            ? "top-72 left-28 translate-x-0 translate-y-0 opacity-100 delay-[1000ms]"
+            ? "top-72 left-8 translate-x-0 translate-y-0 opacity-100 delay-[1000ms]"
             : "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0"
         }`}
       >
         <div className="text-[12px] py-1 px-2 bg-white/40 backdrop-blur-xl rounded-xl border border-white/40 font-giloryM">
-          live <img src={Live} alt="" className="inline w-4 ml-1 mb-0.5" />
+          Realtime site footage <img src={Live} alt="" className="inline w-4 ml-1 mb-0.5" />
         </div>
       </div>
 

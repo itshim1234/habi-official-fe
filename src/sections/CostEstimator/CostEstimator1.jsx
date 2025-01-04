@@ -466,7 +466,7 @@ function CostEstimator1({ costEstimatorOpen }) {
                 {packages.map((pkg, index) => (
                   <div
                     key={index}
-                    className={`relative border  rounded-lg p-6 hover:shadow-lg hover:shadow-secondary transition-shadow w-[350px] md:w-[234px] md:h-[423px] lg:w-[333px] lg:h-[501px] ${
+                    className={`relative border  rounded-lg p-4 lg:p-6 hover:shadow-lg hover:shadow-secondary transition-shadow w-[350px] md:w-[234px] md:h-[540px] lg:w-[333px] lg:h-[501px] ${
                       package1 === pkg.name
                         ? "border-primary"
                         : "border-[#7c7c7c]"

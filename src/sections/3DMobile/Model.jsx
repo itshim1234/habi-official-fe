@@ -18,8 +18,7 @@ function Model() {
       </p>
       <iframe
         src="https://my.spline.design/dynamiciphonemockup-45622d0e18cc93aee1ba379284bb9d10/"
-        loading="lazy"
-        className="w-screen h-screen "
+        className="w-screen h-screen"
       ></iframe>
 
       <button

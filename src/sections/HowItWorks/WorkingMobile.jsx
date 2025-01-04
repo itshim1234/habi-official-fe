@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import meetUs from "../../assets/images/meetUs.png";
 import designWork from "../../assets/images/designWork.png";
 import finalize from "../../assets/images/finalize.png";
-import track from "../../assets/images/track.png";
+import track from "../../assets/images/track1.png";
 import handover from "../../assets/images/handover.png";
 import star from "../../assets/images/star.png";
 import loopVideo from "../../assets/videos/loopVideo.mp4";
