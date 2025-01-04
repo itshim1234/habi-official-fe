@@ -1,13 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import preloader from "../../assets/videos/preloader.mp4";
 
-const Preloader = () => {
+const Preloader = ({ onVideoEnd }) => {
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+
+  useEffect(() => {
+    const videoElement = document.getElementById("preloader-video");
+
+    // Listen for video load and end events
+    videoElement.onloadeddata = () => setIsVideoLoaded(true);
+    videoElement.onended = onVideoEnd;
+
+    return () => {
+      videoElement.onloadeddata = null;
+      videoElement.onended = null;
+    };
+  }, [onVideoEnd]);
+
   return (
-    <div className="flex items-center justify-center w-screen h-screen">
-      {/* Video element */}
+    <div className="flex items-center justify-center w-screen h-screen bg-black">
+      {!isVideoLoaded && (
+        <p className="text-white">Loading video...</p> // Fallback text if video takes time to load
+      )}
       <video
+        id="preloader-video"
         className="w-[200px] h-[200px] md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[400px]"
-        src={preloader} // Replace with the actual path to your video
+        src={preloader}
         autoPlay
         muted
         loop={false}
