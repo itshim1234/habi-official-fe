@@ -45,6 +45,7 @@ function App() {
       {/* Routing for different pages */}
       <Routes>
         <Route path="/" element={<HabiService />} />
+        <Route path="/*" element={<HabiService />} />
         <Route path="/baap" element={<HabiProduct />} />
         <Route path="/faq" element={<FaqExpanded />} />
         <Route path="/about-habi" element={<AboutHabi />} />

@@ -669,7 +669,7 @@ function CostEstimator1({ costEstimatorOpen }) {
                             alt=""
                             className="w-6 h-6 hidden md:flex mr-2"
                           />
-                          flex Built-up Area
+                          Built-up Area
                         </div>
                         <div className="text-lg md:text-2xl font-giloryS mt-2">
                           {results.builtUpArea} sq ft
