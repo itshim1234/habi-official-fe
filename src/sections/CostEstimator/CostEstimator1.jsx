@@ -27,46 +27,22 @@ import a6 from "../../assets/images/a6.png";
 import a7 from "../../assets/images/a7.png";
 import a8 from "../../assets/images/a8.png";
 
+import b9 from "../../assets/images/b9.png";
+import b10 from "../../assets/images/b10.png";
+import b11 from "../../assets/images/b11.png";
+import b12 from "../../assets/images/b12.png";
+import b13 from "../../assets/images/b13.png";
+import b14 from "../../assets/images/b14.png";
+import b15 from "../../assets/images/b15.png";
+import b16 from "../../assets/images/b16.png";
+import b17 from "../../assets/images/b17.png";
+
 import a from "../../assets/images/site.png";
 import b from "../../assets/images/builtup.png";
 import c from "../../assets/images/Water.png";
 import ConsultationPopup from "../Hero/ConsultationPopup";
 
 import "./styles.css";
-
-const SelectInput = ({ value, onChange, options, label, name }) => (
-  <div className="relative mb-8 md:mb-10">
-    {label && (
-      <label className="absolute -top-6 left-0 px-1 py-0 text-[#C0C0C0] capitalize font-giloryM">
-        {label}*
-      </label>
-    )}
-    <select
-      value={value}
-      onChange={onChange}
-      name={name}
-      className="text-white block w-full pl-4 py-2 md:py-2.5  rounded-lg bg-[#1a1a1a] focus:outline-none appearance-none pr-10"
-    >
-      {options.map((option) => (
-        <option key={option} value={option}>
-          {option}
-        </option>
-      ))}
-    </select>
-    <div className="pointer-events-none absolute top-1/2 right-4 transform -translate-y-1/2">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-4 w-4 text-[#C0C0C0]"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth="2"
-      >
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-      </svg>
-    </div>
-  </div>
-);
 
 const NumberInput = ({ value, onChange, name, label, placeholder }) => (
   <div className="relative mb-8 md:mb-10">
@@ -245,6 +221,129 @@ const packages = [
       },
     ],
     img: luxury,
+  },
+  {
+    name: "Essential Plus +",
+    desc: "(Essential + Interior)",
+    features: [
+      {
+        text: "Kitchen worth ₹1,50,000/-",
+        img: b9,
+      },
+      {
+        text: "TV Unit Worth ₹30,000/-",
+        img: b10,
+      },
+      {
+        text: "Shoe Rack Worth ₹10,000/-",
+        img: b11,
+      },
+      {
+        text: "Crockery Unit Worth ₹25,000/-",
+        img: b12,
+      },
+      {
+        text: "Wardrobe Worth ₹1,00,000/-",
+        img: b13,
+      },
+      {
+        text: "Vanity Counter Worth ₹10,000/-",
+        img: b14,
+      },
+      {
+        text: "Dressing Table Worth ₹10,000/-",
+        img: b15,
+      },
+      {
+        text: "Peripheral False Ceiling Worth ₹150/- per sq ft",
+        img: b16,
+      },
+      {
+        text: "Ledgers Worth ₹2500/- per sq ft",
+        img: b17,
+      },
+    ],
+  },
+  {
+    name: "Premium Plus +",
+    desc: "(Premium + Interior)",
+
+    features: [
+      {
+        text: "Kitchen worth ₹2,00,000/-",
+        img: b9,
+      },
+      {
+        text: "TV Unit Worth ₹50,000/-",
+        img: b10,
+      },
+      {
+        text: "Shoe Rack Worth ₹20,000/-",
+        img: b11,
+      },
+      {
+        text: "Crockery Unit Worth ₹35,000/-",
+        img: b12,
+      },
+      {
+        text: "Wardrobe Worth ₹1,50,000/-",
+        img: b13,
+      },
+      {
+        text: "Vanity Counter Worth ₹15,000/-",
+        img: b14,
+      },
+      {
+        text: "False Ceiling Worth ₹200/- per sq ft",
+        img: b15,
+      },
+      {
+        text: "Ledgers Worth ₹5500/- per sq ft",
+        img: b16,
+      },
+    ],
+  },
+  {
+    name: "Luxury Plus +",
+    desc: "(Luxury + Interior)",
+    features: [
+      {
+        text: "Kitchen worth ₹2,50,000/-",
+        img: b9,
+      },
+      {
+        text: "TV Unit Worth ₹75,000/-",
+        img: b10,
+      },
+      {
+        text: "Shoe Rack Worth ₹30,000/-",
+        img: b11,
+      },
+      {
+        text: "Crockery Unit Worth ₹35,000/-",
+        img: b12,
+      },
+      {
+        text: "Wardrobe Worth ₹2,00,000/-",
+        img: b13,
+      },
+      {
+        text: "Vanity Counter Worth ₹25,000/-",
+        img: b14,
+      },
+      {
+        text: "Dressing Table Worth ₹25,000/-",
+        img: b15,
+      },
+      {
+        text: "Peripheral False Ceiling Worth ₹230/- per sq ft",
+        img: b16,
+      },
+      {
+        text: "Ledgers Worth ₹10000/- per sq ft",
+        img: b17,
+      },
+    ],
   },
 ];
 
@@ -472,7 +571,7 @@ function CostEstimator1({ costEstimatorOpen }) {
                         : "border-[#7c7c7c]"
                     }
                     
-                    ${expandedPackage === pkg.name ? "h-[450px]" : "h-fit"}`}
+                    ${expandedPackage === pkg.name ? "h-[470px]" : "h-fit"}`}
                   >
                     <h2
                       className={`text-xl flex font-giloryB md:mb-14 gap-2 justify-center cursor-pointer md:cursor-none ${
@@ -481,9 +580,19 @@ function CostEstimator1({ costEstimatorOpen }) {
 `}
                       onClick={() => toggleExpand(pkg.name)}
                     >
-                      <img src={pkg.img} alt="" />
+                      {pkg.img && <img src={pkg.img} alt="" />}
                       {pkg.name}
+                      {pkg.desc && (
+                        <p
+                          className={`absolute md:flex top-14 text-sm font-giloryM italic ${
+                            expandedPackage === pkg.name ? "flex" : "hidden"
+                          }`}
+                        >
+                          {pkg.desc}
+                        </p>
+                      )}
                     </h2>
+
                     <img
                       src={downArrow}
                       alt=""
@@ -494,6 +603,7 @@ function CostEstimator1({ costEstimatorOpen }) {
                       }`}
                       onClick={() => toggleExpand(pkg.name)}
                     />
+
                     <div
                       className={`${
                         expandedPackage === pkg.name || window.innerWidth >= 768

@@ -5,7 +5,6 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
-
 import "./App.css";
 import Footer from "./sections/Footer/Footer";
 import HabiService from "./pages/HabiService/HabiService";

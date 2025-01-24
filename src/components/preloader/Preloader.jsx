@@ -19,9 +19,6 @@ const Preloader = ({ onVideoEnd }) => {
 
   return (
     <div className="flex items-center justify-center w-screen h-screen bg-black">
-      {!isVideoLoaded && (
-        <p className="text-white">Loading video...</p> // Fallback text if video takes time to load
-      )}
       <video
         id="preloader-video"
         className="w-[200px] h-[200px] md:w-[300px] md:h-[300px] lg:w-[400px] lg:h-[400px]"
