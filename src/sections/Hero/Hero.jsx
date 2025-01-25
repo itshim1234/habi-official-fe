@@ -75,10 +75,19 @@ function Hero({ scrollToProjects, scrollToCostEstimator }) {
         </div>
       </div>
       <div className="absolute z-20 text-white justify-center text-center right-[16px] md:right-[32px] lg:right-[82px] top-[20px] md:top-[40px]">
-        <button className="flex items-center justify-between px-5 w-[140px] md:w-[180px] h-[48px] md:h-[60px] rounded-lg border-2 border-white/20 bg-black/25 backdrop-blur-md text-white font-semibold">
-          <span className="text-[18px] md:text-[24px] font-giloryS">Login</span>
+        <button className="flex items-center justify-between px-5 w-[170px] md:w-[200px] h-[48px] md:h-[60px] rounded-lg border-2 border-white/20 bg-black/25 backdrop-blur-md text-white font-semibold">
+          <span
+            className="text-[18px] md:text-[24px] font-giloryS"
+            onClick={() => {
+              window.open(
+                "https://drive.google.com/file/d/1J51DKaEezb1tnUWPZZo10pFhLEmU0Oxu/view?usp=sharing",
+                "_blank"
+              ); // Open the link in a new tab
+            }}
+          >
+            Brochure
+          </span>
           <span className="text-lg mb-1 text-[#c0c0c0]">|</span>
-
           <div onChange={toggleMenu}>
             <Hamburger />
           </div>
@@ -86,7 +95,7 @@ function Hero({ scrollToProjects, scrollToCostEstimator }) {
       </div>
 
       {isMenuOpen && (
-        <div className="absolute top-20 md:top-32 right-3 md:right-10 lg:right-20 z-30 flex flex-col bg-black/50 backdrop-blur-md px-3 py-2 md:py-4 border border-[#7c7c7c] rounded-lg font-giloryS">
+        <div className="absolute top-20 md:top-28 right-3 md:right-8 lg:right-20 z-30 flex flex-col bg-black/50 backdrop-blur-md px-3 py-2 md:py-4 border border-[#7c7c7c] rounded-lg font-giloryS">
           <button
             className="text-white text-[18px]"
             onClick={() => {

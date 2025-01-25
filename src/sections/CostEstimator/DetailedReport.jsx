@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PaymentSchedule from "./PaymentSchedule";
 import BarGraph from "./BarGraph";
+import QuotationDownload from "./QuotationDownload";
 
 function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
   const [newField, setNewField] = useState("");
@@ -409,7 +410,9 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
 
         {/* <PaymentSchedule scheduleData={scheduleData} /> */}
       </div>
-      <h2 className="text-center text-2xl lg:text-[32px] font-giloryB text-white">
+      <QuotationDownload />
+
+      <h2 className="text-center text-2xl lg:text-[32px] font-giloryB text-white mt-6">
         Payment Schedule
       </h2>
       <PaymentSchedule scheduleData={scheduleData} />
