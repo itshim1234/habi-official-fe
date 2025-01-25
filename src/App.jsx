@@ -44,7 +44,7 @@ function App() {
     <div className="overflow-x-hidden bg-black">
       {/* Routing for different pages */}
       <Routes>
-        <Route path="/" element={<Quotation />} />
+        <Route path="/" element={<HabiService />} />
         <Route path="/*" element={<HabiService />} />
         <Route path="/baap" element={<HabiProduct />} />
         <Route path="/faq" element={<FaqExpanded />} />

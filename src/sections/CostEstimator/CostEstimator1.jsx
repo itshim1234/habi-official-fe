@@ -110,6 +110,7 @@ const RadioGroup = ({ value, onChange, options, name, label }) => (
 const packages = [
   {
     name: "Essential",
+    id: "Essential",
     features: [
       {
         text: "Column Size 6 inches",
@@ -148,6 +149,7 @@ const packages = [
   },
   {
     name: "Premium",
+    id: "Premium",
     features: [
       {
         text: "Column Size 8 inches",
@@ -186,6 +188,7 @@ const packages = [
   },
   {
     name: "Luxury",
+    id: "Luxury",
     features: [
       {
         text: "Column Size 8 inches",
@@ -224,6 +227,7 @@ const packages = [
   },
   {
     name: "Essential Plus +",
+    id: "EssentialPlus",
     desc: "(Essential + Interior)",
     features: [
       {
@@ -266,6 +270,7 @@ const packages = [
   },
   {
     name: "Premium Plus +",
+    id: "PremiumPlus",
     desc: "(Premium + Interior)",
 
     features: [
@@ -306,6 +311,7 @@ const packages = [
   {
     name: "Luxury Plus +",
     desc: "(Luxury + Interior)",
+    id: "LuxuryPlus",
     features: [
       {
         text: "Kitchen worth ₹2,50,000/-",
@@ -492,11 +498,17 @@ function CostEstimator1({ costEstimatorOpen }) {
     const builtUp = Math.round(area * groundCoverage * floors);
     const costMultiplier =
       package1 === "Essential"
-        ? 1800
+        ? 2100
         : package1 === "Premium"
-        ? 2075
+        ? 2450
         : package1 === "Luxury"
-        ? 2485
+        ? 2750
+        : package1 === "EssentialPlus"
+        ? 2400
+        : package1 === "PremiumPlus"
+        ? 2850
+        : package1 === "LuxuryPlus"
+        ? 3250
         : 0;
 
     // Calculate the final cost
@@ -624,11 +636,11 @@ function CostEstimator1({ costEstimatorOpen }) {
                       </ul>
                       <button
                         className={`absolute bottom-6 left-1/2 transform -translate-x-1/2 w-[80%] font-giloryS py-2 rounded transition ${
-                          package1 === pkg.name
+                          package1 === pkg.id
                             ? "bg-primary"
                             : "bg-white text-black"
                         }`}
-                        onClick={() => packageSet(pkg.name)}
+                        onClick={() => packageSet(pkg.id)}
                       >
                         {package1 === pkg.name ? "Selected" : "Select"}
                       </button>
