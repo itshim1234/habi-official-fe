@@ -51,7 +51,7 @@ const ConstructionProgress = () => {
         Track all your construction progress
       </p>
       {/* Centered Video */}
-      <div className="absolute inset-0 flex items-center justify-center xl:w-[80%] mx-auto top-20 xl:top-16 2xl:top-24">
+      <div className="absolute inset-0 flex items-center justify-center xl:w-[80%] mx-auto top-24 xl:top-16 2xl:top-24">
         <video
           ref={videoRef}
           className="w-full h-full"
@@ -117,7 +117,8 @@ const ConstructionProgress = () => {
             Construction on site
           </div>
           <div className="absolute text-[18px] py-1 text-white px-3 bg-black/40 backdrop-blur-xl rounded-full -bottom-5 -left-3 border border-[#7c7c7c] font-giloryM">
-          Realtime site footage <img src={Live} alt="" className="inline w-4 ml-2 mb-1" />
+            Realtime site footage{" "}
+            <img src={Live} alt="" className="inline w-4 ml-2 mb-1" />
           </div>
         </div>
         <img
@@ -135,7 +136,8 @@ const ConstructionProgress = () => {
         }`}
       >
         <div className="text-[12px] py-1 px-2 bg-white/40 backdrop-blur-xl rounded-xl border border-white/40 font-giloryM">
-          Realtime site footage <img src={Live} alt="" className="inline w-4 ml-1 mb-0.5" />
+          Realtime site footage{" "}
+          <img src={Live} alt="" className="inline w-4 ml-1 mb-0.5" />
         </div>
       </div>
 

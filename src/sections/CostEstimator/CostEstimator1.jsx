@@ -596,7 +596,7 @@ function CostEstimator1({ costEstimatorOpen }) {
                     <img
                       src={downArrow}
                       alt=""
-                      className={`absolute top-7 right-10 md:hidden cursor-pointer ${
+                      className={`absolute top-5 right-10 md:hidden cursor-pointer ${
                         expandedPackage === pkg.name
                           ? "rotate-180 transition-transform"
                           : ""

@@ -15,6 +15,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import TermsAndCondition from "./pages/TermsAndCondition/TermsAndCondition";
 import ProjectExpand from "./sections/Projects/ProjectExpand";
 import Preloader from "./components/preloader/Preloader";
+import Quotation from "./sections/Quotation/Quotation";
 
 function App() {
   const [isPreloading, setIsPreloading] = useState(true);
@@ -43,7 +44,7 @@ function App() {
     <div className="overflow-x-hidden bg-black">
       {/* Routing for different pages */}
       <Routes>
-        <Route path="/" element={<HabiService />} />
+        <Route path="/" element={<Quotation />} />
         <Route path="/*" element={<HabiService />} />
         <Route path="/baap" element={<HabiProduct />} />
         <Route path="/faq" element={<FaqExpanded />} />

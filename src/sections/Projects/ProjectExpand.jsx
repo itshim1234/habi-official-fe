@@ -28,7 +28,7 @@ const ProjectExpand = () => {
   }, []);
 
   return (
-    <div className="relative inset-0 h-fit md:h-screen w-screen">
+    <div className="relative inset-0 h-fit min-h-screen w-screen">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -99,7 +99,7 @@ const ProjectExpand = () => {
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   loading="lazy"
-                  className="w-full h-40 lg:h-80 rounded-lg border"
+                  className="w-full h-40 md:h-80 rounded-lg border"
                 ></iframe>
               </div>
             )}
