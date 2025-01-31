@@ -410,6 +410,7 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
 
         {/* <PaymentSchedule scheduleData={scheduleData} /> */}
       </div>
+
       <QuotationDownload />
 
       <h2 className="text-center text-2xl lg:text-[32px] font-giloryB text-white mt-6">

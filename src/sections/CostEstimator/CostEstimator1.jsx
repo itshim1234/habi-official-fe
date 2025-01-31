@@ -226,7 +226,7 @@ const packages = [
     img: luxury,
   },
   {
-    name: "Essential Plus +",
+    name: "Essential +",
     id: "EssentialPlus",
     desc: "(Essential + Interior)",
     features: [
@@ -269,7 +269,7 @@ const packages = [
     ],
   },
   {
-    name: "Premium Plus +",
+    name: "Premium  +",
     id: "PremiumPlus",
     desc: "(Premium + Interior)",
 
@@ -309,7 +309,7 @@ const packages = [
     ],
   },
   {
-    name: "Luxury Plus +",
+    name: "Luxury +",
     desc: "(Luxury + Interior)",
     id: "LuxuryPlus",
     features: [
@@ -830,17 +830,23 @@ function CostEstimator1({ costEstimatorOpen }) {
                         detailedCost
                           ? "bg-white/30 backdrop-blur-md text-white border border-[#7c7c7c]"
                           : "bg-primary text-white"
-                      } `}
+                      } ${
+                        results.estimatedCost === 0
+                          ? "opacity-50 cursor-not-allowed"
+                          : ""
+                      }`}
                       onClick={() => {
-                        setDetailedCost(!detailedCost);
+                        if (results.estimatedCost > 0) {
+                          setDetailedCost(!detailedCost);
+                        } else {
+                          alert(
+                            "Please select the required fields to calculate the cost."
+                          );
+                        }
                       }}
+                      disabled={results.estimatedCost === 0}
                     >
-                      {detailedCost ? "Close" : "Detailed cost"}
-                      <img
-                        src={detailedCost ? "" : arrow}
-                        alt=""
-                        className="inline mb-0.5 ml-2"
-                      />
+                      {detailedCost ? "Hide" : "Detailed Cost"}
                     </button>
                     <button
                       className="bg-gray-800 text-white py-2 px-3 md:px-8 2xl:px-8 border text-sm md:text-lg border-gray-600 rounded-lg"
