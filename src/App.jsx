@@ -48,7 +48,7 @@ function App() {
   return (
     <div className="overflow-x-hidden bg-black">
       {/* Suspense for lazy-loaded components */}
-      <Suspense fallback={<div className="loading-screen">Loading...</div>}>
+      <Suspense fallback={<div className="loading-screen"></div>}>
         <Routes>
           <Route path="/" element={<HabiService />} />
           <Route path="/*" element={<HabiService />} />
@@ -58,7 +58,10 @@ function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/project" element={<ProjectExpand />} />
           <Route path="/terms-and-condition" element={<TermsAndCondition />} />
-          <Route path="/cost-estimator" element={<CostEstimator1 />} />
+          <Route
+            path="/cost-estimator"
+            element={<CostEstimator1 costEstimatorOpen={true} />}
+          />
         </Routes>
       </Suspense>
 

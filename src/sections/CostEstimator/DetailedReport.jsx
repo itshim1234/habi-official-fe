@@ -3,7 +3,15 @@ import PaymentSchedule from "./PaymentSchedule";
 import BarGraph from "./BarGraph";
 import QuotationDownload from "./QuotationDownload";
 
-function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
+function DetailedReport({
+  sump,
+  estimatedCost,
+  floors,
+  floorHeight,
+  package1,
+  landArea,
+  landType,
+}) {
   const [newField, setNewField] = useState("");
   const [newAmount, setNewAmount] = useState("");
   const [additionalCosts, setAdditionalCosts] = useState({});
@@ -411,7 +419,15 @@ function DetailedReport({ sump, estimatedCost, floors, floorHeight }) {
         {/* <PaymentSchedule scheduleData={scheduleData} /> */}
       </div>
 
-      <QuotationDownload />
+      <QuotationDownload
+        sump={sump}
+        estimatedCost={totalEstimatedCost}
+        floors={floors}
+        floorHeight={floorHeight}
+        package1={package1}
+        landArea={landArea}
+        landType={landType}
+      />
 
       <h2 className="text-center text-2xl lg:text-[32px] font-giloryB text-white mt-6">
         Payment Schedule

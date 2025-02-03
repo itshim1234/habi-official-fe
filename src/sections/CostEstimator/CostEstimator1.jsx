@@ -861,10 +861,13 @@ function CostEstimator1({ costEstimatorOpen }) {
 
             {detailedCost && (
               <DetailedReport
-                sump={results.sump}
+                sump={results.calculatedSumpCapacity}
                 estimatedCost={results.estimatedCost}
                 floors={inputs.floors}
                 floorHeight={inputs.floorHeight}
+                package1={package1}
+                landArea={results.siteArea}
+                landType={inputs.landType}
               />
             )}
 

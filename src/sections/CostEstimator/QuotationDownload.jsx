@@ -2,12 +2,38 @@ import React, { useState } from "react";
 import quotation from "../../assets/images/quotation.png";
 import lock from "../../assets/images/lock.png";
 import close from "../../assets/images/close.png";
-
-function QuotationDownload() {
+import { generatePDF } from "../Quotation/GeneratePdf";
+function QuotationDownload({
+  sump,
+  estimatedCost,
+  floors,
+  floorHeight,
+  package1,
+  landArea,
+  landType,
+}) {
   const [popUp, setPopUp] = useState(false);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+
+  // Pass the form data and props to the Invoice component when Continue is clicked
+  const handleContinue = () => {
+    setPopUp(false);
+    // You can now trigger the generatePDF function here by passing the props to Invoice
+    generatePDF({
+      name,
+      phone,
+      email,
+      sump,
+      estimatedCost,
+      floors,
+      floorHeight,
+      package1,
+      landArea,
+      landType,
+    });
+  };
 
   return (
     <div className="flex justify-center items-center relative">
@@ -64,7 +90,7 @@ function QuotationDownload() {
 
             <button
               className="text-black bg-white rounded-lg px-4 py-2 mt-3"
-              onClick={() => setPopUp(false)}
+              onClick={handleContinue} // Trigger the PDF generation here
             >
               Continue
             </button>

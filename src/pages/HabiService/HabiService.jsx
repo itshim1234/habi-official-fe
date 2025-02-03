@@ -61,7 +61,7 @@ function HabiService() {
 
   return (
     <div>
-      <Suspense fallback={<div className="loading-screen">Loading...</div>}>
+      <Suspense>
         <Hero
           scrollToProjects={scrollToProjects}
           scrollToCostEstimator={scrollToCostEstimator}
