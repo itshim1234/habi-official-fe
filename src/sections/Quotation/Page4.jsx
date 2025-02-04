@@ -89,7 +89,20 @@ const styles = StyleSheet.create({
   },
 });
 
-const Page4 = () => (
+const Page4 = ({
+  name,
+  phone,
+  email,
+  sump,
+  consSump,
+  sumpCost,
+  estimatedCost,
+  floors,
+  floorHeight,
+  package1,
+  landArea,
+  landType,
+}) => (
   <Page size="A4" style={styles.page}>
     <View style={{ padding: 20, border: "1.5px dashed #c0c0c0" }}>
       <View style={styles.header}>
@@ -125,13 +138,13 @@ const Page4 = () => (
         <View style={{}}>
           <Text style={styles.sectionHeader}>TO</Text>
           <View style={styles.row}>
-            <Text>Mr. Kaushik Datta</Text>
+            <Text>{name}</Text>
           </View>
           <View style={styles.row}>
-            <Text>Phone: 8861408080</Text>
+            <Text>Phone: {phone}</Text>
           </View>
           <View style={styles.row}>
-            <Text>Mail: kdattanerist@gmail.com</Text>
+            <Text>Mail: {email}</Text>
           </View>
         </View>
       </View>
@@ -158,7 +171,7 @@ const Page4 = () => (
           <Text
             style={[{ flex: 1 }, { fontSize: 11 }, { textAlign: "center" }]}
           >
-            N/A
+            {package1}
           </Text>
         </View>
         <View
@@ -171,7 +184,7 @@ const Page4 = () => (
           <Text
             style={[{ flex: 1 }, { fontSize: 11 }, { textAlign: "center" }]}
           >
-            N/A
+            {landType}
           </Text>
         </View>
         <View
@@ -184,7 +197,7 @@ const Page4 = () => (
           <Text
             style={[{ flex: 1 }, { fontSize: 11 }, { textAlign: "center" }]}
           >
-            N/A
+            {landArea}
           </Text>
         </View>
         <View
@@ -197,7 +210,7 @@ const Page4 = () => (
           <Text
             style={[{ flex: 1 }, { fontSize: 11 }, { textAlign: "center" }]}
           >
-            N/A
+            {floors}
           </Text>
         </View>
         <View
@@ -210,7 +223,7 @@ const Page4 = () => (
           <Text
             style={[{ flex: 1 }, { fontSize: 11 }, { textAlign: "center" }]}
           >
-            N/A
+            {floorHeight}
           </Text>
         </View>
         <View
@@ -223,7 +236,7 @@ const Page4 = () => (
           <Text
             style={[{ flex: 1 }, { fontSize: 11 }, { textAlign: "center" }]}
           >
-            N/A
+            {landArea}
           </Text>
         </View>
         <View
@@ -236,7 +249,7 @@ const Page4 = () => (
           <Text
             style={[{ flex: 1 }, { fontSize: 11 }, { textAlign: "center" }]}
           >
-            N/A
+            {landArea}
           </Text>
         </View>
         <View
@@ -249,7 +262,7 @@ const Page4 = () => (
           <Text
             style={[{ flex: 1 }, { fontSize: 11 }, { textAlign: "center" }]}
           >
-            N/A
+            {sump}
           </Text>
         </View>
       </View>
@@ -274,12 +287,12 @@ const Page4 = () => (
             { borderBottomWidth: 1, borderColor: "#ddd", paddingVertical: 2 },
           ]}
         >
-          <Text style={{ flex: 2 }}>G + 1 Construction</Text>
-          <Text style={{ flex: 1 }}>1200</Text>
-          <Text style={{ flex: 1 }}>Essentials</Text>
+          <Text style={{ flex: 2 }}>G + {floors - 1}</Text>
+          <Text style={{ flex: 1 }}>{landArea}</Text>
+          <Text style={{ flex: 1 }}>{package1}</Text>
           <Text style={{ flex: 1 }}>
             <Image src={rupee} style={{ width: 8, height: 8 }} />
-            {(2683800).toLocaleString("en-IN")}
+            {(estimatedCost * 0.82).toLocaleString("en-IN")}
           </Text>
         </View>
       </View>
@@ -294,7 +307,7 @@ const Page4 = () => (
           <Text style={{ flex: 1 }}>SUBTOTAL</Text>
           <Text style={{ flex: 1, textAlign: "right", paddingRight: 40 }}>
             <Image src={rupee} style={{ width: 8, height: 8 }} />
-            {(2683800).toLocaleString("en-IN")}
+            {(estimatedCost * 0.82).toLocaleString("en-IN")}
           </Text>
         </View>
         <View style={[styles.row]}>
@@ -303,7 +316,7 @@ const Page4 = () => (
           <Text style={{ flex: 1 }}>ROUND OFF</Text>
           <Text style={{ flex: 1, textAlign: "right", paddingRight: 40 }}>
             <Image src={rupee} style={{ width: 8, height: 8 }} />
-            {(2683800).toLocaleString("en-IN")}
+            {(estimatedCost * 0.82).toLocaleString("en-IN")}
           </Text>
         </View>
         <View style={[styles.row]}>
@@ -312,7 +325,7 @@ const Page4 = () => (
           <Text style={{ flex: 1 }}>IGST(18%)</Text>
           <Text style={{ flex: 1, textAlign: "right", paddingRight: 40 }}>
             <Image src={rupee} style={{ width: 8, height: 8 }} />
-            {(2683800).toLocaleString("en-IN")}
+            00.00
           </Text>
         </View>
         <View style={[styles.row]}>
@@ -321,7 +334,7 @@ const Page4 = () => (
           <Text style={{ flex: 1 }}>CGST(9%)</Text>
           <Text style={{ flex: 1, textAlign: "right", paddingRight: 40 }}>
             <Image src={rupee} style={{ width: 8, height: 8 }} />
-            {(2683800).toLocaleString("en-IN")}
+            {(estimatedCost * 0.09).toLocaleString("en-IN")}
           </Text>
         </View>
         <View style={[styles.row]}>
@@ -330,7 +343,7 @@ const Page4 = () => (
           <Text style={{ flex: 1 }}>SGST(9%)</Text>
           <Text style={{ flex: 1, textAlign: "right", paddingRight: 40 }}>
             <Image src={rupee} style={{ width: 8, height: 8 }} />
-            {(2683800).toLocaleString("en-IN")}
+            {(estimatedCost * 0.09).toLocaleString("en-IN")}
           </Text>
         </View>
         <View
@@ -341,7 +354,7 @@ const Page4 = () => (
           <Text style={{ flex: 1 }}>Total Tax:</Text>
           <Text style={{ flex: 1, textAlign: "right", paddingRight: 40 }}>
             <Image src={rupee} style={{ width: 8, height: 8 }} />
-            {(2683800).toLocaleString("en-IN")}
+            {(estimatedCost * 0.18).toLocaleString("en-IN")}
           </Text>
         </View>
 
@@ -353,7 +366,7 @@ const Page4 = () => (
           <Text style={{ flex: 1 }}>NET TOTAL:</Text>
           <Text style={{ flex: 1, textAlign: "right", paddingRight: 40 }}>
             <Image src={rupee} style={{ width: 8, height: 8 }} />
-            {(2683800).toLocaleString("en-IN")}
+            {estimatedCost.toLocaleString("en-IN")}
           </Text>
         </View>
       </View>

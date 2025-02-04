@@ -1,6 +1,11 @@
 import { pdf } from "@react-pdf/renderer";
 import { PDFDocument } from "pdf-lib";
-import staticPdf from "../../assets/pdf/Essential.pdf"; // Adjust the path as needed
+import essential from "../../assets/pdf/Essential.pdf";
+import premium from "../../assets/pdf/Premium.pdf";
+import luxury from "../../assets/pdf/Luxury.pdf";
+import essentialPlus from "../../assets/pdf/EssentialPlus.pdf";
+import premiumPlus from "../../assets/pdf/PremiumPlus.pdf";
+import luxuryPlus from "../../assets/pdf/LuxuryPlus.pdf";
 import Invoice from "./invoice";
 
 export const generatePDF = async ({
@@ -17,20 +22,20 @@ export const generatePDF = async ({
   landArea,
   landType,
 }) => {
-  console.log(
-    name,
-    phone,
-    email,
-    sumpCost,
-    estimatedCost,
-    floors,
-    floorHeight,
-    package1,
-    landArea,
-    landType
-  );
+  // Package-to-PDF mapping
+  const packageMap = {
+    Essential: essential,
+    Premium: premium,
+    Luxury: luxury,
+    EssentialPlus: essentialPlus,
+    PremiumPlus: premiumPlus,
+    LuxuryPlus: luxuryPlus,
+  };
 
-  // Generate the Invoice1 PDF with all the passed props
+  // Select the correct PDF based on package1
+  const selectedPdf = packageMap[package1];
+
+  // Generate the Invoice PDF with all the passed props
   const invoiceBlob = await pdf(
     <Invoice
       name={name}
@@ -48,8 +53,8 @@ export const generatePDF = async ({
     />
   ).toBlob();
 
-  // Load the static PDF from the imported file
-  const staticPdfArrayBuffer = await fetch(staticPdf).then((res) =>
+  // Load the selected static PDF
+  const staticPdfArrayBuffer = await fetch(selectedPdf).then((res) =>
     res.arrayBuffer()
   );
 
@@ -60,14 +65,14 @@ export const generatePDF = async ({
   // Create a new PDF document
   const mergedPdf = await PDFDocument.create();
 
-  // Copy pages from Invoice1 PDF
+  // Copy pages from Invoice PDF
   const invoicePages = await mergedPdf.copyPages(
     invoicePdf,
     invoicePdf.getPageIndices()
   );
   invoicePages.forEach((page) => mergedPdf.addPage(page));
 
-  // Copy pages from the static PDF
+  // Copy pages from the selected package PDF
   const staticPages = await mergedPdf.copyPages(
     staticPdfDoc,
     staticPdfDoc.getPageIndices()

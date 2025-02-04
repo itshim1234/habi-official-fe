@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
   },
   table: { display: "table", width: "100%" },
   tableRow: { flexDirection: "row", paddingVertical: 6 },
-  tableCol: { width: "20%" },
+  tableCol: { width: "30%" },
   tableCell: { fontSize: 16 },
   rightAlignedCell: {
     textAlign: "right",
