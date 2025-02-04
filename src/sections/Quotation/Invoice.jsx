@@ -10,7 +10,9 @@ const Invoice = ({
   name,
   phone,
   email,
-  sump,
+  totalSump,
+  consSump,
+  sumpCost,
   estimatedCost,
   floors,
   floorHeight,
@@ -24,7 +26,7 @@ const Invoice = ({
       name={name}
       phone={phone}
       email={email}
-      sump={sump}
+      sump={totalSump}
       estimatedCost={estimatedCost}
       package1={package1}
       landArea={landArea}
@@ -32,9 +34,20 @@ const Invoice = ({
       floors={floors}
       floorHeight={floorHeight}
     />
-    <Page2 estimatedCost={estimatedCost} />
-    <Page3 floors={floors} floorHeight={floorHeight} />
-    <Page4 package1={package1} landArea={landArea} landType={landType} />
+    <Page2 estimatedCost={estimatedCost} sump={consSump} sumpCost={sumpCost} />
+    <Page3 totalEstimatedCost={estimatedCost} />
+    <Page4
+      name={name}
+      phone={phone}
+      email={email}
+      sump={totalSump}
+      estimatedCost={estimatedCost}
+      package1={package1}
+      landArea={landArea}
+      landType={landType}
+      floors={floors}
+      floorHeight={floorHeight}
+    />
   </Document>
 );
 

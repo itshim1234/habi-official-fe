@@ -7,7 +7,9 @@ export const generatePDF = async ({
   name,
   phone,
   email,
-  sump,
+  totalSump,
+  consSump,
+  sumpCost,
   estimatedCost,
   floors,
   floorHeight,
@@ -19,7 +21,7 @@ export const generatePDF = async ({
     name,
     phone,
     email,
-    sump,
+    sumpCost,
     estimatedCost,
     floors,
     floorHeight,
@@ -34,7 +36,9 @@ export const generatePDF = async ({
       name={name}
       phone={phone}
       email={email}
-      sump={sump}
+      totalSump={totalSump}
+      consSump={consSump}
+      sumpCost={sumpCost}
       estimatedCost={estimatedCost}
       floors={floors}
       floorHeight={floorHeight}

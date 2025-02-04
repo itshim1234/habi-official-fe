@@ -77,9 +77,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const totalEstimatedCost = 100000;
-
-const Page3 = () => {
+const Page3 = ({ totalEstimatedCost }) => {
   const scheduleData = [
     {
       title: "Design and Development",

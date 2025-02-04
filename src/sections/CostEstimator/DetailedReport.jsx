@@ -4,7 +4,9 @@ import BarGraph from "./BarGraph";
 import QuotationDownload from "./QuotationDownload";
 
 function DetailedReport({
-  sump,
+  totalSump,
+  consSump,
+  sumpCost,
   estimatedCost,
   floors,
   floorHeight,
@@ -55,38 +57,13 @@ function DetailedReport({
   }
   const floorHeightCost = floorHeight * x * floors;
 
-  // Calculate Sump cost
-  const sumpCost = sump * 17;
-
   // Total Estimated Cost
   const totalAdditionalCosts = Object.values(additionalCosts).reduce(
     (acc, cost) => acc + parseFloat(cost),
     0
   );
   const totalEstimatedCost =
-    estimatedCost + floorHeightCost + sumpCost + totalAdditionalCosts;
-  const costs = {
-    designFees: 0.01 * estimatedCost,
-    excavation: 0.03 * estimatedCost,
-    sand: 0.04 * estimatedCost,
-    steelReinforcement: 0.14 * estimatedCost,
-    cement: 0.08 * estimatedCost,
-    solidBlocks: 0.09 * estimatedCost,
-    stones: 0.05 * estimatedCost,
-    rmc: 0.09 * estimatedCost,
-    formwork: 0.03 * estimatedCost,
-    painting: 0.06 * estimatedCost,
-    plumbing: 0.07 * estimatedCost,
-    electricalWork: 0.05 * estimatedCost,
-    exteriorFlooring: 0.05 * estimatedCost,
-    compoundWall: 0.04 * estimatedCost,
-    doorsWindows: 0.03 * estimatedCost,
-    miscellaneous: 0.07 * estimatedCost,
-    internalFlooring: 0.07 * estimatedCost,
-    floorHeightCost: floorHeightCost,
-    sumpCost: sumpCost,
-    ...additionalCosts,
-  };
+    estimatedCost + floorHeightCost + totalAdditionalCosts;
 
   const scheduleData = [
     {
@@ -337,7 +314,7 @@ function DetailedReport({
           <div className="flex justify-between relative mb-1">
             <span className=" text-white">Sump Cost</span>
             <span className="text-white absolute right-32 md:right-40 ">
-              {sump} Ltr
+              {consSump} Ltr
             </span>
             <span className="text-white absolute right-[0%] md:right-0">
               ₹{sumpCost.toFixed(2)}
@@ -420,7 +397,9 @@ function DetailedReport({
       </div>
 
       <QuotationDownload
-        sump={sump}
+        totalSump={totalSump}
+        consSump={consSump}
+        sumpCost={sumpCost}
         estimatedCost={totalEstimatedCost}
         floors={floors}
         floorHeight={floorHeight}

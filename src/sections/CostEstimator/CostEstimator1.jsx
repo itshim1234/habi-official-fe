@@ -425,9 +425,10 @@ function CostEstimator1({ costEstimatorOpen }) {
   const [results, setResults] = useState({
     siteArea: 0,
     builtUpArea: 0,
-    sump: 0,
+    sumpCapacity: 0,
+    sumpBuilt: 0,
+    sumpPrice: 0,
     estimatedCost: 0,
-    calculatedSumpCapacity: 0,
   });
 
   //   const navigate = useNavigate();
@@ -486,13 +487,14 @@ function CostEstimator1({ costEstimatorOpen }) {
 
     // Calculate the sump cost based on floors
     const calculatedSumpCapacity = 5000 * floors;
-    var sumpCost = 0;
+    var ActualSump = 0;
 
     if (calculatedSumpCapacity > baseSumpCost) {
-      sumpCost = calculatedSumpCapacity - baseSumpCost;
+      ActualSump = calculatedSumpCapacity - baseSumpCost;
     }
 
     // Final sump cost, ensuring it respects the package default
+    var finalSumpCost = ActualSump * 17;
 
     // Calculate the built-up area and cost multiplier
     const builtUp = Math.round(area * groundCoverage * floors);
@@ -512,15 +514,17 @@ function CostEstimator1({ costEstimatorOpen }) {
         : 0;
 
     // Calculate the final cost
-    const cost = builtUp * costMultiplier;
+    var cost = builtUp * costMultiplier;
+    cost = cost + finalSumpCost;
 
     // Set the results
     setResults({
       siteArea: area,
       builtUpArea: builtUp,
-      sump: sumpCost,
+      sumpBuilt: ActualSump,
+      sumpPrice: finalSumpCost,
       estimatedCost: cost,
-      calculatedSumpCapacity: calculatedSumpCapacity,
+      sumpCapacity: calculatedSumpCapacity,
     });
   };
 
@@ -808,7 +812,7 @@ function CostEstimator1({ costEstimatorOpen }) {
                           Sump Capacity
                         </div>
                         <div className="text-lg md:text-2xl font-giloryS mt-2">
-                          {results.calculatedSumpCapacity} liters
+                          {results.sumpCapacity} liters
                         </div>
                       </div>
                     </div>
@@ -861,7 +865,9 @@ function CostEstimator1({ costEstimatorOpen }) {
 
             {detailedCost && (
               <DetailedReport
-                sump={results.calculatedSumpCapacity}
+                totalSump={results.sumpCapacity}
+                consSump={results.sumpBuilt}
+                sumpCost={results.sumpPrice}
                 estimatedCost={results.estimatedCost}
                 floors={inputs.floors}
                 floorHeight={inputs.floorHeight}

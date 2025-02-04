@@ -4,7 +4,9 @@ import lock from "../../assets/images/lock.png";
 import close from "../../assets/images/close.png";
 import { generatePDF } from "../Quotation/GeneratePdf";
 function QuotationDownload({
-  sump,
+  totalSump,
+  consSump,
+  sumpCost,
   estimatedCost,
   floors,
   floorHeight,
@@ -25,7 +27,9 @@ function QuotationDownload({
       name,
       phone,
       email,
-      sump,
+      totalSump,
+      consSump,
+      sumpCost,
       estimatedCost,
       floors,
       floorHeight,
