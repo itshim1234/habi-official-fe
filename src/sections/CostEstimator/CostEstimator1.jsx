@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import arrow from "../../assets/images/ArrowRight.png";
 import DetailedReport from "./DetailedReport";
 import asianPaints from "../../assets/images/asianpaints.png";
 import dalmia from "../../assets/images/dalmia.png";
@@ -13,6 +12,8 @@ import downArrow from "../../assets/images/downArrow.png";
 import Regular from "../../assets/images/rectangle.png";
 import Triangular from "../../assets/images/triangle.png";
 import Irregular from "../../assets/images/polygon.png";
+import tank from "../../assets/images/Tank.png";
+import bathroom from "../../assets/images/Bathroom.png";
 
 import essential from "../../assets/images/essential.png";
 import premium from "../../assets/images/premium.png";
@@ -41,6 +42,10 @@ import a from "../../assets/images/site.png";
 import b from "../../assets/images/builtup.png";
 import c from "../../assets/images/Water.png";
 import ConsultationPopup from "../Hero/ConsultationPopup";
+
+import FloorHeightSelector from "../../components/FloorHeightselector";
+import FloorSelector from "../../components/FloorSelector";
+import FlipCard from "../../components/FlipCard";
 
 import "./styles.css";
 
@@ -144,6 +149,14 @@ const packages = [
         text: "10000 Liters Sump Capacity",
         img: a8,
       },
+      {
+        text: "Water overhead tank ₹7.5/- per liter",
+        img: tank,
+      },
+      {
+        text: "2 bathrooms are included in the 1200 sq ft construction.",
+        img: bathroom,
+      },
     ],
     img: essential,
   },
@@ -182,6 +195,14 @@ const packages = [
       {
         text: "12000 Liters Sump Capacity",
         img: a8,
+      },
+      {
+        text: "Water overhead tank ₹8/- per liter",
+        img: tank,
+      },
+      {
+        text: "2 bathrooms and 1 Powder room are included in the 1200 sq ft construction.",
+        img: bathroom,
       },
     ],
     img: premium,
@@ -222,13 +243,21 @@ const packages = [
         text: "15000 Liters Sump Capacity",
         img: a8,
       },
+      {
+        text: "Water overhead tank ₹8.25/- per liter",
+        img: tank,
+      },
+      {
+        text: "2 bathrooms and 1 Powder room are included in the 1200 sq ft construction.",
+        img: bathroom,
+      },
     ],
     img: luxury,
   },
   {
-    name: "Essential +",
+    name: "Essential Plus",
     id: "EssentialPlus",
-    desc: "(Essential + Interior)",
+    desc: "A collection of essential items,including interior items.",
     features: [
       {
         text: "Kitchen worth ₹1,50,000/-",
@@ -269,9 +298,9 @@ const packages = [
     ],
   },
   {
-    name: "Premium  +",
+    name: "Premium  Plus",
     id: "PremiumPlus",
-    desc: "(Premium + Interior)",
+    desc: "A collection of essential items,including interior items.",
 
     features: [
       {
@@ -309,8 +338,8 @@ const packages = [
     ],
   },
   {
-    name: "Luxury +",
-    desc: "(Luxury + Interior)",
+    name: "Luxury Plus",
+    desc: "A collection of essential items,including interior items.",
     id: "LuxuryPlus",
     features: [
       {
@@ -418,8 +447,8 @@ function CostEstimator1({ costEstimatorOpen }) {
     breadth: "",
     customLength: "",
     customBreadth: "",
-    floors: "1",
-    floorHeight: "10", // Default to "10"
+    floors: 1,
+    floorHeight: 10, // Default to "10"
   });
 
   const [results, setResults] = useState({
@@ -435,6 +464,10 @@ function CostEstimator1({ costEstimatorOpen }) {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    setInputs((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleInputChange1 = (name, value) => {
     setInputs((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -540,8 +573,6 @@ function CostEstimator1({ costEstimatorOpen }) {
 
   const options = {
     landType: ["Regular", "Triangular", "Irregular"],
-    floors: ["1", "2", "3", "4", "5", "6"],
-    floorHeight: ["10", "11", "12", "13"],
   };
 
   return (
@@ -578,7 +609,7 @@ function CostEstimator1({ costEstimatorOpen }) {
                 <h1 className="text-2xl font-giloryM">Select Packages*</h1>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 2xl:gap-40">
-                {packages.map((pkg, index) => (
+                {/* {packages.map((pkg, index) => (
                   <div
                     key={index}
                     className={`relative border  rounded-lg p-4 lg:p-6 hover:shadow-lg hover:shadow-secondary transition-shadow w-[350px] md:w-[234px] md:h-[540px] lg:w-[333px] lg:h-[501px] ${
@@ -650,12 +681,36 @@ function CostEstimator1({ costEstimatorOpen }) {
                       </button>
                     </div>
                   </div>
-                ))}
+                ))} */}
+                <FlipCard
+                  package1={package1}
+                  pkg1={packages[0]}
+                  pkg2={packages[3]}
+                  expandedPackage={expandedPackage}
+                  toggleExpand={toggleExpand}
+                  packageSet={packageSet}
+                />
+                <FlipCard
+                  package1={package1}
+                  pkg1={packages[1]}
+                  pkg2={packages[4]}
+                  expandedPackage={expandedPackage}
+                  toggleExpand={toggleExpand}
+                  packageSet={packageSet}
+                />
+                <FlipCard
+                  package1={package1}
+                  pkg1={packages[2]}
+                  pkg2={packages[5]}
+                  expandedPackage={expandedPackage}
+                  toggleExpand={toggleExpand}
+                  packageSet={packageSet}
+                />
               </div>
             </div>
-            <div className="flex flex-col 2xl:grid 2xl:grid-cols-2 md:px-20 lg:px-40 xl:px-[10%] 2xl:px-[15%] px-4">
+            <div className="flex flex-col md:px-6 lg:px-40 xl:px-[20%] 2xl:px-[28%] px-4">
               <div className="w-full 2xl:px-1%">
-                <div className="grid md:grid-cols-1 lg:grid-cols-1 gap-4 mt-6">
+                <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-4 mt-6">
                   <RadioGroup
                     value={inputs.landType}
                     onChange={handleInputChange}
@@ -663,108 +718,117 @@ function CostEstimator1({ costEstimatorOpen }) {
                     name="landType"
                     label="Land Type"
                   />
+                  {inputs.landType === "Regular" && (
+                    <div className="grid grid-cols-2 gap-x-4 mb-2 mt-3 md:mt-0">
+                      <NumberInput
+                        value={inputs.length}
+                        onChange={handleInputChange}
+                        name="length"
+                        label="Land dimensions"
+                        placeholder="Length"
+                      />
+                      {inputs.length === "Custom" && (
+                        <NumberInput
+                          value={inputs.customLength}
+                          onChange={handleInputChange}
+                          name="customLength"
+                          label="Custom length"
+                        />
+                      )}
+                      <NumberInput
+                        value={inputs.breadth}
+                        onChange={handleInputChange}
+                        name="breadth"
+                        placeholder="Breadth"
+                      />
+                      {inputs.breadth === "Custom" && (
+                        <NumberInput
+                          value={inputs.customBreadth}
+                          onChange={handleInputChange}
+                          label="Custom breadth"
+                          name="customBreadth"
+                        />
+                      )}
+                    </div>
+                  )}
+                  {inputs.landType === "Triangular" && (
+                    <div className="grid md:grid-cols-3 gap-4 mb-3">
+                      <NumberInput
+                        value={inputs.side1}
+                        onChange={handleInputChange}
+                        name="side1"
+                        label="Side1"
+                      />
+                      <NumberInput
+                        value={inputs.side2}
+                        onChange={handleInputChange}
+                        name="side2"
+                        label="Side2"
+                      />
+                      <NumberInput
+                        value={inputs.side3}
+                        onChange={handleInputChange}
+                        name="side3"
+                        label="Side3"
+                      />
+                    </div>
+                  )}
+                  {inputs.landType === "Irregular" && (
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-2">
+                      <NumberInput
+                        value={inputs.side1}
+                        onChange={handleInputChange}
+                        name="side1"
+                        label="Side1"
+                      />
+                      <NumberInput
+                        value={inputs.side2}
+                        onChange={handleInputChange}
+                        name="side2"
+                        label="Side2"
+                      />
+                      <NumberInput
+                        value={inputs.side3}
+                        onChange={handleInputChange}
+                        name="side3"
+                        label="Side3"
+                      />
+                      <NumberInput
+                        value={inputs.side4}
+                        onChange={handleInputChange}
+                        name="side4"
+                        label="Side4"
+                      />
+                    </div>
+                  )}
                 </div>
-
-                {inputs.landType === "Regular" && (
-                  <div className="grid grid-cols-2 gap-x-4 mb-2 mt-3 md:mt-0">
-                    <NumberInput
-                      value={inputs.length}
-                      onChange={handleInputChange}
-                      name="length"
-                      label="Land dimensions"
-                      placeholder="Length"
-                    />
-                    {inputs.length === "Custom" && (
-                      <NumberInput
-                        value={inputs.customLength}
-                        onChange={handleInputChange}
-                        name="customLength"
-                        label="Custom length"
-                      />
-                    )}
-                    <NumberInput
-                      value={inputs.breadth}
-                      onChange={handleInputChange}
-                      name="breadth"
-                      placeholder="Breadth"
-                    />
-                    {inputs.breadth === "Custom" && (
-                      <NumberInput
-                        value={inputs.customBreadth}
-                        onChange={handleInputChange}
-                        label="Custom breadth"
-                        name="customBreadth"
-                      />
-                    )}
-                  </div>
-                )}
-
-                {inputs.landType === "Triangular" && (
-                  <div className="grid md:grid-cols-3 gap-4 mb-3">
-                    <NumberInput
-                      value={inputs.side1}
-                      onChange={handleInputChange}
-                      name="side1"
-                      label="Side1"
-                    />
-                    <NumberInput
-                      value={inputs.side2}
-                      onChange={handleInputChange}
-                      name="side2"
-                      label="Side2"
-                    />
-                    <NumberInput
-                      value={inputs.side3}
-                      onChange={handleInputChange}
-                      name="side3"
-                      label="Side3"
-                    />
-                  </div>
-                )}
-
-                {inputs.landType === "Irregular" && (
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-2">
-                    <NumberInput
-                      value={inputs.side1}
-                      onChange={handleInputChange}
-                      name="side1"
-                      label="Side1"
-                    />
-                    <NumberInput
-                      value={inputs.side2}
-                      onChange={handleInputChange}
-                      name="side2"
-                      label="Side2"
-                    />
-                    <NumberInput
-                      value={inputs.side3}
-                      onChange={handleInputChange}
-                      name="side3"
-                      label="Side3"
-                    />
-                    <NumberInput
-                      value={inputs.side4}
-                      onChange={handleInputChange}
-                      name="side4"
-                      label="Side4"
-                    />
-                  </div>
-                )}
-                <div className="grid md:grid-cols-2 gap-4">
-                  <RadioGroup
+                <div className="grid grid-cols-2 md:w-96 mx-auto mb-8">
+                  {/* <RadioGroup
                     value={inputs.floors}
                     onChange={handleInputChange}
                     options={options.floors}
                     name="floors"
                     label="No of Floors"
+                  /> */}
+                  <FloorSelector
+                    selectedFloor={inputs.floors} // Ensure correct floor number is passed
+                    setSelectedFloor={(floor) =>
+                      handleInputChange1("floors", floor)
+                    }
                   />
-                  <RadioGroup
+
+                  <FloorHeightSelector
+                    setSelectedFloorHeight={(height) =>
+                      handleInputChange1("floorHeight", height)
+                    }
+                  />
+                  {/* <RadioGroup
                     value={inputs.floorHeight}
                     onChange={handleInputChange}
                     options={options.floorHeight}
                     name="floorHeight"
                     label="Floor Height"
-                  />
+                  /> */}
                 </div>
               </div>
 

@@ -22,6 +22,8 @@ const CostEstimator1 = lazy(() =>
   import("./sections/CostEstimator/CostEstimator1")
 );
 import FloorSelector from "./components/FloorSelector";
+import FloorHeightSelector from "./components/FloorHeightselector";
+import FlipCard from "./components/FlipCard";
 
 // Memoize Footer to prevent unnecessary re-renders
 const Footer = memo(lazy(() => import("./sections/Footer/Footer")));
@@ -51,7 +53,7 @@ function App() {
       {/* Suspense for lazy-loaded components */}
       <Suspense fallback={<div className="loading-screen"></div>}>
         <Routes>
-          <Route path="/" element={<FloorSelector />} />
+          <Route path="/" element={<HabiService />} />
           <Route path="/*" element={<HabiService />} />
           <Route path="/baap" element={<HabiProduct />} />
           <Route path="/faq" element={<FaqExpanded />} />
