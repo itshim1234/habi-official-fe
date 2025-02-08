@@ -2,15 +2,13 @@ import React from "react";
 import { Page, Text, View, StyleSheet, Image } from "@react-pdf/renderer";
 import logo from "../../assets/images/Logo123.png"; // Ensure you have the logo image in your project
 import rupee from "../../assets/images/rupee1.png";
-import plot from "../../assets/images/plot.png";
-import water from "../../assets/images/Water.png";
-import home from "../../assets/images/home.png";
 import arrow from "../../assets/images/downarrow.png";
 
 // Define styles
 const styles = StyleSheet.create({
   page: {
     padding: 40,
+    paddingTop: 80,
   },
   section: {
     marginBottom: 20,
@@ -58,13 +56,16 @@ const Page1 = ({
   landType,
   floors,
   floorHeight,
+  length,
+  breadth,
+  builtUp,
 }) => (
   <Page size="A4" style={styles.page}>
     <View style={[styles.headerContainer]}>
       <View
         style={[
           { width: "65%" },
-          { paddingBottom: 15, paddingLeft: 15 },
+          { paddingBottom: 20, paddingLeft: 15 },
           {
             borderLeft: "1.5px dashed #c0c0c0",
             borderBottom: "1.5px solid #c0c0c0",
@@ -91,7 +92,7 @@ const Page1 = ({
       <View
         style={[
           { width: "65%" },
-          { paddingBottom: 25, paddingLeft: 15, paddingTop: 25 },
+          { paddingBottom: 40, paddingLeft: 15, paddingTop: 40 },
           {
             borderLeft: "1.5px solid #c0c0c0",
             borderBottom: "1.5px solid #c0c0c0",
@@ -103,7 +104,9 @@ const Page1 = ({
         <Text style={styles.text}>Name - {name}</Text>
         <Text style={styles.text}>Phone number - +91 {phone}</Text>
         <Text style={styles.text}>Land type - {landType}</Text>
-        <Text style={styles.text}>Land dimension - {landArea}</Text>
+        <Text style={styles.text}>
+          Land dimension - {length}X{breadth}
+        </Text>
         <Text style={styles.text}>No. of Floors - {floors}</Text>
         <Text style={styles.text}>Floor height - {floorHeight}</Text>
       </View>
@@ -121,7 +124,7 @@ const Page1 = ({
       <View
         style={[
           { width: "65%" },
-          { paddingBottom: 25, paddingLeft: 15, paddingTop: 25 },
+          { paddingBottom: 40, paddingLeft: 15, paddingTop: 40 },
           {
             borderLeft: "1.5px dashed #c0c0c0",
             borderBottom: "1.5px solid #c0c0c0",
@@ -130,9 +133,9 @@ const Page1 = ({
         ]}
       >
         {[
-          { src: plot, text: `Site area - ${landArea} sq ft` },
-          { src: home, text: `Built-up area - ${landArea} sq ft` },
-          { src: water, text: `Sump capacity - ${sump} liters` },
+          { text: `Site area - ${landArea} sq ft` },
+          { text: `Built-up area - ${builtUp} sq ft` },
+          { text: `Sump capacity - ${sump} liters` },
         ].map((item, index) => (
           <View
             key={index}
@@ -142,15 +145,6 @@ const Page1 = ({
               marginBottom: 5,
             }}
           >
-            <Image
-              src={item.src}
-              style={{
-                width: 15,
-                height: 15,
-                marginRight: 8,
-                paddingBottom: 4,
-              }}
-            />
             <Text style={styles.text}>{item.text}</Text>
           </View>
         ))}
@@ -170,7 +164,7 @@ const Page1 = ({
       <View
         style={[
           { width: "65%" },
-          { paddingBottom: 25, paddingLeft: 15, paddingTop: 25 },
+          { paddingBottom: 40, paddingLeft: 15, paddingTop: 40 },
           {
             borderLeft: "1.5px solid #c0c0c0",
             borderBottom: "1.5px solid #c0c0c0",
@@ -198,7 +192,7 @@ const Page1 = ({
       <View
         style={[
           { width: "65%" },
-          { paddingBottom: 15, paddingLeft: 15, paddingTop: 15 },
+          { paddingBottom: 25, paddingLeft: 15, paddingTop: 25 },
           {
             borderLeft: "1.5px dashed #c0c0c0",
             borderRight: "1.5px dashed #c0c0c0",

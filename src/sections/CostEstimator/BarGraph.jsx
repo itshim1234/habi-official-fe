@@ -1,15 +1,15 @@
 import React from "react";
 import "./styles.css";
 
-const BarGraph = ({ scheduleData, totalEstimatedCost }) => {
+const BarGraph = ({ scheduleData }) => {
   return (
     <div>
       <h2 className="text-center text-2xl lg:text-[32px] font-giloryB text-white mt-10">
         Payment Analytics
       </h2>
       <div className="bar-graph-wrapper">
-        <div className="chart-container ">
-          {/* Y-axis Labels */}
+        <div className="chart-container">
+          {/* Y-axis Labels (Hidden on Mobile) */}
           <ul className="meter">
             {[5000000, 4000000, 3000000, 2000000, 1000000].map(
               (amount, index) => (
@@ -19,23 +19,11 @@ const BarGraph = ({ scheduleData, totalEstimatedCost }) => {
               )
             )}
           </ul>
-          {/* Background Grid */}
-          <table>
-            <tbody>
-              {[...Array(5)].map((_, i) => (
-                <tr key={i}>
-                  {[...Array(scheduleData.length)].map((_, j) => (
-                    <td key={j}></td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
           {/* Bars */}
           {scheduleData.slice(0, -1).map((data, index) => (
             <div
               key={index}
-              className={`bar bar-${index}`}
+              className="bar"
               style={{
                 left: `${13 * index}%`,
                 height: `${data.price / 100000}%`,

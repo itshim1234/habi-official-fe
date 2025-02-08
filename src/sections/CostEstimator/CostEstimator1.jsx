@@ -18,6 +18,7 @@ import bathroom from "../../assets/images/Bathroom.png";
 import essential from "../../assets/images/essential.png";
 import premium from "../../assets/images/premium.png";
 import luxury from "../../assets/images/luxury.png";
+import Line from "../../assets/images/Line1.png";
 
 import a1 from "../../assets/images/a1.png";
 import a2 from "../../assets/images/a2.png";
@@ -46,6 +47,7 @@ import ConsultationPopup from "../Hero/ConsultationPopup";
 import FloorHeightSelector from "../../components/FloorHeightselector";
 import FloorSelector from "../../components/FloorSelector";
 import FlipCard from "../../components/FlipCard";
+import PriceComparison from "../../components/PriceComparison";
 
 import "./styles.css";
 
@@ -389,6 +391,11 @@ function CostEstimator1({ costEstimatorOpen }) {
   const [isPopupVisible1, setIsPopupVisible] = useState(false);
   const [package1, setPackage] = useState("");
   const [expandedPackage, setExpandedPackage] = useState(null);
+  const [halfFloor, setHalfFloor] = useState(false);
+
+  const [builtUp1, setBuiltUp] = useState(0);
+  const [floorHeightCost1, setFloorHeightCost] = useState(0);
+  const [finalSumpCost1, setFinalSumpCost] = useState(0);
 
   const contentRef = useRef(null);
   const logosRef = useRef(null);
@@ -425,6 +432,10 @@ function CostEstimator1({ costEstimatorOpen }) {
     setDetailedCost(bool);
   };
 
+  const halfFloor1 = () => {
+    setHalfFloor(!halfFloor);
+  };
+
   const packageSet = (typeOfPackage) => {
     setPackage(typeOfPackage);
   };
@@ -458,6 +469,7 @@ function CostEstimator1({ costEstimatorOpen }) {
     sumpBuilt: 0,
     sumpPrice: 0,
     estimatedCost: 0,
+    totalCost: 0,
   });
 
   //   const navigate = useNavigate();
@@ -470,7 +482,9 @@ function CostEstimator1({ costEstimatorOpen }) {
   const handleInputChange1 = (name, value) => {
     setInputs((prev) => ({ ...prev, [name]: value }));
   };
-
+  var builtUp = 0;
+  var floorHeightCost = 0;
+  var finalSumpCost = 0;
   const calculateArea = () => {
     const {
       side1,
@@ -527,10 +541,30 @@ function CostEstimator1({ costEstimatorOpen }) {
     }
 
     // Final sump cost, ensuring it respects the package default
-    var finalSumpCost = ActualSump * 17;
+    finalSumpCost = ActualSump * 17;
+    setFinalSumpCost(finalSumpCost);
 
     // Calculate the built-up area and cost multiplier
-    const builtUp = Math.round(area * groundCoverage * floors);
+
+    if (area > 0) {
+      builtUp = Math.round(area * groundCoverage * floors + 0.1 * area + 200);
+
+      if (halfFloor) {
+        builtUp -= 200;
+
+        if (area <= 1200) {
+          builtUp += 0.5 * area;
+        } else if (area <= 1500) {
+          builtUp += 0.4 * area;
+        } else if (area <= 1800) {
+          builtUp += 0.35 * area;
+        } else if (area <= 2400) {
+          builtUp += 0.25 * area;
+        }
+      }
+    }
+    setBuiltUp(builtUp);
+
     const costMultiplier =
       package1 === "Essential"
         ? 2100
@@ -550,6 +584,26 @@ function CostEstimator1({ costEstimatorOpen }) {
     var cost = builtUp * costMultiplier;
     cost = cost + finalSumpCost;
 
+    var x = 0;
+
+    if (inputs.floorHeight == 10) {
+      x = 0;
+    } else if (inputs.floorHeight == 11) {
+      x = 8000;
+    } else if (inputs.floorHeight == 12) {
+      x = 16000;
+    } else if (inputs.floorHeight == 13) {
+      x = 24000;
+    } else if (inputs.floorHeight == 14) {
+      x = 32000;
+    } else if (inputs.floorHeight == 15) {
+      x = 40000;
+    }
+    floorHeightCost = inputs.floorHeight * x * floors;
+    setFloorHeightCost(floorHeightCost);
+
+    const total = cost + floorHeightCost;
+
     // Set the results
     setResults({
       siteArea: area,
@@ -558,12 +612,13 @@ function CostEstimator1({ costEstimatorOpen }) {
       sumpPrice: finalSumpCost,
       estimatedCost: cost,
       sumpCapacity: calculatedSumpCapacity,
+      totalCost: total,
     });
   };
 
   useEffect(() => {
     calculateCost();
-  }, [inputs, package1]);
+  }, [inputs, package1, halfFloor]);
 
   useEffect(() => {
     Object.entries(inputs).forEach(([key, value]) => {
@@ -604,84 +659,11 @@ function CostEstimator1({ costEstimatorOpen }) {
           }}
         >
           <div ref={contentRef}>
-            <div className="bg-black text-white flex flex-col justify-center items-center p-4 mb-10">
+            <div className="bg-black text-white flex flex-col justify-center items-center p-4 mb-10 2xl:px-60">
               <div className="text-center mb-6">
                 <h1 className="text-2xl font-giloryM">Select Packages*</h1>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 2xl:gap-40">
-                {/* {packages.map((pkg, index) => (
-                  <div
-                    key={index}
-                    className={`relative border  rounded-lg p-4 lg:p-6 hover:shadow-lg hover:shadow-secondary transition-shadow w-[350px] md:w-[234px] md:h-[540px] lg:w-[333px] lg:h-[501px] ${
-                      package1 === pkg.name
-                        ? "border-primary"
-                        : "border-[#7c7c7c]"
-                    }
-                    
-                    ${expandedPackage === pkg.name ? "h-[470px]" : "h-fit"}`}
-                  >
-                    <h2
-                      className={`text-xl flex font-giloryB md:mb-14 gap-2 justify-center cursor-pointer md:cursor-none ${
-                        expandedPackage === pkg.name ? "mb-14" : "mb-0"
-                      }
-`}
-                      onClick={() => toggleExpand(pkg.name)}
-                    >
-                      {pkg.img && <img src={pkg.img} alt="" />}
-                      {pkg.name}
-                      {pkg.desc && (
-                        <p
-                          className={`absolute md:flex top-14 text-sm font-giloryM italic ${
-                            expandedPackage === pkg.name ? "flex" : "hidden"
-                          }`}
-                        >
-                          {pkg.desc}
-                        </p>
-                      )}
-                    </h2>
-
-                    <img
-                      src={downArrow}
-                      alt=""
-                      className={`absolute top-5 right-10 md:hidden cursor-pointer ${
-                        expandedPackage === pkg.name
-                          ? "rotate-180 transition-transform"
-                          : ""
-                      }`}
-                      onClick={() => toggleExpand(pkg.name)}
-                    />
-
-                    <div
-                      className={`${
-                        expandedPackage === pkg.name || window.innerWidth >= 768
-                          ? "block"
-                          : "hidden"
-                      } md:block`}
-                    >
-                      <ul className="mb-6 text-sm text-gray-300 lg:leading-6">
-                        {pkg.features.map((feature, idx) => (
-                          <li
-                            key={idx}
-                            className="mb-2 flex items-start gap-2 text-left font-giloryM"
-                          >
-                            <img src={feature.img} alt="" className="pt-1.5" />{" "}
-                            {feature.text}
-                          </li>
-                        ))}
-                      </ul>
-                      <button
-                        className={`absolute bottom-6 left-1/2 transform -translate-x-1/2 w-[80%] font-giloryS py-2 rounded transition ${
-                          package1 === pkg.id
-                            ? "bg-primary"
-                            : "bg-white text-black"
-                        }`}
-                        onClick={() => packageSet(pkg.id)}
-                      >
-                        {package1 === pkg.name ? "Selected" : "Select"}
-                      </button>
-                    </div>
-                  </div>
-                ))} */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <FlipCard
                   package1={package1}
                   pkg1={packages[0]}
@@ -706,7 +688,11 @@ function CostEstimator1({ costEstimatorOpen }) {
                   toggleExpand={toggleExpand}
                   packageSet={packageSet}
                 />
-              </div>
+              </div>{" "}
+              <p className="w-full mt-8 italic text-center text-[#C0C0C0] font-giloryM  mb-1.5">
+                Note: 1 interior set for 1200 sq ft, and 2 interior sets for
+                2400 sq ft.
+              </p>
             </div>
             <div className="flex flex-col md:px-6 lg:px-40 xl:px-[20%] 2xl:px-[28%] px-4">
               <div className="w-full 2xl:px-1%">
@@ -803,18 +789,12 @@ function CostEstimator1({ costEstimatorOpen }) {
                   )}
                 </div>
                 <div className="grid grid-cols-2 md:w-96 mx-auto mb-8">
-                  {/* <RadioGroup
-                    value={inputs.floors}
-                    onChange={handleInputChange}
-                    options={options.floors}
-                    name="floors"
-                    label="No of Floors"
-                  /> */}
                   <FloorSelector
                     selectedFloor={inputs.floors} // Ensure correct floor number is passed
                     setSelectedFloor={(floor) =>
                       handleInputChange1("floors", floor)
                     }
+                    setHalfFloor={halfFloor1} // Pass halfFloor state updater
                   />
 
                   <FloorHeightSelector
@@ -822,17 +802,12 @@ function CostEstimator1({ costEstimatorOpen }) {
                       handleInputChange1("floorHeight", height)
                     }
                   />
-                  {/* <RadioGroup
-                    value={inputs.floorHeight}
-                    onChange={handleInputChange}
-                    options={options.floorHeight}
-                    name="floorHeight"
-                    label="Floor Height"
-                  /> */}
                 </div>
               </div>
 
               <div className={`w-full bg-layoutColor py-2`}>
+                <img src={Line} alt="" className="w-full mb-4 mx-auto" />
+
                 <div className="w-full bg-black flex flex-col 2xl:ml-10">
                   {/* Details Section */}
                   <div className="bg-black text-white md:p-6 rounded-lg shadow-md">
@@ -851,6 +826,7 @@ function CostEstimator1({ costEstimatorOpen }) {
                           {results.siteArea} sq ft
                         </div>
                       </div>
+                      <div className="border-r h-10"></div>
                       {/* Built-up Area */}
                       <div className="text-center">
                         <div className=" flex">
@@ -864,7 +840,8 @@ function CostEstimator1({ costEstimatorOpen }) {
                         <div className="text-lg md:text-2xl font-giloryS mt-2">
                           {results.builtUpArea} sq ft
                         </div>
-                      </div>
+                      </div>{" "}
+                      <div className="border-r h-10"></div>
                       {/* Sump Capacity */}
                       <div className="text-center">
                         <div className=" flex">
@@ -886,7 +863,7 @@ function CostEstimator1({ costEstimatorOpen }) {
                         * Estimated Cost
                       </div>
                       <div className="text-2xl md:text-[40px]">
-                        ₹ {results.estimatedCost.toLocaleString("en-IN")}
+                        ₹ {results.totalCost.toLocaleString("en-IN")}
                       </div>
                     </div>
                   </div>
@@ -923,6 +900,12 @@ function CostEstimator1({ costEstimatorOpen }) {
                       Get Personalized Offers
                     </button>
                   </div>
+                  <PriceComparison
+                    builtUp={builtUp1}
+                    package1={package1}
+                    floorHeightCost={floorHeightCost1}
+                    sumpCost={finalSumpCost1}
+                  />
                 </div>
               </div>
             </div>
@@ -938,6 +921,9 @@ function CostEstimator1({ costEstimatorOpen }) {
                 package1={package1}
                 landArea={results.siteArea}
                 landType={inputs.landType}
+                length={inputs.length}
+                breadth={inputs.breadth}
+                builtUp={builtUp1}
               />
             )}
 

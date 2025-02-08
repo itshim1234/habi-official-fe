@@ -19,6 +19,9 @@ const Invoice = ({
   package1,
   landArea,
   landType,
+  length,
+  breadth,
+  builtUp,
 }) => (
   <Document>
     {/* Each Page component receives the relevant props */}
@@ -33,6 +36,9 @@ const Invoice = ({
       landType={landType}
       floors={floors}
       floorHeight={floorHeight}
+      length={length}
+      breadth={breadth}
+      builtUp={builtUp}
     />
     <Page2 estimatedCost={estimatedCost} sump={consSump} sumpCost={sumpCost} />
     <Page3 totalEstimatedCost={estimatedCost} />
@@ -47,6 +53,9 @@ const Invoice = ({
       landType={landType}
       floors={floors}
       floorHeight={floorHeight}
+      length={length}
+      breadth={breadth}
+      builtUp={builtUp}
     />
   </Document>
 );

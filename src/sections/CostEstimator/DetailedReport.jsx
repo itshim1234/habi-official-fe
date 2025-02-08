@@ -13,6 +13,9 @@ function DetailedReport({
   package1,
   landArea,
   landType,
+  length,
+  breadth,
+  builtUp,
 }) {
   const [newField, setNewField] = useState("");
   const [newAmount, setNewAmount] = useState("");
@@ -406,6 +409,9 @@ function DetailedReport({
         package1={package1}
         landArea={landArea}
         landType={landType}
+        length={length}
+        breadth={breadth}
+        builtUp={builtUp}
       />
 
       <h2 className="text-center text-2xl lg:text-[32px] font-giloryB text-white mt-6">

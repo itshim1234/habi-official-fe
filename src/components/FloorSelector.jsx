@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import houseTop from "../assets/images/houseTop.png";
 import houseBase from "../assets/images/housebase.png";
 
-const FloorSelector = ({ setSelectedFloor }) => {
+const FloorSelector = ({ setSelectedFloor, setHalfFloor }) => {
   const floors = ["Fifth", "Fourth", "Third", "Second", "First", "Ground"];
   const floorNumbers = {
     Ground: 1,
@@ -25,9 +25,14 @@ const FloorSelector = ({ setSelectedFloor }) => {
     setSelectedFloor(maxFloor);
   };
 
+  const handleRooftopChange = () => {
+    setRooftopSelected(!rooftopSelected);
+    setHalfFloor(!rooftopSelected); // Update halfFloor based on rooftop selection
+  };
+
   return (
     <div className="flex flex-col items-center bg-black text-white relative">
-      <p className="w-20 text-center text-xs mb-1.5">
+      <p className="w-28 text-center text-[#C0C0C0] font-giloryM  mb-1.5">
         Choose the No. of Floors*
       </p>
 
@@ -42,7 +47,7 @@ const FloorSelector = ({ setSelectedFloor }) => {
           type="checkbox"
           className="hidden"
           checked={rooftopSelected}
-          onChange={() => setRooftopSelected(!rooftopSelected)}
+          onChange={handleRooftopChange}
         />
         Rooftop
       </label>

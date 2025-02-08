@@ -13,11 +13,11 @@ const FlipCard = ({
   const [isFlipped, setIsFlipped] = useState(false);
 
   return (
-    <div className="relative grid grid-cols-1 md:grid-cols-3 gap-4 2xl:gap-40">
+    <div className="relative grid grid-cols-1 md:grid-cols-3 gap-4 lg:ml-3 xl:ml-14">
       <div
-        className={`relative border rounded-lg p-4 lg:p-6 hover:shadow-lg hover:shadow-secondary transition-shadow w-[350px] md:w-[234px] md:h-[700px] lg:w-[333px] lg:h-[700px] ${
+        className={`relative border rounded-lg p-4 lg:p-6 hover:shadow-lg hover:shadow-secondary transition-shadow w-[350px] md:w-[250px] md:h-[700px] lg:w-[333px] lg:h-[700px] ${
           package1 === pkg1.name ? "border-primary" : "border-[#7c7c7c]"
-        } ${expandedPackage === pkg1.name ? "h-[792px]" : "h-fit"}`}
+        } ${expandedPackage === pkg1.name ? "h-[650px]" : "h-14"}`}
       >
         <motion.div
           className="relative w-full h-full"
@@ -76,8 +76,8 @@ const FlipCard = ({
                 {package1 === pkg1.name ? "Selected" : "Select"}
               </button>
               {/* Toggle inside the card */}
-              <label className="absolute bottom-20 flex flex-col items-center cursor-pointer">
-                <span className="text-white mr-2 text-[16px] mb-2 w-[60%] text-giloryM leading-5">
+              <label className="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center cursor-pointer">
+                <span className="text-white mr-2 text-[16px] mb-2 w-[160%] text-giloryM leading-5">
                   Do you want to include interior design?
                 </span>
                 <input
@@ -106,23 +106,23 @@ const FlipCard = ({
             }}
           >
             <h2
-              className={`text-xl flex font-giloryB md:mb-14 gap-2 justify-center cursor-pointer md:cursor-none ${
+              className={`text-xl flex font-giloryB md:mb-8 gap-2 cursor-pointer md:cursor-none ${
                 expandedPackage === pkg2.name ? "mb-14" : "mb-0"
               }`}
               onClick={() => toggleExpand(pkg2.name)}
             >
               {pkg2.img && <img src={pkg2.img} alt="" />}
               {pkg2.name}
-              {pkg2.desc && (
-                <p
-                  className={`md:inline text-sm font-giloryM italic ${
-                    expandedPackage === pkg1.name ? "block" : "hidden"
-                  }`}
-                >
-                  {pkg2.desc}
-                </p>
-              )}
             </h2>
+            {pkg2.desc && (
+              <p
+                className={`mb-4 mt-4 md:mt-0 text-sm font-giloryM italic ${
+                  expandedPackage === pkg1.name ? "flex" : "hidden md:flex"
+                }`}
+              >
+                {pkg2.desc}
+              </p>
+            )}
             <img
               src={downArrow}
               alt=""
@@ -160,8 +160,8 @@ const FlipCard = ({
                 {package1 === pkg2.id ? "Selected" : "Select"}
               </button>
               {/* Toggle inside the card */}
-              <label className="absolute bottom-20 flex flex-col items-center cursor-pointer">
-                <span className="text-white mr-2 text-[16px] mb-2 w-[70%] text-giloryM leading-5">
+              <label className="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center cursor-pointer">
+                <span className="text-white mr-2 text-[16px] mb-2 w-[160%] text-giloryM leading-5">
                   Only the construction is needed.
                 </span>
                 <input

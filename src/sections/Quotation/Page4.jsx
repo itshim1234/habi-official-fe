@@ -94,14 +94,15 @@ const Page4 = ({
   phone,
   email,
   sump,
-  consSump,
-  sumpCost,
   estimatedCost,
   floors,
   floorHeight,
   package1,
   landArea,
   landType,
+  length,
+  breadth,
+  builtUp,
 }) => (
   <Page size="A4" style={styles.page}>
     <View style={{ padding: 20, border: "1.5px dashed #c0c0c0" }}>
@@ -197,7 +198,7 @@ const Page4 = ({
           <Text
             style={[{ flex: 1 }, { fontSize: 11 }, { textAlign: "center" }]}
           >
-            {landArea}
+            {length}X{breadth}
           </Text>
         </View>
         <View
@@ -249,7 +250,7 @@ const Page4 = ({
           <Text
             style={[{ flex: 1 }, { fontSize: 11 }, { textAlign: "center" }]}
           >
-            {landArea}
+            {builtUp}
           </Text>
         </View>
         <View
@@ -373,10 +374,8 @@ const Page4 = ({
 
       <View style={[styles.footer, { textAlign: "left", width: "50%" }]}>
         <Text>Terms & Instructions</Text>
-        <Text>
-          All Bank transaction to be done in favor of "DESIGNASM TECHNOLOGIES
-          PVT. LTD."
-        </Text>
+        <Text>All Bank transaction to be done in favor of -</Text>
+        <Text>DESIGNASM TECHNOLOGIES PVT. LTD.</Text>
         <Text>Bank: Axis Bank Indiranagar</Text>
         <Text>Account no: 923020061276769</Text>
         <Text>IFSC: UTIB0000114</Text>

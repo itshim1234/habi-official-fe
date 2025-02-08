@@ -3,6 +3,7 @@ import quotation from "../../assets/images/quotation.png";
 import lock from "../../assets/images/lock.png";
 import close from "../../assets/images/close.png";
 import { generatePDF } from "../Quotation/GeneratePdf";
+
 function QuotationDownload({
   totalSump,
   consSump,
@@ -13,30 +14,87 @@ function QuotationDownload({
   package1,
   landArea,
   landType,
+  length,
+  breadth,
+  builtUp,
 }) {
   const [popUp, setPopUp] = useState(false);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [error, setError] = useState("");
 
-  // Pass the form data and props to the Invoice component when Continue is clicked
-  const handleContinue = () => {
-    setPopUp(false);
-    // You can now trigger the generatePDF function here by passing the props to Invoice
-    generatePDF({
-      name,
-      phone,
-      email,
-      totalSump,
-      consSump,
-      sumpCost,
-      estimatedCost,
-      floors,
-      floorHeight,
-      package1,
-      landArea,
-      landType,
-    });
+  const validateInput = () => {
+    const phoneRegex = /^[0-9]{10}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!name.trim()) {
+      setError("Please enter your name.");
+      return false;
+    }
+    if (!phoneRegex.test(phone)) {
+      setError("Please enter a valid 10-digit phone number.");
+      return false;
+    }
+    if (!emailRegex.test(email)) {
+      setError("Please enter a valid email address.");
+      return false;
+    }
+    setError("");
+    return true;
+  };
+
+  const handleContinue = async () => {
+    if (validateInput()) {
+      setPopUp(false);
+
+      // Generate the PDF Blob
+      const pdfBlob = await generatePDF({
+        name,
+        phone,
+        email,
+        totalSump,
+        consSump,
+        sumpCost,
+        estimatedCost,
+        floors,
+        floorHeight,
+        package1, // Ensure package is included
+        landArea,
+        landType,
+        length,
+        breadth,
+        builtUp,
+      });
+
+      // Create a FormData object to send the PDF and user details
+      const formData = new FormData();
+      formData.append("invoicePdf", pdfBlob, "quotation.pdf"); // Fix key name
+      formData.append("name", name);
+      formData.append("phone", phone);
+      formData.append("email", email);
+      formData.append("package", package1); // Ensure package is sent
+
+      // Send the FormData to the backend
+      try {
+        const response = await fetch(
+          "https://sendquotationserver.onrender.com/send-pdf",
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+
+        if (response.ok) {
+          alert("Quotation sent successfully!");
+        } else {
+          alert("Failed to send quotation.");
+        }
+      } catch (error) {
+        console.error("Error sending quotation:", error);
+        alert("An error occurred while sending the quotation.");
+      }
+    }
   };
 
   return (
@@ -67,7 +125,7 @@ function QuotationDownload({
             <p className="text-[#c0c0c0] text-sm md:px-10 mb-8">
               Please complete this form to download the Detailed Quotation.
             </p>
-
+            {error && <p className="text-red-500 mb-4">{error}</p>}
             <input
               type="text"
               value={name}

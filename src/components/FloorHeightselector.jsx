@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import houseTop from "../assets/images/houseTop.png";
 import houseBase from "../assets/images/housebase.png";
+import dashedLine from "../assets/images/dashedLine.png";
 
 const FloorHeightSelector = ({ setSelectedFloorHeight }) => {
   const floors = [13, 12, 11, 10];
@@ -21,7 +22,7 @@ const FloorHeightSelector = ({ setSelectedFloorHeight }) => {
 
   return (
     <div className="flex flex-col items-center bg-black text-white rounded-lg relative">
-      <p className="text-xs w-24 text-center mb-1.5">
+      <p className="w-28 text-center text-[#C0C0C0] font-giloryM  mb-1.5">
         Choose the Floor height*
       </p>
       <img src={houseTop} alt="Rooftop" />
@@ -32,7 +33,7 @@ const FloorHeightSelector = ({ setSelectedFloorHeight }) => {
             key={floor}
             className={`flex items-center justify-center w-24 ${
               floorHeights[floor]
-            } border border-white cursor-pointer text-lg ${
+            } border-l border-r cursor-pointer text-lg ${
               selectedFloor === floor
                 ? "bg-gradient-to-t from-[#07565D] to-[#0FB4C3]"
                 : ""
@@ -42,6 +43,12 @@ const FloorHeightSelector = ({ setSelectedFloorHeight }) => {
             {floor}
           </label>
         ))}
+        <div className="absolute top-[106px] w-[160%]">
+          <img src={dashedLine} alt="" />
+        </div>
+        <div className="absolute top-[195px] w-[160%]">
+          <img src={dashedLine} alt="" />
+        </div>
       </div>
 
       <img
