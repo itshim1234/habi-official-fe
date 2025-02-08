@@ -2,7 +2,6 @@ import React from "react";
 import { Page, Text, View, StyleSheet, Image } from "@react-pdf/renderer";
 import logo from "../../assets/images/Logo123.png"; // Ensure you have the logo image in your project
 import rupee from "../../assets/images/rupee1.png";
-import arrow from "../../assets/images/downarrow.png";
 
 // Define styles
 const styles = StyleSheet.create({
@@ -210,15 +209,6 @@ const Page1 = ({
         }}
       >
         <Text style={styles.text}>NEXT PAGE</Text>
-        <Image
-          src={arrow}
-          style={{
-            width: 20,
-            height: 20,
-            marginRight: 8,
-            paddingBottom: 4,
-          }}
-        />
       </View>
     </View>
   </Page>
