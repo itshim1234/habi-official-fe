@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import herobackground from "../../assets/videos/heroBackground.mp4";
 import scroll from "../../assets/images/scroll.png";
 import ConsultationPopup from "./ConsultationPopup";
 import logo from "../../assets/images/mainLogo.png";
 import { useNavigate } from "react-router-dom";
 import Hamburger from "../../components/Hamburger";
-// import Invoice from "../Quotation/invoice";
 
 import "./hero.css";
 
@@ -22,6 +21,17 @@ function Hero({ scrollToProjects, scrollToCostEstimator }) {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+  useEffect(() => {
+    if (isPopupVisible) {
+      document.body.style.overflow = "hidden"; // Disable scrolling
+    } else {
+      document.body.style.overflow = "auto"; // Enable scrolling
+    }
+
+    return () => {
+      document.body.style.overflow = "auto"; // Cleanup
+    };
+  }, [isPopupVisible]);
 
   return (
     <div className="relative min-h-[300px] h-[460px] md:h-[750px] lg:h-screen w-screen bg-cover bg-center">
@@ -172,7 +182,7 @@ function Hero({ scrollToProjects, scrollToCostEstimator }) {
         <img src={scroll} alt="scroll button" />
       </div>
       {isPopupVisible && (
-        <div className="lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:top-1/2 lg:-translate-y-1/2 xl:top-[58%] z-50 ">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-md">
           <ConsultationPopup onClose={togglePopup} />
         </div>
       )}

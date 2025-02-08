@@ -630,6 +630,18 @@ function CostEstimator1({ costEstimatorOpen }) {
     landType: ["Regular", "Triangular", "Irregular"],
   };
 
+  useEffect(() => {
+    if (isPopupVisible1) {
+      document.body.style.overflow = "hidden"; // Disable scrolling
+    } else {
+      document.body.style.overflow = "auto"; // Enable scrolling
+    }
+
+    return () => {
+      document.body.style.overflow = "auto"; // Cleanup
+    };
+  }, [isPopupVisible1]);
+
   return (
     <div className={`h-fit flex flex-col bg-background w-full gradient-border`}>
       <div
@@ -999,13 +1011,7 @@ function CostEstimator1({ costEstimatorOpen }) {
           </div>
         </div>
         {isPopupVisible1 && (
-          <div
-            className={`absolute w-[340px] md:w-[770px] lg:w-[1060px] h-fit left-1/2 md:left-1/2 transform -translate-x-1/2 z-50 ${
-              !detailedCost
-                ? "top-1/2 md:top-[62%] md:-translate-y-1/2"
-                : "top-[15%] md:top-[16%] md:-translate-y-[14%]"
-            }`}
-          >
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/10 backdrop-blur-md">
             <ConsultationPopup onClose={togglePopup} />
           </div>
         )}

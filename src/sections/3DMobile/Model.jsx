@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ConsultationPopup from "../Hero/ConsultationPopup";
 import whatsapp from "../../assets/images/whatsapp.png";
 
@@ -9,6 +9,19 @@ function Model() {
   const togglePopup = () => {
     setIsPopupVisible(!isPopupVisible1);
   };
+
+  // Disable scrolling when popup is open
+  useEffect(() => {
+    if (isPopupVisible1) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isPopupVisible1]);
+
   return (
     <div className="relative flex flex-col justify-center text-center bg-black text-white items-center w-screen h-screen">
       <hr className="bg-[#f8f8ff] p-0 m-0" />
@@ -27,11 +40,6 @@ function Model() {
       >
         Let's Discuss
       </button>
-      {isPopupVisible1 && (
-        <div className="absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 top-1/3 md:top-2/3 md:-translate-y-2/3 z-50">
-          <ConsultationPopup onClose={togglePopup} />
-        </div>
-      )}
 
       <div
         className="absolute w-40 h-9 bottom-5 right-0 md:right-8 pr-10 bg-[#191919] rounded-lg flex font-giloryM justify-center items-center text-3xl cursor-pointer"
@@ -40,6 +48,17 @@ function Model() {
         <img src={whatsapp} alt="WhatsApp" className="w-8 md:w-10 mr-3" />
         <p>9606210818</p>
       </div>
+
+      {/* Popup within Model Component */}
+      {isPopupVisible1 && <ConsultationPopup onClose={togglePopup} />}
+
+      {/* Background Overlay */}
+      {isPopupVisible1 && (
+        <div
+          className="absolute inset-0 bg-black/50 backdrop-blur-md z-10"
+          onClick={togglePopup}
+        />
+      )}
     </div>
   );
 }

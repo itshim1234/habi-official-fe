@@ -26,9 +26,7 @@ function FaqExpanded() {
           alt="Logo"
           className="inline rotate-180 pt-0.5 mr-1 mb-1"
         />
-        <p className="inline border-b pb-1 md:text-2xl font-giloryS">
-          Go back to website
-        </p>
+        <p className="inline border-b pb-1 md:text-2xl font-giloryS">Back</p>
       </div>
       <div
         className={`w-full bg-black p-2 px-4 h-auto mb-2 md:px-20 lg:px-40 2xl:px-[15%]  `}

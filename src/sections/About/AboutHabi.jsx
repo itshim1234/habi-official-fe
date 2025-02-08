@@ -44,9 +44,7 @@ const AboutHabi = () => {
             alt="left"
             className="inline rotate-180 pt-0.5 mr-1 mb-1"
           />
-          <p className="inline border-b pb-1 md:text-2xl font-giloryS">
-            Go back to website
-          </p>
+          <p className="inline border-b pb-1 md:text-2xl font-giloryS">Back</p>
         </div>
       </header>
 
