@@ -1,5 +1,5 @@
 import React from "react";
-import { Page, Text, View, StyleSheet, Image, Font } from "@react-pdf/renderer";
+import { Page, Text, View, StyleSheet, Image } from "@react-pdf/renderer";
 import rupee from "../../assets/images/rupee1.png";
 // Replace with the actual path to your font file
 

@@ -21,12 +21,19 @@ const ProjectExpand = lazy(() => import("./sections/Projects/ProjectExpand"));
 const CostEstimator1 = lazy(() =>
   import("./sections/CostEstimator/CostEstimator1")
 );
+const ConsultationPopup = lazy(() =>
+  import("./sections/Hero/ConsultationPopup")
+);
 
 // Memoize Footer to prevent unnecessary re-renders
 const Footer = memo(lazy(() => import("./sections/Footer/Footer")));
+import QuotationPopup from "./sections/Quotation/QuotationPopup";
 
 function App() {
   const [isPreloading, setIsPreloading] = useState(false);
+  const [isPopupVisible, setIsPopupVisible] = useState(false); // Popup State
+  const [isQuotationVisible, setIsQuotationVisible] = useState(false);
+  const [quotationData, setQuotationData] = useState(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -41,6 +48,25 @@ function App() {
     }
   }, []);
 
+  const togglePopup = () => {
+    setIsPopupVisible(!isPopupVisible);
+  };
+  const toggleQuotationPopup = (data) => {
+    setQuotationData(data);
+    setIsQuotationVisible(!isQuotationVisible);
+  };
+  useEffect(() => {
+    if (isPopupVisible || isQuotationVisible) {
+      document.body.style.overflow = "hidden"; // Disable scrolling
+    } else {
+      document.body.style.overflow = "auto"; // Enable scrolling when closed
+    }
+
+    return () => {
+      document.body.style.overflow = "auto"; // Reset on unmount
+    };
+  }, [isPopupVisible, isQuotationVisible]);
+
   if (isPreloading) {
     return <Preloader onVideoEnd={() => setIsPreloading(false)} />;
   }
@@ -50,8 +76,11 @@ function App() {
       {/* Suspense for lazy-loaded components */}
       <Suspense fallback={<div className="loading-screen"></div>}>
         <Routes>
-          <Route path="/" element={<HabiService />} />
-          <Route path="/*" element={<HabiService />} />
+          <Route path="/" element={<HabiService togglePopup={togglePopup} />} />
+          <Route
+            path="/*"
+            element={<HabiService togglePopup={togglePopup} />}
+          />
           <Route path="/baap" element={<HabiProduct />} />
           <Route path="/faq" element={<FaqExpanded />} />
           <Route path="/about-habi" element={<AboutHabi />} />
@@ -60,13 +89,34 @@ function App() {
           <Route path="/terms-and-condition" element={<TermsAndCondition />} />
           <Route
             path="/cost-estimator"
-            element={<CostEstimator1 costEstimatorOpen={true} />}
+            element={
+              <CostEstimator1
+                costEstimatorOpen={true}
+                togglePopup={togglePopup}
+                toggleQuotationPopup={toggleQuotationPopup}
+              />
+            }
           />
         </Routes>
       </Suspense>
 
       {/* Render Footer only if it's not the Projects page */}
       {location.pathname !== "/project" && <Footer />}
+      {isPopupVisible && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-md">
+          <ConsultationPopup onClose={togglePopup} />
+        </div>
+      )}
+
+      {isQuotationVisible && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-md">
+          <QuotationPopup
+            isVisible={isQuotationVisible}
+            onClose={() => setIsQuotationVisible(false)}
+            quotationData={quotationData}
+          />
+        </div>
+      )}
     </div>
   );
 }

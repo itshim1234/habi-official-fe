@@ -16,6 +16,7 @@ function DetailedReport({
   length,
   breadth,
   builtUp,
+  toggleQuotationPopup,
 }) {
   const [newField, setNewField] = useState("");
   const [newAmount, setNewAmount] = useState("");
@@ -412,6 +413,7 @@ function DetailedReport({
         length={length}
         breadth={breadth}
         builtUp={builtUp}
+        toggleQuotationPopup={toggleQuotationPopup}
       />
 
       <h2 className="text-center text-2xl lg:text-[32px] font-giloryB text-white mt-6">

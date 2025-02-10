@@ -78,7 +78,7 @@ const FlipCard = ({
               {/* Toggle inside the card */}
               <label className="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center cursor-pointer">
                 <span className="text-white mr-2 text-[16px] mb-2 w-[160%] text-giloryM leading-5">
-                  Do you want to include interior design?
+                  Do you want to include Interior?
                 </span>
                 <input
                   type="checkbox"

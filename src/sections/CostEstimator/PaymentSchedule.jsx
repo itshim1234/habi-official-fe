@@ -58,7 +58,7 @@ const PaymentSchedule = ({ scheduleData }) => {
                 index === 3 ||
                 index === 4 ||
                 index === 6) && (
-                <div className="hidden md:flex absolute top-0 right-0 z-20">
+                <div className="hidden md:flex absolute top-0 right-0 z-10">
                   <Header />
                 </div>
               )}

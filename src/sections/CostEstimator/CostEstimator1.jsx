@@ -28,7 +28,6 @@ import a5 from "../../assets/images/a5.png";
 import a6 from "../../assets/images/a6.png";
 import a7 from "../../assets/images/a7.png";
 import a8 from "../../assets/images/a8.png";
-
 import b9 from "../../assets/images/b9.png";
 import b10 from "../../assets/images/b10.png";
 import b11 from "../../assets/images/b11.png";
@@ -42,7 +41,6 @@ import b17 from "../../assets/images/b17.png";
 import a from "../../assets/images/site.png";
 import b from "../../assets/images/builtup.png";
 import c from "../../assets/images/Water.png";
-import ConsultationPopup from "../Hero/ConsultationPopup";
 
 import FloorHeightSelector from "../../components/FloorHeightselector";
 import FloorSelector from "../../components/FloorSelector";
@@ -384,11 +382,14 @@ const packages = [
   },
 ];
 
-function CostEstimator1({ costEstimatorOpen }) {
+function CostEstimator1({
+  costEstimatorOpen,
+  togglePopup,
+  toggleQuotationPopup,
+}) {
   const [detailedCost, setDetailedCost] = useState(false);
   const [costEstimator, setCostEstimator] = useState(false);
   const [contentHeight, setContentHeight] = useState(0);
-  const [isPopupVisible1, setIsPopupVisible] = useState(false);
   const [package1, setPackage] = useState("");
   const [expandedPackage, setExpandedPackage] = useState(null);
   const [halfFloor, setHalfFloor] = useState(false);
@@ -399,8 +400,6 @@ function CostEstimator1({ costEstimatorOpen }) {
 
   const contentRef = useRef(null);
   const logosRef = useRef(null);
-
-  const togglePopup = () => setIsPopupVisible((prev) => !prev);
 
   useEffect(() => {
     // Synchronize costEstimator state with costEstimatorOpen prop
@@ -471,8 +470,6 @@ function CostEstimator1({ costEstimatorOpen }) {
     estimatedCost: 0,
     totalCost: 0,
   });
-
-  //   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -545,7 +542,6 @@ function CostEstimator1({ costEstimatorOpen }) {
     setFinalSumpCost(finalSumpCost);
 
     // Calculate the built-up area and cost multiplier
-
     if (area > 0) {
       builtUp = Math.round(area * groundCoverage * floors + 0.1 * area + 200);
 
@@ -630,18 +626,6 @@ function CostEstimator1({ costEstimatorOpen }) {
     landType: ["Regular", "Triangular", "Irregular"],
   };
 
-  useEffect(() => {
-    if (isPopupVisible1) {
-      document.body.style.overflow = "hidden"; // Disable scrolling
-    } else {
-      document.body.style.overflow = "auto"; // Enable scrolling
-    }
-
-    return () => {
-      document.body.style.overflow = "auto"; // Cleanup
-    };
-  }, [isPopupVisible1]);
-
   return (
     <div className={`h-fit flex flex-col bg-background w-full gradient-border`}>
       <div
@@ -653,7 +637,7 @@ function CostEstimator1({ costEstimatorOpen }) {
             setCostEstimator(!costEstimator);
           }}
         >
-          <h2 className="text-white text-[24px] lg:text-[32px] font-giloryS mb-10 text-center inline mr-2 ">
+          <h2 className="text-white text-[24px] lg:text-[32px] font-giloryS mb-10 text-center inline mr-2">
             Cost Estimator
           </h2>
           <img
@@ -700,7 +684,7 @@ function CostEstimator1({ costEstimatorOpen }) {
                   toggleExpand={toggleExpand}
                   packageSet={packageSet}
                 />
-              </div>{" "}
+              </div>
               <p className="w-full mt-8 italic text-center text-[#C0C0C0] font-giloryM  mb-1.5">
                 Note: 1 interior set for 1200 sq ft, and 2 interior sets for
                 2400 sq ft.
@@ -852,7 +836,7 @@ function CostEstimator1({ costEstimatorOpen }) {
                         <div className="text-lg md:text-2xl font-giloryS mt-2">
                           {results.builtUpArea} sq ft
                         </div>
-                      </div>{" "}
+                      </div>
                       <div className="border-r h-10"></div>
                       {/* Sump Capacity */}
                       <div className="text-center">
@@ -936,6 +920,7 @@ function CostEstimator1({ costEstimatorOpen }) {
                 length={inputs.length}
                 breadth={inputs.breadth}
                 builtUp={builtUp1}
+                toggleQuotationPopup={toggleQuotationPopup}
               />
             )}
 
@@ -1010,11 +995,6 @@ function CostEstimator1({ costEstimatorOpen }) {
             </div>
           </div>
         </div>
-        {isPopupVisible1 && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-white/10 backdrop-blur-md">
-            <ConsultationPopup onClose={togglePopup} />
-          </div>
-        )}
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import baap from "../../assets/videos/baap.mp4";
-import arrow from "../../assets/images/ArrowRight.png";
 import "../habiService/style.css";
 import SparkleButton from "../../components/SparkleButton";
 

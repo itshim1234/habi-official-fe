@@ -1,6 +1,5 @@
 import React, {
   useState,
-  useEffect,
   useRef,
   lazy,
   Suspense,
@@ -28,7 +27,7 @@ const CostEstimator1 = lazy(() =>
   import("../../sections/CostEstimator/CostEstimator1")
 );
 
-function HabiService() {
+function HabiService({ togglePopup }) {
   const [isServiceView, setIsServiceView] = useState(true);
   const [costEstimatorOpen, setCostEstimatorOpen] = useState(false);
   const [animation, setAnimation] = useState("");
@@ -59,6 +58,8 @@ function HabiService() {
     setCostEstimatorOpen(true);
   }, []);
 
+  // Toggle Popup Function
+
   return (
     <div>
       <Suspense>
@@ -78,9 +79,13 @@ function HabiService() {
               </div>
               <Testimonial />
               <div ref={costEstimatorRef}>
-                <CostEstimator1 costEstimatorOpen={costEstimatorOpen} />
+                <CostEstimator1
+                  costEstimatorOpen={costEstimatorOpen}
+                  togglePopup={togglePopup}
+                />
               </div>
-              <Model />
+              {/* Pass popup toggle function to Model */}
+              <Model togglePopup={togglePopup} />
               <Faq />
             </>
           ) : (
