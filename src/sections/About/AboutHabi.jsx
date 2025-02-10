@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 import house from "../../assets/images/house.png";
 import arrow from "../../assets/images/ArrowRight.png";
@@ -28,6 +29,14 @@ const AboutHabi = () => {
   };
   return (
     <div className="bg-black text-white min-h-screen border-b border-[#7c7c7c]">
+      <Helmet>
+        <title>About Habi</title>
+        <meta
+          name="description"
+          content="We provide design-centric approached services that are tailored to meet your unique ideas, needs, desires & requirements"
+        />
+        <link rel="canonical" href="https://habi.one/about-habi" />
+      </Helmet>
       {/* Header */}
       <header className="flex justify-between items-center p-4">
         <img
@@ -128,18 +137,38 @@ const AboutHabi = () => {
               Centric Construction
             </li>
             <li className="flex gap-4">
-              <img src={userspeak} alt="" className="w-8" /> Industry Leader in
-              Dynamic Manufacturing
+              <img
+                src={userspeak}
+                alt="Home construction bengaluru"
+                className="w-8"
+              />{" "}
+              Industry Leader in Dynamic Manufacturing
             </li>
           </ul>
         </section>
 
         {/* Footer Cards */}
         <section className="my-20 grid grid-cols-2 md:grid-cols-4 place-items-center gap-y-10">
-          <img src={value1} alt="" className="mx-auto" />
-          <img src={value2} alt="" className="mx-auto" />
-          <img src={value3} alt="" className="mx-auto" />
-          <img src={value4} alt="" className="mx-auto" />
+          <img
+            src={value1}
+            alt="Home construction bengaluru"
+            className="mx-auto"
+          />
+          <img
+            src={value2}
+            alt="Home construction bengaluru"
+            className="mx-auto"
+          />
+          <img
+            src={value3}
+            alt="Home construction bengaluru"
+            className="mx-auto"
+          />
+          <img
+            src={value4}
+            alt="Home construction bengaluru"
+            className="mx-auto"
+          />
         </section>
       </main>
     </div>

@@ -208,12 +208,12 @@ function WorkingLaptop() {
           <img
             ref={sectionRef} // Attach topRef to the element to trigger reverse scrolling
             src={star}
-            alt=""
+            alt="Home construction bengaluru"
             className="absolute right-0 -bottom-5 md:-bottom-8 w-10 md:w-16"
           />
           <img
             src={star}
-            alt=""
+            alt="Home construction bengaluru"
             className="absolute -right-2 md:-right-4 bottom-2 w-5 md:w-8"
           />
         </div>

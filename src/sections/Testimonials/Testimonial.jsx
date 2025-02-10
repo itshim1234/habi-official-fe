@@ -115,12 +115,12 @@ function Testimonial() {
 
                   <img
                     src={testimonial.userImage}
-                    alt=""
+                    alt="Home construction bengaluru"
                     className="image absolute right-3 border-2 rounded-full z-20"
                   />
                   <img
                     src={play}
-                    alt=""
+                    alt="Home construction bengaluru"
                     className="absolute top-1/3 left-1/2 transform -translate-x-1/2 z-50 w-6 h-6"
                   />
                 </div>
@@ -136,15 +136,27 @@ function Testimonial() {
             {visibleTestimonials[0].content}
           </p>
           <p className="flex mb-2 text-lg font-giloryS mt-6">
-            <img src={location} alt="" className="w-6 h-6 mr-2" />
+            <img
+              src={location}
+              alt="Home construction bengaluru"
+              className="w-6 h-6 mr-2"
+            />
             {visibleTestimonials[0].location}
           </p>
           <p className="flex mb-2 text-lg font-giloryS">
-            <img src={plot} alt="" className="w-6 h-6 mr-2" />
+            <img
+              src={plot}
+              alt="Home construction bengaluru"
+              className="w-6 h-6 mr-2"
+            />
             {visibleTestimonials[0].size}
           </p>
           <p className="flex text-lg font-giloryS">
-            <img src={cost} alt="" className="w-6 h-6 mr-2" />
+            <img
+              src={cost}
+              alt="Home construction bengaluru"
+              className="w-6 h-6 mr-2"
+            />
             {visibleTestimonials[0].price}
           </p>
         </div>

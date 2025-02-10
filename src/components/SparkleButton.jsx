@@ -10,11 +10,19 @@ const SparkleButton = ({ text }) => {
         {text === "BaaP" ? (
           <>
             <span className="text_button text-2xl 2xl:text-3xl">{text}</span>
-            <img src={arrow} alt="" className={`z-10`} />
+            <img
+              src={arrow}
+              alt="Home construction bengaluru"
+              className={`z-10`}
+            />
           </>
         ) : (
           <>
-            <img src={arrow} alt="" className={`z-10 rotate-180`} />
+            <img
+              src={arrow}
+              alt="Home construction bengaluru"
+              className={`z-10 rotate-180`}
+            />
             <span className="text_button text-2xl 2xl:text-3xl">{text}</span>
           </>
         )}

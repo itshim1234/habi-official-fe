@@ -4,7 +4,11 @@ import "./styles.css";
 
 export const Header = () => {
   return (
-    <img src={divider} alt="" className="h-[186px] md:h-[269px] lg:h-[426px]" />
+    <img
+      src={divider}
+      alt="Home construction bengaluru"
+      className="h-[186px] md:h-[269px] lg:h-[426px]"
+    />
   );
 };
 

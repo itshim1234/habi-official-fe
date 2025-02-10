@@ -63,14 +63,27 @@ const ProjectExpand = () => {
             {/* Show description */}
             <ul className="text-lg md:text-2xl space-y-2 lg:space-y-4 font-giloryS">
               <li className="flex">
-                <img src={plot} alt="" className="mr-2 h-8" /> {project.Plot}
+                <img
+                  src={plot}
+                  alt="Home construction bengaluru"
+                  className="mr-2 h-8"
+                />{" "}
+                {project.Plot}
               </li>
               <li className="flex">
-                <img src={home} alt="" className="mr-2 h-8" />{" "}
+                <img
+                  src={home}
+                  alt="Home construction bengaluru"
+                  className="mr-2 h-8"
+                />{" "}
                 {project.Orientation}
               </li>
               <li className="flex">
-                <img src={watch} alt="" className="mr-2 h-8" />
+                <img
+                  src={watch}
+                  alt="Home construction bengaluru"
+                  className="mr-2 h-8"
+                />
                 {project.Status}
               </li>
             </ul>

@@ -76,7 +76,11 @@ const ConstructionProgress = () => {
           <p className="md:text-[24px] font-bold mr-2 inline font-giloryS">
             Design & Documents
           </p>
-          <img src={designIcon} alt="" className="inline mb-1 w-6" />
+          <img
+            src={designIcon}
+            alt="home construction"
+            className="inline mb-1 w-6"
+          />
           <p className="md:mt-2 leading-4 md:leading-5 md:text-[16px] font-giloryM">
             The app makes it easy to organize and manage your designs and
             documents in one place. It simplifies the process, so you can
@@ -94,7 +98,11 @@ const ConstructionProgress = () => {
       >
         <div className="text-[12px] py-1 px-2 bg-white/40 backdrop-blur-xl rounded-xl border border-white/40 font-giloryM">
           Design & Documents
-          <img src={designIcon} alt="" className="inline ml-2 w-4" />
+          <img
+            src={designIcon}
+            alt="Home construction bengaluru"
+            className="inline ml-2 w-4"
+          />
         </div>
       </div>
 
@@ -109,7 +117,7 @@ const ConstructionProgress = () => {
           <div className="absolute inset-0 z-0 bg-cover">
             <img
               src={thumbNail}
-              alt=""
+              alt="Home construction bengaluru"
               className="w-full h-full object-cover rounded-r-2xl md:rounded-2xl"
             />
           </div>
@@ -118,7 +126,11 @@ const ConstructionProgress = () => {
           </div>
           <div className="absolute text-[18px] py-1 text-white px-3 bg-black/40 backdrop-blur-xl rounded-full -bottom-5 -left-3 border border-[#7c7c7c] font-giloryM">
             Realtime site footage{" "}
-            <img src={Live} alt="" className="inline w-4 ml-2 mb-1" />
+            <img
+              src={Live}
+              alt="Home construction bengaluru"
+              className="inline w-4 ml-2 mb-1"
+            />
           </div>
         </div>
         <img
@@ -137,7 +149,11 @@ const ConstructionProgress = () => {
       >
         <div className="text-[12px] py-1 px-2 bg-white/40 backdrop-blur-xl rounded-xl border border-white/40 font-giloryM">
           Realtime site footage{" "}
-          <img src={Live} alt="" className="inline w-4 ml-1 mb-0.5" />
+          <img
+            src={Live}
+            alt="Home construction bengaluru"
+            className="inline w-4 ml-1 mb-0.5"
+          />
         </div>
       </div>
 
@@ -149,7 +165,11 @@ const ConstructionProgress = () => {
         }`}
       >
         <div className="md:px-6 md:pt-4 md:pb-6 shadow-lg rounded-l-3xl md:rounded-3xl w-72 md:w-[338px] bg-white/20 backdrop-blur-md border border-r-0 md:border-r border-white/40">
-          <img src={designIcon} alt="" className="inline mb-1 mr-2 w-6" />
+          <img
+            src={designIcon}
+            alt="Home construction bengaluru"
+            className="inline mb-1 mr-2 w-6"
+          />
           <h2 className="text-[12px] md:text-[24px] font-giloryS inline">
             Integrated Payment
           </h2>
@@ -169,7 +189,11 @@ const ConstructionProgress = () => {
         }`}
       >
         <div className="text-[12px] py-1 px-2 bg-white/40 backdrop-blur-xl rounded-xl border border-white/40 font-giloryM">
-          <img src={designIcon} alt="" className="inline mr-2 w-4" />
+          <img
+            src={designIcon}
+            alt="Home construction bengaluru"
+            className="inline mr-2 w-4"
+          />
           Integrated payment
         </div>
       </div>
@@ -201,7 +225,11 @@ const ConstructionProgress = () => {
             <p className="inline text-black text-sm mt-2 font-giloryM">70%</p>
           </div>
           <div className="absolute text-[18px] p-1 text-white px-3 bg-black/60 rounded-full right-0 md:-right-5 -bottom-5 backdrop-blur-xl border border-[#7c7c7c] font-giloryM">
-            <img src={trackStages} alt="" className="inline w-4 mr-2 mb-1" />
+            <img
+              src={trackStages}
+              alt="Home construction bengaluru"
+              className="inline w-4 mr-2 mb-1"
+            />
             Track Stages
           </div>
         </div>
@@ -215,20 +243,24 @@ const ConstructionProgress = () => {
         }`}
       >
         <div className="text-[12px] py-1 px-2 bg-white/40 backdrop-blur-xl rounded-xl border border-white/40 font-giloryM">
-          <img src={trackStages} alt="" className="inline w-4 mr-2 mb-0.5" />
+          <img
+            src={trackStages}
+            alt="Home construction bengaluru"
+            className="inline w-4 mr-2 mb-0.5"
+          />
           Track Construction
         </div>
       </div>
       <img
         src={line}
-        alt=""
+        alt="Home construction bengaluru"
         className={`absolute left-1/3 top-1/3  ${
           videoPlayed ? "lg:flex hidden" : "hidden"
         }`}
       />
       <img
         src={line}
-        alt=""
+        alt="Home construction bengaluru"
         className={`absolute left-2/3 top-1/3 ${
           videoPlayed ? "lg:flex hidden" : "hidden"
         }`}

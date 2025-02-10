@@ -38,7 +38,7 @@ function Faq() {
             </h2>
             <img
               src={downArrow}
-              alt=""
+              alt="Home construction bengaluru"
               className={`inline mb-2 transition-transform duration-500 ${
                 faqSection ? "rotate-180" : ""
               }`}

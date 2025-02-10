@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Helmet } from "react-helmet";
 import DetailedReport from "./DetailedReport";
 import asianPaints from "../../assets/images/asianpaints.png";
 import dalmia from "../../assets/images/dalmia.png";
@@ -628,6 +629,14 @@ function CostEstimator1({
 
   return (
     <div className={`h-fit flex flex-col bg-background w-full gradient-border`}>
+      <Helmet>
+        <title>Cost Estimator</title>
+        <meta
+          name="description"
+          content="Calculate Cost of the total cost to building a new house"
+        />
+        <link rel="canonical" href="https://habi.one/cost-estimator" />
+      </Helmet>
       <div
         className={`relative w-full bg-black p-2 h-auto mb-2 mb:mb-3 2xl:px-0`}
       >
@@ -642,7 +651,7 @@ function CostEstimator1({
           </h2>
           <img
             src={downArrow}
-            alt=""
+            alt="Home construction bengaluru"
             className={`inline mb-2 transition-transform duration-500 ${
               costEstimator ? "rotate-180" : ""
             }`}
@@ -802,7 +811,11 @@ function CostEstimator1({
               </div>
 
               <div className={`w-full bg-layoutColor py-2`}>
-                <img src={Line} alt="" className="w-full mb-4 mx-auto" />
+                <img
+                  src={Line}
+                  alt="Home construction bengaluru"
+                  className="w-full mb-4 mx-auto"
+                />
 
                 <div className="w-full bg-black flex flex-col 2xl:ml-10">
                   {/* Details Section */}
@@ -813,7 +826,7 @@ function CostEstimator1({
                         <div className="flex">
                           <img
                             src={a}
-                            alt=""
+                            alt="Home construction bengaluru"
                             className="w-6 h-6 hidden md:flex mr-2"
                           />
                           Site Area
@@ -828,7 +841,7 @@ function CostEstimator1({
                         <div className=" flex">
                           <img
                             src={b}
-                            alt=""
+                            alt="Home construction bengaluru"
                             className="w-6 h-6 hidden md:flex mr-2"
                           />
                           Built-up Area
@@ -843,7 +856,7 @@ function CostEstimator1({
                         <div className=" flex">
                           <img
                             src={c}
-                            alt=""
+                            alt="Home construction bengaluru"
                             className="w-6 h-6 hidden md:flex mr-2"
                           />
                           Sump Capacity

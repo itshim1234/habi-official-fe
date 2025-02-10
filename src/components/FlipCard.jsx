@@ -36,12 +36,14 @@ const FlipCard = ({
               }`}
               onClick={() => toggleExpand(pkg1.name)}
             >
-              {pkg1.img && <img src={pkg1.img} alt="" />}
+              {pkg1.img && (
+                <img src={pkg1.img} alt="Home construction bengaluru" />
+              )}
               {pkg1.name}
             </h2>
             <img
               src={downArrow}
-              alt=""
+              alt="Home construction bengaluru"
               className={`absolute top-1 right-10 md:hidden cursor-pointer ${
                 expandedPackage === pkg1.name
                   ? "rotate-180 transition-transform"
@@ -62,7 +64,11 @@ const FlipCard = ({
                     key={idx}
                     className="mb-2 flex items-start gap-2 text-left font-giloryM"
                   >
-                    <img src={feature.img} alt="" className="pt-1.5" />
+                    <img
+                      src={feature.img}
+                      alt="Home construction bengaluru"
+                      className="pt-1.5"
+                    />
                     {feature.text}
                   </li>
                 ))}
@@ -111,7 +117,9 @@ const FlipCard = ({
               }`}
               onClick={() => toggleExpand(pkg2.name)}
             >
-              {pkg2.img && <img src={pkg2.img} alt="" />}
+              {pkg2.img && (
+                <img src={pkg2.img} alt="Home construction bengaluru" />
+              )}
               {pkg2.name}
             </h2>
             {pkg2.desc && (
@@ -125,7 +133,7 @@ const FlipCard = ({
             )}
             <img
               src={downArrow}
-              alt=""
+              alt="Home construction bengaluru"
               className={`absolute top-1 right-10 md:hidden cursor-pointer ${
                 expandedPackage === pkg1.name
                   ? "rotate-180 transition-transform"
@@ -146,7 +154,11 @@ const FlipCard = ({
                     key={idx}
                     className="mb-2 flex items-start gap-2 text-left font-giloryM"
                   >
-                    <img src={feature.img} alt="" className="pt-1.5" />
+                    <img
+                      src={feature.img}
+                      alt="Home construction bengaluru"
+                      className="pt-1.5"
+                    />
                     {feature.text}
                   </li>
                 ))}

@@ -25,7 +25,7 @@ const Footer = () => {
         <div className="col-span-2 justify-center md:w-44">
           <img
             src={logo}
-            alt=""
+            alt="Home construction bengaluru"
             className="cursor-pointer w-24 ml-2 md:ml-5 lg:ml-8"
             onClick={handleLogoClick}
           />
