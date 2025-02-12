@@ -76,15 +76,14 @@
 .meter li {
   position: relative;
   list-style-type: none;
-  height: 100px;
-  border-bottom: solid 1px #0dabd9;
+  height: 80px;
 }
 
 .meter li div {
   position: absolute;
   left: -86px;
   top: 0;
-  padding: 55px 0 0;
+  padding: 30px 0 0;
   width: 80px;
   color: #fffafa;
   text-align: right;
@@ -174,4 +173,17 @@
     margin-left: -300px;
     background-color: #000000;
   }
+}
+.tooltip {
+  position: absolute;
+  top: -50px; /* Position above the bar */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  white-space: nowrap;
+  z-index: 10;
 }
