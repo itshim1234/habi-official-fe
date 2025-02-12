@@ -21,9 +21,7 @@ const ProjectExpand = lazy(() => import("./sections/Projects/ProjectExpand"));
 const CostEstimator1 = lazy(() =>
   import("./sections/CostEstimator/CostEstimator1")
 );
-const ConsultationPopup = lazy(() =>
-  import("./sections/Hero/ConsultationPopup")
-);
+import ConsultationPopup from "./sections/Hero/ConsultationPopup";
 
 // Memoize Footer to prevent unnecessary re-renders
 const Footer = memo(lazy(() => import("./sections/Footer/Footer")));
@@ -76,11 +74,16 @@ function App() {
       {/* Suspense for lazy-loaded components */}
       <Suspense fallback={<div className="loading-screen"></div>}>
         <Routes>
-          <Route path="/" element={<HabiService togglePopup={togglePopup} />} />
           <Route
-            path="/*"
-            element={<HabiService togglePopup={togglePopup} />}
+            path="/"
+            element={
+              <HabiService
+                togglePopup={togglePopup}
+                toggleQuotationPopup={toggleQuotationPopup}
+              />
+            }
           />
+
           <Route path="/baap" element={<HabiProduct />} />
           <Route path="/faq" element={<FaqExpanded />} />
           <Route path="/about-habi" element={<AboutHabi />} />
@@ -92,6 +95,15 @@ function App() {
             element={
               <CostEstimator1
                 costEstimatorOpen={true}
+                togglePopup={togglePopup}
+                toggleQuotationPopup={toggleQuotationPopup}
+              />
+            }
+          />
+          <Route
+            path="/*"
+            element={
+              <HabiService
                 togglePopup={togglePopup}
                 toggleQuotationPopup={toggleQuotationPopup}
               />

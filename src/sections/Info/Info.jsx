@@ -51,28 +51,28 @@ function Info() {
               <img
                 src={design}
                 loading="lazy"
-                alt="Home construction bengaluru"
+                alt="Home construction Bengaluru"
               />
             </div>
             <div className="planet">
               <img
                 src={manage}
                 loading="lazy"
-                alt="Home construction bengaluru"
+                alt="Home construction Bengaluru"
               />
             </div>
             <div className="planet">
               <img
                 src={quality}
                 loading="lazy"
-                alt="Home construction bengaluru"
+                alt="Home construction Bengaluru"
               />
             </div>
             <div className="planet">
               <img
                 src={time}
                 loading="lazy"
-                alt="Home construction bengaluru"
+                alt="Home construction Bengaluru"
               />
             </div>
           </div>

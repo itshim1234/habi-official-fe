@@ -6,7 +6,7 @@ export const Header = () => {
   return (
     <img
       src={divider}
-      alt="Home construction bengaluru"
+      alt="Home construction Bengaluru"
       className="h-[186px] md:h-[269px] lg:h-[426px]"
     />
   );

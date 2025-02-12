@@ -65,23 +65,23 @@ const ProjectExpand = () => {
               <li className="flex">
                 <img
                   src={plot}
-                  alt="Home construction bengaluru"
+                  alt="Home construction Bengaluru"
                   className="mr-2 h-8"
-                />{" "}
+                />
                 {project.Plot}
               </li>
               <li className="flex">
                 <img
                   src={home}
-                  alt="Home construction bengaluru"
+                  alt="Home construction Bengaluru"
                   className="mr-2 h-8"
-                />{" "}
+                />
                 {project.Orientation}
               </li>
               <li className="flex">
                 <img
                   src={watch}
-                  alt="Home construction bengaluru"
+                  alt="Home construction Bengaluru"
                   className="mr-2 h-8"
                 />
                 {project.Status}

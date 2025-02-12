@@ -139,7 +139,7 @@ const AboutHabi = () => {
             <li className="flex gap-4">
               <img
                 src={userspeak}
-                alt="Home construction bengaluru"
+                alt="Home construction Bengaluru"
                 className="w-8"
               />{" "}
               Industry Leader in Dynamic Manufacturing
@@ -151,22 +151,22 @@ const AboutHabi = () => {
         <section className="my-20 grid grid-cols-2 md:grid-cols-4 place-items-center gap-y-10">
           <img
             src={value1}
-            alt="Home construction bengaluru"
+            alt="Home construction Bengaluru"
             className="mx-auto"
           />
           <img
             src={value2}
-            alt="Home construction bengaluru"
+            alt="Home construction Bengaluru"
             className="mx-auto"
           />
           <img
             src={value3}
-            alt="Home construction bengaluru"
+            alt="Home construction Bengaluru"
             className="mx-auto"
           />
           <img
             src={value4}
-            alt="Home construction bengaluru"
+            alt="Home construction Bengaluru"
             className="mx-auto"
           />
         </section>

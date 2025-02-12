@@ -44,10 +44,10 @@ const FloorHeightSelector = ({ setSelectedFloorHeight }) => {
           </label>
         ))}
         <div className="absolute top-[106px] w-[160%]">
-          <img src={dashedLine} alt="Home construction bengaluru" />
+          <img src={dashedLine} alt="Home construction Bengaluru" />
         </div>
         <div className="absolute top-[195px] w-[160%]">
-          <img src={dashedLine} alt="Home construction bengaluru" />
+          <img src={dashedLine} alt="Home construction Bengaluru" />
         </div>
       </div>
 

@@ -12,7 +12,7 @@ const SparkleButton = ({ text }) => {
             <span className="text_button text-2xl 2xl:text-3xl">{text}</span>
             <img
               src={arrow}
-              alt="Home construction bengaluru"
+              alt="Home construction Bengaluru"
               className={`z-10`}
             />
           </>
@@ -20,7 +20,7 @@ const SparkleButton = ({ text }) => {
           <>
             <img
               src={arrow}
-              alt="Home construction bengaluru"
+              alt="Home construction Bengaluru"
               className={`z-10 rotate-180`}
             />
             <span className="text_button text-2xl 2xl:text-3xl">{text}</span>

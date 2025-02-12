@@ -69,7 +69,7 @@ const Projects = () => {
             className="absolute right-0 top-1/2 z-20 p-2 rounded-full text-white bg-white/40"
             aria-label="Next"
           >
-            <img src={right} alt="Home construction bengaluru" />
+            <img src={right} alt="Home construction Bengaluru" />
           </button>
           {Array(3)
             .fill()
@@ -113,7 +113,7 @@ const Projects = () => {
           <p className="font-giloryM text-[16px] md:-[18px] flex mx-auto text-center justify-center mr-3">
             <img
               src={location}
-              alt="Home construction bengaluru"
+              alt="Home construction Bengaluru"
               className="w-6 h-6 mr-2"
             />
             {images[currentIndex].location}

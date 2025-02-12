@@ -8,7 +8,7 @@ import Hamburger from "../../components/Hamburger";
 
 import "./hero.css";
 
-function Hero({ scrollToProjects, scrollToCostEstimator }) {
+function Hero({ scrollToProjects }) {
   const navigate = useNavigate();
   const [isPopupVisible, setIsPopupVisible] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false); // Menu visibility state

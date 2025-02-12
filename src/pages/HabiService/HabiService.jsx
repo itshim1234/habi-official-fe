@@ -27,13 +27,11 @@ const CostEstimator1 = lazy(() =>
   import("../../sections/CostEstimator/CostEstimator1")
 );
 
-function HabiService({ togglePopup }) {
+function HabiService({ togglePopup, toggleQuotationPopup }) {
   const [isServiceView, setIsServiceView] = useState(true);
-  const [costEstimatorOpen, setCostEstimatorOpen] = useState(false);
   const [animation, setAnimation] = useState("");
 
   const projectsRef = useRef(null);
-  const costEstimatorRef = useRef(null);
 
   // Toggle between Service and Baap with animation
   const toggleView = useCallback(() => {
@@ -49,24 +47,10 @@ function HabiService({ togglePopup }) {
     projectsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
 
-  // Smooth scroll to Cost Estimator and open it
-  const scrollToCostEstimator = useCallback(() => {
-    costEstimatorRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-    setCostEstimatorOpen(true);
-  }, []);
-
-  // Toggle Popup Function
-
   return (
     <div>
       <Suspense>
-        <Hero
-          scrollToProjects={scrollToProjects}
-          scrollToCostEstimator={scrollToCostEstimator}
-        />
+        <Hero scrollToProjects={scrollToProjects} />
         <Info />
         <div className={`content-container ${animation}`}>
           {isServiceView ? (
@@ -78,10 +62,10 @@ function HabiService({ togglePopup }) {
                 <Projects />
               </div>
               <Testimonial />
-              <div ref={costEstimatorRef}>
+              <div>
                 <CostEstimator1
-                  costEstimatorOpen={costEstimatorOpen}
                   togglePopup={togglePopup}
+                  toggleQuotationPopup={toggleQuotationPopup}
                 />
               </div>
               {/* Pass popup toggle function to Model */}

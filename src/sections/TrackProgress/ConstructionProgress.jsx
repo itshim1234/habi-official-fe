@@ -100,7 +100,7 @@ const ConstructionProgress = () => {
           Design & Documents
           <img
             src={designIcon}
-            alt="Home construction bengaluru"
+            alt="Home construction Bengaluru"
             className="inline ml-2 w-4"
           />
         </div>
@@ -117,7 +117,7 @@ const ConstructionProgress = () => {
           <div className="absolute inset-0 z-0 bg-cover">
             <img
               src={thumbNail}
-              alt="Home construction bengaluru"
+              alt="Home construction Bengaluru"
               className="w-full h-full object-cover rounded-r-2xl md:rounded-2xl"
             />
           </div>
@@ -128,7 +128,7 @@ const ConstructionProgress = () => {
             Realtime site footage{" "}
             <img
               src={Live}
-              alt="Home construction bengaluru"
+              alt="Home construction Bengaluru"
               className="inline w-4 ml-2 mb-1"
             />
           </div>
@@ -151,7 +151,7 @@ const ConstructionProgress = () => {
           Realtime site footage{" "}
           <img
             src={Live}
-            alt="Home construction bengaluru"
+            alt="Home construction Bengaluru"
             className="inline w-4 ml-1 mb-0.5"
           />
         </div>
@@ -167,7 +167,7 @@ const ConstructionProgress = () => {
         <div className="md:px-6 md:pt-4 md:pb-6 shadow-lg rounded-l-3xl md:rounded-3xl w-72 md:w-[338px] bg-white/20 backdrop-blur-md border border-r-0 md:border-r border-white/40">
           <img
             src={designIcon}
-            alt="Home construction bengaluru"
+            alt="Home construction Bengaluru"
             className="inline mb-1 mr-2 w-6"
           />
           <h2 className="text-[12px] md:text-[24px] font-giloryS inline">
@@ -191,7 +191,7 @@ const ConstructionProgress = () => {
         <div className="text-[12px] py-1 px-2 bg-white/40 backdrop-blur-xl rounded-xl border border-white/40 font-giloryM">
           <img
             src={designIcon}
-            alt="Home construction bengaluru"
+            alt="Home construction Bengaluru"
             className="inline mr-2 w-4"
           />
           Integrated payment
@@ -227,7 +227,7 @@ const ConstructionProgress = () => {
           <div className="absolute text-[18px] p-1 text-white px-3 bg-black/60 rounded-full right-0 md:-right-5 -bottom-5 backdrop-blur-xl border border-[#7c7c7c] font-giloryM">
             <img
               src={trackStages}
-              alt="Home construction bengaluru"
+              alt="Home construction Bengaluru"
               className="inline w-4 mr-2 mb-1"
             />
             Track Stages
@@ -245,7 +245,7 @@ const ConstructionProgress = () => {
         <div className="text-[12px] py-1 px-2 bg-white/40 backdrop-blur-xl rounded-xl border border-white/40 font-giloryM">
           <img
             src={trackStages}
-            alt="Home construction bengaluru"
+            alt="Home construction Bengaluru"
             className="inline w-4 mr-2 mb-0.5"
           />
           Track Construction
@@ -253,14 +253,14 @@ const ConstructionProgress = () => {
       </div>
       <img
         src={line}
-        alt="Home construction bengaluru"
+        alt="Home construction Bengaluru"
         className={`absolute left-1/3 top-1/3  ${
           videoPlayed ? "lg:flex hidden" : "hidden"
         }`}
       />
       <img
         src={line}
-        alt="Home construction bengaluru"
+        alt="Home construction Bengaluru"
         className={`absolute left-2/3 top-1/3 ${
           videoPlayed ? "lg:flex hidden" : "hidden"
         }`}

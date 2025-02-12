@@ -428,10 +428,6 @@ function CostEstimator1({
     }
   }, []);
 
-  const handleDetailedCost = (bool) => {
-    setDetailedCost(bool);
-  };
-
   const halfFloor1 = () => {
     setHalfFloor(!halfFloor);
   };
@@ -651,7 +647,7 @@ function CostEstimator1({
           </h2>
           <img
             src={downArrow}
-            alt="Home construction bengaluru"
+            alt="Home construction Bengaluru"
             className={`inline mb-2 transition-transform duration-500 ${
               costEstimator ? "rotate-180" : ""
             }`}
@@ -813,7 +809,7 @@ function CostEstimator1({
               <div className={`w-full bg-layoutColor py-2`}>
                 <img
                   src={Line}
-                  alt="Home construction bengaluru"
+                  alt="Home construction Bengaluru"
                   className="w-full mb-4 mx-auto"
                 />
 
@@ -826,7 +822,7 @@ function CostEstimator1({
                         <div className="flex">
                           <img
                             src={a}
-                            alt="Home construction bengaluru"
+                            alt="Home construction Bengaluru"
                             className="w-6 h-6 hidden md:flex mr-2"
                           />
                           Site Area
@@ -841,7 +837,7 @@ function CostEstimator1({
                         <div className=" flex">
                           <img
                             src={b}
-                            alt="Home construction bengaluru"
+                            alt="Home construction Bengaluru"
                             className="w-6 h-6 hidden md:flex mr-2"
                           />
                           Built-up Area
@@ -856,7 +852,7 @@ function CostEstimator1({
                         <div className=" flex">
                           <img
                             src={c}
-                            alt="Home construction bengaluru"
+                            alt="Home construction Bengaluru"
                             className="w-6 h-6 hidden md:flex mr-2"
                           />
                           Sump Capacity

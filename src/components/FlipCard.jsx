@@ -37,13 +37,13 @@ const FlipCard = ({
               onClick={() => toggleExpand(pkg1.name)}
             >
               {pkg1.img && (
-                <img src={pkg1.img} alt="Home construction bengaluru" />
+                <img src={pkg1.img} alt="Home construction Bengaluru" />
               )}
               {pkg1.name}
             </h2>
             <img
               src={downArrow}
-              alt="Home construction bengaluru"
+              alt="Home construction Bengaluru"
               className={`absolute top-1 right-10 md:hidden cursor-pointer ${
                 expandedPackage === pkg1.name
                   ? "rotate-180 transition-transform"
@@ -66,7 +66,7 @@ const FlipCard = ({
                   >
                     <img
                       src={feature.img}
-                      alt="Home construction bengaluru"
+                      alt="Home construction Bengaluru"
                       className="pt-1.5"
                     />
                     {feature.text}
@@ -118,7 +118,7 @@ const FlipCard = ({
               onClick={() => toggleExpand(pkg2.name)}
             >
               {pkg2.img && (
-                <img src={pkg2.img} alt="Home construction bengaluru" />
+                <img src={pkg2.img} alt="Home construction Bengaluru" />
               )}
               {pkg2.name}
             </h2>
@@ -133,7 +133,7 @@ const FlipCard = ({
             )}
             <img
               src={downArrow}
-              alt="Home construction bengaluru"
+              alt="Home construction Bengaluru"
               className={`absolute top-1 right-10 md:hidden cursor-pointer ${
                 expandedPackage === pkg1.name
                   ? "rotate-180 transition-transform"
@@ -156,7 +156,7 @@ const FlipCard = ({
                   >
                     <img
                       src={feature.img}
-                      alt="Home construction bengaluru"
+                      alt="Home construction Bengaluru"
                       className="pt-1.5"
                     />
                     {feature.text}
