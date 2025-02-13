@@ -47,9 +47,9 @@ const ConstructionProgress = () => {
       ref={sectionRef}
       className={`relative h-[450px] md:h-[800px] bg-cover bg-center w-full mt-20 text-white`}
     >
-      <p className="px-2 md:px-0 flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] 2xl:text-[64px] font-giloryB z-20">
+      <h1 className="px-2 md:px-0 flex justify-center text-center inset-0 text-[32px] md:text-[40px] lg:text-[48px] 2xl:text-[64px] font-giloryB z-20">
         Track all your construction progress
-      </p>
+      </h1>
       {/* Centered Video */}
       <div className="absolute inset-0 flex items-center justify-center xl:w-[80%] mx-auto top-24 xl:top-16 2xl:top-24">
         <video
@@ -73,9 +73,9 @@ const ConstructionProgress = () => {
         }`}
       >
         <div className="md:px-6 md:pt-4 md:pb-6 rounded-r-3xl md:rounded-3xl w-64 md:w-[338px] bg-white/20 backdrop-blur-md border border-l-0 md:border-l border-white/40 text-right">
-          <p className="md:text-[24px] font-bold mr-2 inline font-giloryS">
+          <h1 className="md:text-[24px] font-bold mr-2 inline font-giloryS">
             Design & Documents
-          </p>
+          </h1>
           <img
             src={designIcon}
             alt="home construction"
@@ -122,10 +122,10 @@ const ConstructionProgress = () => {
             />
           </div>
           <div className="absolute text-[18px] py-1 text-black px-3 bg-white rounded-xl -top-5 -right-5 font-giloryM">
-            Construction on site
+            <h1> Construction on site</h1>
           </div>
           <div className="absolute text-[18px] py-1 text-white px-3 bg-black/40 backdrop-blur-xl rounded-full -bottom-5 -left-3 border border-[#7c7c7c] font-giloryM">
-            Realtime site footage{" "}
+            Realtime site footage
             <img
               src={Live}
               alt="Home construction Bengaluru"
@@ -148,7 +148,7 @@ const ConstructionProgress = () => {
         }`}
       >
         <div className="text-[12px] py-1 px-2 bg-white/40 backdrop-blur-xl rounded-xl border border-white/40 font-giloryM">
-          Realtime site footage{" "}
+          Realtime site footage
           <img
             src={Live}
             alt="Home construction Bengaluru"
@@ -174,9 +174,10 @@ const ConstructionProgress = () => {
             Integrated Payment
           </h2>
           <p className="md:mt-2 leading-4 md:leading-5 md:text-[16px] font-giloryM">
-            You can manage all your construction payments easily in the app,
-            keeping everything in one place. This makes tracking payments simple
-            and improves your financial organization.
+            You can manage all your
+            <h1 className="inline"> construction payments</h1> easily in the
+            app, keeping everything in one place. This makes tracking payments
+            simple and improves your financial organization.
           </p>
         </div>
       </div>

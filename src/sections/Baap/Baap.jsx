@@ -28,14 +28,14 @@ function Baap({ toggleView }) {
         Product Company
       </p>
       <p className="text-[16px] lg:text-[18px] 2xl:text-2xl font-giloryM w-[309px] md:w-[500px] 2xl:w-[700px] mx-auto mt-4 2xl:mt-6 mb-10">
-        Turn your dream house into a customizable product designed to meet your
-        personal style and needs. With AI-powered design software and track
-        construction progress through a mobile app. With real-time updates and
-        milestones, you'll stay connected to each stage of the build. Using
-        augmented and virtual reality, you can walk through a 3D model of your
-        future home, experiencing its layout and feel before it's constructed.
-        This seamless blend of technology and customization ensures your dream
-        home perfectly matches your vision.
+        Turn your <h1 className="inline">dream house</h1> into a customizable
+        product designed to meet your personal style and needs. With AI-powered
+        design software and track construction progress through a mobile app.
+        With real-time updates and milestones, you'll stay connected to each
+        stage of the build. Using augmented and virtual reality, you can walk
+        through a 3D model of your future home, experiencing its layout and feel
+        before it's constructed. This seamless blend of technology and
+        customization ensures your dream home perfectly matches your vision.
       </p>
       <div className="relative">
         <video

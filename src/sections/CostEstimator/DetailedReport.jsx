@@ -396,8 +396,6 @@ function DetailedReport({
           <hr className="border-1 border-[#7c7c7c]" />
         </div>
         <br />
-
-        {/* <PaymentSchedule scheduleData={scheduleData} /> */}
       </div>
 
       <QuotationDownload

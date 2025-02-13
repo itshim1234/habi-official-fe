@@ -43,9 +43,9 @@ function Service({ toggleView }) {
       <p className="text-[24px] md:text-[32px] lg:text-[40px] font-giloryB mt-[40px]">
         One-Stop Design Centric
       </p>
-      <p className="text-[18px] md:text-[24px] lg:text-[32px] font-giloryS">
+      <h1 className="text-[18px] md:text-[24px] lg:text-[32px] font-giloryS">
         Construction Company
-      </p>
+      </h1>
       <p className="text-[16px] lg:text-[18px] 2xl:text-2xl font-giloryM w-[309px] md:w-[424px] 2xl:w-[480px] mx-auto mt-4 2xl:mt-6 mb-10">
         Tailored personalized living spaces that are custom-designed to meet the
         unique needs and preferences of each client. Every home reflects the

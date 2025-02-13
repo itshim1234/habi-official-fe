@@ -15,14 +15,13 @@ const TermsAndCondition = () => {
   };
   return (
     <div className="text-white p-6 pt-10 md:p-12 font-giloryM">
-      {" "}
       <Helmet>
         <title>Terms and Conditions</title>
         <meta
           name="description"
           content="Calculate Cost of the total cost to building a new house"
         />
-        <link rel="canonical" href="https://habi.one/cost-estimator" />
+        <link rel="canonical" href="https://habi.one/terms-and-condition" />
       </Helmet>
       <div
         className="absolute top-5 md:top-10 right-5 md:right-10 z-10 cursor-pointer"

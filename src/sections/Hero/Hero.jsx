@@ -86,12 +86,12 @@ function Hero({ scrollToProjects }) {
         </div>
       </div>
       <div className="absolute z-20 text-white justify-center text-center right-[16px] md:right-[32px] lg:right-[82px] top-[20px] md:top-[40px]">
-        <button className="flex items-center justify-between px-5 w-[220px] md:w-[400px] h-[48px] md:h-[60px] rounded-lg border-2 border-white/20 bg-black/25 backdrop-blur-md text-white font-semibold">
+        <button className="flex items-center justify-between px-2 md:px-5 w-[257px] md:w-[468px] h-[48px] md:h-[60px] rounded-lg border-2 border-white/20 bg-black/25 backdrop-blur-md text-white font-semibold">
           <span
-            className="text-[18px] md:text-[24px] font-giloryS"
-            onClick={() => navigate("/cost-estimator")}
+            className="text-[18px] md:text-[24px] font-giloryS pb-0.5"
+            onClick={() => navigate("/Construction-Estimator")}
           >
-            Cost Estimator
+            <h1>Construction Estimator</h1>
           </span>
           <span className="text-lg mb-1 text-[#c0c0c0]">|</span>
           <span

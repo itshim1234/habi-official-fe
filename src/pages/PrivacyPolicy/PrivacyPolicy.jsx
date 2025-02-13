@@ -21,7 +21,7 @@ const PrivacyPolicy = () => {
           name="description"
           content="Calculate Cost of the total cost to building a new house"
         />
-        <link rel="canonical" href="https://habi.one/cost-estimator" />
+        <link rel="canonical" href="https://habi.one/privacy-policy" />
       </Helmet>
       <div
         className="absolute top-5 md:top-10 right-5 md:right-10 z-10 cursor-pointer"

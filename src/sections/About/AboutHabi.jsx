@@ -141,7 +141,7 @@ const AboutHabi = () => {
                 src={userspeak}
                 alt="Home construction Bengaluru"
                 className="w-8"
-              />{" "}
+              />
               Industry Leader in Dynamic Manufacturing
             </li>
           </ul>

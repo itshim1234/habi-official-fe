@@ -387,7 +387,7 @@ function CostEstimator1({
   costEstimatorOpen,
   togglePopup,
   toggleQuotationPopup,
-  title
+  title,
 }) {
   const [detailedCost, setDetailedCost] = useState(false);
   const [costEstimator, setCostEstimator] = useState(false);
@@ -439,10 +439,6 @@ function CostEstimator1({
 
   const toggleExpand = (pkgName) => {
     setExpandedPackage(expandedPackage === pkgName ? null : pkgName);
-  };
-
-  const handleCostEstimator = (bool) => {
-    setCostEstimator(bool);
   };
 
   const [inputs, setInputs] = useState({
@@ -632,7 +628,7 @@ function CostEstimator1({
           name="description"
           content="Calculate Cost of the total cost to building a new house"
         />
-        <link rel="canonical" href="https://habi.one/cost-estimator" />
+        <link rel="canonical" href="https://habi.one/Construction-Estimator" />
       </Helmet>
       <div
         className={`relative w-full bg-black p-2 h-auto mb-2 mb:mb-3 2xl:px-0`}
@@ -644,7 +640,7 @@ function CostEstimator1({
           }}
         >
           <h2 className="text-white text-[24px] lg:text-[32px] font-giloryS mb-10 text-center inline mr-2">
-            Cost Estimator
+            Construction Estimator
           </h2>
           <img
             src={downArrow}

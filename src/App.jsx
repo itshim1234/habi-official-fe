@@ -91,13 +91,13 @@ function App() {
           <Route path="/project" element={<ProjectExpand />} />
           <Route path="/terms-and-condition" element={<TermsAndCondition />} />
           <Route
-            path="/cost-estimator"
+            path="/Construction-Estimator"
             element={
               <CostEstimator1
                 costEstimatorOpen={true}
                 togglePopup={togglePopup}
                 toggleQuotationPopup={toggleQuotationPopup}
-                title="Cost Estimator"
+                title="Construction Estimator"
               />
             }
           />
