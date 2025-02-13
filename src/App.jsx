@@ -97,6 +97,7 @@ function App() {
                 costEstimatorOpen={true}
                 togglePopup={togglePopup}
                 toggleQuotationPopup={toggleQuotationPopup}
+                title="Cost Estimator"
               />
             }
           />

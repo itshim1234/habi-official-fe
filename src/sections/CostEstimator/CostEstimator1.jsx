@@ -387,6 +387,7 @@ function CostEstimator1({
   costEstimatorOpen,
   togglePopup,
   toggleQuotationPopup,
+  title
 }) {
   const [detailedCost, setDetailedCost] = useState(false);
   const [costEstimator, setCostEstimator] = useState(false);
@@ -626,7 +627,7 @@ function CostEstimator1({
   return (
     <div className={`h-fit flex flex-col bg-background w-full gradient-border`}>
       <Helmet>
-        <title>Cost Estimator</title>
+        <title>{title}</title>
         <meta
           name="description"
           content="Calculate Cost of the total cost to building a new house"

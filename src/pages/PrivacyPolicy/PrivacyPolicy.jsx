@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 import arrow from "../../assets/images/ArrowRight.png";
 
@@ -14,6 +15,14 @@ const PrivacyPolicy = () => {
   };
   return (
     <div className="text-white p-6 md:p-12 font-giloryM">
+      <Helmet>
+        <title>Privacy Policy</title>
+        <meta
+          name="description"
+          content="Calculate Cost of the total cost to building a new house"
+        />
+        <link rel="canonical" href="https://habi.one/cost-estimator" />
+      </Helmet>
       <div
         className="absolute top-5 md:top-10 right-5 md:right-10 z-10 cursor-pointer"
         onClick={handleGoBack}

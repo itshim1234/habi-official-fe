@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import arrow from "../../assets/images/ArrowRight.png";
 import "../../sections/CostEstimator/styles.css";
 import faq from "../../assets/Faqs/faq";
@@ -17,6 +18,14 @@ function FaqExpanded() {
     <div
       className={`h-fit flex flex-col bg-black w-full text-white justify-center items-center font-giloryS`}
     >
+      <Helmet>
+        <title>FAQ's</title>
+        <meta
+          name="description"
+          content="Calculate Cost of the total cost to building a new house"
+        />
+        <link rel="canonical" href="https://habi.one/cost-estimator" />
+      </Helmet>
       <div
         className="absolute top-5 md:top-10 right-5 md:right-10 z-10 cursor-pointer"
         onClick={handleGoBack}
