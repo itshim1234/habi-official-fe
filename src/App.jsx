@@ -7,7 +7,7 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import Preloader from "./components/preloader/Preloader";
-
+import ProgressBar from "./components/ProgressBar";
 // Lazy load pages and sections
 const HabiService = lazy(() => import("./pages/HabiService/HabiService"));
 const HabiProduct = lazy(() => import("./pages/HabiProduct/HabiProduct"));
@@ -31,7 +31,9 @@ function App() {
   const [isPreloading, setIsPreloading] = useState(false);
   const [isPopupVisible, setIsPopupVisible] = useState(false); // Popup State
   const [isQuotationVisible, setIsQuotationVisible] = useState(false);
+  const [isProgressBarVisible, setIsProgressBarVisible] = useState(false);
   const [quotationData, setQuotationData] = useState(null);
+  const [completed, setCompleted] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -53,6 +55,12 @@ function App() {
     setQuotationData(data);
     setIsQuotationVisible(!isQuotationVisible);
   };
+  const handleProgress = (value) => {
+    setIsProgressBarVisible(value);
+  };
+  const handleCompleted = (value) => {
+    setCompleted(value);
+  };
   useEffect(() => {
     if (isPopupVisible || isQuotationVisible) {
       document.body.style.overflow = "hidden"; // Disable scrolling
@@ -63,7 +71,7 @@ function App() {
     return () => {
       document.body.style.overflow = "auto"; // Reset on unmount
     };
-  }, [isPopupVisible, isQuotationVisible]);
+  }, [isPopupVisible, isQuotationVisible, isProgressBarVisible]);
 
   if (isPreloading) {
     return <Preloader onVideoEnd={() => setIsPreloading(false)} />;
@@ -91,13 +99,13 @@ function App() {
           <Route path="/project" element={<ProjectExpand />} />
           <Route path="/terms-and-condition" element={<TermsAndCondition />} />
           <Route
-            path="/Construction-Estimator"
+            path="/Construction-cost-calculator"
             element={
               <CostEstimator1
                 costEstimatorOpen={true}
                 togglePopup={togglePopup}
                 toggleQuotationPopup={toggleQuotationPopup}
-                title="Construction Estimator"
+                title="Construction cost calculator"
               />
             }
           />
@@ -110,6 +118,7 @@ function App() {
               />
             }
           />
+          <Route path="/abc" element={<ProgressBar />} />
         </Routes>
       </Suspense>
 
@@ -127,7 +136,15 @@ function App() {
             isVisible={isQuotationVisible}
             onClose={() => setIsQuotationVisible(false)}
             quotationData={quotationData}
+            handleProgressiveBar={handleProgress}
+            handleCompleted={handleCompleted}
           />
+        </div>
+      )}
+
+      {isProgressBarVisible && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-md">
+          <ProgressBar completed={completed} />
         </div>
       )}
     </div>

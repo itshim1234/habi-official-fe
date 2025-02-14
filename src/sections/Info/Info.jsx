@@ -51,7 +51,7 @@ function Info() {
               <img
                 src={design}
                 loading="lazy"
-                alt="Home construction Bengaluru"
+                alt="House construction Bengaluru"
               />
             </div>
             <div className="planet">
@@ -72,7 +72,7 @@ function Info() {
               <img
                 src={time}
                 loading="lazy"
-                alt="Home construction Bengaluru"
+                alt="House construction Bengaluru"
               />
             </div>
           </div>

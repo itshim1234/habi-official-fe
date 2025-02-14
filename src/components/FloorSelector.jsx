@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import houseTop from "../assets/images/houseTop.png";
 import houseBase from "../assets/images/housebase.png";
 
-const FloorSelector = ({ setSelectedFloor, setHalfFloor }) => {
+const FloorSelector = ({ setSelectedFloor, setHalfFloor, setBasement }) => {
   const floors = ["Fifth", "Fourth", "Third", "Second", "First", "Ground"];
   const floorNumbers = {
     Ground: 1,
@@ -15,6 +15,7 @@ const FloorSelector = ({ setSelectedFloor, setHalfFloor }) => {
 
   const [selectedFloors, setSelectedFloors] = useState(["Ground"]);
   const [rooftopSelected, setRooftopSelected] = useState(false);
+  const [basementSelected, setBasementSelected] = useState(false);
 
   const handleFloorClick = (floorIndex) => {
     const newSelectedFloors = floors.slice(floorIndex);
@@ -28,6 +29,11 @@ const FloorSelector = ({ setSelectedFloor, setHalfFloor }) => {
   const handleRooftopChange = () => {
     setRooftopSelected(!rooftopSelected);
     setHalfFloor(!rooftopSelected); // Update halfFloor based on rooftop selection
+  };
+
+  const handleBasementChange = () => {
+    setBasementSelected(!basementSelected);
+    setBasement(!basementSelected); // Update basement based on basement selection
   };
 
   return (
@@ -72,11 +78,24 @@ const FloorSelector = ({ setSelectedFloor, setHalfFloor }) => {
           {floor}
         </label>
       ))}
+      <label
+        className={`flex items-center justify-center w-24 h-11 border border-t-0 border-white cursor-pointer ${
+          basementSelected ? "bg-gradient-to-t from-[#07565D] to-[#0FB4C3]" : ""
+        }`}
+      >
+        <input
+          type="checkbox"
+          className="hidden"
+          checked={basementSelected}
+          onChange={handleBasementChange}
+        />
+        Basement
+      </label>
 
       <img
         src={houseBase}
         alt="House Base"
-        className="absolute -bottom-0 h-12 w-[157px]"
+        className="absolute bottom-11 h-12 w-[157px]"
         onClick={() => handleFloorClick(5)}
       />
     </div>

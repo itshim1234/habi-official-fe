@@ -94,7 +94,7 @@ const ConsultationPopup = ({ onClose }) => {
         onClick={onClose}
         className="absolute top-1 right-1 md:right-8 md:top-8 text-white rounded-xl md:bg-gray-800 focus:outline-none p-2 z-50"
       >
-        <img src={close} alt="Close" className="w-4" />
+        <img src={close} alt="Home construction bengaluru" className="w-4" />
       </button>
 
       <div className="bg-black/50 backdrop-blur-lg text-white rounded-2xl p-6 flex flex-col md:flex-row w-full">
@@ -140,7 +140,8 @@ const ConsultationPopup = ({ onClose }) => {
           </p>
           <a href="tel:9606210818">
             <p className="text-center flex justify-center mt-2 text-secondary text-2xl font-giloryS pr-3">
-              <img src={call} alt="Call" className="mr-2 w-8" /> 9606210818
+              <img src={call} alt="house construction" className="mr-2 w-8" />{" "}
+              9606210818
             </p>
           </a>
         </div>
@@ -148,7 +149,7 @@ const ConsultationPopup = ({ onClose }) => {
         <div className="hidden md:block w-1/2 md:h-[460px]">
           <img
             src={consultation}
-            alt="Consultation"
+            alt="House Home construction"
             className="rounded-r-lg md:h-[480px] w-full object-cover"
           />
         </div>

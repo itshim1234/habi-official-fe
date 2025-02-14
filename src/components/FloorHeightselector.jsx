@@ -10,9 +10,9 @@ const FloorHeightSelector = ({ setSelectedFloorHeight }) => {
   // Dynamic height mapping for each floor
   const floorHeights = {
     10: "h-12",
-    11: "h-[65px]",
-    12: "h-[87px]",
-    13: "h-[108px]",
+    11: "h-[72px]",
+    12: "h-[110px]",
+    13: "h-[122px]",
   };
 
   const handleFloorChange = (floor) => {
@@ -43,10 +43,10 @@ const FloorHeightSelector = ({ setSelectedFloorHeight }) => {
             {floor}
           </label>
         ))}
-        <div className="absolute top-[106px] w-[160%]">
+        <div className="absolute top-[120px] w-[160%]">
           <img src={dashedLine} alt="Home construction Bengaluru" />
         </div>
-        <div className="absolute top-[195px] w-[160%]">
+        <div className="absolute top-[231px] w-[160%]">
           <img src={dashedLine} alt="Home construction Bengaluru" />
         </div>
       </div>

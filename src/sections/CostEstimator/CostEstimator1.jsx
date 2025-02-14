@@ -395,10 +395,12 @@ function CostEstimator1({
   const [package1, setPackage] = useState("");
   const [expandedPackage, setExpandedPackage] = useState(null);
   const [halfFloor, setHalfFloor] = useState(false);
+  const [basement, setBasement] = useState(false);
 
   const [builtUp1, setBuiltUp] = useState(0);
   const [floorHeightCost1, setFloorHeightCost] = useState(0);
   const [finalSumpCost1, setFinalSumpCost] = useState(0);
+  const [basementCost, setBasementCost] = useState(0);
 
   const contentRef = useRef(null);
   const logosRef = useRef(null);
@@ -431,6 +433,9 @@ function CostEstimator1({
 
   const halfFloor1 = () => {
     setHalfFloor(!halfFloor);
+  };
+  const setBasement1 = () => {
+    setBasement(!basement);
   };
 
   const packageSet = (typeOfPackage) => {
@@ -476,6 +481,7 @@ function CostEstimator1({
   var builtUp = 0;
   var floorHeightCost = 0;
   var finalSumpCost = 0;
+  var baseCost = 0;
   const calculateArea = () => {
     const {
       side1,
@@ -572,7 +578,19 @@ function CostEstimator1({
 
     // Calculate the final cost
     var cost = builtUp * costMultiplier;
-    cost = cost + finalSumpCost;
+
+    if (basement) {
+      if (package1 === "Essential" || package1 === "EssentialPlus") {
+        baseCost = area * 0.9 * 1400;
+      } else if (package1 === "Premium" || package1 === "PremiumPlus") {
+        baseCost = area * 0.9 * 1500;
+      } else if (package1 === "Luxury" || package1 === "LuxuryPlus") {
+        baseCost = area * 0.9 * 1600;
+      }
+      setBasementCost(baseCost);
+    }
+
+    cost = cost + finalSumpCost + baseCost;
 
     var x = 0;
 
@@ -608,7 +626,7 @@ function CostEstimator1({
 
   useEffect(() => {
     calculateCost();
-  }, [inputs, package1, halfFloor]);
+  }, [inputs, package1, halfFloor, basement]);
 
   useEffect(() => {
     Object.entries(inputs).forEach(([key, value]) => {
@@ -628,7 +646,10 @@ function CostEstimator1({
           name="description"
           content="Calculate Cost of the total cost to building a new house"
         />
-        <link rel="canonical" href="https://habi.one/Construction-Estimator" />
+        <link
+          rel="canonical"
+          href="https://habi.one/Construction-cost-calculator"
+        />
       </Helmet>
       <div
         className={`relative w-full bg-black p-2 h-auto mb-2 mb:mb-3 2xl:px-0`}
@@ -640,7 +661,7 @@ function CostEstimator1({
           }}
         >
           <h2 className="text-white text-[24px] lg:text-[32px] font-giloryS mb-10 text-center inline mr-2">
-            Construction Estimator
+            Construction cost calculator
           </h2>
           <img
             src={downArrow}
@@ -793,6 +814,7 @@ function CostEstimator1({
                       handleInputChange1("floors", floor)
                     }
                     setHalfFloor={halfFloor1} // Pass halfFloor state updater
+                    setBasement={setBasement1}
                   />
 
                   <FloorHeightSelector

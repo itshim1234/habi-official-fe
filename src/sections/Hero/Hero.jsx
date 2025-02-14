@@ -85,17 +85,17 @@ function Hero({ scrollToProjects }) {
           </div>
         </div>
       </div>
-      <div className="absolute z-20 text-white justify-center text-center right-[16px] md:right-[32px] lg:right-[82px] top-[20px] md:top-[40px]">
-        <button className="flex items-center justify-between px-2 md:px-5 w-[257px] md:w-[468px] h-[48px] md:h-[60px] rounded-lg border-2 border-white/20 bg-black/25 backdrop-blur-md text-white font-semibold">
+      <div className="absolute z-20 text-white justify-center text-center right-[4px] md:right-[32px] lg:right-[82px] top-[20px] md:top-[40px]">
+        <button className="flex items-center justify-between px-2 md:px-5 w-[250px] md:w-[360px] lg:w-[480px] 2xl:w-[550px] h-[40px] md:h-[50px] 2xl:h-[60px] rounded-lg border-2 border-white/20 bg-black/25 backdrop-blur-md text-white font-semibold">
           <span
-            className="text-[18px] md:text-[24px] font-giloryS pb-0.5"
-            onClick={() => navigate("/Construction-Estimator")}
+            className="text-[14px] md:text-[20px] 2xl:text-[24px] font-giloryS pb-0.5 leading-4"
+            onClick={() => navigate("/Construction-cost-calculator")}
           >
-            <h1>Construction Estimator</h1>
+            <h1>Construction cost calculator</h1>
           </span>
-          <span className="text-lg mb-1 text-[#c0c0c0]">|</span>
+          <span className="text-lg mb-1 text-[#c0c0c0] hidden md:block">|</span>
           <span
-            className="text-[18px] md:text-[24px] font-giloryS hidden md:block"
+            className="text-[18px] md:text-[20px] 2xl:text-[24px] font-giloryS pb-0.5 hidden lg:block"
             onClick={() => {
               window.open(
                 "https://drive.google.com/file/d/1J51DKaEezb1tnUWPZZo10pFhLEmU0Oxu/view?usp=sharing",
@@ -105,7 +105,7 @@ function Hero({ scrollToProjects }) {
           >
             Brochure
           </span>
-          <span className="text-lg mb-1 text-[#c0c0c0] hidden md:inline">
+          <span className="text-lg mb-1 text-[#c0c0c0] md:hidden lg:block">
             |
           </span>
           <div onChange={toggleMenu}>
@@ -133,10 +133,10 @@ function Hero({ scrollToProjects }) {
           >
             Product
           </button>
-          <hr className="my-2 md:my-2 w-[70%] mx-auto md:hidden" />
+          <hr className="my-2 md:my-2 w-[70%] mx-auto lg:hidden" />
 
           <button
-            className="text-white text-[18px] md:hidden"
+            className="text-white text-[18px] lg:hidden"
             onClick={() => {
               window.open(
                 "https://drive.google.com/file/d/1J51DKaEezb1tnUWPZZo10pFhLEmU0Oxu/view?usp=sharing",
@@ -158,7 +158,7 @@ function Hero({ scrollToProjects }) {
       >
         <img
           src={logo}
-          alt="habi The Way Of Living"
+          alt="Home construction Bengaluru"
           className="w-28 md:w-36 lg:w-40 2xl:w-44"
         />
       </div>
@@ -179,7 +179,7 @@ function Hero({ scrollToProjects }) {
         </button>
       </div>
       <div className="relative z-20 text-white justify-center text-center top-[55%] hidden 2xl:flex space-x-4 md:space-x-12 text-md md:text-[24px] ">
-        <img src={scroll} alt="scroll button" />
+        <img src={scroll} alt="House construction" />
       </div>
       {isPopupVisible && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-md">
