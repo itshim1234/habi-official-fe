@@ -13,7 +13,7 @@ function Completed() {
           <circle
             class="path circle"
             fill="none"
-            stroke="#73AF55"
+            stroke="#55ff00"
             stroke-width="6"
             stroke-miterlimit="10"
             cx="65.1"
@@ -23,7 +23,7 @@ function Completed() {
           <polyline
             class="path check"
             fill="none"
-            stroke="#73AF55"
+            stroke="#55ff00"
             stroke-width="6"
             stroke-linecap="round"
             stroke-miterlimit="10"
