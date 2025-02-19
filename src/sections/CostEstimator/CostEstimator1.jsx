@@ -648,7 +648,7 @@ function CostEstimator1({
         />
         <link
           rel="canonical"
-          href="https://habi.one/Construction-cost-calculator"
+          href="https://habi.one/Construction-Cost-Calculator"
         />
       </Helmet>
       <div
@@ -661,7 +661,7 @@ function CostEstimator1({
           }}
         >
           <h2 className="text-white text-[24px] lg:text-[32px] font-giloryS mb-10 text-center inline mr-2">
-            Construction cost calculator
+            Construction Cost Calculator
           </h2>
           <img
             src={downArrow}
