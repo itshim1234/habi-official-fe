@@ -107,16 +107,42 @@ function QuotationPopup({
               className="bg-transparent border border-gray-300 rounded-lg px-4 py-2 mt-3 text-white w-full"
               onChange={(e) => setName(e.target.value)}
             />
-            <input
-              type="text"
-              value={phone}
-              placeholder="Phone Number"
-              className="bg-transparent border border-gray-300 rounded-lg px-4 py-2 mt-3 text-white w-full"
-              onChange={(e) => setPhone(e.target.value)}
-            />
+
+            <div className="mt-3 w-full">
+              <div className="flex">
+                {/* Country Code Section */}
+                <div className="flex items-center px-4 border border-gray-300 border-r-0 bg-white-200 rounded-l-lg">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/1200px-Flag_of_India.svg.png"
+                    alt="India Flag"
+                    className="w-7 h-4 mr-2"
+                  />
+                  <span className="text-white">+91</span>
+                </div>
+
+                {/* Phone Number Input */}
+                <input
+                  id="phone"
+                  type="text"
+                  placeholder="00000 00000"
+                  className="w-full border bg-layoutColor text-white border-gray-300 border-l-transparent rounded-r-lg py-2 px-3 focus:outline-none"
+                  value={phone}
+                  onChange={(e) => {
+                    // Allow only numbers and limit to 10 digits
+                    const inputVal = e.target.value
+                      .replace(/\D/g, "")
+                      .slice(0, 10);
+                    setPhone(inputVal);
+                  }}
+                  maxLength="10"
+                />
+              </div>
+            </div>
+
             <input
               type="email"
               value={email}
+              name="email"
               placeholder="Email"
               className="bg-transparent border border-gray-300 rounded-lg px-4 py-2 mt-3 text-white w-full"
               onChange={(e) => setEmail(e.target.value)}
