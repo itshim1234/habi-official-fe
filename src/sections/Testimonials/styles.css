@@ -1,0 +1,83 @@
+.carousel-item.active {
+  width: 320px; /* Width for the active (leftmost) item */
+  height: 410px;
+  transform: scale(1);
+  opacity: 1;
+  z-index: 2;
+}
+.carousel-item.middle {
+  width: 280px; /* Smaller width for the center and right items */
+  height: 370px;
+  transform: scale(1);
+  opacity: 0.8;
+}
+
+.carousel-item.small {
+  width: 240px; /* Smaller width for the center and right items */
+  height: 330px;
+  transform: scale(1);
+  opacity: 0.8;
+}
+
+.carousel-item {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.carousel-item.active {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0.8;
+    transform: scale(0.9);
+  }
+}
+.carousel-item.active .content {
+  font-size: 16px;
+  height: 133px;
+  line-height: 1.2;
+}
+.carousel-item.middle .content {
+  font-size: 12px;
+  height: 100px;
+  line-height: 1.3;
+}
+.carousel-item.small .content {
+  font-size: 10px;
+  height: 90px;
+  line-height: 1.3;
+}
+
+.carousel-item.active .image {
+  width: 75px;
+  position: absolute;
+  bottom: 100px;
+}
+
+.carousel-item.middle .image {
+  width: 65px;
+  position: absolute;
+  bottom: 70px;
+}
+
+.carousel-item.small .image {
+  width: 55px;
+  position: absolute;
+  bottom: 65px;
+}

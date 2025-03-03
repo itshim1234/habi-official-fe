@@ -1,0 +1,21 @@
+.gradient-overlay {
+  background: linear-gradient(to right, #000000, rgba(0, 0, 0, 0) 300px),
+    linear-gradient(to left, #000000, rgba(0, 0, 0, 0) 300px),
+    linear-gradient(to top, #000000, rgba(0, 0, 0, 0) 20%);
+}
+
+@media (max-width: 1270px) {
+  .gradient-overlay {
+    background: linear-gradient(to right, #000000, rgba(0, 0, 0, 0) 50px),
+      linear-gradient(to left, #000000, rgba(0, 0, 0, 0) 50px),
+      linear-gradient(to top, #000000, rgba(0, 0, 0, 0) 10%);
+  }
+}
+
+@media (max-width: 768px) {
+  .gradient-overlay {
+    background: linear-gradient(to right, #000000, rgba(0, 0, 0, 0) 50px),
+      linear-gradient(to left, #000000, rgba(0, 0, 0, 0) 50px),
+      linear-gradient(to top, #000000, rgba(0, 0, 0, 0) 10%);
+  }
+}

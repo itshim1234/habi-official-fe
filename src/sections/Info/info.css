@@ -1,0 +1,163 @@
+.highlight {
+  color: #ffb969; /* Example color */
+}
+.container {
+  place-items: center;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  margin: auto; /* Center horizontally */
+  background-color: black;
+  --circleDiameter: 1300px;
+  --planets: 200px;
+}
+
+.hero-circle {
+  position: relative;
+  margin: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -30%);
+  width: var(--circleDiameter);
+  height: var(--circleDiameter);
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-90deg);
+  }
+  50% {
+    transform: rotate(-180deg);
+  }
+  75% {
+    transform: rotate(-270deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes maintain {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg); /* Counter-rotation to stay upright */
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.hero-rotate {
+  position: relative;
+  top: 100px;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #f8f8ff;
+  border-radius: 100%;
+  animation: rotate 24s infinite;
+  -webkit-animation: rotate 24s infinite; /* Safari */
+  transform-origin: center center;
+}
+
+.planet {
+  position: absolute;
+  width: var(--planets);
+  aspect-ratio: 1;
+  border-radius: 100%;
+  animation: maintain 24s infinite;
+  transform-origin: center center;
+  /* Glassmorphism effect */
+  background: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ); /* Light, semi-transparent white background */
+  box-shadow: 10px rgba(255, 255, 255, 0.5); /* Subtle shadow for depth */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); /* Safari */
+  border: 2px solid rgba(255, 255, 255, 0.5); /* Soft, light border */
+}
+
+.planet:nth-child(1) {
+  top: calc(-1 * var(--planets) / 2);
+  left: calc(var(--circleDiameter) / 2 - var(--planets) / 2 - 5px);
+}
+
+.planet:nth-child(2) {
+  top: calc(var(--circleDiameter) / 2 - var(--planets) / 2 - 5px);
+  right: calc(-1 * var(--planets) / 2);
+}
+
+.planet:nth-child(4) {
+  top: calc(var(--circleDiameter) / 2 - var(--planets) / 2 - 5px);
+  left: calc(-1 * var(--planets) / 2);
+}
+
+.planet:nth-child(3) {
+  left: calc(var(--circleDiameter) / 2 - var(--planets) / 2 - 5px);
+  bottom: calc(-1 * var(--planets) / 2);
+}
+
+.planet > img {
+  width: 100%;
+  height: 100%;
+  padding: 25%;
+  border-radius: 20%;
+  z-index: 1;
+}
+
+.inner-text {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.2rem;
+  color: white;
+  text-align: center;
+  width: 420px;
+  height: 178px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (min-width: 1536px) {
+  /* Small screens */
+  .container {
+    --circleDiameter: 2600px;
+    --planets: 150px;
+  }
+}
+@media (max-width: 1536px) {
+  /* Small screens */
+  .container {
+    --circleDiameter: 1800px;
+    --planets: 150px;
+  }
+}
+@media (max-width: 1024px) {
+  /* Medium screens */
+  .container {
+    --circleDiameter: 1200px;
+    --planets: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Small screens */
+  .container {
+    --circleDiameter: 840px;
+    --planets: 100px;
+  }
+}

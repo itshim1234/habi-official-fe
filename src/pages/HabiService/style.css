@@ -1,0 +1,19 @@
+/* Base styles for content-container */
+.content-container {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  will-change: transform, opacity;
+}
+
+/* Slide-in animation */
+.content-container.slide-in {
+  transform: translateX(-100%);
+  opacity: 1;
+}
+
+/* Slide-out animation */
+.content-container.slide-out {
+  transform: translateX(-100%);
+  opacity: 0;
+}

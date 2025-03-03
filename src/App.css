@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "larken";
+  src: url("assets/fonts/larken.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "gilroyB";
+  src: url("assets/fonts/GilroyB.ttf") format("truetype");
+}
+@font-face {
+  font-family: "gilroyM";
+  src: url("assets/fonts/GilroyM.ttf") format("truetype");
+}
+@font-face {
+  font-family: "gilroyS";
+  src: url("assets/fonts/GilroyS.ttf") format("truetype");
+}
+@font-face {
+  font-family: "dune";
+  src: url("assets/fonts/Dune_Rise.ttf") format("truetype");
+}
+
+.text-stroke {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4); /* Adjust the thickness and color */
+  color: transparent; /* Optional: makes the text fill transparent, so only the stroke is visible */
+}
+
+html {
+  scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+body::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in Chrome/Safari */
+}
