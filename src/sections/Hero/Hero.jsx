@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Hamburger from "../../components/Hamburger";
 
 import "./hero.css";
+import HamburgerMenu from "../../components/HamburgerMenu";
 
 function Hero({ scrollToProjects }) {
   const navigate = useNavigate();
@@ -86,14 +87,14 @@ function Hero({ scrollToProjects }) {
         </div>
       </div>
       <div className="absolute z-20 text-white justify-center text-center right-[4px] md:right-[32px] lg:right-[82px] top-[20px] md:top-[40px]">
-        <button className="flex items-center justify-between px-2 md:px-5 w-[250px] md:w-[360px] lg:w-[480px] 2xl:w-[550px] h-[40px] md:h-[50px] 2xl:h-[60px] rounded-lg border-2 border-white/20 bg-black/25 backdrop-blur-md text-white font-semibold">
-          <span
+        <button className="flex items-center justify-end px-2 md:px-5 w-[250px] md:w-[360px] lg:w-[480px] 2xl:w-[550px] h-[40px] md:h-[50px] 2xl:h-[60px] rounded-lg border-2 border-white/20 bg-black/25 backdrop-blur-md text-white font-semibold">
+          {/* <span
             className="text-[14px] md:text-[20px] 2xl:text-[24px] font-giloryS pb-0.5 leading-4"
             onClick={() => navigate("/Construction-Cost-Calculator")}
           >
             <h1>Construction Cost Calculator</h1>
-          </span>
-          <span className="text-lg mb-1 text-[#c0c0c0] hidden md:block">|</span>
+          </span> */}
+          {/* <span className="text-lg mb-1 text-[#c0c0c0] hidden md:block">|</span> */}
           <span
             className="text-[18px] md:text-[20px] 2xl:text-[24px] font-giloryS pb-0.5 hidden lg:block"
             onClick={() => {
@@ -108,13 +109,11 @@ function Hero({ scrollToProjects }) {
           <span className="text-lg mb-1 text-[#c0c0c0] md:hidden lg:block">
             |
           </span>
-          <div onChange={toggleMenu}>
-            <Hamburger />
-          </div>
+          <HamburgerMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         </button>
       </div>
 
-      {isMenuOpen && (
+      {/* {isMenuOpen && (
         <div className="absolute top-20 md:top-28 right-3 md:right-8 lg:right-20 z-30 flex flex-col bg-black/50 backdrop-blur-md px-3 py-2 md:py-4 border border-[#7c7c7c] rounded-lg font-giloryS">
           <button
             className="text-white text-[18px]"
@@ -147,7 +146,7 @@ function Hero({ scrollToProjects }) {
             Brochure
           </button>
         </div>
-      )}
+      )} */}
 
       <div
         className="absolute w-28 md:w-36 lg:w-40 2xl:w-44 z-40 justify-center left-[16px] md:left-[32px] lg:left-[82px] top-[20px] md:top-[40px] cursor-pointer"
