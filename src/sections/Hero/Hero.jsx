@@ -109,44 +109,12 @@ function Hero({ scrollToProjects }) {
           <span className="text-lg mb-1 text-[#c0c0c0] md:hidden lg:block">
             |
           </span>
-          <HamburgerMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+          <HamburgerMenu
+            isMenuOpen={isMenuOpen}
+            setIsMenuOpen={setIsMenuOpen}
+          />
         </button>
       </div>
-
-      {/* {isMenuOpen && (
-        <div className="absolute top-20 md:top-28 right-3 md:right-8 lg:right-20 z-30 flex flex-col bg-black/50 backdrop-blur-md px-3 py-2 md:py-4 border border-[#7c7c7c] rounded-lg font-giloryS">
-          <button
-            className="text-white text-[18px]"
-            onClick={() => {
-              navigate("/");
-            }}
-          >
-            Blog
-          </button>
-          <hr className="my-2 md:my-2 w-[70%] mx-auto" />
-          <button
-            className="text-white text-[18px]"
-            onClick={() => {
-              navigate("/baap");
-            }}
-          >
-            Product
-          </button>
-          <hr className="my-2 md:my-2 w-[70%] mx-auto lg:hidden" />
-
-          <button
-            className="text-white text-[18px] lg:hidden"
-            onClick={() => {
-              window.open(
-                "https://drive.google.com/file/d/1J51DKaEezb1tnUWPZZo10pFhLEmU0Oxu/view?usp=sharing",
-                "_blank"
-              ); // Open the link in a new tab
-            }}
-          >
-            Brochure
-          </button>
-        </div>
-      )} */}
 
       <div
         className="absolute w-28 md:w-36 lg:w-40 2xl:w-44 z-40 justify-center left-[16px] md:left-[32px] lg:left-[82px] top-[20px] md:top-[40px] cursor-pointer"

@@ -44,22 +44,10 @@ function HabiService({ togglePopup, toggleQuotationPopup }) {
     }, 300);
   }, [isServiceView]);
 
-
-  // useEffect(()=>{
-  //   const t = setTimeout(() => setLoading(false), 2000); // 2 second delay
-  //   return () => clearTimeout(t);
-
-  // },[])
-  
-
-
   // Smooth scroll to Projects section
   const scrollToProjects = useCallback(() => {
     projectsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   }, []);
-
-  // if (loading) return <div className="text-white text-3xl text-center mt-20">Loading HabiService...</div>;
-
 
   return (
     <div>

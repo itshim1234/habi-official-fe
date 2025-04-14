@@ -1,16 +1,13 @@
-
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Hamburger from "./Hamburger";
 
-
-const HamburgerMenu = ({isMenuOpen, setIsMenuOpen}) => {
- 
+const HamburgerMenu = ({ isMenuOpen, setIsMenuOpen }) => {
   const menuRef = useRef(null);
   const hamburgerRef = useRef(null);
   const navigate = useNavigate();
 
-  const toggleMenu = () => setIsMenuOpen(prev => !prev);
+  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
