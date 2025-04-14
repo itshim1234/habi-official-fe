@@ -7,6 +7,7 @@ import React, {
   memo,
 } from "react";
 import "./style.css";
+import { useEffect } from "react";
 
 // Lazy load sections for performance boost
 const Hero = memo(lazy(() => import("../../sections/Hero/Hero")));
@@ -30,6 +31,7 @@ const CostEstimator1 = lazy(() =>
 function HabiService({ togglePopup, toggleQuotationPopup }) {
   const [isServiceView, setIsServiceView] = useState(true);
   const [animation, setAnimation] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const projectsRef = useRef(null);
 

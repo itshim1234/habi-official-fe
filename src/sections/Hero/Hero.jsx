@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Hamburger from "../../components/Hamburger";
 
 import "./hero.css";
+import HamburgerMenu from "../../components/HamburgerMenu";
 
 function Hero({ scrollToProjects }) {
   const navigate = useNavigate();
