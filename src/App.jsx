@@ -172,6 +172,7 @@ import "./App.css";
 import Preloader from "./components/preloader/Preloader";
 import ProgressBar from "./components/ProgressBar";
 
+import OtpForm from "./components/OtpForm";
 // Lazy load pages and sections
 const HabiService = lazy(() => import("./pages/HabiService/HabiService"));
 const HabiProduct = lazy(() => import("./pages/HabiProduct/HabiProduct"));
@@ -318,6 +319,7 @@ function AppWithRouter() {
   return (
     <Router>
       <App />
+      <OtpForm />
     </Router>
   );
 }
