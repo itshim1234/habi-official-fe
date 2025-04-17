@@ -17,6 +17,7 @@ function QuotationDownload({
   builtUp,
   toggleQuotationPopup, // Function passed from parent
 }) {
+  //this calls toggleQutation statevariable in parent component and passes the values
   const handleContinue = () => {
     toggleQuotationPopup({
       totalSump,

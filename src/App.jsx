@@ -1,4 +1,12 @@
-import React, { useState, useEffect, Suspense, lazy, memo } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  Suspense,
+  useCallback,
+  lazy,
+  memo,
+} from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -8,6 +16,7 @@ import {
 import "./App.css";
 import Preloader from "./components/preloader/Preloader";
 import ProgressBar from "./components/ProgressBar";
+import CalculatorButton from "./components/CalculatorButton";
 // Lazy load pages and sections
 const HabiService = lazy(() => import("./pages/HabiService/HabiService"));
 const HabiProduct = lazy(() => import("./pages/HabiProduct/HabiProduct"));
@@ -33,8 +42,11 @@ function App() {
   const [isQuotationVisible, setIsQuotationVisible] = useState(false);
   const [isProgressBarVisible, setIsProgressBarVisible] = useState(false);
   const [quotationData, setQuotationData] = useState(null);
+
   const [completed, setCompleted] = useState(false);
+  const [isAppLoaded, setIsAppLoaded] = useState(false);
   const location = useLocation();
+  const estimatorRef = useRef(null);
 
   useEffect(() => {
     // Check if the preloader has already been shown in this session
@@ -51,6 +63,10 @@ function App() {
   const togglePopup = () => {
     setIsPopupVisible(!isPopupVisible);
   };
+
+  const toggleOtpForm = () => {
+    setIsOtpFormVisible(!isOtpFormVisible);
+  };
   const toggleQuotationPopup = (data) => {
     setQuotationData(data);
     setIsQuotationVisible(!isQuotationVisible);
@@ -61,6 +77,19 @@ function App() {
   const handleCompleted = (value) => {
     setCompleted(value);
   };
+
+  const scrollToCostEstimator = useCallback(() => {
+    estimatorRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }, []);
+
+  useEffect(() => {
+    console.log("Window fully loaded (including images, etc)");
+    setIsAppLoaded(true);
+  }, []);
+
   useEffect(() => {
     if (isPopupVisible || isQuotationVisible) {
       document.body.style.overflow = "hidden"; // Disable scrolling
@@ -86,6 +115,7 @@ function App() {
             path="/"
             element={
               <HabiService
+                estimatorRef={estimatorRef}
                 togglePopup={togglePopup}
                 toggleQuotationPopup={toggleQuotationPopup}
               />
@@ -98,6 +128,8 @@ function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/project" element={<ProjectExpand />} />
           <Route path="/terms-and-condition" element={<TermsAndCondition />} />
+
+          {/* this is opening same constedtimator comonent with one extra props */}
           <Route
             path="/Construction-Cost-Calculator"
             element={
@@ -146,6 +178,14 @@ function App() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-md">
           <ProgressBar completed={completed} />
         </div>
+      )}
+
+      {!isPreloading && isAppLoaded && (
+        <CalculatorButton
+          className="hidden sm:block"
+          onClickCalculator={scrollToCostEstimator}
+          isAppLoaded={isAppLoaded}
+        />
       )}
     </div>
   );

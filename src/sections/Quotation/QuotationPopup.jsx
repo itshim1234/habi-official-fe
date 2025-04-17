@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import close from "../../assets/images/close.png";
 import { generatePDF } from "./GeneratePdf";
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 function QuotationPopup({
   isVisible,
@@ -36,54 +37,101 @@ function QuotationPopup({
 
   const handleContinue = async () => {
     if (!validateInput()) return;
+
     handleProgressiveBar(true);
     handleCompleted(false); // Reset completion status
 
-    // Generate PDF Blob
-    const pdfBlob = await generatePDF({
+    const userData = {
       name,
       phone,
       email,
-      ...quotationData,
-    });
+      package: quotationData.package1,
+      timestamp: new Date().toISOString(),
+    };
 
-    // Create FormData
-    const formData = new FormData();
-    formData.append("invoicePdf", pdfBlob, "quotation.pdf");
-    formData.append("name", name);
-    formData.append("phone", phone);
-    formData.append("email", email);
-    formData.append("package", quotationData.package1);
-
-    // Send FormData to Backend
     try {
-      const response = await fetch(
-        "https://sendquotationserver.onrender.com/send-pdf",
-        {
+      // Step 1: Generate PDF Blob
+      const start = Date.now();
+
+      const pdfBlob = await generatePDF({
+        name,
+        phone,
+        email,
+        ...quotationData,
+      });
+      console.log("PDF generated in", Date.now() - start, "ms");
+
+      // Step 2: Create FormData for email
+      const formData = new FormData();
+      formData.append("invoicePdf", pdfBlob, "quotation.pdf");
+      formData.append("name", name);
+      formData.append("phone", phone);
+      formData.append("email", email);
+      formData.append("package", quotationData.package1);
+
+      // Step 3: Send both requests in parallel
+      const [emailResult, sheetResult] = await Promise.allSettled([
+        fetch(`${backendUrl}/send-pdf`, {
           method: "POST",
           body: formData,
-        }
-      );
+        }),
+        saveToGoogleSheets(userData),
+      ]);
 
-      if (response.ok) {
+      // Step 4: Handle email result
+      if (emailResult.status === "fulfilled" && emailResult.value.ok) {
         handleCompleted(true);
         setTimeout(() => {
           handleProgressiveBar(false);
           onClose();
-        }, 4000);
+        }, 3000);
       } else {
-        handleProgressiveBar();
-        alert("Failed to send quotation.");
+        handleProgressiveBar(false);
+        setError("Failed to send quotation email.");
+      }
+
+      // Step 5: Handle Sheets result (just warn if failed)
+      if (
+        sheetResult.status === "rejected" ||
+        (sheetResult.value && sheetResult.value.success === false)
+      ) {
+        console.warn("Email sent but failed to save to Google Sheets.");
       }
     } catch (error) {
+      console.error("Unexpected error during parallel actions:", error);
+      setError("Something went wrong. Please try again.");
       handleProgressiveBar(false);
-
-      console.error("Error sending quotation:", error);
-      alert("An error occurred while sending the quotation.");
     }
-
-    if (!isVisible) return null;
   };
+
+  // Function to save data to Google Sheets via  proxy
+  const saveToGoogleSheets = async (userData) => {
+    try {
+      const response = await fetch(`${backendUrl}/quotations`, {
+        method: "POST",
+        body: JSON.stringify(userData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        console.log("Data saved to Google Sheets successfully");
+        return true;
+      } else {
+        console.error("Failed to save data to Google Sheets:", result.error);
+        return false;
+      }
+    } catch (error) {
+      console.error("Error saving to Google Sheets:", error);
+      return false;
+    }
+  };
+
+  if (!isVisible) return null;
+
   return (
     <div className="fixed bg-black/20 backdrop-blur-md z-50 flex items-center rounded-3xl font-giloryM">
       <div className="w-[90%] md:w-fit h-fit flex justify-center items-center border border-[#7c7c7c] rounded-3xl relative p-6 md:p-10">
@@ -147,6 +195,7 @@ function QuotationPopup({
               className="bg-transparent border border-gray-300 rounded-lg px-4 py-2 mt-3 text-white w-full"
               onChange={(e) => setEmail(e.target.value)}
             />
+
             <button
               className="text-black bg-white rounded-lg px-4 py-2 mt-5 w-full"
               onClick={handleContinue}
