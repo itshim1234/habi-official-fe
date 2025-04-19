@@ -15,6 +15,7 @@ export default {
       colors: {
         primary: "#0FB4C3",
         secondary: "#ffb969",
+        customGray: "#7C7C7C",
       },
     },
     animation: {
