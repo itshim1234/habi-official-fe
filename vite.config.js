@@ -14,11 +14,26 @@ export default defineConfig({
         "/privacy-policy",
         "/terms-and-condition",
       ],
-      generateRobotsTxt: true, // ✅ Automatically generates robots.txt
+      generateRobotsTxt: true,
       robotsTxtOptions: {
         policies: [{ userAgent: "*", allow: "/" }],
         sitemap: "https://habi.one/sitemap.xml",
       },
     }),
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ["react", "react-dom"],
+          chart: ["chartjs", "react-chartjs-2"],
+          motion: ["framer-motion", "lottie-react"],
+          pdf: ["@react-pdf/renderer", "pdf-lib", "html2canvas", "html2pdf.js"],
+          firebase: ["firebase"],
+          styled: ["styled-components", "react-helmet"],
+          router: ["react-router-dom"],
+        },
+      },
+    },
+  },
 });
