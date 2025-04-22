@@ -1,13 +1,13 @@
 import React from "react";
-import callus from "../../assets/images/callus.png";
-import employeeLogin from "../../assets/images/Employeelogin.png";
-import facebook from "../../assets/images/Facebook.png";
-import insta from "../../assets/images/insta.png";
-import linkedin from "../../assets/images/Linkedin.png";
-import mail from "../../assets/images/mail.png";
-import twitter from "../../assets/images/twitter.png";
-import youtube from "../../assets/images/youtube.png";
-import logo from "../../assets/images/Logo2.png";
+import callus from "../../assets/images/callus.webp";
+import employeeLogin from "../../assets/images/Employeelogin.webp";
+import facebook from "../../assets/images/Facebook.webp";
+import insta from "../../assets/images/insta.webp";
+import linkedin from "../../assets/images/Linkedin.webp";
+import mail from "../../assets/images/mail.webp";
+import twitter from "../../assets/images/twitter.webp";
+import youtube from "../../assets/images/youtube.webp";
+import logo from "../../assets/images/Logo2.webp";
 
 import { useNavigate } from "react-router-dom";
 
@@ -176,3 +176,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

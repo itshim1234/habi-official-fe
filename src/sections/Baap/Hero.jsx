@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import tabAnimation from "../../assets/videos/tabAnimation.mp4";
 import tabAnimationMobile from "../../assets/videos/tabAnimationMobile.mp4";
-import arrow from "../../assets/images/ArrowRight.png";
+import arrow from "../../assets/images/ArrowRight.webp";
 import { useNavigate } from "react-router-dom";
-import logo from "../../assets/images/Logo2.png";
+import logo from "../../assets/images/Logo2.webp";
 
 function Hero() {
   const navigate = useNavigate();
@@ -64,3 +64,4 @@ function Hero() {
 }
 
 export default Hero;
+

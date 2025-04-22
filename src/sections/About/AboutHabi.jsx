@@ -2,20 +2,20 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
-import house from "../../assets/images/house.png";
-import arrow from "../../assets/images/ArrowRight.png";
+import house from "../../assets/images/house.webp";
+import arrow from "../../assets/images/ArrowRight.webp";
 import "../CostEstimator/styles.css";
-import value1 from "../../assets/images/value1.png";
-import value2 from "../../assets/images/value2.png";
-import value3 from "../../assets/images/value3.png";
-import value4 from "../../assets/images/value4.png";
-import logo from "../../assets/images/Logo1.png";
+import value1 from "../../assets/images/value1.webp";
+import value2 from "../../assets/images/value2.webp";
+import value3 from "../../assets/images/value3.webp";
+import value4 from "../../assets/images/value4.webp";
+import logo from "../../assets/images/Logo1.webp";
 
-import buildings from "../../assets/images/buildings.png";
-import buildings1 from "../../assets/images/buildings1.png";
-import leaf from "../../assets/images/Leaf.png";
-import palette from "../../assets/images/Palette.png";
-import userspeak from "../../assets/images/userSpeak.png";
+import buildings from "../../assets/images/buildings.webp";
+import buildings1 from "../../assets/images/buildings1.webp";
+import leaf from "../../assets/images/Leaf.webp";
+import palette from "../../assets/images/Palette.webp";
+import userspeak from "../../assets/images/userSpeak.webp";
 
 const AboutHabi = () => {
   const navigate = useNavigate();
@@ -176,3 +176,4 @@ const AboutHabi = () => {
 };
 
 export default AboutHabi;
+

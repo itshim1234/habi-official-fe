@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-import cost from "../../assets/images/Cost.png";
-import left from "../../assets/images/left.png";
-import right from "../../assets/images/right.png";
-import plot from "../../assets/images/Plot.png";
-import play from "../../assets/images/Playicon.png";
-import location from "../../assets/images/projectLocation.png";
+import cost from "../../assets/images/Cost.webp";
+import left from "../../assets/images/left.webp";
+import right from "../../assets/images/right.webp";
+import plot from "../../assets/images/Plot.webp";
+import play from "../../assets/images/Playicon.webp";
+import location from "../../assets/images/projectLocation.webp";
 import "./styles.css";
 
 import testimonials from "../../assets/testimonials/testimonial";
@@ -206,3 +206,4 @@ function Testimonial() {
 }
 
 export default Testimonial;
+

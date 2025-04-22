@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import downArrow from "../assets/images/downArrow.png";
+import downArrow from "../assets/images/downArrow.webp";
 
 const FlipCard = ({
   package1,
@@ -207,3 +207,4 @@ const FlipCard = ({
 };
 
 export default FlipCard;
+

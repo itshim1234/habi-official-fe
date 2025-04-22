@@ -10,8 +10,10 @@ import React, {
 import {
   BrowserRouter as Router,
   Routes,
+  Link,
   Route,
   useLocation,
+  useNavigate,
 } from "react-router-dom";
 import "./App.css";
 import Preloader from "./components/preloader/Preloader";
@@ -39,6 +41,7 @@ import QuotationPopup from "./sections/Quotation/QuotationPopup";
 function App() {
   const [isPreloading, setIsPreloading] = useState(false);
   const [isPopupVisible, setIsPopupVisible] = useState(false); // Popup State
+
   const [isQuotationVisible, setIsQuotationVisible] = useState(false);
   const [isProgressBarVisible, setIsProgressBarVisible] = useState(false);
   const [quotationData, setQuotationData] = useState(null);
@@ -46,7 +49,7 @@ function App() {
   const [completed, setCompleted] = useState(false);
   const [isAppLoaded, setIsAppLoaded] = useState(false);
   const location = useLocation();
-  const estimatorRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Check if the preloader has already been shown in this session
@@ -77,13 +80,9 @@ function App() {
   const handleCompleted = (value) => {
     setCompleted(value);
   };
-
-  const scrollToCostEstimator = useCallback(() => {
-    estimatorRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }, []);
+  const handleCalculatorClick = () => {
+    navigate("/Construction-Cost-Calculator");
+  };
 
   useEffect(() => {
     console.log("Window fully loaded (including images, etc)");
@@ -115,7 +114,6 @@ function App() {
             path="/"
             element={
               <HabiService
-                estimatorRef={estimatorRef}
                 togglePopup={togglePopup}
                 toggleQuotationPopup={toggleQuotationPopup}
               />
@@ -141,6 +139,7 @@ function App() {
               />
             }
           />
+
           <Route
             path="/*"
             element={
@@ -183,8 +182,8 @@ function App() {
       {!isPreloading && isAppLoaded && (
         <CalculatorButton
           className="hidden sm:block"
-          onClickCalculator={scrollToCostEstimator}
           isAppLoaded={isAppLoaded}
+          onClickCalculator={handleCalculatorClick}
         />
       )}
     </div>

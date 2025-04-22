@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import houseTop from "../assets/images/houseTop.png";
-import houseBase from "../assets/images/housebase.png";
+import houseTop from "../assets/images/houseTop.webp";
+import houseBase from "../assets/images/housebase.webp";
 
 const FloorSelector = ({ setSelectedFloor, setHalfFloor, setBasement }) => {
   const floors = ["Fifth", "Fourth", "Third", "Second", "First", "Ground"];
@@ -103,3 +103,4 @@ const FloorSelector = ({ setSelectedFloor, setHalfFloor, setBasement }) => {
 };
 
 export default FloorSelector;
+

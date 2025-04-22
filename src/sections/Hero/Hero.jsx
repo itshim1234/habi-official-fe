@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import herobackground from "../../assets/videos/heroBackground.mp4";
-import scroll from "../../assets/images/scroll.png";
+import scroll from "../../assets/images/scroll.webp";
 import ConsultationPopup from "./ConsultationPopup";
-import logo from "../../assets/images/mainLogo.png";
+import logo from "../../assets/images/mainLogo.webp";
 import { useNavigate } from "react-router-dom";
 import Hamburger from "../../components/Hamburger";
 
@@ -151,3 +151,4 @@ function Hero({ scrollToProjects }) {
 }
 
 export default Hero;
+

@@ -1,6 +1,6 @@
 import React from "react";
-import quotation from "../../assets/images/quotation.png";
-import lock from "../../assets/images/lock.png";
+import quotation from "../../assets/images/quotation.webp";
+import lock from "../../assets/images/lock.webp";
 
 function QuotationDownload({
   totalSump,
@@ -52,3 +52,4 @@ function QuotationDownload({
 }
 
 export default QuotationDownload;
+

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import consultation from "../../assets/images/consultation.png";
-import call from "../../assets/images/Call.png";
-import close from "../../assets/images/close.png";
+import consultation from "../../assets/images/consultation.webp";
+import call from "../../assets/images/Call.webp";
+import close from "../../assets/images/close.webp";
+
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
 const ConsultationPopup = ({ onClose }) => {
   const inputFields = [
@@ -27,37 +29,64 @@ const ConsultationPopup = ({ onClose }) => {
     email: "",
     location: "",
   });
+
+  const [formErrors, setFormErrors] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    location: "",
+  });
+
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
   };
 
   const validateForm = () => {
-    if (!formData.name || !formData.phone || !formData.location) {
-      setMessage("Please fill in all required fields.");
-      return false;
+    const phoneRegex = /^[6789]\d{9}$/;
+    const emailRegex =
+      /^(?!.*\.\.)(?!\.)(?!.*\.$)[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
+    const errors = {};
+
+    if (!formData.name.trim()) {
+      errors.name = "Please enter your name.";
     }
-    return true;
+
+    if (!phoneRegex.test(formData.phone)) {
+      errors.phone =
+        "Enter a valid 10-digit phone number starting with 6, 7, 8, or 9.";
+    }
+
+    if (formData.email && !emailRegex.test(formData.email)) {
+      errors.email = "Please enter a valid Gmail address.";
+    }
+
+    if (!formData.location.trim()) {
+      errors.location = "Please enter your location.";
+    }
+
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!validateForm()) return;
 
     setIsSubmitting(true);
 
-    // Create FormData and populate it with form data
-    const form = new FormData();
-    Object.keys(formData).forEach((key) => form.append(key, formData[key]));
-
     try {
-      const response = await fetch(scriptURL, {
+      const response = await fetch(`${backendUrl}/consultations/respond`, {
         method: "POST",
-        body: form,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
@@ -68,6 +97,7 @@ const ConsultationPopup = ({ onClose }) => {
           email: "",
           location: "",
         });
+        setFormErrors({});
         setTimeout(() => {
           onClose();
         }, 4000);
@@ -91,7 +121,7 @@ const ConsultationPopup = ({ onClose }) => {
         onClick={onClose}
         className="absolute top-1 right-1 md:right-8 md:top-8 text-white rounded-xl md:bg-gray-800 focus:outline-none p-2 z-50"
       >
-        <img src={close} alt="Home construction bengaluru" className="w-4" />
+        <img src={close} alt="Close" className="w-4" />
       </button>
 
       <div className="bg-black/50 backdrop-blur-lg text-white rounded-2xl p-6 flex flex-col md:flex-row w-full">
@@ -101,16 +131,24 @@ const ConsultationPopup = ({ onClose }) => {
           </h2>
           <form onSubmit={handleSubmit}>
             {inputFields.map((field, index) => (
-              <div key={index} className="mb-8">
+              <div key={index} className="mb-4">
                 <input
                   type={field.type}
                   name={field.key}
                   placeholder={field.placeholder}
                   value={formData[field.key]}
                   onChange={handleInputChange}
-                  className="text-[#c0c0c0] font-giloryM block px-3 py-2 border border-[#7c7c7c] rounded-lg bg-transparent focus:outline-none w-[94%]"
-                  required={field.label.includes("*")}
+                  className={`text-[#c0c0c0] font-giloryM block px-3 py-2 border rounded-lg bg-transparent focus:outline-none w-[94%] ${
+                    formErrors[field.key]
+                      ? "border-red-500"
+                      : "border-[#7c7c7c]"
+                  }`}
                 />
+                {formErrors[field.key] && (
+                  <p className="text-red-500 text-xs mt-1 pl-1 font-giloryM">
+                    {formErrors[field.key]}
+                  </p>
+                )}
               </div>
             ))}
 
@@ -137,7 +175,7 @@ const ConsultationPopup = ({ onClose }) => {
           </p>
           <a href="tel:9606210818">
             <p className="text-center flex justify-center mt-2 text-secondary text-2xl font-giloryS pr-3">
-              <img src={call} alt="house construction" className="mr-2 w-8" />{" "}
+              <img src={call} alt="Call" className="mr-2 w-8" />
               9606210818
             </p>
           </a>
@@ -146,7 +184,7 @@ const ConsultationPopup = ({ onClose }) => {
         <div className="hidden md:block w-1/2 md:h-[460px]">
           <img
             src={consultation}
-            alt="House Home construction"
+            alt="Consultation"
             className="rounded-r-lg md:h-[480px] w-full object-cover"
           />
         </div>

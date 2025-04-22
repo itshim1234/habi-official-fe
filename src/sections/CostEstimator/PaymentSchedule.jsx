@@ -1,5 +1,5 @@
 import React from "react";
-import divider from "../../assets/images/Line.png";
+import divider from "../../assets/images/Line.webp";
 import "./styles.css";
 
 export const Header = () => {
@@ -80,3 +80,4 @@ const PaymentSchedule = ({ scheduleData }) => {
 };
 
 export default PaymentSchedule;
+

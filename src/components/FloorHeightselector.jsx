@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import houseTop from "../assets/images/houseTop.png";
-import houseBase from "../assets/images/housebase.png";
-import dashedLine from "../assets/images/dashedLine.png";
+import houseTop from "../assets/images/houseTop.webp";
+import houseBase from "../assets/images/housebase.webp";
+import dashedLine from "../assets/images/dashedLine.webp";
 
 const FloorHeightSelector = ({ setSelectedFloorHeight }) => {
   const floors = [13, 12, 11, 10];
@@ -62,3 +62,4 @@ const FloorHeightSelector = ({ setSelectedFloorHeight }) => {
 };
 
 export default FloorHeightSelector;
+

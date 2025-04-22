@@ -1,47 +1,47 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet";
 import DetailedReport from "./DetailedReport";
-import asianPaints from "../../assets/images/asianpaints.png";
-import dalmia from "../../assets/images/dalmia.png";
-import godrej from "../../assets/images/godrej.png";
-import havelles from "../../assets/images/havelles.png";
-import jaquar from "../../assets/images/jaquar.png";
-import jsw from "../../assets/images/jsw.png";
-import kajaria from "../../assets/images/kajaria.png";
-import sintex from "../../assets/images/sintex.png";
-import downArrow from "../../assets/images/downArrow.png";
-import Regular from "../../assets/images/rectangle.png";
-import Triangular from "../../assets/images/triangle.png";
-import Irregular from "../../assets/images/polygon.png";
-import tank from "../../assets/images/Tank.png";
-import bathroom from "../../assets/images/Bathroom.png";
+import asianPaints from "../../assets/images/asianpaints.webp";
+import dalmia from "../../assets/images/dalmia.webp";
+import godrej from "../../assets/images/godrej.webp";
+import havelles from "../../assets/images/havelles.webp";
+import jaquar from "../../assets/images/jaquar.webp";
+import jsw from "../../assets/images/jsw.webp";
+import kajaria from "../../assets/images/kajaria.webp";
+import sintex from "../../assets/images/sintex.webp";
+import downArrow from "../../assets/images/downArrow.webp";
+import Regular from "../../assets/images/rectangle.webp";
+import Triangular from "../../assets/images/triangle.webp";
+import Irregular from "../../assets/images/polygon.webp";
+import tank from "../../assets/images/Tank.webp";
+import bathroom from "../../assets/images/Bathroom.webp";
 
-import essential from "../../assets/images/essential.png";
-import premium from "../../assets/images/premium.png";
-import luxury from "../../assets/images/luxury.png";
-import Line from "../../assets/images/Line1.png";
+import essential from "../../assets/images/essential.webp";
+import premium from "../../assets/images/premium.webp";
+import luxury from "../../assets/images/luxury.webp";
+import Line from "../../assets/images/Line1.webp";
 
-import a1 from "../../assets/images/a1.png";
-import a2 from "../../assets/images/a2.png";
-import a3 from "../../assets/images/a3.png";
-import a4 from "../../assets/images/a4.png";
-import a5 from "../../assets/images/a5.png";
-import a6 from "../../assets/images/a6.png";
-import a7 from "../../assets/images/a7.png";
-import a8 from "../../assets/images/a8.png";
-import b9 from "../../assets/images/b9.png";
-import b10 from "../../assets/images/b10.png";
-import b11 from "../../assets/images/b11.png";
-import b12 from "../../assets/images/b12.png";
-import b13 from "../../assets/images/b13.png";
-import b14 from "../../assets/images/b14.png";
-import b15 from "../../assets/images/b15.png";
-import b16 from "../../assets/images/b16.png";
-import b17 from "../../assets/images/b17.png";
+import a1 from "../../assets/images/a1.webp";
+import a2 from "../../assets/images/a2.webp";
+import a3 from "../../assets/images/a3.webp";
+import a4 from "../../assets/images/a4.webp";
+import a5 from "../../assets/images/a5.webp";
+import a6 from "../../assets/images/a6.webp";
+import a7 from "../../assets/images/a7.webp";
+import a8 from "../../assets/images/a8.webp";
+import b9 from "../../assets/images/b9.webp";
+import b10 from "../../assets/images/b10.webp";
+import b11 from "../../assets/images/b11.webp";
+import b12 from "../../assets/images/b12.webp";
+import b13 from "../../assets/images/b13.webp";
+import b14 from "../../assets/images/b14.webp";
+import b15 from "../../assets/images/b15.webp";
+import b16 from "../../assets/images/b16.webp";
+import b17 from "../../assets/images/b17.webp";
 
-import a from "../../assets/images/site.png";
-import b from "../../assets/images/builtup.png";
-import c from "../../assets/images/Water.png";
+import a from "../../assets/images/site.webp";
+import b from "../../assets/images/builtup.webp";
+import c from "../../assets/images/Water.webp";
 
 import FloorHeightSelector from "../../components/FloorHeightselector";
 import FloorSelector from "../../components/FloorSelector";
@@ -404,6 +404,7 @@ function CostEstimator1({
 
   const contentRef = useRef(null);
   const logosRef = useRef(null);
+  const estimatorRef = useRef(null);
 
   useEffect(() => {
     // Synchronize costEstimator state with costEstimatorOpen prop
@@ -414,7 +415,9 @@ function CostEstimator1({
   useEffect(() => {
     if (contentRef.current) {
       const resizeObserver = new ResizeObserver(() => {
-        setContentHeight(contentRef.current.scrollHeight);
+        if (contentRef.current) {
+          setContentHeight(contentRef.current.scrollHeight);
+        }
       });
 
       resizeObserver.observe(contentRef.current);
@@ -422,6 +425,15 @@ function CostEstimator1({
       return () => resizeObserver.disconnect();
     }
   }, []);
+
+  useEffect(() => {
+    if (costEstimator && estimatorRef.current) {
+      estimatorRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }, [costEstimator]);
 
   useEffect(() => {
     const ul = logosRef.current;
@@ -672,6 +684,7 @@ function CostEstimator1({
           />
         </div>
         <div
+          ref={estimatorRef}
           className={`relative overflow-hidden transition-[max-height] duration-1000 ease-in-out`}
           style={{
             maxHeight: costEstimator ? `${contentHeight}px` : "0px",

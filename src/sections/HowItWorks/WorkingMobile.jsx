@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
-import meetUs from "../../assets/images/meetUs.png";
-import designWork from "../../assets/images/designWork.png";
-import finalize from "../../assets/images/finalize.png";
-import track from "../../assets/images/track1.png";
-import handover from "../../assets/images/handover.png";
-import star from "../../assets/images/star.png";
+import meetUs from "../../assets/images/meetUs.webp";
+import designWork from "../../assets/images/designWork.webp";
+import finalize from "../../assets/images/finalize.webp";
+import track from "../../assets/images/track1.webp";
+import handover from "../../assets/images/handover.webp";
+import star from "../../assets/images/star.webp";
 import loopVideo from "../../assets/videos/loopVideo.mp4";
 
 const stages = [
@@ -137,3 +137,4 @@ function WorkingMobile() {
 }
 
 export default WorkingMobile;
+

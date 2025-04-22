@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import arrow from "../../assets/images/arrowA.png";
-import close from "../../assets/images/close.png";
-import home from "../../assets/images/home.png";
+import arrow from "../../assets/images/arrowA.webp";
+import close from "../../assets/images/close.webp";
+import home from "../../assets/images/home.webp";
 
-import watch from "../../assets/images/Stopwatch.png";
+import watch from "../../assets/images/Stopwatch.webp";
 
-import plot from "../../assets/images/Plot1.png";
+import plot from "../../assets/images/Plot1.webp";
 
 const ProjectExpand = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -141,3 +141,4 @@ const ProjectExpand = () => {
 };
 
 export default ProjectExpand;
+

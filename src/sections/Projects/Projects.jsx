@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import location from "../../assets/images/Location.png";
+import location from "../../assets/images/Location.webp";
 import initialImages from "../../assets/projects/project";
-import left from "../../assets/images/left.png";
-import right from "../../assets/images/right.png";
+import left from "../../assets/images/left.webp";
+import right from "../../assets/images/right.webp";
 
 const Projects = () => {
   const [images, setImages] = useState(initialImages);
@@ -125,3 +125,4 @@ const Projects = () => {
 };
 
 export default Projects;
+

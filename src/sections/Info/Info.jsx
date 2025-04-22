@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./info.css";
-import design from "../../assets/images/design.svg";
-import time from "../../assets/images/time.png";
-import quality from "../../assets/images/quality.png";
-import manage from "../../assets/images/manage.png";
+import design from "../../assets/images/design.webp";
+import time from "../../assets/images/time.webp";
+import quality from "../../assets/images/quality.webp";
+import manage from "../../assets/images/manage.webp";
 
 function Info() {
   const texts = ["Design", "Manage", "Quality", "Time"];

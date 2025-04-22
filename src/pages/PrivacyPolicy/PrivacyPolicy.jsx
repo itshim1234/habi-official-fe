@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
-import arrow from "../../assets/images/ArrowRight.png";
+import arrow from "../../assets/images/ArrowRight.webp";
 
 const PrivacyPolicy = () => {
   const navigate = useNavigate();
@@ -163,3 +163,4 @@ const PrivacyPolicy = () => {
 };
 
 export default PrivacyPolicy;
+

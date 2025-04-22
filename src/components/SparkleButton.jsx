@@ -1,21 +1,26 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import arrow from "../assets/images/ArrowRight.png";
+import arrow from "../assets/images/ArrowRight.webp";
+import Lottie from "lottie-react";
+import animationData from "../assets/animation.json";
 
 const SparkleButton = ({ text, isCalculator = false, onClick }) => {
   if (isCalculator) {
     return (
       <CalculatorButtonWrapper>
-        <button className="button font-giloryS " onClick={onClick}>
-          <div className="dots_border" />
-          <span className="text_button text-sm 2xl:text-3xl text-center leading-tight whitespace-pre-line">
-            {text}
-          </span>
+        <button className="button  font-gilroyS" onClick={onClick}>
+          <div className="icon-wrapper">
+            <Lottie
+              animationData={animationData}
+              loop
+              className="animated-icon"
+            />
+          </div>
+          <span className="text_button text-sm  2xl:text-3xl">{text}</span>
         </button>
       </CalculatorButtonWrapper>
     );
   }
-
   return (
     <StyledWrapper isBaaP={text === "BaaP"}>
       <button className="button font-giloryS">
@@ -141,7 +146,6 @@ const StyledWrapper = styled.div`
   }
 `;
 
-// Separate styled wrapper for the calculator button
 const shine = keyframes`
   0% {
       background-position: 0;
@@ -153,89 +157,61 @@ const shine = keyframes`
       background-position: 180px;
     }
   `;
-
 const CalculatorButtonWrapper = styled.div`
   .button {
-    --transition: 0.3s ease-in-out;
-    --active: 0;
-
-    cursor: pointer;
-    position: relative;
-    border-radius: 24px;
-    padding: 24px 2rem;
+    width: 100px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(0.75rem, 1.2vw, 1rem);
-    gap: 0.5rem;
-    transform: scale(calc(1 + (var(--active, 0) * 0.1)));
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    transition: transform var(--transition);
+
+    border: none;
+    background-color: transparent;
+
+    border: none;
+    border-top-left-radius: 90px;
+    border-bottom-left-radius: 90px;
+    background: rgb(53, 50, 50);
+
+    padding: 0;
+    transition: all 0.4s ease;
+    overflow: hidden;
+    cursor: pointer;
   }
 
-  .button:is(:hover, :focus-visible) {
-    --active: 1;
-  }
-
-  .button::before {
-    content: "";
-    background-color: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(8px);
-    border-radius: 24px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    transition: all var(--transition);
-  }
-
-  .button::after {
-    content: "";
-    background: linear-gradient(to top, #00eaff 0px, transparent 100%);
-    background-color: #046f7a;
-    border-radius: 24px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    opacity: var(--active, 0);
-    z-index: 2;
-    transition: opacity var(--transition);
-  }
-
-  .dots_border {
-    display: none; /* Disabled for calculator button */
-  }
   .button:hover {
-    animation: none;
-    background: none;
-    -webkit-text-fill-color: white;
+    width: 320px;
+    align-items: center;
+    justify-content: space-around;
+
+    padding: 0 16px;
+    background: linear-gradient(to right, #00b3b3, #008080);
+  }
+
+  .icon-wrapper {
+    width: 120px;
+    height: 120px;
+  }
+
+  .animated-icon {
+    width: 120px;
+    height: 120px;
+
+    filter: brightness(0) saturate(100%) invert(100%) contrast(200%);
   }
 
   .text_button {
-    background: linear-gradient(to right, #9f9f9f 0, #fff 10%, #868686 20%);
-    background-size: 200% auto;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: ${shine} 3s linear infinite;
-    z-index: 10;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    font-size: 24px;
+    display: none;
+    margin-left: 12px;
+    white-space: pre-line; //ensures line breaks show
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 1.2;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
   }
 
   .button:hover .text_button {
-    animation: none;
-    background: none;
-    -webkit-text-fill-color: white;
+    display: block;
   }
 `;

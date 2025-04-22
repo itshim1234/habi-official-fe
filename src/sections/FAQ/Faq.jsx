@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import downArrow from "../../assets/images/downArrow.png";
+import downArrow from "../../assets/images/downArrow.webp";
 import "../../sections/CostEstimator/styles.css";
 import faq from "../../assets/Faqs/faq";
 
@@ -75,3 +75,4 @@ function Faq() {
 }
 
 export default Faq;
+

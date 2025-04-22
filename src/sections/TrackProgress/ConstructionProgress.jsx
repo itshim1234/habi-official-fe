@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import mobileAnimation from "../../assets/videos/mobileAnimation.mp4";
-import designIcon from "../../assets/images/Designicon.png";
-import thumbNail from "../../assets/images/tumbnail.png";
-import Live from "../../assets/images/Liveicon.png";
-import trackStages from "../../assets/images/stagesicon.png";
-import play from "../../assets/images/Playicon.png";
-import line from "../../assets/images/Line.png";
+import designIcon from "../../assets/images/Designicon.webp";
+import thumbNail from "../../assets/images/tumbnail.webp";
+import Live from "../../assets/images/Liveicon.webp";
+import trackStages from "../../assets/images/stagesicon.webp";
+import play from "../../assets/images/Playicon.webp";
+import line from "../../assets/images/Line.webp";
 
 const ConstructionProgress = () => {
   const [videoPlayed, setVideoPlayed] = useState(false); // Track video completion
@@ -271,3 +271,4 @@ const ConstructionProgress = () => {
 };
 
 export default ConstructionProgress;
+

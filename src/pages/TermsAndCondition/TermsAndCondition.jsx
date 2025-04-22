@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
-import arrow from "../../assets/images/ArrowRight.png";
+import arrow from "../../assets/images/ArrowRight.webp";
 
 const TermsAndCondition = () => {
   const navigate = useNavigate();
@@ -164,3 +164,4 @@ const TermsAndCondition = () => {
 };
 
 export default TermsAndCondition;
+

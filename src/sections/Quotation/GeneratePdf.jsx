@@ -1,6 +1,5 @@
+import React from "react";
 import { pdf } from "@react-pdf/renderer";
-import { PDFDocument } from "pdf-lib";
-
 import Invoice from "./Invoice";
 
 export const generatePDF = async ({
@@ -20,8 +19,6 @@ export const generatePDF = async ({
   breadth,
   builtUp,
 }) => {
-  // Select the correct PDF based on package1
-
   // Generate the Invoice PDF with all the passed props
   const invoiceBlob = await pdf(
     <Invoice
@@ -43,7 +40,6 @@ export const generatePDF = async ({
     />
   ).toBlob();
 
-  // Load both PDFs using pdf-lib
-
+  // Return the generated PDF Blob
   return invoiceBlob;
 };

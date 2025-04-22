@@ -1,5 +1,5 @@
 import React from "react";
-import whatsapp from "../../assets/images/whatsapp.png";
+import whatsapp from "../../assets/images/whatsapp.webp";
 
 function Model({ togglePopup }) {
   return (
@@ -33,3 +33,4 @@ function Model({ togglePopup }) {
 }
 
 export default Model;
+

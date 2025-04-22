@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
-import arrow from "../../assets/images/ArrowRight.png";
+import arrow from "../../assets/images/ArrowRight.webp";
 import "../../sections/CostEstimator/styles.css";
 import faq from "../../assets/Faqs/faq";
 import { useNavigate } from "react-router-dom";
@@ -72,3 +72,4 @@ function FaqExpanded() {
 }
 
 export default FaqExpanded;
+

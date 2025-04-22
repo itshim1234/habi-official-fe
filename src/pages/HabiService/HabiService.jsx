@@ -28,7 +28,7 @@ const CostEstimator1 = lazy(() =>
   import("../../sections/CostEstimator/CostEstimator1")
 );
 
-function HabiService({ togglePopup, toggleQuotationPopup,estimatorRef  }) {
+function HabiService({ togglePopup, toggleQuotationPopup }) {
   const [isServiceView, setIsServiceView] = useState(true);
   const [animation, setAnimation] = useState("");
   const [loading, setLoading] = useState(true);
@@ -64,17 +64,13 @@ function HabiService({ togglePopup, toggleQuotationPopup,estimatorRef  }) {
                 <Projects />
               </div>
               <Testimonial />
-              <div ref={estimatorRef}>
-                {" "}
-                {/* 👉 Ref added here */}
-                <div ref={estimatorRef}>
-                  <CostEstimator1
-                    
-                    togglePopup={togglePopup}
-                    toggleQuotationPopup={toggleQuotationPopup}
-                  />
-                </div>
-              </div>
+
+              {/* 👉 Ref added here */}
+
+              <CostEstimator1
+                togglePopup={togglePopup}
+                toggleQuotationPopup={toggleQuotationPopup}
+              />
 
               {/* Pass popup toggle function to Model */}
               <Model togglePopup={togglePopup} />
