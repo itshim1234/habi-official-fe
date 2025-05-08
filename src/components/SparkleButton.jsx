@@ -45,11 +45,20 @@ const SparkleButton = ({ text, isCalculator = false, onClick }) => {
 
 export default SparkleButton;
 
+// const rotate = keyframes`
+
+//   to {
+//     transform: rotate(360deg);
+//   }
+// `;
+
 const rotate = keyframes`
-  to {
-    transform: rotate(360deg);
-  }
-`;
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }`;
 
 const StyledWrapper = styled.div`
   .button {
@@ -125,7 +134,7 @@ const StyledWrapper = styled.div`
     background-color: transparent;
     z-index: -10;
   }
-
+  /* 
   .dots_border::before {
     content: "";
     position: absolute;
@@ -137,7 +146,57 @@ const StyledWrapper = styled.div`
     background-color: white;
     mask: linear-gradient(transparent 0%, white 120%);
     animation: ${rotate} 2s linear infinite;
+  } */
+
+  .button .dots_border::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    border-radius: var(--border_radius);
+    background: conic-gradient(
+      from 0deg,
+      hsla(0, 0%, 100%, 0.5),
+      transparent 30%,
+      hsla(0, 0%, 100%, 0.5) 60%,
+      transparent 100%
+    );
+    animation: rotate 1.2s linear infinite;
+    z-index: -1;
   }
+
+  /* .dots_border::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 2rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    animation: ${rotate} 2s linear infinite;
+  } */
+
+  /* .dots_border::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 2rem;
+    background-color: white;
+
+    mask: linear-gradient(transparent 0%, white 120%);
+
+    /* Combine all transforms into one declaration */
+  /* transform: translate(-50%, -50%) rotate(360deg);
+    transform-origin: left;
+
+    animation: ${rotate} 1.2s linear infinite;
+  } */
 
   .text_button {
     color: white;

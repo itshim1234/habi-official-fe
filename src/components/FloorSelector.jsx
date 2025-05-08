@@ -18,7 +18,9 @@ const FloorSelector = ({ setSelectedFloor, setHalfFloor, setBasement }) => {
   const [basementSelected, setBasementSelected] = useState(false);
 
   const handleFloorClick = (floorIndex) => {
+    console.log(floorIndex);
     const newSelectedFloors = floors.slice(floorIndex);
+    console.log(newSelectedFloors);
     setSelectedFloors(newSelectedFloors);
 
     const maxFloor = floorNumbers[newSelectedFloors[0]]; // Get highest floor number
@@ -103,4 +105,3 @@ const FloorSelector = ({ setSelectedFloor, setHalfFloor, setBasement }) => {
 };
 
 export default FloorSelector;
-

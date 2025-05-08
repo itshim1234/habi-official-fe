@@ -529,7 +529,7 @@ function CostEstimator1({
   const calculateCost = () => {
     const area = calculateArea();
     const { floors } = inputs;
-    const groundCoverage = 0.9;
+    const groundCoverage = 0.85;
 
     // Determine the base sump cost by package
     let baseSumpCost = 0;
@@ -555,8 +555,21 @@ function CostEstimator1({
 
     // Calculate the built-up area and cost multiplier
     if (area > 0) {
-      builtUp = Math.round(area * groundCoverage * floors + 0.1 * area + 200);
+      // when only ground is selected
 
+      if (!basement && floors == 1) {
+        builtUp = builtUp + area;
+      }
+
+      // when basement and ground
+      if (basement && floors == 1) {
+        builtUp += area * 0.9;
+      }
+
+      if (floors == 12) {
+      } else {
+        builtUp = Math.round(area * groundCoverage * floors + 1 * area);
+      }
       if (halfFloor) {
         builtUp -= 200;
 
@@ -593,11 +606,11 @@ function CostEstimator1({
 
     if (basement) {
       if (package1 === "Essential" || package1 === "EssentialPlus") {
-        baseCost = area * 0.9 * 1400;
+        baseCost = area * 1 * 1400;
       } else if (package1 === "Premium" || package1 === "PremiumPlus") {
-        baseCost = area * 0.9 * 1500;
+        baseCost = area * 1 * 1500;
       } else if (package1 === "Luxury" || package1 === "LuxuryPlus") {
-        baseCost = area * 0.9 * 1600;
+        baseCost = area * 1 * 1600;
       }
       setBasementCost(baseCost);
     }
