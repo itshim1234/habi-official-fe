@@ -31,7 +31,6 @@ export default defineConfig({
           pdf: ["@react-pdf/renderer", "pdf-lib", "html2canvas", "html2pdf.js"],
           styled: ["styled-components", "react-helmet"],
           router: ["react-router-dom"],
-          framerMotion: ["framer-motion"],
         },
       },
     },
