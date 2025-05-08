@@ -555,21 +555,23 @@ function CostEstimator1({
 
     // Calculate the built-up area and cost multiplier
     if (area > 0) {
-      // when only ground is selected
+      const aboveGroundFloors = floors > 0 ? floors - 1 : 0; // ground floor is base
 
-      if (!basement && floors == 1) {
-        builtUp = builtUp + area;
-      }
+      // Always add ground floor
+      builtUp = area;
 
-      // when basement and ground
-      if (basement && floors == 1) {
+      // Add basement if selected
+      if (basement) {
         builtUp += area * 0.9;
       }
 
-      if (floors == 12) {
-      } else {
-        builtUp = Math.round(area * groundCoverage * floors + 1 * area);
-      }
+      // Add floors (1st to 5th) if selected
+      builtUp += aboveGroundFloors * area * 0.85;
+
+      // Save the calculated builtUp to state
+
+      setBuiltUp(builtUp);
+
       if (halfFloor) {
         builtUp -= 200;
 
@@ -584,7 +586,6 @@ function CostEstimator1({
         }
       }
     }
-    setBuiltUp(builtUp);
 
     const costMultiplier =
       package1 === "Essential"
