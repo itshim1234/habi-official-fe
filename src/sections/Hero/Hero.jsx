@@ -151,4 +151,3 @@ function Hero({ scrollToProjects }) {
 }
 
 export default Hero;
-

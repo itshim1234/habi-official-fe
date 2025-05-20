@@ -17,12 +17,16 @@ function QuotationPopup({
   const [error, setError] = useState("");
 
   const validateInput = useCallback(() => {
+    const nameRegex = /^[a-zA-Z][a-zA-Z\s'-]{1,49}$/;
     const phoneRegex = /^[6789]\d{9}$/;
-    const emailRegex =
-      /^(?!.*\.\.)(?!\.)(?!.*\.$)[a-zA-Z0-9._%+-]+@gmail\.com$/;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
     if (!name.trim()) {
       setError("Please enter your name.");
+      return false;
+    }
+    if (!nameRegex.test(name)) {
+      setError("Please enter the valid name");
       return false;
     }
     if (!phoneRegex.test(phone)) {

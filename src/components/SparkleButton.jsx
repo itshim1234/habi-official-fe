@@ -6,6 +6,7 @@ import animationData from "../assets/animation.json";
 
 const SparkleButton = ({ text, isCalculator = false, onClick }) => {
   if (isCalculator) {
+    const lines = text.split("|");
     return (
       <CalculatorButtonWrapper>
         <button className="button  font-gilroyS" onClick={onClick}>
@@ -16,7 +17,16 @@ const SparkleButton = ({ text, isCalculator = false, onClick }) => {
               className="animated-icon"
             />
           </div>
-          <span className="text_button text-sm  2xl:text-3xl">{text}</span>
+
+          <span className="text_button max-w-sm overflow-hidden whitespace-nowrap">
+            {lines.map((line, i) => {
+              return (
+                <>
+                  <div key={i}>{line.trim()}</div>
+                </>
+              );
+            })}
+          </span>
         </button>
       </CalculatorButtonWrapper>
     );
@@ -216,61 +226,57 @@ const shine = keyframes`
       background-position: 180px;
     }
   `;
+
 const CalculatorButtonWrapper = styled.div`
   .button {
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
     display: flex;
     align-items: center;
-    justify-content: center;
-
-    border: none;
-    background-color: transparent;
+    justify-content: flex-start;
+    color: white;
 
     border: none;
     border-top-left-radius: 90px;
     border-bottom-left-radius: 90px;
-    background: rgb(53, 50, 50);
 
-    padding: 0;
+    background: rgba(53, 50, 50, 0.3); /* 30% opacity */
+    border-width: 2px;
+    border-color: rgba(255, 255, 255, 0.2);
+    border-right: 0px;
+    border-style: solid;
+    backdrop-filter: blur(16px); /* Same as Tailwind's backdrop-blur-sm */
+    -webkit-backdrop-filter: blur(4px); /* Safari support */
+
+    padding: 0 8px;
     transition: all 0.4s ease;
     overflow: hidden;
     cursor: pointer;
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 1.2;
+
+    gap: 0.5rem;
   }
 
   .button:hover {
     width: 320px;
-    align-items: center;
-    justify-content: space-around;
-
-    padding: 0 16px;
     background: linear-gradient(to right, #00b3b3, #008080);
   }
 
   .icon-wrapper {
     width: 120px;
     height: 120px;
+    flex-shrink: 0;
   }
 
   .animated-icon {
     width: 120px;
     height: 120px;
-
     filter: brightness(0) saturate(100%) invert(100%) contrast(200%);
   }
-
   .text_button {
-    display: none;
-    margin-left: 12px;
-    white-space: pre-line; //ensures line breaks show
-    color: white;
-    font-weight: 700;
-    font-size: 1.1rem;
-    line-height: 1.2;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-  }
-
-  .button:hover .text_button {
-    display: block;
+    max-width: 200px;
+    overflow: hidden;
   }
 `;

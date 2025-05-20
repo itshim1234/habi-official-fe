@@ -20,7 +20,7 @@ const CalculatorButton = ({ isAppLoaded, className, onClickCalculator }) => {
       <div className={className}>
         <SparkleButton
           onClick={onClickCalculator}
-          text={"Construction\nCost Calculator"}
+          text={"Construction | Cost Calculator"}
           isCalculator={true}
         />
       </div>

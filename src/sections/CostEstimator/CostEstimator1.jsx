@@ -392,7 +392,7 @@ function CostEstimator1({
   const [detailedCost, setDetailedCost] = useState(false);
   const [costEstimator, setCostEstimator] = useState(false);
   const [contentHeight, setContentHeight] = useState(0);
-  const [package1, setPackage] = useState("");
+  const [package1, setPackage] = useState("Essential");
   const [expandedPackage, setExpandedPackage] = useState(null);
   const [halfFloor, setHalfFloor] = useState(false);
   const [basement, setBasement] = useState(false);
@@ -447,7 +447,7 @@ function CostEstimator1({
     setHalfFloor(!halfFloor);
   };
   const setBasement1 = () => {
-    setBasement(!basement);
+    setBasement((prev) => !prev);
   };
 
   const packageSet = (typeOfPackage) => {
@@ -479,6 +479,7 @@ function CostEstimator1({
     sumpBuilt: 0,
     sumpPrice: 0,
     estimatedCost: 0,
+
     totalCost: 0,
   });
 
@@ -494,6 +495,7 @@ function CostEstimator1({
   var floorHeightCost = 0;
   var finalSumpCost = 0;
   var baseCost = 0;
+
   const calculateArea = () => {
     const {
       side1,
@@ -545,13 +547,18 @@ function CostEstimator1({
     const calculatedSumpCapacity = 5000 * floors;
     var ActualSump = 0;
 
+
+
     if (calculatedSumpCapacity > baseSumpCost) {
       ActualSump = calculatedSumpCapacity - baseSumpCost;
     }
 
+
     // Final sump cost, ensuring it respects the package default
     finalSumpCost = ActualSump * 17;
     setFinalSumpCost(finalSumpCost);
+
+
 
     // Calculate the built-up area and cost multiplier
     if (area > 0) {
@@ -562,29 +569,32 @@ function CostEstimator1({
 
       // Add basement if selected
       if (basement) {
+
         builtUp += area * 0.9;
       }
 
       // Add floors (1st to 5th) if selected
       builtUp += aboveGroundFloors * area * 0.85;
 
+   
+
       // Save the calculated builtUp to state
 
-      setBuiltUp(builtUp);
+    
 
-      if (halfFloor) {
-        builtUp -= 200;
-
+      if (halfFloor && floors >= 1) {
         if (area <= 1200) {
-          builtUp += 0.5 * area;
+          builtUp += 0.85 * 0.5 * area;
         } else if (area <= 1500) {
-          builtUp += 0.4 * area;
+          builtUp += 0.85 * 0.4 * area;
         } else if (area <= 1800) {
-          builtUp += 0.35 * area;
+          builtUp += 0.85 * 0.35 * area;
         } else if (area <= 2400) {
-          builtUp += 0.25 * area;
+          builtUp += 0.85 * 0.25 * area;
         }
       }
+
+      setBuiltUp(builtUp);
     }
 
     const costMultiplier =
@@ -603,20 +613,38 @@ function CostEstimator1({
         : 0;
 
     // Calculate the final cost
-    var cost = builtUp * costMultiplier;
+   
+    //calculating cost only for floors
+
+    var cost = 0;
+    if (basement) {
+      var modifiedBuiltUp = builtUp - area * 0.9;
+      cost = modifiedBuiltUp * costMultiplier;
+    } else {
+
+      cost = builtUp * costMultiplier;
+
+    }
+
 
     if (basement) {
       if (package1 === "Essential" || package1 === "EssentialPlus") {
-        baseCost = area * 1 * 1400;
+
+        baseCost = area * 0.9 * 1400;
       } else if (package1 === "Premium" || package1 === "PremiumPlus") {
-        baseCost = area * 1 * 1500;
+        baseCost = area * 0.9 * 1500;
       } else if (package1 === "Luxury" || package1 === "LuxuryPlus") {
-        baseCost = area * 1 * 1600;
+        baseCost = area * 0.9 * 1600;
       }
-      setBasementCost(baseCost);
+    } else {
+      baseCost = 0;
     }
 
+    setBasementCost(baseCost);
+
+
     cost = cost + finalSumpCost + baseCost;
+
 
     var x = 0;
 
@@ -652,7 +680,7 @@ function CostEstimator1({
 
   useEffect(() => {
     calculateCost();
-  }, [inputs, package1, halfFloor, basement]);
+  }, [inputs, package1, halfFloor, basement, basementCost]);
 
   useEffect(() => {
     Object.entries(inputs).forEach(([key, value]) => {
@@ -952,10 +980,14 @@ function CostEstimator1({
                     </button>
                   </div>
                   <PriceComparison
-                    builtUp={builtUp1}
+                    builtUp={
+                      basement ? builtUp1 - results.siteArea * 0.9 : builtUp1
+                    }
                     package1={package1}
                     floorHeightCost={floorHeightCost1}
+                    basementCost={basementCost}
                     sumpCost={finalSumpCost1}
+                    isBasementSelected={basement}
                   />
                 </div>
               </div>

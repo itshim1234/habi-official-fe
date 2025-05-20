@@ -25,7 +25,7 @@ function ProgressBar({ completed }) {
     if (!completed && index < messages.length - 1) {
       const timeout = setTimeout(() => {
         setIndex(index + 1);
-      }, 3000);
+      }, 1000);
       return () => clearTimeout(timeout);
     }
   }, [index, completed]);

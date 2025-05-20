@@ -12,6 +12,8 @@ const FlipCard = ({
 }) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
+
+
   return (
     <div className="relative grid grid-cols-1 md:grid-cols-3 gap-4 lg:ml-3 xl:ml-14">
       <div
@@ -207,4 +209,3 @@ const FlipCard = ({
 };
 
 export default FlipCard;
-

@@ -1,46 +1,87 @@
 import React, { useMemo } from "react";
 
-const PriceComparison = ({ builtUp, floorHeightCost, sumpCost, package1 }) => {
+const PriceComparison = ({
+  builtUp,
+  floorHeightCost,
+  sumpCost,
+  package1,
+  isBasementSelected,
+  basementCost,
+}) => {
+  console.log(
+    "  builtUp basementCost,   sumpCost floorHeightCost isBasementSelected ",
+    builtUp,
+    basementCost,
+    sumpCost,
+    floorHeightCost,
+    isBasementSelected
+  );
   const plans = useMemo(
     () => [
       {
         name: "Essential",
         id: "Essential",
-        price: builtUp * 2100 + floorHeightCost + sumpCost,
+        price:
+          builtUp * 2100 +
+          floorHeightCost +
+          sumpCost +
+          (isBasementSelected ? basementCost : 0),
       },
 
       {
         name: "Premium",
         id: "Premium",
-        price: builtUp * 2450 + floorHeightCost + sumpCost,
+        price:
+          builtUp * 2450 +
+          floorHeightCost +
+          sumpCost +
+          (isBasementSelected ? basementCost : 0),
       },
 
       {
         name: "Luxury",
         id: "Luxury",
-        price: builtUp * 2750 + floorHeightCost + sumpCost,
+        price:
+          builtUp * 2750 +
+          floorHeightCost +
+          sumpCost +
+          (isBasementSelected ? basementCost : 0),
       },
       {
         name: "Essential Plus",
         id: "EssentialPlus",
 
-        price: builtUp * 2400 + floorHeightCost + sumpCost,
+        price:
+          builtUp * 2400 +
+          floorHeightCost +
+          sumpCost +
+          (isBasementSelected ? basementCost : 0),
       },
       {
         name: "Premium Plus",
         id: "PremiumPlus",
 
-        price: builtUp * 2850 + floorHeightCost + sumpCost,
+        price:
+          builtUp * 2850 +
+          floorHeightCost +
+          sumpCost +
+          (isBasementSelected ? basementCost : 0),
       },
       {
         name: "Luxury Plus",
         id: "LuxuryPlus",
 
-        price: builtUp * 3250 + floorHeightCost + sumpCost,
+        price:
+          builtUp * 3250 +
+          floorHeightCost +
+          sumpCost +
+          (isBasementSelected ? basementCost : 0),
       },
     ],
-    [builtUp, floorHeightCost, sumpCost]
+    [builtUp, floorHeightCost, sumpCost, isBasementSelected, basementCost]
   );
+
+ 
 
   return (
     <div className="bg-black text-white py-10 flex flex-col items-center">

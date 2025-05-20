@@ -51,6 +51,9 @@ function App() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const isCalculatorRoute =
+    location.pathname === "/Construction-Cost-Calculator";
+
   useEffect(() => {
     // Check if the preloader has already been shown in this session
     if (!sessionStorage.getItem("hasLoaded")) {
@@ -179,7 +182,8 @@ function App() {
         </div>
       )}
 
-      {!isPreloading && isAppLoaded && (
+      {/* {!isPreloading && isAppLoaded && ( */}
+      {!isCalculatorRoute && (
         <CalculatorButton
           className="hidden sm:block"
           isAppLoaded={isAppLoaded}
