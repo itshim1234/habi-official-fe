@@ -16,6 +16,7 @@ export default {
         primary: "#0FB4C3",
         secondary: "#ffb969",
         customGray: "#7C7C7C",
+        layoutColor: "#000000",
       },
     },
     animation: {

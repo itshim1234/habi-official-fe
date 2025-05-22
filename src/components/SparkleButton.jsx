@@ -3,18 +3,34 @@ import styled, { keyframes } from "styled-components";
 import arrow from "../assets/images/ArrowRight.webp";
 import Lottie from "lottie-react";
 import animationData from "../assets/animation.json";
+import homeAnimation from "../assets/homeButtonAnimation.json";
 
-const SparkleButton = ({ text, isCalculator = false, onClick }) => {
+const SparkleButton = ({
+  text,
+  isCalculator = false,
+  onClick,
+  animationData: customAnimation,
+}) => {
   if (isCalculator) {
     const lines = text.split("|");
     return (
       <CalculatorButtonWrapper>
         <button className="button  font-gilroyS" onClick={onClick}>
-          <div className="icon-wrapper">
+          <div
+            className="icon-wrapper"
+            style={{
+              width: customAnimation === homeAnimation ? 70 : 120,
+              height: customAnimation === homeAnimation ? 70 : 120,
+            }}
+          >
             <Lottie
-              animationData={animationData}
+              animationData={customAnimation || animationData}
               loop
               className="animated-icon"
+              style={{
+                width: customAnimation === homeAnimation ? 70 : 120,
+                height: customAnimation === homeAnimation ? 70 : 120,
+              }}
             />
           </div>
 
@@ -233,35 +249,45 @@ const CalculatorButtonWrapper = styled.div`
     height: 110px;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     color: white;
-
     border: none;
     border-top-left-radius: 90px;
     border-bottom-left-radius: 90px;
-
-    background: rgba(53, 50, 50, 0.3); /* 30% opacity */
+    background: rgba(53, 50, 50, 0.3);
     border-width: 2px;
     border-color: rgba(255, 255, 255, 0.2);
     border-right: 0px;
     border-style: solid;
-    backdrop-filter: blur(16px); /* Same as Tailwind's backdrop-blur-sm */
-    -webkit-backdrop-filter: blur(4px); /* Safari support */
-
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(4px);
     padding: 0 8px;
+    padding-left: 40px;
     transition: all 0.4s ease;
     overflow: hidden;
     cursor: pointer;
     font-weight: 700;
     font-size: 1.1rem;
     line-height: 1.2;
-
     gap: 0.5rem;
+    position: relative;
+  }
+
+  .text_button {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    white-space: nowrap;
   }
 
   .button:hover {
     width: 320px;
     background: linear-gradient(to right, #00b3b3, #008080);
+  }
+
+  .button:hover .text_button {
+    opacity: 1;
+    transform: translateX(0);
   }
 
   .icon-wrapper {
@@ -271,12 +297,6 @@ const CalculatorButtonWrapper = styled.div`
   }
 
   .animated-icon {
-    width: 120px;
-    height: 120px;
     filter: brightness(0) saturate(100%) invert(100%) contrast(200%);
-  }
-  .text_button {
-    max-width: 200px;
-    overflow: hidden;
   }
 `;

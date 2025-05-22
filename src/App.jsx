@@ -37,6 +37,7 @@ import ConsultationPopup from "./sections/Hero/ConsultationPopup";
 // Memoize Footer to prevent unnecessary re-renders
 const Footer = memo(lazy(() => import("./sections/Footer/Footer")));
 import QuotationPopup from "./sections/Quotation/QuotationPopup";
+import HomeButton from "./components/HomeButton";
 
 function App() {
   const [isPreloading, setIsPreloading] = useState(false);
@@ -50,6 +51,8 @@ function App() {
   const [isAppLoaded, setIsAppLoaded] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+
+  const isHomeRoute = location.pathname === "/";
 
   const isCalculatorRoute =
     location.pathname === "/Construction-Cost-Calculator";
@@ -85,6 +88,10 @@ function App() {
   };
   const handleCalculatorClick = () => {
     navigate("/Construction-Cost-Calculator");
+  };
+
+  const handleHomeButtonClick = () => {
+    navigate("/");
   };
 
   useEffect(() => {
@@ -155,7 +162,6 @@ function App() {
           <Route path="/abc" element={<ProgressBar />} />
         </Routes>
       </Suspense>
-
       {/* Render Footer only if it's not the Projects page */}
       {location.pathname !== "/project" && <Footer />}
       {isPopupVisible && (
@@ -163,7 +169,6 @@ function App() {
           <ConsultationPopup onClose={togglePopup} />
         </div>
       )}
-
       {isQuotationVisible && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-md">
           <QuotationPopup
@@ -175,19 +180,24 @@ function App() {
           />
         </div>
       )}
-
       {isProgressBarVisible && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-md">
           <ProgressBar completed={completed} />
         </div>
       )}
-
       {/* {!isPreloading && isAppLoaded && ( */}
-      {!isCalculatorRoute && (
+
+      {isHomeRoute && (
         <CalculatorButton
           className="hidden sm:block"
           isAppLoaded={isAppLoaded}
           onClickCalculator={handleCalculatorClick}
+        />
+      )}
+      {isCalculatorRoute && (
+        <HomeButton
+          className="hidden sm:block"
+          onClick={handleHomeButtonClick}
         />
       )}
     </div>

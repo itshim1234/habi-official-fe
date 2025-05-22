@@ -40,14 +40,14 @@ const BarGraph = ({ scheduleData, totalEstimatedCost }) => {
       <h2 className="text-center text-2xl lg:text-[32px] font-giloryB text-white mt-10">
         Payment Analytics
       </h2>
-      <div className="bar-graph-wrapper md:rotate-0">
+      <div className="bar-graph-wrapper rotate-90   md:rotate-0">
         <div className="chart-container">
           {/* Y-axis Labels (Hidden on Mobile) */}
           <ul className="meter">
             {yAxisValues.map((amount, index) => {
               console.log("Rendering Y-axis label:", amount);
               return (
-                <li key={index}>
+                <li key={index} className="md:rotate-0 rotate-[-90deg]">
                   <div>₹{amount.toLocaleString("en-IN")}</div>
                 </li>
               );
@@ -101,7 +101,10 @@ const BarGraph = ({ scheduleData, totalEstimatedCost }) => {
             {scheduleData.slice(0, -1).map((data, index) => {
               console.log("Rendering X-axis label:", data.title);
               return (
-                <div key={index} className="x-axis-label">
+                <div
+                  key={index}
+                  className="x-axis-label md:rotate-0 rotate-[-90deg]"
+                >
                   {data.title}
                 </div>
               );
@@ -114,3 +117,31 @@ const BarGraph = ({ scheduleData, totalEstimatedCost }) => {
 };
 
 export default BarGraph;
+
+// import React, { useState, useEffect } from "react";
+// import BarGraphMobile from "./BarGraphMobile";
+// import BarGraphDesktop from "./BarGraphDesktop"; // your existing version
+
+// const BarGraph = ({ scheduleData, totalEstimatedCost }) => {
+//   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+//   useEffect(() => {
+//     const handleResize = () => setIsMobile(window.innerWidth <= 768);
+//     window.addEventListener("resize", handleResize);
+//     return () => window.removeEventListener("resize", handleResize);
+//   }, []);
+
+//   return isMobile ? (
+//     <BarGraphMobile
+//       scheduleData={scheduleData}
+//       totalEstimatedCost={totalEstimatedCost}
+//     />
+//   ) : (
+//     <BarGraphDesktop
+//       scheduleData={scheduleData}
+//       totalEstimatedCost={totalEstimatedCost}
+//     />
+//   );
+// };
+
+// export default BarGraph;

@@ -170,7 +170,7 @@ function QuotationPopup({
               <input
                 type="text"
                 placeholder="00000 00000"
-                className="w-full border bg-layoutColor text-white border-gray-300 border-l-transparent rounded-r-lg py-2 px-3 focus:outline-none"
+                className="w-full border bg-transparent text-white border-gray-300 border-l-transparent rounded-r-lg py-2 px-3 focus:outline-none"
                 value={phone}
                 onChange={(e) =>
                   setPhone(e.target.value.replace(/\D/g, "").slice(0, 10))

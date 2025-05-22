@@ -35,28 +35,62 @@
 }
 
 /* Mobile View (Horizontal Graph) */
+/* Horizontal bar styles for mobile only */
 @media screen and (max-width: 768px) {
-  .chart-container {
-    flex-direction: row;
-    overflow-x: scroll;
-    height: 300px;
+  .bar-graph-wrapper-horizontal {
+    padding: 20px;
+    overflow-x: auto;
   }
 
-  .bar {
-    width: 30px;
-    transform-origin: bottom;
-    transform: rotate(-90deg);
-  }
-
-  .x-axis {
+  .chart-container-horizontal {
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    height: 100%;
+    gap: 12px;
   }
 
-  .x-axis-label {
-    writing-mode: vertical-lr;
-    transform: rotate(180deg);
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .y-label {
+    width: 130px;
+    font-size: 14px;
+    color: white;
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  .bar-horizontal {
+    height: 30px;
+    background-color: #4caf50;
+    position: relative;
+    transition: width 0.3s ease-in-out;
+    min-width: 10px;
+  }
+
+  .tooltip-horizontal {
+    position: absolute;
+    right: 0;
+    top: -30px;
+    background: #222;
+    color: #fff;
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 4px;
     white-space: nowrap;
+  }
+
+  .x-axis-horizontal {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-left: 130px; /* align with y-label width */
+  }
+
+  .x-axis-mark {
+    font-size: 12px;
+    color: white;
   }
 }

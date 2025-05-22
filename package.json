@@ -19,6 +19,7 @@
     "framer-motion": "^12.4.2",
     "gl-matrix": "^3.4.3",
     "globby": "^14.1.0",
+    "gsap": "^3.13.0",
     "html2canvas": "^1.4.1",
     "html2pdf.js": "^0.10.2",
     "imagemin": "^9.0.1",
