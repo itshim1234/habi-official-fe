@@ -2,25 +2,21 @@ import React, { useState, useEffect } from "react";
 import WorkingMobile from "./WorkingMobile";
 import WorkingLaptop from "./WorkingLaptop";
 
-function Working() {
-  const [isMobile, setIsMobile] = useState(isMobileDevice());
+const Working = () => {
+  const [isMobile, setIsMobile] = React.useState(false);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(isMobileDevice());
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
     };
 
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  return <>{isMobile ? <WorkingMobile /> : <WorkingLaptop />}</>;
-}
-
-function isMobileDevice() {
-  return window.innerWidth <= 768; // Define your mobile breakpoint
-}
+  return isMobile ? <WorkingMobile /> : <WorkingLaptop />;
+};
 
 export default Working;

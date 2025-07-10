@@ -1,11 +1,15 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import meetUs from "../../assets/images/meetUs.webp";
 import designWork from "../../assets/images/designWork.webp";
 import finalize from "../../assets/images/finalize.webp";
 import track from "../../assets/images/track1.webp";
 import handover from "../../assets/images/handover.webp";
-import star from "../../assets/images/star.webp";
 import loopVideo from "../../assets/videos/loopVideo.mp4";
+import star from "../../assets/images/star.webp";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const stages = [
   {
@@ -45,51 +49,39 @@ const stages = [
   },
 ];
 
-function WorkingMobile() {
-  const [currentStage, setCurrentStage] = useState(0);
-  const [isInViewport, setIsInViewport] = useState(false);
-  const sectionRef = useRef(null);
+const WorkingMobile = () => {
+  const containerRef = useRef(null);
+  const stageRefs = useRef([]);
 
-  // Intersection Observer to detect when the section is in viewport
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsInViewport(true);
-        } else {
-          setIsInViewport(false);
+    const ctx = gsap.context(() => {
+      stages.forEach((_, index) => {
+        const stage = stageRefs.current[index];
+        if (stage) {
+          gsap.to(stage, {
+            scale: 0.7,
+            opacity: 0,
+            rotationX: 45,
+            scrollTrigger: {
+              trigger: stage,
+              start: "top 15%",
+              end: "bottom 15%",
+              scrub: 1,
+              invalidateOnRefresh: true,
+            },
+          });
         }
-      },
-      { threshold: 0.5 } // Trigger when 50% of the component is visible
-    );
+      });
+    }, containerRef);
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) observer.disconnect();
-    };
+    return () => ctx.revert();
   }, []);
 
-  // Automatically change stages when in viewport
-  useEffect(() => {
-    if (!isInViewport) return;
-
-    const interval = setInterval(() => {
-      setCurrentStage((prevStage) => (prevStage + 1) % stages.length);
-    }, 2000);
-
-    return () => clearInterval(interval);
-  }, [isInViewport]);
-
   return (
-    <div
-      ref={sectionRef}
-      className="relative h-fit lg:h-screen w-full text-white flex items-center justify-center bg-transparent"
-    >
+    <div ref={containerRef} className="relative min-h-screen w-full bg-black">
+      {/* Background Video */}
       <video
-        className={`absolute top-0 left-0 w-full object-cover h-full`}
+        className="fixed top-0 left-0 w-full h-full object-cover z-0"
         autoPlay
         muted
         loop
@@ -97,44 +89,62 @@ function WorkingMobile() {
       >
         <source src={loopVideo} type="video/mp4" />
       </video>
-      <div className="text-center h-full bg-transparent z-10">
-        <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-giloryB my-14 mb-16">
-          How it Works?
-        </h2>
 
-        {/* Stage card */}
-        <div className="relative lg:absolute lg:right-20 2xl:right-64 bg-transparent backdrop-blur-md rounded-2xl border border-white/40 w-[300px] h-[240px] md:w-[714px] md:h-[487px] lg:w-[40vw] lg:h-[60vh] items-center justify-center mx-auto">
-          <img
-            src={stages[currentStage]?.image}
-            alt={stages[currentStage]?.title || "Default Title"}
-            className="w-full h-full object-contain"
-          />
-          <img
-            src={star}
-            alt="star"
-            className="absolute right-0 -bottom-5 md:-bottom-8 w-10 md:w-16"
-          />
-          <img
-            src={star}
-            alt="star"
-            className="absolute -right-2 md:-right-4 bottom-2 w-5 md:w-8"
-          />
+      {/* Overlay */}
+      <div className="fixed inset-0 bg-black/60 z-10"></div>
+
+      {/* Content */}
+      <div className="relative z-20 text-white">
+        <div className="text-center py-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-16">
+            How it Works?
+          </h2>
         </div>
 
-        {/* Stage number */}
-        <h3 className="lg:absolute left-20  top-52 text-[24px] md:text-[32px] font-giloryS text-[#ffb969] mt-10 mb-4 ">
-          {stages[currentStage]?.title || "Default Title"}
-        </h3>
-        <p className="lg:absolute h-20 lg:text-left  text-[16px] md:text-[18px] lg:text-[24px] font-giloryM  w-[400px] lg:w-[500px] mx-auto px-2">
-          {stages[currentStage]?.description || "Default Description"}
-        </p>
-      </div>
-      <div className="absolute left-[6%] lg:left-2 2xl:left-64 -bottom-24 2xl:bottom-20 text-[200px] text-stroke font-larken z-0">
-        {stages[currentStage]?.number || 0}
+        {/* Stages */}
+        <div className="flex flex-col gap-6 px-4 pb-16">
+          {stages.map((stage, index) => (
+            <div
+              key={index}
+              ref={(el) => (stageRefs.current[index] = el)}
+              className="stage-card sticky top-16 min-h-screen flex items-center justify-center"
+            >
+              <div className="relative w-full max-w-md mx-auto">
+                <div className="text-center space-y-6">
+                  {/* Image */}
+                  <div className="relative bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 overflow-hidden p-6 shadow-xl">
+                    <img
+                      src={stage.image}
+                      alt={stage.title}
+                      className="w-full h-48 object-contain rounded-lg"
+                    />
+                    {/* Decorative Stars */}
+                    <div className="absolute -top-1 -right-1 w-6 h-6 bg-yellow-400 rounded-full animate-pulse"></div>
+                    <div className="absolute top-2 -right-0.5 w-3 h-3 bg-orange-400 rounded-full animate-pulse delay-300"></div>
+                  </div>
+
+                  {/* Number */}
+                  <div className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-500 opacity-30">
+                    {stage.number}
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-2xl font-bold text-orange-400 -mt-4">
+                    {stage.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-base text-gray-300 leading-relaxed">
+                    {stage.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default WorkingMobile;
-
