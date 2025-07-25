@@ -5,7 +5,10 @@ import Sitemap from "vite-plugin-sitemap";
 export default defineConfig({
   server: {
     port: 5175,
+    host:true,
+     allowedHosts: ['all'],
   },
+
   plugins: [
     react(),
     Sitemap({

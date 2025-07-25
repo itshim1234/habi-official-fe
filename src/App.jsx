@@ -38,6 +38,8 @@ import ConsultationPopup from "./sections/Hero/ConsultationPopup";
 const Footer = memo(lazy(() => import("./sections/Footer/Footer")));
 import QuotationPopup from "./sections/Quotation/QuotationPopup";
 import HomeButton from "./components/HomeButton";
+import AllBlogs from "./Blogs/AllBlogs";
+import BlogGenerator from "./BlogGenerator/BlogGenerator";
 
 function App() {
   const [isPreloading, setIsPreloading] = useState(false);
@@ -136,6 +138,10 @@ function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/project" element={<ProjectExpand />} />
           <Route path="/terms-and-condition" element={<TermsAndCondition />} />
+          {/* <Route path="/blogs" element={<AllBlogs />} />
+          <Route path="/create" element={<BlogGenerator />} /> */}
+          
+          
 
           {/* this is opening same constedtimator comonent with one extra props */}
           <Route
