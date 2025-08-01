@@ -19,12 +19,11 @@ export default defineConfig({
         "/baap",
         "/privacy-policy",
         "/terms-and-condition",
+        "/blogs",
+        "/login",
+        "/admin",
       ],
-      generateRobotsTxt: true,
-      robotsTxtOptions: {
-        policies: [{ userAgent: "*", allow: "/" }],
-        sitemap: "https://habi.one/sitemap.xml",
-      },
+      generateRobotsTxt: false,
     }),
   ],
   build: {

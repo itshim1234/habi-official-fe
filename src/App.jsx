@@ -180,9 +180,10 @@ function App() {
           />
           <Route path="/abc" element={<ProgressBar />} />
         </Routes>
-              </Suspense>
+        </Suspense>
         {/* Render Footer only if it's not the Projects page */}
         {location.pathname !== "/project" && <Footer />}
+        
         {isPopupVisible && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-md">
             <ConsultationPopup onClose={togglePopup} />
