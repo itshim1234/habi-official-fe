@@ -20,6 +20,19 @@ const BlogEditor = () => {
     }
   }, [id]);
 
+  // Force re-render of ReactQuill when content changes
+  useEffect(() => {
+    if (quillRef.current && formData.content && isEditing) {
+      const quill = quillRef.current.getEditor();
+      if (quill) {
+        // Clear the editor first
+        quill.setText('');
+        // Then set the HTML content
+        quill.root.innerHTML = formData.content;
+      }
+    }
+  }, [formData.content, isEditing]);
+
   const loadBlogData = async () => {
     try {
       setLoading(true);
@@ -169,7 +182,7 @@ const BlogEditor = () => {
   return (
     <div className="min-h-screen bg-[#1a1a1a] py-8">
       <div className="max-w-4xl mx-auto px-4">
-        <div className="bg-gray-900 rounded-lg shadow-xl p-6">
+                 <div className="bg-[#1a1a1a] rounded-lg shadow-xl p-6">
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl font-bold text-white">
               {isEditing ? 'Edit Blog Post' : 'Create New Blog Post'}
@@ -198,7 +211,7 @@ const BlogEditor = () => {
                 type="text"
                 value={formData.title}
                 onChange={handleTitleChange}
-                className="w-full px-3 py-2 border border-gray-600 rounded-md bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                 className="w-full px-3 py-2 border border-gray-600 rounded-md bg-[#1a1a1a] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 placeholder="Enter blog title"
                 required
               />
@@ -234,7 +247,7 @@ const BlogEditor = () => {
                   type="text"
                   value={formData.metaTitle}
                   onChange={(e) => setFormData(prev => ({ ...prev, metaTitle: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-600 rounded-md bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-600 rounded-md bg-[#1a1a1a] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   placeholder="SEO title for search engines"
                 />
               </div>
@@ -247,7 +260,7 @@ const BlogEditor = () => {
                   type="text"
                   value={formData.metaDescription}
                   onChange={(e) => setFormData(prev => ({ ...prev, metaDescription: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-600 rounded-md bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 border border-gray-600 rounded-md bg-[#1a1a1a] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   placeholder="SEO description for search engines"
                 />
               </div>
@@ -258,7 +271,7 @@ const BlogEditor = () => {
               <label className="block text-sm font-medium text-gray-300 mb-2">
                 Tags (press Enter or comma to add)
               </label>
-              <div className="w-full px-3 py-2 border border-gray-600 rounded-md bg-gray-800 text-white focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent">
+              <div className="w-full px-3 py-2 border border-gray-600 rounded-md bg-[#1a1a1a] text-white focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent">
                 <div className="flex flex-wrap gap-2 mb-2">
                   {formData.tags.split(',').map((tag, index) => tag.trim()).filter(tag => tag).map((tag, index) => (
                     <span

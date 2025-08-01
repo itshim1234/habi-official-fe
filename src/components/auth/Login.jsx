@@ -50,34 +50,34 @@ const Login = () => {
               <label htmlFor="email-address" className="block text-sm font-medium text-gray-300">
                 Email address
               </label>
-              <input
-                id="email-address"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-600 placeholder-gray-400 text-white bg-gray-800 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                placeholder="Enter your email"
-              />
+                             <input
+                 id="email-address"
+                 name="email"
+                 type="email"
+                 autoComplete="email"
+                 required
+                 value={email}
+                 onChange={(e) => setEmail(e.target.value)}
+                 className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-600 placeholder-gray-400 text-white bg-[#1a1a1a] rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                 placeholder="Enter your email"
+               />
             </div>
             
             <div>
               <label htmlFor="password" className="block text-sm font-medium text-gray-300">
                 Password
               </label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-600 placeholder-gray-400 text-white bg-gray-800 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                placeholder="Enter your password"
-              />
+                             <input
+                 id="password"
+                 name="password"
+                 type="password"
+                 autoComplete="current-password"
+                 required
+                 value={password}
+                 onChange={(e) => setPassword(e.target.value)}
+                 className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-600 placeholder-gray-400 text-white bg-[#1a1a1a] rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                 placeholder="Enter your password"
+               />
             </div>
           </div>
 

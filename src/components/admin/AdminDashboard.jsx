@@ -126,7 +126,7 @@ const AdminDashboard = () => {
   return (
     <div className="min-h-screen bg-[#1a1a1a] py-8">
       <div className="max-w-6xl mx-auto px-4">
-        <div className="bg-gray-900 rounded-lg shadow-xl p-6">
+        <div className="bg-[#1a1a1a] rounded-lg shadow-xl p-6">
           {/* Header */}
           <div className="flex justify-between items-center mb-6">
             <div>
@@ -146,12 +146,6 @@ const AdminDashboard = () => {
               >
                 {showInviteForm ? 'Cancel Invite' : 'Invite Author'}
               </button>
-              <button
-                onClick={handleLogout}
-                className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md transition-colors"
-              >
-                Logout
-              </button>
             </div>
           </div>
 
@@ -161,9 +155,9 @@ const AdminDashboard = () => {
             </div>
           )}
 
-          {/* Invite User Form */}
-          {showInviteForm && (
-            <div className="mb-6 bg-gray-800 rounded-lg p-6">
+                     {/* Invite User Form */}
+           {showInviteForm && (
+             <div className="mb-6 bg-[#1a1a1a] rounded-lg p-6">
               <h3 className="text-lg font-semibold text-white mb-4">Invite New Author</h3>
               <form onSubmit={handleInviteUser} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -171,40 +165,40 @@ const AdminDashboard = () => {
                     <label className="block text-sm font-medium text-gray-300 mb-2">
                       Email
                     </label>
-                    <input
-                      type="email"
-                      value={inviteForm.email}
-                      onChange={(e) => setInviteForm(prev => ({ ...prev, email: e.target.value }))}
-                      className="w-full px-3 py-2 border border-gray-600 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="author@example.com"
-                      required
-                    />
+                                         <input
+                       type="email"
+                       value={inviteForm.email}
+                       onChange={(e) => setInviteForm(prev => ({ ...prev, email: e.target.value }))}
+                       className="w-full px-3 py-2 border border-gray-600 rounded-md bg-[#1a1a1a] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                       placeholder="author@example.com"
+                       required
+                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-300 mb-2">
                       Password
                     </label>
-                    <input
-                      type="password"
-                      value={inviteForm.password}
-                      onChange={(e) => setInviteForm(prev => ({ ...prev, password: e.target.value }))}
-                      className="w-full px-3 py-2 border border-gray-600 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Temporary password"
-                      required
-                    />
+                                         <input
+                       type="password"
+                       value={inviteForm.password}
+                       onChange={(e) => setInviteForm(prev => ({ ...prev, password: e.target.value }))}
+                       className="w-full px-3 py-2 border border-gray-600 rounded-md bg-[#1a1a1a] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                       placeholder="Temporary password"
+                       required
+                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-300 mb-2">
                       Display Name
                     </label>
-                    <input
-                      type="text"
-                      value={inviteForm.displayName}
-                      onChange={(e) => setInviteForm(prev => ({ ...prev, displayName: e.target.value }))}
-                      className="w-full px-3 py-2 border border-gray-600 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Author Name"
-                      required
-                    />
+                                         <input
+                       type="text"
+                       value={inviteForm.displayName}
+                       onChange={(e) => setInviteForm(prev => ({ ...prev, displayName: e.target.value }))}
+                       className="w-full px-3 py-2 border border-gray-600 rounded-md bg-[#1a1a1a] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                       placeholder="Author Name"
+                       required
+                     />
                   </div>
                 </div>
                 <button
@@ -221,7 +215,7 @@ const AdminDashboard = () => {
           {/* Blog Posts Table */}
           <div className="overflow-x-auto">
             <table className="w-full text-left text-gray-300">
-              <thead className="text-sm uppercase bg-gray-800">
+                             <thead className="text-sm uppercase bg-[#1a1a1a]">
                 <tr>
                   <th className="px-6 py-3">Title</th>
                   <th className="px-6 py-3">Author</th>
@@ -231,8 +225,8 @@ const AdminDashboard = () => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-700">
-                {blogs.map((blog) => (
-                  <tr key={blog.id} className="hover:bg-gray-800/50">
+                                 {blogs.map((blog) => (
+                   <tr key={blog.id} className="hover:bg-[#1a1a1a]/50">
                     <td className="px-6 py-4">
                       <div>
                         <div className="font-medium text-white">{blog.title}</div>

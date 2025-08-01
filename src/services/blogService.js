@@ -74,9 +74,30 @@ export const getPublishedBlogs = async () => {
     return blogs;
   } catch (error) {
     console.error('Error getting published blogs:', error);
-    // If it's an index error, provide helpful message
+    // If it's an index error, try a simpler query without ordering
     if (error.message.includes('index')) {
-      throw new Error('Database index not ready. Please wait a moment and try again, or contact support if the issue persists.');
+      try {
+        console.log('Trying fallback query without ordering...');
+        const fallbackQuery = query(
+          collection(db, BLOGS_COLLECTION),
+          where('published', '==', true)
+        );
+        const fallbackSnapshot = await getDocs(fallbackQuery);
+        const blogs = [];
+        fallbackSnapshot.forEach((doc) => {
+          blogs.push({ id: doc.id, ...doc.data() });
+        });
+        // Sort manually in JavaScript
+        blogs.sort((a, b) => {
+          const dateA = a.createdAt?.toDate ? a.createdAt.toDate() : new Date(a.createdAt);
+          const dateB = b.createdAt?.toDate ? b.createdAt.toDate() : new Date(b.createdAt);
+          return dateB - dateA;
+        });
+        return blogs;
+      } catch (fallbackError) {
+        console.error('Fallback query also failed:', fallbackError);
+        throw new Error('Database index not ready. Please click the link in the error message to create the required index, or contact support if the issue persists.');
+      }
     }
     throw error;
   }
@@ -157,9 +178,9 @@ export const getFeaturedBlog = async () => {
     return null;
   } catch (error) {
     console.error('Error getting featured blog:', error);
-    // If it's an index error, provide helpful message
+    // If it's an index error, provide helpful message with direct link
     if (error.message.includes('index')) {
-      throw new Error('Database index not ready. Please wait a moment and try again, or contact support if the issue persists.');
+      throw new Error('Database index not ready. Please click the link in the error message to create the required index, or contact support if the issue persists.');
     }
     throw error;
   }
@@ -182,9 +203,9 @@ export const getRecentBlogs = async (limit = 6) => {
     return blogs.slice(1, limit + 1);
   } catch (error) {
     console.error('Error getting recent blogs:', error);
-    // If it's an index error, provide helpful message
+    // If it's an index error, provide helpful message with direct link
     if (error.message.includes('index')) {
-      throw new Error('Database index not ready. Please wait a moment and try again, or contact support if the issue persists.');
+      throw new Error('Database index not ready. Please click the link in the error message to create the required index, or contact support if the issue persists.');
     }
     throw error;
   }
