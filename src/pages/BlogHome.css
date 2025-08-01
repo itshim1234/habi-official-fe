@@ -1,0 +1,78 @@
+/* Blog Home Styles */
+.blog-card {
+  transition: all 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.featured-blog {
+  transition: all 0.3s ease;
+}
+
+.featured-blog:hover {
+  transform: scale(1.02);
+}
+
+/* Image hover effects */
+.blog-image {
+  transition: transform 0.3s ease;
+}
+
+.blog-card:hover .blog-image {
+  transform: scale(1.05);
+}
+
+/* Tag styles */
+.blog-tag {
+  transition: all 0.2s ease;
+}
+
+.blog-tag:hover {
+  background-color: rgba(59, 130, 246, 0.3);
+}
+
+/* Loading animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.loading-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 768px) {
+  .featured-blog {
+    flex-direction: column;
+  }
+  
+  .featured-blog .md\:w-1\/2 {
+    width: 100%;
+  }
+}
+
+/* Custom scrollbar for blog content */
+.prose::-webkit-scrollbar {
+  width: 8px;
+}
+
+.prose::-webkit-scrollbar-track {
+  background: #374151;
+}
+
+.prose::-webkit-scrollbar-thumb {
+  background: #6b7280;
+  border-radius: 4px;
+}
+
+.prose::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+} 

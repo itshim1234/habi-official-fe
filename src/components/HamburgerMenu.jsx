@@ -46,11 +46,11 @@ const HamburgerMenu = ({ isMenuOpen, setIsMenuOpen }) => {
           <button
             className="text-white text-[18px]"
             onClick={() => {
-              navigate("/");
+              navigate("/blogs");
               setIsMenuOpen(false);
             }}
           >
-            Blog
+            Blogs
           </button>
           <hr className="my-2 w-[70%] mx-auto" />
           <button

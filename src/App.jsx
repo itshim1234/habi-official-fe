@@ -40,6 +40,12 @@ import QuotationPopup from "./sections/Quotation/QuotationPopup";
 import HomeButton from "./components/HomeButton";
 import AllBlogs from "./Blogs/AllBlogs";
 import BlogGenerator from "./BlogGenerator/BlogGenerator";
+import BlogHome from "./pages/BlogHome";
+import BlogPost from "./pages/BlogPost";
+import Login from "./components/auth/Login";
+import AdminDashboard from "./components/admin/AdminDashboard";
+import BlogEditor from "./components/blog/BlogEditor";
+import { AuthProvider } from "./contexts/AuthContext";
 
 function App() {
   const [isPreloading, setIsPreloading] = useState(false);
@@ -118,9 +124,10 @@ function App() {
   }
 
   return (
-    <div className="overflow-x-hidden bg-black">
-      {/* Suspense for lazy-loaded components */}
-      <Suspense fallback={<div className="loading-screen"></div>}>
+    <AuthProvider>
+      <div className="overflow-x-hidden bg-black">
+        {/* Suspense for lazy-loaded components */}
+        <Suspense fallback={<div className="loading-screen"></div>}>
         <Routes>
           <Route
             path="/"
@@ -138,12 +145,18 @@ function App() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/project" element={<ProjectExpand />} />
           <Route path="/terms-and-condition" element={<TermsAndCondition />} />
+          
+          {/* Blog Routes */}
+          <Route path="/blogs" element={<BlogHome />} />
+          <Route path="/blogs/:slug" element={<BlogPost />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/create" element={<BlogEditor />} />
+          <Route path="/admin/edit/:id" element={<BlogEditor />} />
+          
+          {/* Legacy blog routes (keeping for backward compatibility) */}
           {/* <Route path="/blogs" element={<AllBlogs />} />
           <Route path="/create" element={<BlogGenerator />} /> */}
-          
-          
-
-          {/* this is opening same constedtimator comonent with one extra props */}
           <Route
             path="/Construction-Cost-Calculator"
             element={
@@ -167,46 +180,47 @@ function App() {
           />
           <Route path="/abc" element={<ProgressBar />} />
         </Routes>
-      </Suspense>
-      {/* Render Footer only if it's not the Projects page */}
-      {location.pathname !== "/project" && <Footer />}
-      {isPopupVisible && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-md">
-          <ConsultationPopup onClose={togglePopup} />
-        </div>
-      )}
-      {isQuotationVisible && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-md">
-          <QuotationPopup
-            isVisible={isQuotationVisible}
-            onClose={() => setIsQuotationVisible(false)}
-            quotationData={quotationData}
-            handleProgressiveBar={handleProgress}
-            handleCompleted={handleCompleted}
-          />
-        </div>
-      )}
-      {isProgressBarVisible && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-md">
-          <ProgressBar completed={completed} />
-        </div>
-      )}
-      {/* {!isPreloading && isAppLoaded && ( */}
+              </Suspense>
+        {/* Render Footer only if it's not the Projects page */}
+        {location.pathname !== "/project" && <Footer />}
+        {isPopupVisible && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-md">
+            <ConsultationPopup onClose={togglePopup} />
+          </div>
+        )}
+        {isQuotationVisible && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-md">
+            <QuotationPopup
+              isVisible={isQuotationVisible}
+              onClose={() => setIsQuotationVisible(false)}
+              quotationData={quotationData}
+              handleProgressiveBar={handleProgress}
+              handleCompleted={handleCompleted}
+            />
+          </div>
+        )}
+        {isProgressBarVisible && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/10 backdrop-blur-md">
+            <ProgressBar completed={completed} />
+          </div>
+        )}
+        {/* {!isPreloading && isAppLoaded && ( */}
 
-      {isHomeRoute && (
-        <CalculatorButton
-          className="hidden sm:block"
-          isAppLoaded={isAppLoaded}
-          onClickCalculator={handleCalculatorClick}
-        />
-      )}
-      {isCalculatorRoute && (
-        <HomeButton
-          className="hidden sm:block"
-          onClick={handleHomeButtonClick}
-        />
-      )}
-    </div>
+        {isHomeRoute && (
+          <CalculatorButton
+            className="hidden sm:block"
+            isAppLoaded={isAppLoaded}
+            onClickCalculator={handleCalculatorClick}
+          />
+        )}
+        {isCalculatorRoute && (
+          <HomeButton
+            className="hidden sm:block"
+            onClick={handleHomeButtonClick}
+          />
+        )}
+      </div>
+    </AuthProvider>
   );
 }
 
