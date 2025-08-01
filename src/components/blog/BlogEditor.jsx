@@ -3,18 +3,45 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import './BlogEditor.css';
 import { useAuth } from '../../contexts/AuthContext';
-import { createBlog, updateBlog } from '../../services/blogService';
+import { createBlog, updateBlog, getBlogById } from '../../services/blogService';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const BlogEditor = () => {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
   const { id } = useParams();
+  const quillRef = React.useRef();
+  
+  // Load blog data if editing
+  useEffect(() => {
+    if (id) {
+      setIsEditing(true);
+      loadBlogData();
+    }
+  }, [id]);
+
+  const loadBlogData = async () => {
+    try {
+      setLoading(true);
+      const blog = await getBlogById(id);
+      setFormData({
+        title: blog.title || '',
+        content: blog.content || '',
+        metaTitle: blog.metaTitle || '',
+        metaDescription: blog.metaDescription || '',
+        tags: Array.isArray(blog.tags) ? blog.tags.join(', ') : (blog.tags || ''),
+        published: blog.published || false
+      });
+    } catch (error) {
+      setError('Failed to load blog: ' + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
   
   const [formData, setFormData] = useState({
     title: '',
     content: '',
-    slug: '',
     metaTitle: '',
     metaDescription: '',
     tags: '',
@@ -25,17 +52,51 @@ const BlogEditor = () => {
   const [error, setError] = useState('');
   const [isEditing, setIsEditing] = useState(false);
 
+  // Custom image handler
+  const imageHandler = () => {
+    const input = document.createElement('input');
+    input.setAttribute('type', 'file');
+    input.setAttribute('accept', 'image/*');
+    input.click();
+
+    input.onchange = () => {
+      const file = input.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const altText = prompt('Enter alt text for the image:');
+          const quill = quillRef.current.getEditor();
+          const range = quill.getSelection();
+          quill.insertEmbed(range.index, 'image', reader.result, 'user');
+          
+          // Add alt text as data attribute
+          const imgElement = quill.getLeaf(range.index)[0].domNode;
+          if (imgElement && imgElement.tagName === 'IMG') {
+            imgElement.setAttribute('alt', altText || '');
+            imgElement.setAttribute('data-alt', altText || '');
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+    };
+  };
+
   // Quill editor configuration
   const quillModules = {
-    toolbar: [
-      [{ 'header': [1, 2, 3, false] }],
-      ['bold', 'italic', 'underline', 'strike'],
-      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-      [{ 'color': [] }, { 'background': [] }],
-      [{ 'align': [] }],
-      ['link', 'image'],
-      ['clean']
-    ],
+    toolbar: {
+      container: [
+        [{ 'header': [1, 2, 3, false] }],
+        ['bold', 'italic', 'underline', 'strike'],
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+        [{ 'color': [] }, { 'background': [] }],
+        [{ 'align': [] }],
+        ['link', 'image'],
+        ['clean']
+      ],
+      handlers: {
+        image: imageHandler
+      }
+    },
   };
 
   const quillFormats = [
@@ -61,8 +122,7 @@ const BlogEditor = () => {
     const title = e.target.value;
     setFormData(prev => ({
       ...prev,
-      title,
-      slug: generateSlug(title)
+      title
     }));
   };
 
@@ -80,6 +140,7 @@ const BlogEditor = () => {
 
       const blogData = {
         ...formData,
+        slug: generateSlug(formData.title),
         author: currentUser.displayName || currentUser.email,
         authorId: currentUser.uid,
         tags: formData.tags.split(',').map(tag => tag.trim()).filter(tag => tag),
@@ -143,35 +204,24 @@ const BlogEditor = () => {
               />
             </div>
 
-            {/* Slug */}
-            <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
-                Slug
-              </label>
-              <input
-                type="text"
-                value={formData.slug}
-                onChange={(e) => setFormData(prev => ({ ...prev, slug: e.target.value }))}
-                className="w-full px-3 py-2 border border-gray-600 rounded-md bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="blog-post-url"
-              />
-            </div>
+
 
             {/* Content */}
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">
                 Content *
               </label>
-              <div className="bg-white rounded-md">
-                <ReactQuill
-                  value={formData.content}
-                  onChange={(content) => setFormData(prev => ({ ...prev, content }))}
-                  modules={quillModules}
-                  formats={quillFormats}
-                  placeholder="Write your blog content here..."
-                  style={{ height: '300px' }}
-                />
-              </div>
+                          <div className="bg-[#1a1a1a] rounded-md">
+              <ReactQuill
+                ref={quillRef}
+                value={formData.content}
+                onChange={(content) => setFormData(prev => ({ ...prev, content }))}
+                modules={quillModules}
+                formats={quillFormats}
+                placeholder="Write your blog content here..."
+                style={{ height: '300px' }}
+              />
+            </div>
             </div>
 
             {/* SEO Fields */}
@@ -206,15 +256,62 @@ const BlogEditor = () => {
             {/* Tags */}
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">
-                Tags (comma separated)
+                Tags (press Enter or comma to add)
               </label>
-              <input
-                type="text"
-                value={formData.tags}
-                onChange={(e) => setFormData(prev => ({ ...prev, tags: e.target.value }))}
-                className="w-full px-3 py-2 border border-gray-600 rounded-md bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder="architecture, design, construction"
-              />
+              <div className="w-full px-3 py-2 border border-gray-600 rounded-md bg-gray-800 text-white focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-transparent">
+                <div className="flex flex-wrap gap-2 mb-2">
+                  {formData.tags.split(',').map((tag, index) => tag.trim()).filter(tag => tag).map((tag, index) => (
+                    <span
+                      key={index}
+                      className="bg-blue-600 text-white px-2 py-1 rounded-md text-sm flex items-center"
+                    >
+                      {tag}
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const tags = formData.tags.split(',').map(t => t.trim()).filter(t => t && t !== tag);
+                          setFormData(prev => ({ ...prev, tags: tags.join(', ') }));
+                        }}
+                        className="ml-2 text-white hover:text-red-300"
+                      >
+                        ×
+                      </button>
+                    </span>
+                  ))}
+                </div>
+                <input
+                  type="text"
+                  value={formData.tags.split(',').map(t => t.trim()).filter(t => t).length === 0 ? formData.tags : ''}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    if (value.includes(',') || value.includes('Enter')) {
+                      const newTag = value.replace(/[,Enter]/g, '').trim();
+                      if (newTag) {
+                        const existingTags = formData.tags.split(',').map(t => t.trim()).filter(t => t);
+                        const updatedTags = [...existingTags, newTag];
+                        setFormData(prev => ({ ...prev, tags: updatedTags.join(', ') }));
+                        e.target.value = '';
+                      }
+                    } else {
+                      setFormData(prev => ({ ...prev, tags: value }));
+                    }
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter') {
+                      e.preventDefault();
+                      const value = e.target.value.trim();
+                      if (value) {
+                        const existingTags = formData.tags.split(',').map(t => t.trim()).filter(t => t);
+                        const updatedTags = [...existingTags, value];
+                        setFormData(prev => ({ ...prev, tags: updatedTags.join(', ') }));
+                        e.target.value = '';
+                      }
+                    }
+                  }}
+                  className="w-full bg-transparent text-white placeholder-gray-400 focus:outline-none"
+                  placeholder="Type a tag and press Enter or comma"
+                />
+              </div>
             </div>
 
             {/* Publish Toggle */}

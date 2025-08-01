@@ -10,12 +10,24 @@ import youtube from "../../assets/images/youtube.webp";
 import logo from "../../assets/images/Logo2.webp";
 
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 const Footer = () => {
   const navigate = useNavigate();
+  const { currentUser, logout } = useAuth();
+  
   const handleLogoClick = () => {
     navigate("/");
     window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll to the top
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/');
+    } catch (error) {
+      console.error('Failed to log out:', error);
+    }
   };
 
   return (
@@ -135,6 +147,36 @@ const Footer = () => {
 
           <div className="hidden md:inline">
             <h3 className="text-lg md:text-2xl font-giloryS mt-4">Work</h3>
+            {currentUser ? (
+              <p 
+                className="mt-2 flex items-center cursor-pointer hover:text-gray-300 transition-colors"
+                onClick={handleLogout}
+              >
+                <img src={employeeLogin} alt="Logout" className="w-5 h-5 mr-2" />
+                Logout
+              </p>
+            ) : (
+              <p 
+                className="mt-2 flex items-center cursor-pointer hover:text-gray-300 transition-colors"
+                onClick={() => navigate("/login")}
+              >
+                <img src={employeeLogin} alt="Employee Login" className="w-5 h-5 mr-2" />
+                Employee Login
+              </p>
+            )}
+          </div>
+        </div>
+        <div className="md:hidden">
+          <h3 className="text-lg md:text-2xl font-giloryS">Work</h3>
+          {currentUser ? (
+            <p 
+              className="mt-2 flex items-center cursor-pointer hover:text-gray-300 transition-colors"
+              onClick={handleLogout}
+            >
+              <img src={employeeLogin} alt="Logout" className="w-5 h-5 mr-2" />
+              Logout
+            </p>
+          ) : (
             <p 
               className="mt-2 flex items-center cursor-pointer hover:text-gray-300 transition-colors"
               onClick={() => navigate("/login")}
@@ -142,17 +184,7 @@ const Footer = () => {
               <img src={employeeLogin} alt="Employee Login" className="w-5 h-5 mr-2" />
               Employee Login
             </p>
-          </div>
-        </div>
-        <div className="md:hidden">
-          <h3 className="text-lg md:text-2xl font-giloryS">Work</h3>
-          <p 
-            className="mt-2 flex items-center cursor-pointer hover:text-gray-300 transition-colors"
-            onClick={() => navigate("/login")}
-          >
-            <img src={employeeLogin} alt="Employee Login" className="w-5 h-5 mr-2" />
-            Employee Login
-          </p>
+          )}
         </div>
       </div>
 

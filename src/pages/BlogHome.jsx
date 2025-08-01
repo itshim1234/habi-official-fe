@@ -61,7 +61,7 @@ const BlogHome = () => {
   return (
     <div className="min-h-screen bg-[#1a1a1a]">
       {/* Header */}
-      <header className="bg-gray-900 border-b border-gray-800">
+      <header className="bg-[#1a1a1a] border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">

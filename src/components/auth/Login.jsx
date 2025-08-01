@@ -7,33 +7,20 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [isSignup, setIsSignup] = useState(false);
-  const [displayName, setDisplayName] = useState('');
-  
-  const { login, signup } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    if (isSignup && !displayName.trim()) {
-      setError('Display name is required');
-      return;
-    }
 
     try {
       setError('');
       setLoading(true);
       
-      if (isSignup) {
-        await signup(email, password, displayName);
-      } else {
-        await login(email, password);
-      }
-      
+      await login(email, password);
       navigate('/admin');
     } catch (error) {
-      setError('Failed to ' + (isSignup ? 'create account' : 'log in') + ': ' + error.message);
+      setError('Failed to log in: ' + error.message);
     } finally {
       setLoading(false);
     }
@@ -44,16 +31,10 @@ const Login = () => {
       <div className="max-w-md w-full space-y-8">
         <div>
           <h2 className="mt-6 text-center text-3xl font-extrabold text-white">
-            {isSignup ? 'Create Account' : 'Sign in to your account'}
+            Sign in to your account
           </h2>
           <p className="mt-2 text-center text-sm text-gray-400">
-            {isSignup ? 'Already have an account?' : "Don't have an account?"}{' '}
-            <button
-              onClick={() => setIsSignup(!isSignup)}
-              className="font-medium text-blue-400 hover:text-blue-300"
-            >
-              {isSignup ? 'Sign in' : 'Sign up'}
-            </button>
+            Contact admin to get access
           </p>
         </div>
         
@@ -65,24 +46,6 @@ const Login = () => {
           )}
           
           <div className="space-y-4">
-            {isSignup && (
-              <div>
-                <label htmlFor="displayName" className="block text-sm font-medium text-gray-300">
-                  Display Name
-                </label>
-                <input
-                  id="displayName"
-                  name="displayName"
-                  type="text"
-                  required={isSignup}
-                  value={displayName}
-                  onChange={(e) => setDisplayName(e.target.value)}
-                  className="mt-1 appearance-none relative block w-full px-3 py-2 border border-gray-600 placeholder-gray-400 text-white bg-gray-800 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                  placeholder="Enter your name"
-                />
-              </div>
-            )}
-            
             <div>
               <label htmlFor="email-address" className="block text-sm font-medium text-gray-300">
                 Email address
@@ -124,7 +87,7 @@ const Login = () => {
               disabled={loading}
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? 'Processing...' : (isSignup ? 'Create Account' : 'Sign in')}
+              {loading ? 'Processing...' : 'Sign in'}
             </button>
           </div>
         </form>
