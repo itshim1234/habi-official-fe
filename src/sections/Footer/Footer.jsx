@@ -135,16 +135,22 @@ const Footer = () => {
 
           <div className="hidden md:inline">
             <h3 className="text-lg md:text-2xl font-giloryS mt-4">Work</h3>
-            <p className="mt-2 flex items-center">
-              <img src={employeeLogin} alt="Phone" className="w-5 h-5 mr-2" />
+            <p 
+              className="mt-2 flex items-center cursor-pointer hover:text-gray-300 transition-colors"
+              onClick={() => navigate("/login")}
+            >
+              <img src={employeeLogin} alt="Employee Login" className="w-5 h-5 mr-2" />
               Employee Login
             </p>
           </div>
         </div>
         <div className="md:hidden">
           <h3 className="text-lg md:text-2xl font-giloryS">Work</h3>
-          <p className="mt-2 flex items-center">
-            <img src={employeeLogin} alt="Phone" className="w-5 h-5 mr-2" />
+          <p 
+            className="mt-2 flex items-center cursor-pointer hover:text-gray-300 transition-colors"
+            onClick={() => navigate("/login")}
+          >
+            <img src={employeeLogin} alt="Employee Login" className="w-5 h-5 mr-2" />
             Employee Login
           </p>
         </div>

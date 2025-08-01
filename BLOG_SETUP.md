@@ -42,7 +42,27 @@ service cloud.firestore {
 ### 3. Firebase Authentication
 Enable Email/Password authentication in your Firebase console.
 
-### 4. Routes Added
+### 4. Firebase Firestore Indexes
+The blog system requires composite indexes for efficient querying. Create the following indexes in your Firebase Console:
+
+#### Required Indexes:
+1. **Collection**: `blogs`
+   - **Fields**: `published` (Ascending), `createdAt` (Descending)
+   - **Purpose**: For fetching published blogs ordered by creation date
+
+2. **Collection**: `blogs`
+   - **Fields**: `slug` (Ascending), `published` (Ascending)
+   - **Purpose**: For fetching individual blogs by slug
+
+#### How to Create:
+1. Go to Firebase Console → Firestore Database → Indexes
+2. Click "Create Index"
+3. Configure as shown above
+4. Wait for indexes to build (1-10 minutes)
+
+**Note**: If you see index errors, click the link in the error message to create the index directly.
+
+### 5. Routes Added
 - `/blogs` - Main blog listing page
 - `/blogs/:slug` - Individual blog post page
 - `/login` - Admin login page
@@ -50,7 +70,7 @@ Enable Email/Password authentication in your Firebase console.
 - `/admin/create` - Create new blog post
 - `/admin/edit/:id` - Edit existing blog post
 
-### 5. Features Implemented
+### 6. Features Implemented
 
 #### Blog Schema
 ```javascript
@@ -84,7 +104,7 @@ Enable Email/Password authentication in your Firebase console.
 - SEO-optimized URLs
 - Tag system
 
-### 6. Usage
+### 7. Usage
 
 #### Creating Your First Blog Post
 1. Navigate to `/login`
@@ -98,12 +118,12 @@ Enable Email/Password authentication in your Firebase console.
 - Modify colors in Tailwind classes
 - Add more fields to the blog schema as needed
 
-### 7. Dependencies Added
+### 8. Dependencies Added
 - `firebase` - Firebase SDK
 - `react-quill` - Rich text editor
 - `@tiptap/react` - Alternative rich text editor (optional)
 
-### 8. File Structure
+### 9. File Structure
 ```
 src/
 ├── components/
@@ -127,13 +147,13 @@ src/
     └── FormateDate.js
 ```
 
-### 9. Security Notes
+### 10. Security Notes
 - Only authenticated users can create/edit/delete posts
 - Published posts are publicly readable
 - Draft posts are only visible to admins
 - Firebase security rules should be configured properly
 
-### 10. Performance Optimizations
+### 11. Performance Optimizations
 - Lazy loading of blog components
 - Image optimization with fallbacks
 - Responsive design for all screen sizes
@@ -141,7 +161,15 @@ src/
 
 ## Troubleshooting
 
+### Firebase Index Issues
+If you see "Failed to fetch blogs: The query requires an index" error:
+1. Click the link in the error message to create the index directly
+2. Or follow the manual steps in the Firebase Index Setup section above
+3. Wait 1-10 minutes for indexes to build
+4. Clear browser cache and try again
+
 ### Common Issues
+
 1. **Firebase not initialized**: Check your environment variables
 2. **Authentication not working**: Verify Firebase Auth is enabled
 3. **Blogs not loading**: Check Firestore rules and data structure
