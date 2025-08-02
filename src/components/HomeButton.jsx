@@ -19,6 +19,7 @@ const HomeButton = ({ className, onClick }) => {
     <div
       className={className}
       style={{
+      
         position: "fixed",
         bottom: "60px",
         right: isVisible ? "0px" : "-300px",
@@ -27,7 +28,7 @@ const HomeButton = ({ className, onClick }) => {
       }}
     >
       <SparkleButton
-        text="Back to | Home" // <- not empty, use a space to preserve layout
+        text="Back to  Home" // <- not empty, use a space to preserve layout
         isCalculator
         onClick={onClick}
         animationData={homeButtonAnimation} // <- inject custom Lottie (next step)

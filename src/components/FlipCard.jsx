@@ -10,9 +10,23 @@ const FlipCard = ({
   toggleExpand,
   packageSet,
 }) => {
+
+
   const [isFlipped, setIsFlipped] = useState(false);
 
+ 
 
+  const handleToggleInterior = () => {
+  setIsFlipped((prev) => {
+    const nextFlipped = !prev;
+    if (nextFlipped) {
+      packageSet(pkg2.id); // Select the plus (interior) package
+    } else {
+      packageSet(pkg1.id); // Select the base package
+    }
+    return nextFlipped;
+  });
+};
 
   return (
     <div className="relative grid grid-cols-1 md:grid-cols-3 gap-4 lg:ml-3 xl:ml-14">
@@ -81,18 +95,20 @@ const FlipCard = ({
                 }`}
                 onClick={() => packageSet(pkg1.id)}
               >
-                {package1 === pkg1.name ? "Selected" : "Select"}
+                {package1 === pkg1.name  ? "Selected" : "Select"}
               </button>
               {/* Toggle inside the card */}
               <label className="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center cursor-pointer">
                 <span className="text-white mr-2 text-[16px] mb-2 w-[160%] text-giloryM leading-5">
                   Do you want to include Interior?
                 </span>
-                <input
-                  type="checkbox"
-                  className="hidden"
-                  onChange={() => setIsFlipped(!isFlipped)}
-                />
+              <input
+  type="checkbox"
+  checked={isFlipped}
+  className="hidden"
+  onChange={handleToggleInterior}
+/>
+
                 <div className="w-12 h-6 bg-gray-700 rounded-full p-1 relative">
                   <motion.div
                     className="w-4 h-4 bg-white rounded-full"
@@ -178,11 +194,13 @@ const FlipCard = ({
                 <span className="text-white mr-2 text-[16px] mb-2 w-[160%] text-giloryM leading-5">
                   Only the construction is needed.
                 </span>
-                <input
-                  type="checkbox"
-                  className="hidden"
-                  onChange={() => setIsFlipped(!isFlipped)}
-                />
+              <input
+  type="checkbox"
+  checked={isFlipped}
+  className="hidden"
+  onChange={handleToggleInterior}
+/>
+
                 {/* Toggle Background */}
                 <div
                   className={`w-12 h-6 rounded-full  p-1 relative transition-colors duration-300 ${

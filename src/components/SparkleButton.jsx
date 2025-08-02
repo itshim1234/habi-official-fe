@@ -263,7 +263,7 @@ const CalculatorButtonWrapper = styled.div`
     -webkit-backdrop-filter: blur(4px);
     padding: 0 8px;
     padding-left: 40px;
-    transition: all 0.4s ease;
+    transition: all 0.1s ease;
     overflow: hidden;
     cursor: pointer;
     font-weight: 700;

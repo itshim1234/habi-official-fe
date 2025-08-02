@@ -392,7 +392,7 @@ function CostEstimator1({
   const [detailedCost, setDetailedCost] = useState(false);
   const [costEstimator, setCostEstimator] = useState(false);
   const [contentHeight, setContentHeight] = useState(0);
-  const [package1, setPackage] = useState("Essential");
+  const [package1, setPackage] = useState("");
   const [expandedPackage, setExpandedPackage] = useState(null);
   const [halfFloor, setHalfFloor] = useState(false);
   const [basement, setBasement] = useState(false);

@@ -391,31 +391,31 @@ const stages = [
   {
     title: "Meet us",
     description:
-      "Begin your home construction journey by scheduling a meeting...",
+      "Begin your home construction journey by scheduling a meeting through our website or app, giving us a call, or reaching out on WhatsApp.",
     image: meetUs,
     number: 1,
   },
   {
     title: "Design",
-    description: "Our architects will create a home design tailored to you...",
+    description: "After the meeting, our architects will create a home design tailored to your requirements. We ensure that every detail matches your preferences for a perfect outcome.",
     image: designWork,
     number: 2,
   },
   {
     title: "Finalize",
-    description: "With your confirmation, we'll finalize the budget...",
+    description: "With your confirmation, we'll work on a budget to bring your vision to life. We'll ensure everything is prepared for the next step smoothly.",
     image: finalize,
     number: 3,
   },
   {
     title: "Track",
-    description: "Track construction progress through our app...",
+    description: "As construction begins, our mobile app keeps you updated. Track daily progress from anywhere, ensuring your dream home is coming together just as you envisioned.",
     image: track,
     number: 4,
   },
   {
     title: "Handover",
-    description: "We hand over your dream home on time and within budget...",
+    description: "We guarantee your home will be delivered on time and within budget. It's our pride and joy to hand over the keys to your new home.",
     image: handover,
     number: 5,
   },
@@ -452,7 +452,7 @@ const WorkingLaptop = () => {
       </video> */}
 
       {/* Overlay (optional blur/dark) */}
-      <div className="fixed inset-0 bg-black/60 z-10" />
+      {/* <div className="fixed inset-0 bg-black/60 z-10" /> */}
 
       {/* Main Content */}
       <div className="relative z-20 flex flex-col items-center pt-[15vh] pb-[20vh] px-4">
@@ -470,9 +470,9 @@ const WorkingLaptop = () => {
               alt={stage.title}
               className="w-full max-h-[300px] object-contain"
             />
-            <h3 className="text-3xl font-bold text-[#ffb969]">{stage.title}</h3>
-            <p className="text-lg max-w-xl">{stage.description}</p>
-            <span className="text-[120px] font-larken text-white/10">
+            <h3 className="text-3xl font-bold text-[24px] md:text-[32px] lg:text-[40px] text-[#ffb969]">{stage.title}</h3>
+            <p className="text-[16px]  md:text-[18px] lg:text-[24px] max-w-xl">{stage.description}</p>
+            <span className="text-[150px] font-larken text-white/10">
               {stage.number}
             </span>
           </div>

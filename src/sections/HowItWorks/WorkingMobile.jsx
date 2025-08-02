@@ -6,7 +6,7 @@ import designWork from "../../assets/images/designWork.webp";
 import finalize from "../../assets/images/finalize.webp";
 import track from "../../assets/images/track1.webp";
 import handover from "../../assets/images/handover.webp";
-import loopVideo from "../../assets/videos/loopVideo.mp4";
+// import loopVideo from "../../assets/videos/loopVideo.mp4";
 import star from "../../assets/images/star.webp";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -80,7 +80,7 @@ const WorkingMobile = () => {
   return (
     <div ref={containerRef} className="relative min-h-screen w-full bg-black">
       {/* Background Video */}
-      <video
+      {/* <video
         className="fixed top-0 left-0 w-full h-full object-cover z-0"
         autoPlay
         muted
@@ -88,7 +88,7 @@ const WorkingMobile = () => {
         playsInline
       >
         <source src={loopVideo} type="video/mp4" />
-      </video>
+      </video> */}
 
       {/* Overlay */}
       <div className="fixed inset-0 bg-black/60 z-10"></div>
