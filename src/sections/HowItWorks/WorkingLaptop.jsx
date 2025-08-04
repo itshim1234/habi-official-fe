@@ -429,10 +429,10 @@ const WorkingLaptop = () => {
         scale: 0.8,
         scrollTrigger: {
           trigger: stage,
-          start: "top 15%",
-          end: "bottom 15%",
+          start: "top 30%",
+          end: "bottom 30%",
           scrub: true,
-          markers: false,
+          markers: true,
         },
       });
     });
@@ -456,27 +456,49 @@ const WorkingLaptop = () => {
 
       {/* Main Content */}
       <div className="relative z-20 flex flex-col items-center pt-[15vh] pb-[20vh] px-4">
+           {/* Background Video */}
+      <video
+  className="fixed top-0 left-0 w-full h-full object-cover z-0"
+  autoPlay
+  muted
+  loop
+  playsInline
+>
+  <source src={loopVideo} type="video/mp4" />
+</video>
+
         <h2 className="text-4xl lg:text-6xl font-bold mb-20 text-center">
           How it Works?
         </h2>
 
         {stages.map((stage, index) => (
+          <div key={index} className=" w-full  stage sticky   bg-white/10 backdrop-blur-md rounded-2xl  px-8 flex flex-col items-center text-center gap-4 z-10">
+           
           <div
-            key={index}
-            className="stage sticky top-[15vh] w-full max-w-5xl bg-white/10 backdrop-blur-md rounded-2xl border border-white/30 p-8 flex flex-col items-center text-center gap-4"
+     
+            className="  w-full max-w-3xl rounded-lg border border-white/30"
           >
+         
             <img
               src={stage.image}
               alt={stage.title}
-              className="w-full max-h-[300px] object-contain"
+              className="w-full max-h-[400px] object-contain"
             />
-            <h3 className="text-3xl font-bold text-[24px] md:text-[32px] lg:text-[40px] text-[#ffb969]">{stage.title}</h3>
-            <p className="text-[16px]  md:text-[18px] lg:text-[24px] max-w-xl">{stage.description}</p>
-            <span className="text-[150px] font-larken text-white/10">
+             </div>
+              <div className="flex ">
+               <span className="text-[400px] font-larken text-white/10">
               {stage.number}
             </span>
-          </div>
-        ))}
+          <div className="flex flex-col gap-8 ">
+            <h3 className="text-3xl font-bold text-[32px] md:text-[40px] lg:text-[48px] text-[#ffb969]">{stage.title}</h3>
+              
+            <p className="text-[16px]  md:text-[18px] lg:text-[24px] max-w-xl">{stage.description}</p>
+            </div>
+            </div>
+           
+            </div>
+        ))
+        }
       </div>
     </div>
   );
