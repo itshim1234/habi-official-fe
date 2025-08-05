@@ -5,14 +5,7 @@ import Lottie from "lottie-react";
 import animationData from "../assets/animation.json";
 import homeAnimation from "../assets/homeButtonAnimation.json";
 
-// 360° conic-gradient border keyframes
-const rotate = keyframes`
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }`;
+
 
 const StyledWrapper = styled.div`
   .button {

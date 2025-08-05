@@ -112,24 +112,19 @@ const WorkingMobile = () => {
               <div className="relative w-full max-w-md mx-auto">
                 <div className="text-center space-y-6">
                   {/* Image */}
-                  <div className="relative bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 overflow-hidden p-6 shadow-xl">
+                  <div className="relative  flex flex-col gap-5 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 overflow-hidden p-6 shadow-xl">
                     <img
                       src={stage.image}
                       alt={stage.title}
                       className="w-full h-48 object-contain rounded-lg"
                     />
-                    {/* Decorative Stars */}
-                    <div className="absolute -top-1 -right-1 w-6 h-6 bg-yellow-400 rounded-full animate-pulse"></div>
-                    <div className="absolute top-2 -right-0.5 w-3 h-3 bg-orange-400 rounded-full animate-pulse delay-300"></div>
-                  </div>
-
-                  {/* Number */}
+                     <div className="flex">
+                          {/* Number */}
                   <div className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-500 opacity-30">
                     {stage.number}
                   </div>
-
-                  {/* Title */}
-                  <h3 className="text-2xl font-bold text-orange-400 -mt-4">
+                     <div className="flex flex-col">
+                         <h3 className="text-2xl font-bold text-orange-400 -mt-4">
                     {stage.title}
                   </h3>
 
@@ -137,6 +132,16 @@ const WorkingMobile = () => {
                   <p className="text-base text-gray-300 leading-relaxed">
                     {stage.description}
                   </p>
+                    </div>
+                      </div> 
+                 
+
+                  </div>
+
+              
+
+                  {/* Title */}
+               
                 </div>
               </div>
             </div>
