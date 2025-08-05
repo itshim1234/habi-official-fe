@@ -91,7 +91,7 @@ const WorkingMobile = () => {
       </video> */}
 
       {/* Overlay */}
-      <div className="fixed inset-0 bg-black/60 z-10"></div>
+      {/* <div className="fixed inset-0 bg-black/60 z-10"></div> */}
 
       {/* Content */}
       <div className="relative z-20 text-white">

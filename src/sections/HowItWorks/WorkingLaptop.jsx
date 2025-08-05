@@ -457,7 +457,7 @@ const WorkingLaptop = () => {
       {/* Main Content */}
       <div className="relative z-20 flex flex-col items-center pt-[15vh] pb-[20vh] px-4">
            {/* Background Video */}
-      <video
+      {/* <video
   className="fixed top-0 left-0 w-full h-full object-cover z-0"
   autoPlay
   muted
@@ -465,7 +465,7 @@ const WorkingLaptop = () => {
   playsInline
 >
   <source src={loopVideo} type="video/mp4" />
-</video>
+</video> */}
 
         <h2 className="text-4xl lg:text-6xl font-bold mb-20 text-center">
           How it Works?
