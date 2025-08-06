@@ -432,7 +432,7 @@ const WorkingLaptop = () => {
           start: "top 30%",
           end: "bottom 30%",
           scrub: true,
-          markers: true,
+          markers: false,
         },
       });
     });
