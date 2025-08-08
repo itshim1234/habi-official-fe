@@ -46,6 +46,7 @@ import Login from "./components/auth/Login";
 import AdminDashboard from "./components/admin/AdminDashboard";
 import BlogEditor from "./components/blog/BlogEditor";
 import { AuthProvider } from "./contexts/AuthContext";
+import { StrictMode } from "react";
 
 function App() {
   const [isPreloading, setIsPreloading] = useState(false);
@@ -151,8 +152,12 @@ function App() {
           <Route path="/blogs/:slug" element={<BlogPost />} />
           <Route path="/login" element={<Login />} />
           <Route path="/admin" element={<AdminDashboard />} />
-          <Route path="/admin/create" element={<BlogEditor />} />
-          <Route path="/admin/edit/:id" element={<BlogEditor />} />
+          <Route path="/admin/create" element={<StrictMode>
+  <BlogEditor />
+</StrictMode>} />
+          <Route path="/admin/edit/:id" element={<StrictMode>
+  <BlogEditor />
+</StrictMode>} />
           
           {/* Legacy blog routes (keeping for backward compatibility) */}
           {/* <Route path="/blogs" element={<AllBlogs />} />

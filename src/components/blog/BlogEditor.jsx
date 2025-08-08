@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css';
+import ReactQuill from 'react-quill-new';
+import 'react-quill-new/dist/quill.snow.css';
 import './BlogEditor.css';
 import { useAuth } from '../../contexts/AuthContext';
 import { createBlog, updateBlog, getBlogById } from '../../services/blogService';
@@ -20,18 +20,7 @@ const BlogEditor = () => {
     }
   }, [id]);
 
-  // Force re-render of ReactQuill when content changes
-  useEffect(() => {
-    if (quillRef.current && formData.content && isEditing) {
-      const quill = quillRef.current.getEditor();
-      if (quill) {
-        // Clear the editor first
-        quill.setText('');
-        // Then set the HTML content
-        quill.root.innerHTML = formData.content;
-      }
-    }
-  }, [formData.content, isEditing]);
+
 
   const loadBlogData = async () => {
     try {
@@ -60,6 +49,7 @@ const BlogEditor = () => {
     tags: '',
     published: false
   });
+     const [inputValue, setInputValue] = useState('');
   
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -94,6 +84,9 @@ const BlogEditor = () => {
     };
   };
 
+
+
+
   // Quill editor configuration
   const quillModules = {
     toolbar: {
@@ -115,7 +108,7 @@ const BlogEditor = () => {
   const quillFormats = [
     'header',
     'bold', 'italic', 'underline', 'strike',
-    'list', 'bullet',
+    'list',
     'color', 'background',
     'align',
     'link', 'image'
@@ -178,6 +171,18 @@ const BlogEditor = () => {
   const handlePublish = () => {
     setFormData(prev => ({ ...prev, published: !prev.published }));
   };
+    // Force re-render of ReactQuill when content changes
+  useEffect(() => {
+    if (quillRef.current && formData?.content && isEditing) {
+      const quill = quillRef.current.getEditor();
+      if (quill) {
+        // Clear the editor first
+        quill.setText('');
+        // Then set the HTML content
+        quill.root.innerHTML = formData.content;
+      }
+    }
+  }, [formData?.content, isEditing]);
 
   return (
     <div className="min-h-screen bg-[#1a1a1a] py-8">
@@ -294,30 +299,23 @@ const BlogEditor = () => {
                 </div>
                 <input
                   type="text"
-                  value={formData.tags.split(',').map(t => t.trim()).filter(t => t).length === 0 ? formData.tags : ''}
+             
+                 value={inputValue}
+
                   onChange={(e) => {
-                    const value = e.target.value;
-                    if (value.includes(',') || value.includes('Enter')) {
-                      const newTag = value.replace(/[,Enter]/g, '').trim();
-                      if (newTag) {
-                        const existingTags = formData.tags.split(',').map(t => t.trim()).filter(t => t);
-                        const updatedTags = [...existingTags, newTag];
-                        setFormData(prev => ({ ...prev, tags: updatedTags.join(', ') }));
-                        e.target.value = '';
-                      }
-                    } else {
-                      setFormData(prev => ({ ...prev, tags: value }));
-                    }
-                  }}
+                    setInputValue(e.target.value)
+                  }
+                   
+                  }
                   onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
+                    if (e.key === 'Enter'|| e.key===',') {
                       e.preventDefault();
-                      const value = e.target.value.trim();
+                      const value = inputValue.trim();
                       if (value) {
                         const existingTags = formData.tags.split(',').map(t => t.trim()).filter(t => t);
                         const updatedTags = [...existingTags, value];
                         setFormData(prev => ({ ...prev, tags: updatedTags.join(', ') }));
-                        e.target.value = '';
+                       setInputValue('');
                       }
                     }
                   }}
