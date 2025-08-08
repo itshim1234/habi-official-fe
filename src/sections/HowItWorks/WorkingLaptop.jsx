@@ -429,9 +429,9 @@ const WorkingLaptop = () => {
         scale: 0.8,
         scrollTrigger: {
           trigger: stage,
-          start: "top 30%",
-          end: "bottom 30%",
-          scrub: true,
+          start: "top 25%",
+          end: "bottom 15%",
+          scrub: 1,
           markers: false,
         },
       });
@@ -442,7 +442,7 @@ const WorkingLaptop = () => {
     <div className="relative min-h-screen w-full text-white bg-black overflow-x-hidden">
       {/* Background Video */}
       {/* <video
-        className="fixed top-0 left-0 w-full h-full object-cover z-0"
+        className=" w-full h-full object-cover z-0"
         autoPlay
         muted
         loop
@@ -457,15 +457,15 @@ const WorkingLaptop = () => {
       {/* Main Content */}
       <div className="relative z-20 flex flex-col items-center pt-[15vh] pb-[20vh] px-4">
            {/* Background Video */}
-      {/* <video
-  className="fixed top-0 left-0 w-full h-full object-cover z-0"
+      <video
+  className="w-full h-full object-cover z-0"
   autoPlay
   muted
   loop
   playsInline
 >
   <source src={loopVideo} type="video/mp4" />
-</video> */}
+</video>
 
         <h2 className="text-4xl lg:text-6xl font-bold mb-20 text-center">
           How it Works?
