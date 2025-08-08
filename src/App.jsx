@@ -1,9 +1,9 @@
 import React, {
   useState,
   useEffect,
-  useRef,
+
   Suspense,
-  useCallback,
+
   lazy,
   memo,
 } from "react";
@@ -38,8 +38,7 @@ import ConsultationPopup from "./sections/Hero/ConsultationPopup";
 const Footer = memo(lazy(() => import("./sections/Footer/Footer")));
 import QuotationPopup from "./sections/Quotation/QuotationPopup";
 import HomeButton from "./components/HomeButton";
-import AllBlogs from "./Blogs/AllBlogs";
-import BlogGenerator from "./BlogGenerator/BlogGenerator";
+
 import BlogHome from "./pages/BlogHome";
 import BlogPost from "./pages/BlogPost";
 import Login from "./components/auth/Login";
