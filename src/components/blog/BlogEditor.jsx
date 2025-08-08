@@ -69,7 +69,8 @@ const BlogEditor = () => {
     metaTitle: '',
     metaDescription: '',
     tags: '',
-    published: false
+    published: false,
+    featuredImage: ''
   });
   const [inputValue, setInputValue] = useState('');
   const [loading, setLoading] = useState(false);
@@ -94,13 +95,23 @@ const BlogEditor = () => {
         metaTitle: blog.metaTitle || '',
         metaDescription: blog.metaDescription || '',
         tags: Array.isArray(blog.tags) ? blog.tags.join(', ') : (blog.tags || ''),
-        published: blog.published || false
+        published: blog.published || false,
+        featuredImage: blog.featuredImage || ''
       });
     } catch (error) {
       setError('Failed to load blog: ' + error.message);
     } finally {
       setLoading(false);
     }
+  };
+
+  // Helper: extract first image src from HTML content
+  const extractFirstImageSrc = (html) => {
+    if (!html) return '';
+    const container = document.createElement('div');
+    container.innerHTML = html;
+    const img = container.querySelector('img');
+    return img ? img.getAttribute('src') || '' : '';
   };
 
   // Custom image handler (uses removableImage blot)
@@ -183,8 +194,13 @@ const BlogEditor = () => {
     try {
       setLoading(true);
       setError('');
+
+      // Determine featured image
+      const computedFeaturedImage = formData.featuredImage || extractFirstImageSrc(formData.content);
+
       const blogData = {
         ...formData,
+        featuredImage: computedFeaturedImage,
         slug: generateSlug(formData.title),
         author: currentUser.displayName || currentUser.email,
         authorId: currentUser.uid,

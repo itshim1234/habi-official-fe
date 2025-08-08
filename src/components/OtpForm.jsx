@@ -16,7 +16,7 @@ const OtpForm = ({ onComplete, phone, onBack }) => {
     if (isNaN(value)) return;
 
     const newValue = value.trim(); // remove leading and trailing spaces
-    console.log("values", value);
+  
 
     const newArr = [...inputArr];
     newArr[index] = newValue.slice(-1);

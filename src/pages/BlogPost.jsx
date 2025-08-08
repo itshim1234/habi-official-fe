@@ -27,6 +27,16 @@ const BlogPost = () => {
     }
   };
 
+  const firstImageFromContent = (html) => {
+    if (!html) return '';
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    const img = div.querySelector('img');
+    return img ? img.getAttribute('src') || '' : '';
+  };
+
+
+
   if (loading) {
     return (
       <div className="min-h-screen bg-[#1a1a1a] flex items-center justify-center">
@@ -87,7 +97,7 @@ const BlogPost = () => {
             {blog.author && (
               <>
                 <span className="mx-2">•</span>
-                <span>{blog.author}</span>
+                <span>{blog.author.split('@')[0]}</span>
               </>
             )}
             {blog.updatedAt && blog.updatedAt !== blog.createdAt && (
@@ -108,25 +118,14 @@ const BlogPost = () => {
             </p>
           )}
 
-          {blog.tags && blog.tags.length > 0 && (
-            <div className="flex flex-wrap gap-2 mb-6">
-              {blog.tags.map((tag, index) => (
-                <span 
-                  key={index}
-                  className="px-3 py-1 bg-blue-600/20 text-blue-400 text-sm rounded-full"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
+       
         </header>
 
         {/* Featured Image */}
-        {blog.featuredImage && (
+        {(blog.featuredImage || firstImageFromContent(blog.content)) && (
           <div className="mb-8">
             <img 
-              src={blog.featuredImage} 
+              src={blog.featuredImage || firstImageFromContent(blog.content)} 
               alt={blog.title}
               className="w-full h-64 md:h-96 object-cover rounded-lg"
               onError={(e) => {
@@ -146,12 +145,25 @@ const BlogPost = () => {
 
         {/* Blog Footer */}
         <footer className="mt-12 pt-8 border-t border-gray-800">
-          <div className="flex items-center justify-between">
+          <div className="flex  flex-col  justify-between gap-8">
+               {blog.tags && blog.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-6">
+              {blog.tags.map((tag, index) => (
+                <span 
+                  key={index}
+                  className="px-3 py-1 bg-blue-600/20 text-blue-400 text-sm rounded-full"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+          <div className='flex justify-between'>
             <div className="flex items-center space-x-4">
               {blog.author && (
                 <div>
                   <span className="text-gray-400 text-sm">Written by</span>
-                  <div className="text-white font-medium">{blog.author}</div>
+                  <div className="text-white font-medium">{blog.author.split('@')[0]}</div>
                 </div>
               )}
             </div>
@@ -167,6 +179,7 @@ const BlogPost = () => {
               >
                 Share
               </button>
+            </div>
             </div>
           </div>
         </footer>

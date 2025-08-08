@@ -22,6 +22,8 @@ const BlogHome = () => {
         getFeaturedBlog(),
         getPublishedBlogs()
       ]);
+
+     
       
       setFeaturedBlog(featured);
       // Get recent blogs excluding the featured one
@@ -48,6 +50,14 @@ const BlogHome = () => {
     const tmp = document.createElement('div');
     tmp.innerHTML = html;
     return tmp.textContent || tmp.innerText || '';
+  };
+
+  const firstImageFromContent = (html) => {
+    if (!html) return '';
+    const div = document.createElement('div');
+    div.innerHTML = html;
+    const img = div.querySelector('img');
+    return img ? img.getAttribute('src') || '' : '';
   };
 
   if (loading) {
@@ -104,7 +114,7 @@ const BlogHome = () => {
                 <div className="md:w-1/2">
                   <img 
                     className="w-full h-64 md:h-full object-cover blog-image" 
-                    src={featuredBlog.featuredImage || 'https://placehold.co/600x400/374151/ffffff?text=Featured+Blog'} 
+                    src={featuredBlog.featuredImage || firstImageFromContent(featuredBlog.content) || 'https://placehold.co/600x400/374151/ffffff?text=Featured+Blog'} 
                     alt={featuredBlog.title}
                     onError={(e) => {
                       e.target.src = 'https://placehold.co/600x400/374151/ffffff?text=Featured+Blog';
@@ -127,18 +137,7 @@ const BlogHome = () => {
                   <p className="text-gray-300 mb-4 line-clamp-3">
                     {truncateText(stripHtml(featuredBlog.content))}
                   </p>
-                  {featuredBlog.tags && featuredBlog.tags.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mb-4">
-                                             {featuredBlog.tags.slice(0, 3).map((tag, index) => (
-                         <span 
-                           key={index}
-                           className="px-2 py-1 bg-blue-600/20 text-blue-400 text-xs rounded-full blog-tag"
-                         >
-                           {tag}
-                         </span>
-                       ))}
-                    </div>
-                  )}
+                
                   <button className="text-blue-400 hover:text-blue-300 font-medium">
                     Read More →
                   </button>
@@ -161,7 +160,7 @@ const BlogHome = () => {
                 >
                   <img 
                     className="w-full h-48 object-cover blog-image" 
-                    src={blog.featuredImage || 'https://placehold.co/400x300/374151/ffffff?text=Blog+Post'} 
+                    src={blog.featuredImage || firstImageFromContent(blog.content) || 'https://placehold.co/400x300/374151/ffffff?text=Blog+Post'} 
                     alt={blog.title}
                     onError={(e) => {
                       e.target.src = 'https://placehold.co/400x300/374151/ffffff?text=Blog+Post';
