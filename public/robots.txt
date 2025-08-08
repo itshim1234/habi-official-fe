@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://habi.one/sitemap.xml 
+Sitemap: https://habi.homes/sitemap.xml 
