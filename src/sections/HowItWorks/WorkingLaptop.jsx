@@ -383,6 +383,7 @@ import finalize from "../../assets/images/finalize.webp";
 import track from "../../assets/images/track1.webp";
 import handover from "../../assets/images/handover.webp";
 import loopVideo from "../../assets/videos/loopVideo.mp4";
+import { Turtle } from "lucide-react";
 
 // Register plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -432,7 +433,7 @@ const WorkingLaptop = () => {
           start: "top 25%",
           end: "bottom 15%",
           scrub: 1,
-          markers: false,
+          markers: true,
         },
       });
     });
@@ -455,10 +456,10 @@ const WorkingLaptop = () => {
       {/* <div className="fixed inset-0 bg-black/60 z-10" /> */}
 
       {/* Main Content */}
-      <div className="relative z-20 flex flex-col items-center pt-[15vh] pb-[20vh] px-4">
+      <div className="relative  flex flex-col items-center pt-[15vh] pb-[20vh] px-4">
            {/* Background Video */}
       <video
-  className="w-full h-full object-cover z-0"
+  className=" absolute left-0 top-0 w-full h-full object-cover z-0"
   autoPlay
   muted
   loop
@@ -466,13 +467,13 @@ const WorkingLaptop = () => {
 >
   <source src={loopVideo} type="video/mp4" />
 </video>
-
+       <div className="z-10">
         <h2 className="text-4xl lg:text-6xl font-bold mb-20 text-center">
           How it Works?
         </h2>
 
         {stages.map((stage, index) => (
-          <div key={index} className=" w-full  stage sticky   bg-white/10 backdrop-blur-md rounded-2xl  px-8 flex flex-col items-center text-center gap-4 z-10">
+          <div key={index} className=" w-full  stage    bg-white/10 backdrop-blur-md rounded-2xl  px-8 flex flex-col items-center text-center gap-4 ">
            
           <div
      
@@ -499,6 +500,7 @@ const WorkingLaptop = () => {
             </div>
         ))
         }
+      </div>
       </div>
     </div>
   );
