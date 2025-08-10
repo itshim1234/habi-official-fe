@@ -6,7 +6,7 @@ import designWork from "../../assets/images/designWork.webp";
 import finalize from "../../assets/images/finalize.webp";
 import track from "../../assets/images/track1.webp";
 import handover from "../../assets/images/handover.webp";
-// import loopVideo from "../../assets/videos/loopVideo.mp4";
+ import loopVideo from "../../assets/videos/loopVideo.mp4";
 import star from "../../assets/images/star.webp";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -65,7 +65,7 @@ const WorkingMobile = () => {
             scrollTrigger: {
               trigger: stage,
               start: "top 15%",
-              end: "bottom 15%",
+              end: "bottom 5%",
               scrub: 1,
               invalidateOnRefresh: true,
             },
@@ -80,7 +80,7 @@ const WorkingMobile = () => {
   return (
     <div ref={containerRef} className="relative min-h-screen w-full bg-black">
       {/* Background Video */}
-      {/* <video
+      <video
         className="fixed top-0 left-0 w-full h-full object-cover z-0"
         autoPlay
         muted
@@ -88,13 +88,13 @@ const WorkingMobile = () => {
         playsInline
       >
         <source src={loopVideo} type="video/mp4" />
-      </video> */}
+      </video>
 
       {/* Overlay */}
       {/* <div className="fixed inset-0 bg-black/60 z-10"></div> */}
 
       {/* Content */}
-      <div className="relative z-20 text-white">
+      <div className="relative  text-white z-10">
         <div className="text-center py-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-16">
             How it Works?
@@ -102,15 +102,15 @@ const WorkingMobile = () => {
         </div>
 
         {/* Stages */}
-        <div className="flex flex-col gap-6 px-4 pb-16">
+        <div className="flex flex-col  px-4 pb-16">
           {stages.map((stage, index) => (
             <div
               key={index}
               ref={(el) => (stageRefs.current[index] = el)}
-              className="stage-card sticky top-16 min-h-screen flex items-center justify-center"
+              className="stage sticky top-16 min-h-[60vh] flex items-center justify-center"
             >
               <div className="relative w-full max-w-md mx-auto">
-                <div className="text-center space-y-6">
+                <div className="text-center ">
                   {/* Image */}
                   <div className="relative  flex flex-col gap-5 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 overflow-hidden p-6 shadow-xl">
                     <img
@@ -120,11 +120,11 @@ const WorkingMobile = () => {
                     />
                      <div className="flex">
                           {/* Number */}
-                  <div className="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-yellow-500 opacity-30">
+                  <div className="text-[100px] font-bold bg-clip-text bg-gradient-to-r font-larken text-white/10 opacity-30">
                     {stage.number}
                   </div>
                      <div className="flex flex-col">
-                         <h3 className="text-2xl font-bold text-orange-400 -mt-4">
+                         <h3 className="text-2xl font-bold text-[#ffb969] -mt-4">
                     {stage.title}
                   </h3>
 
@@ -137,8 +137,6 @@ const WorkingMobile = () => {
                  
 
                   </div>
-
-              
 
                   {/* Title */}
                
