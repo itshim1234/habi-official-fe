@@ -1,16 +1,252 @@
-import React, { useEffect, useRef,useState } from "react";
+// import gsap from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import React, { useEffect, useRef } from "react";
+// import meetUs from "../../assets/images/meetUs.webp";
+// import designWork from "../../assets/images/designWork.webp";
+// import finalize from "../../assets/images/finalize.webp";
+// import track from "../../assets/images/track1.webp";
+// import handover from "../../assets/images/handover.webp";
+// import star from "../../assets/images/star.webp";
+// import loopVideo from "../../assets/videos/loopVideo.mp4";
+
+// gsap.registerPlugin(ScrollTrigger);
+
+// // Stage data
+// const stages = [
+//   {
+//     title: "Meet us",
+//     description:
+//       "Begin your home construction journey by scheduling a meeting through our website or app, giving us a call, or reaching out on WhatsApp.",
+//     image: meetUs,
+//     number: 1,
+//   },
+//   {
+//     title: "Design",
+//     description:
+//       "After the meeting, our architects will create a home design tailored to your requirements. We ensure that every detail matches your preferences for a perfect outcome.",
+//     image: designWork,
+//     number: 2,
+//   },
+//   {
+//     title: "Finalize",
+//     description:
+//       "With your confirmation, we'll work on a budget to bring your vision to life. We'll ensure everything is prepared for the next step smoothly.",
+//     image: finalize,
+//     number: 3,
+//   },
+//   {
+//     title: "Track",
+//     description:
+//       "As construction begins, our mobile app keeps you updated. Track daily progress from anywhere, ensuring your dream home is coming together just as you envisioned.",
+//     image: track,
+//     number: 4,
+//   },
+//   {
+//     title: "Handover",
+//     description:
+//       "We guarantee your home will be delivered on time and within budget. It's our pride and joy to hand over the keys to your new home.",
+//     image: handover,
+//     number: 5,
+//   },
+// ];
+
+// const WorkingMobile = () => {
+//   const containerRef = useRef(null);
+
+//   useEffect(() => {
+//     const ctx = gsap.context(() => {
+//       const items = gsap.utils.toArray(containerRef.current.querySelectorAll(".stage-box"));
+
+//       // Initial setup - hide all except first
+//       gsap.set(items, { autoAlpha: 0, y: 30 });
+//       gsap.set(items[0], { autoAlpha: 1, y: 0 }); // First box visible
+
+//       // Create timeline with mobile-optimized settings
+//       const tl = gsap.timeline({
+//         scrollTrigger: {
+//           trigger: containerRef.current,
+//           start: "top top",
+//           end: () => `+=${stages.length * 120}%`, // More space for mobile
+//           scrub: 0.8, // Faster scrub for mobile responsiveness
+//           pin: true,
+//           pinReparent: true,
+//           anticipatePin: 1,
+//           invalidateOnRefresh: true,
+//           refreshPriority: 1,
+//           // Mobile-specific optimizations
+//           scroller: window,
+//           normalizeScroll: true, // Better mobile touch handling
+//           fastScrollEnd: true,
+//         },
+//       });
+
+//       // Animate each stage with mobile-optimized timing
+//       items.forEach((item, i) => {
+//         if (i === 0) return; // Skip first item as it's already visible
+
+//         const prevItem = items[i - 1];
+
+//         // Mobile-optimized transitions
+//         tl.to(prevItem, {
+//           autoAlpha: 0,
+//           y: -30,
+//           duration: 0.4,
+//           ease: "power2.inOut"
+//         }, i * 1.2) // More time per stage for mobile
+//         .to(item, {
+//           autoAlpha: 1,
+//           y: 0,
+//           duration: 0.5,
+//           ease: "power2.out"
+//         }, i * 1.2 + 0.15); // Slight overlap for smoother transition
+//       });
+
+//       // Fade out the last item at the end
+//       tl.to(items[items.length - 1], {
+//         autoAlpha: 0,
+//         y: -30,
+//         duration: 0.4,
+//         ease: "power2.inOut"
+//       }, items.length * 1.2);
+
+//     }, containerRef);
+
+//     // Ensure proper measurements after assets load
+//     const onLoad = () => ScrollTrigger.refresh();
+//     window.addEventListener('load', onLoad);
+
+//     return () => {
+//       window.removeEventListener('load', onLoad);
+//       ctx.revert();
+//     };
+//   }, []);
+
+//   return (
+//     <div>
+//       <section
+//         ref={containerRef}
+//         style={{
+//           height: "100vh",
+//           position: "relative",
+//           color: "#fff",
+//           overflow: "hidden",
+//           // Mobile-specific optimizations
+//           touchAction: "pan-y",
+//           WebkitOverflowScrolling: "touch",
+//         }}
+//       >
+//         {/* Background video */}
+//         <video
+//           className="absolute top-0 left-0 w-full h-full object-cover z-0"
+//           autoPlay
+//           muted
+//           loop
+//           playsInline
+//           preload="metadata"
+//         >
+//           <source src={loopVideo} type="video/mp4" />
+//         </video>
+
+//         {/* Dark overlay for better readability on mobile */}
+//         <div className="absolute inset-0 bg-black/30 z-5"></div>
+
+//         {/* Content overlay */}
+//         <div className="z-10 relative h-full">
+//           {/* Title overlay - mobile optimized positioning */}
+//           <div className="absolute top-4 left-1/2 -translate-x-1/2 px-4 text-center z-30 w-full">
+//             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white drop-shadow-lg">
+//               How it Works?
+//             </h2>
+//           </div>
+
+//           {/* Stage boxes container - mobile optimized */}
+//           <div className="h-full flex items-center justify-center px-4 py-8">
+//             <div
+//               style={{
+//                 position: "relative",
+//                 width: "100%",
+//                 maxWidth: "1200px",
+//                 height: "100%",
+//                 margin: "0 auto",
+//               }}
+//             >
+//               {stages.map((stage, index) => (
+//                 <div
+//                   key={index}
+//                   className="stage-box absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center text-center gap-6 px-4"
+//                   style={{ opacity: index === 0 ? 1 : 0 }}
+//                 >
+//                   {/* Framed Illustration - mobile optimized sizing */}
+//                   <div className="relative border border-white/50 rounded-xl sm:rounded-2xl p-4 sm:p-6 flex items-center justify-center w-[280px] h-[200px] sm:w-[400px] sm:h-[280px] md:w-[500px] md:h-[350px] lg:w-[600px] lg:h-[400px] bg-black/25 backdrop-blur-sm shadow-xl">
+//                     <img
+//                       src={stage.image}
+//                       alt={stage.title}
+//                       className="max-w-full max-h-full object-contain drop-shadow-md"
+//                       loading={index === 0 ? "eager" : "lazy"}
+//                     />
+//                     {/* Decorative stars - responsive sizing */}
+//                     <img
+//                       src={star}
+//                       alt=""
+//                       className="absolute -right-1 -bottom-3 sm:-right-2 sm:-bottom-4 w-6 sm:w-10 lg:w-12"
+//                     />
+//                     <img
+//                       src={star}
+//                       alt=""
+//                       className="absolute right-1 bottom-1 sm:right-2 sm:bottom-2 w-3 sm:w-5 lg:w-6"
+//                     />
+//                   </div>
+
+//                   {/* Content - mobile optimized */}
+//                   <div className="relative flex flex-col items-center text-center max-w-lg">
+//                     {/* Styled stage number - mobile responsive */}
+//                     <span
+//                       className="absolute pointer-events-none font-black leading-none select-none z-0"
+//                       style={{
+//                         fontSize: 'clamp(80px, 18vw, 300px)',
+//                         bottom: 'clamp(-40px, -10vw, -100px)',
+//                         left: 'clamp(-80px, -15vw, -200px)',
+//                         color: 'transparent',
+//                         WebkitTextStroke: '1px rgba(255, 255, 255, 0.2)',
+//                         filter: 'drop-shadow(0 0 10px rgba(255, 255, 255, 0.1))',
+//                       }}
+//                     >
+//                       {stage.number}
+//                     </span>
+
+//                     <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#ffb969] relative z-10 mb-3 drop-shadow-md">
+//                       {stage.title}
+//                     </h3>
+//                     <p className="text-sm sm:text-base lg:text-lg leading-relaxed relative z-10 max-w-md text-white/90 drop-shadow-sm">
+//                       {stage.description}
+//                     </p>
+//                   </div>
+//                 </div>
+//               ))}
+//             </div>
+//           </div>
+//         </div>
+//       </section>
+//     </div>
+//   );
+// };
+
+// export default WorkingMobile;
+
 import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useEffect, useRef } from "react";
 import meetUs from "../../assets/images/meetUs.webp";
 import designWork from "../../assets/images/designWork.webp";
 import finalize from "../../assets/images/finalize.webp";
 import track from "../../assets/images/track1.webp";
 import handover from "../../assets/images/handover.webp";
- import loopVideo from "../../assets/videos/loopVideo.mp4";
 import star from "../../assets/images/star.webp";
+import loopVideo from "../../assets/videos/loopVideo.mp4";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Stage data remains the same
 const stages = [
   {
     title: "Meet us",
@@ -49,200 +285,188 @@ const stages = [
   },
 ];
 
-// const WorkingMobile = () => {
-//   const containerRef = useRef(null);
-//   const stageRefs = useRef([]);
+const WorkingMobile = () => {
+  const containerRef = useRef(null);
 
-//   useEffect(() => {
-//     const ctx = gsap.context(() => {
-//       stages.forEach((_, index) => {
-//         const stage = stageRefs.current[index];
-//         if (stage) {
-//           gsap.to(stage, {
-//             scale: 0.7,
-//             opacity: 0,
-//             rotationX: 45,
-//             scrollTrigger: {
-//               trigger: stage,
-//               start: "top 15%",
-//               end: "bottom 5%",
-//               scrub: 1,
-//               invalidateOnRefresh: true,
-//             },
-//           });
-//         }
-//       });
-//     }, containerRef);
+  useEffect(() => {
+    // FIX: Add event listeners to prevent flicker on resize
+    const onRefreshStart = () =>
+      gsap.set(containerRef.current, { autoAlpha: 0 });
+    const onRefreshEnd = () => gsap.set(containerRef.current, { autoAlpha: 1 });
 
-//     return () => ctx.revert();
-//   }, []);
+    ScrollTrigger.addEventListener("refreshInit", onRefreshStart);
+    ScrollTrigger.addEventListener("refresh", onRefreshEnd);
 
-//   return (
-//     <div ref={containerRef} className="relative min-h-screen w-full bg-black">
-//       {/* Background Video */}
-//       <video
-//         className="fixed top-0 left-0 w-full h-full object-cover z-0"
-//         autoPlay
-//         muted
-//         loop
-//         playsInline
-//       >
-//         <source src={loopVideo} type="video/mp4" />
-//       </video>
+    const ctx = gsap.context(() => {
+      const items = gsap.utils.toArray(
+        containerRef.current.querySelectorAll(".stage-box")
+      );
 
-//       {/* Overlay */}
-//       {/* <div className="fixed inset-0 bg-black/60 z-10"></div> */}
+      gsap.set(items, { autoAlpha: 0, y: 30 });
+      gsap.set(items[0], { autoAlpha: 1, y: 0 });
 
-//       {/* Content */}
-//       <div className="relative  text-white z-10">
-//         <div className="text-center py-16">
-//           <h2 className="text-3xl md:text-4xl font-bold mb-16">
-//             How it Works?
-//           </h2>
-//         </div>
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: () => `+=${stages.length * 120}%`,
+          scrub: 0.8,
+          pin: true,
+          pinReparent: true,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          normalizeScroll: true,
+        },
+      });
 
-//         {/* Stages */}
-//         <div className="flex flex-col  px-4 pb-16">
-//           {stages.map((stage, index) => (
-//             <div
-//               key={index}
-//               ref={(el) => (stageRefs.current[index] = el)}
-//               className="stage sticky top-16 min-h-[60vh] flex items-center justify-center"
-//             >
-//               <div className="relative w-full max-w-md mx-auto">
-//                 <div className="text-center ">
-//                   {/* Image */}
-//                   <div className="relative  flex flex-col gap-5 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 overflow-hidden p-6 shadow-xl">
-//                     <img
-//                       src={stage.image}
-//                       alt={stage.title}
-//                       className="w-full h-48 object-contain rounded-lg"
-//                     />
-//                      <div className="flex">
-//                           {/* Number */}
-//                   <div className="text-[100px] font-bold bg-clip-text bg-gradient-to-r font-larken text-white/10 opacity-30">
-//                     {stage.number}
-//                   </div>
-//                      <div className="flex flex-col">
-//                          <h3 className="text-2xl font-bold text-[#ffb969] -mt-4">
-//                     {stage.title}
-//                   </h3>
+      items.forEach((item, i) => {
+        if (i === 0) return;
+        const prevItem = items[i - 1];
 
-//                   {/* Description */}
-//                   <p className="text-base text-gray-300 leading-relaxed">
-//                     {stage.description}
-//                   </p>
-//                     </div>
-//                       </div> 
-                 
+        tl.to(
+          prevItem,
+          {
+            autoAlpha: 0,
+            y: -30,
+            duration: 0.4,
+            ease: "power2.inOut",
+          },
+          i * 1.2
+        ).to(
+          item,
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.5,
+            ease: "power2.out",
+          },
+          i * 1.2 + 0.4
+        );
+      });
 
-//                   </div>
+      tl.to(
+        items[items.length - 1],
+        {
+          autoAlpha: 0,
+          y: -30,
+          duration: 0.4,
+          ease: "power2.inOut",
+        },
+        items.length * 1.2
+      );
+    }, containerRef);
 
-//                   {/* Title */}
-               
-//                 </div>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
+    const onLoad = () => ScrollTrigger.refresh();
+    window.addEventListener("load", onLoad);
 
-// export default WorkingMobile;
+    return () => {
+      // FIX: Important to remove listeners and revert GSAP context on cleanup
+      window.removeEventListener("load", onLoad);
+      ScrollTrigger.removeEventListener("refreshInit", onRefreshStart);
+      ScrollTrigger.removeEventListener("refresh", onRefreshEnd);
+      ctx.revert();
+    };
+  }, []);
 
+  return (
+    <div>
+      <section
+        ref={containerRef}
+        style={{
+          height: "100vh",
+          position: "relative",
+          color: "#fff",
+          overflow: "hidden",
+          touchAction: "pan-y",
+          WebkitOverflowScrolling: "touch",
+          visibility: "visible", // Ensure it's visible initially for the fix to work
+        }}
+      >
+        <video
+          className="absolute top-0 left-0 w-full h-full object-cover z-0"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+        >
+          <source src={loopVideo} type="video/mp4" />
+        </video>
 
+        <div className="absolute inset-0 bg-black/30 z-5"></div>
 
-function WorkingMobile() {
-  const [currentStage, setCurrentStage] = useState(0);
-  const [isInViewport, setIsInViewport] = useState(false);
-  const sectionRef = useRef(null);
+        <div className="z-10 relative h-full">
+          <div className="absolute top-6 sm:top-8 md:top-10 left-1/2 -translate-x-1/2 px-4 text-center z-30 w-full">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white drop-shadow-lg">
+              How it Works?
+            </h2>
+          </div>
 
-  // Intersection Observer to detect when the section is in viewport
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setIsInViewport(true);
-        } else {
-          setIsInViewport(false);
-        }
-      },
-      { threshold: 0.5 } // Trigger when 50% of the component is visible
-    );
+          <div className="h-full flex items-center justify-center px-4 py-10">
+            <div
+              style={{
+                position: "relative",
+                width: "100%",
+                maxWidth: "1200px",
+                height: "100%",
+                margin: "0 auto",
+              }}
+            >
+              {stages.map((stage, index) => (
+                <div
+                  key={index}
+                  className="stage-box absolute top-0 left-0 w-full h-full flex flex-col items-center justify-start text-center gap-6 px-4 pt-8 pb-20"
+                  style={{ opacity: index === 0 ? 1 : 0 }}
+                >
+                  <div className="relative border my-30 border-white/50 rounded-xl sm:rounded-2xl p-4 sm:p-6 flex items-center justify-center w-[280px] h-[200px] sm:w-[400px] sm:h-[280px] md:w-[500px] md:h-[350px] lg:w-[600px] lg:h-[400px] bg-black/25 backdrop-blur-sm shadow-xl">
+                    <img
+                      src={stage.image}
+                      alt={stage.title}
+                      className="max-w-full max-h-full object-contain drop-shadow-md"
+                      loading={index === 0 ? "eager" : "lazy"}
+                    />
+                    <img
+                      src={star}
+                      alt=""
+                      className="absolute -right-1 -bottom-3 sm:-right-2 sm:-bottom-4 w-6 sm:w-10 lg:w-12"
+                    />
+                    <img
+                      src={star}
+                      alt=""
+                      className="absolute right-1 bottom-1 sm:right-2 sm:bottom-2 w-3 sm:w-5 lg:w-6"
+                    />
+                  </div>
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) observer.disconnect();
-    };
-  }, []);
-
-  // Automatically change stages when in viewport
-  useEffect(() => {
-    if (!isInViewport) return;
-
-    const interval = setInterval(() => {
-      setCurrentStage((prevStage) => (prevStage + 1) % stages.length);
-    }, 2000);
-
-    return () => clearInterval(interval);
-  }, [isInViewport]);
-
-  return (
-    <div
-      ref={sectionRef}
-      className="relative h-fit lg:h-screen w-full text-white flex items-center justify-center bg-transparent"
-    >
-      <video
-        className={`absolute top-0 left-0 w-full object-cover h-full`}
-        autoPlay
-        muted
-        loop
-        playsInline
-      >
-        <source src={loopVideo} type="video/mp4" />
-      </video>
-      <div className="text-center h-full bg-transparent z-10">
-        <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-giloryB my-14 mb-16">
-          How it Works?
-        </h2>
-
-        {/* Stage card */}
-        <div className="relative lg:absolute lg:right-20 2xl:right-64 bg-transparent backdrop-blur-md rounded-2xl border border-white/40 w-[300px] h-[240px] md:w-[714px] md:h-[487px] lg:w-[40vw] lg:h-[60vh] items-center justify-center mx-auto">
-          <img
-            src={stages[currentStage]?.image}
-            alt={stages[currentStage]?.title || "Default Title"}
-            className="w-full h-full object-contain"
-          />
-          <img
-            src={star}
-            alt="star"
-            className="absolute right-0 -bottom-5 md:-bottom-8 w-10 md:w-16"
-          />
-          <img
-            src={star}
-            alt="star"
-            className="absolute -right-2 md:-right-4 bottom-2 w-5 md:w-8"
-          />
-        </div>
-
-        {/* Stage number */}
-        <h3 className="lg:absolute left-20  top-52 text-[24px] md:text-[32px] font-giloryS text-[#ffb969] mt-10 mb-4 ">
-          {stages[currentStage]?.title || "Default Title"}
-        </h3>
-        <p className="lg:absolute h-20 lg:text-left  text-[16px] md:text-[18px] lg:text-[24px] font-giloryM  w-[400px] lg:w-[500px] mx-auto px-2">
-          {stages[currentStage]?.description || "Default Description"}
-        </p>
-      </div>
-      <div className="absolute left-[6%] lg:left-2 2xl:left-64 -bottom-24 2xl:bottom-20 text-[200px] text-stroke font-larken z-0">
-        {stages[currentStage]?.number || 0}
-      </div>
-    </div>
-  );
-}
+                  <div className="relative flex flex-col items-center text-center max-w-lg pb-16">
+                    <span
+                      className="absolute pointer-events-none font-black leading-none select-none z-0"
+                      style={{
+                        fontSize: "clamp(80px, 18vw, 300px)",
+                        bottom: "clamp(0px, 2vw, 24px)",
+                        left: "clamp(-80px, -15vw, -200px)",
+                        color: "transparent",
+                        WebkitTextStroke: "1px rgba(255, 255, 255, 0.2)",
+                        filter:
+                          "drop-shadow(0 0 10px rgba(255, 255, 255, 0.1))",
+                      }}
+                    >
+                      {stage.number}
+                    </span>
+                    <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#ffb969] relative z-10 mb-4 drop-shadow-md">
+                      {stage.title}
+                    </h3>
+                    <p className="text-sm sm:text-base lg:text-lg leading-relaxed mt-4 px-4 py-2 bg-black/40 rounded-lg text-white/90 drop-shadow-sm">
+                      {stage.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
 
 export default WorkingMobile;
